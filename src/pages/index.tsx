@@ -1,7 +1,10 @@
+import { Header } from "@components/index";
+
 export default function Home() {
   return (
     <>
-      <h1>Juan & Giobla</h1>
+      <Header />
+      <h1>Juan Gómez</h1>
     </>
   )
 }
