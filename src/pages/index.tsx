@@ -1,10 +1,9 @@
-import { Header } from "@components/index";
+import MainLayout from '@layouts/MainLayout';
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <h1>Juan Gómez</h1>
-    </>
+    <MainLayout>
+      <h1>Juan</h1>
+    </MainLayout>
   )
 }

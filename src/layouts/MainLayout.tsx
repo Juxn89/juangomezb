@@ -1,8 +1,21 @@
-import React from 'react'
+import { FC } from 'react';
+import { Grid } from '@mui/material';
+import { Menu } from '@components/index';
 
-const MainLayout = () => {
+interface IMainLayoutProps {
+  children: JSX.Element | JSX.Element[]
+}
+
+const MainLayout: FC<IMainLayoutProps> = ({children}) => {
   return (
-    <div>MainLayout</div>
+    <Grid container sx={{ height: '100vh' }}>
+      <Grid item xs={2} sx={{ display: 'flex', alignItems: 'center' }}>
+        <Menu />
+      </Grid>
+      <Grid item xs={10}>
+        { children }
+      </Grid>
+    </Grid>
   )
 }
 
