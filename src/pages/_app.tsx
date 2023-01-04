@@ -1,11 +1,14 @@
 import type { AppProps } from 'next/app'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { lightTheme } from '@themes/lightTheme';
 import '@styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CssBaseline>
-      <Component {...pageProps} />
-    </CssBaseline>
+    <ThemeProvider theme={ lightTheme }>
+      <CssBaseline>
+        <Component {...pageProps} />
+      </CssBaseline>      
+    </ThemeProvider>
   )
 }

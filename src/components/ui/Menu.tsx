@@ -9,6 +9,7 @@ import { SOCIAL_NETWORKS } from '@helpers/index';
 export const Menu = () => {
   return (
     <Box>
+      <Box flex={1}/>
       <List >
         <ListItemMenu url='/' label='About'/>
         <ListItemMenu url='/' label='Experience'/>
@@ -34,6 +35,7 @@ export const Menu = () => {
             <Box flex={1}/>
         </ListItem>
       </List>
+      <Box flex={1}/>
     </Box>
   )
 }
