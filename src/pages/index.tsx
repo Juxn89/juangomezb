@@ -1,9 +1,12 @@
+import { NextPage } from 'next';
 import {MainLayout} from '@components/layouts/index';
 
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <MainLayout>
       <h1>Main Content</h1>
     </MainLayout>
   )
 }
+
+export default Home;

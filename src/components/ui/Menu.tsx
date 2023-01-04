@@ -12,9 +12,9 @@ export const Menu = () => {
       <Box flex={1}/>
       <List >
         <ListItemMenu url='/' label='About'/>
-        <ListItemMenu url='/' label='Experience'/>
-        <ListItemMenu url='/' label='My Skilss'/>
-        <ListItemMenu url='/' label='Contact'/>
+        <ListItemMenu url='/experience' label='Experience'/>
+        <ListItemMenu url='/skills' label='My Skills'/>
+        <ListItemMenu url='/contact' label='Contact'/>
         <ListItem sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', alignContent: 'center' }}>
             <Box flex={1}/>
             <NextLink href={ SOCIAL_NETWORKS.linkedin } passHref legacyBehavior>
