@@ -12,7 +12,7 @@ export const ListItemMenu: FC<IListItemMenu> = ({url, label}) => {
     <ListItem>
         <Box flex={1}/>
             <NextLink href={ `${url}` } legacyBehavior>
-                <Link underline='hover' style={{ cursor: 'pointer' }}>
+                <Link underline='hover' style={{ cursor: 'pointer' }} title="">
                     { label }
                 </Link>
             </NextLink>

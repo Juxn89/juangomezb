@@ -20,7 +20,8 @@
       "@helpers/*": ["helpers/*"],
       "@layouts/*": ["layouts/*"],
       "@styles/*": ["styles/*"],
-      "@themes/*": ["themes/*"]
+      "@themes/*": ["themes/*"],
+      "@translations/*": ["translations/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
