@@ -1,8 +1,11 @@
+import { LanguageType } from "@common/index"
+
 export interface ITRanslations {
-	language: 'es' | 'en',
+	flag: IFlagTranslation,
+	language: LanguageType,
 	menu: IMenuTranslations[],
+	modeThene: IModeTheme
 	socialNetworks: ISocialNetworksTranslations[],
-	flag: IFlagTranslation
 }
 
 interface IMenuTranslations {
@@ -19,4 +22,8 @@ interface ISocialNetworksTranslations {
 interface IFlagTranslation {
 	title: string,
 	url: string
+}
+
+interface IModeTheme {
+	title: string
 }
