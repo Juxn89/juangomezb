@@ -1,19 +1,19 @@
-import React from 'react'
+import { FC } from 'react'
 import NextLink from 'next/link'
 import Image from 'next/image'
-import { Box, Link } from '@mui/material'
+import { Avatar, Box, Link } from '@mui/material'
 
-export const Flags = () => {
+export const Flags: FC = () => {
   return (
     <Box display='flex'>
         <NextLink href='/es/' passHref legacyBehavior>
             <Link>
-                <Image src='/assets/svg/flags/es.svg' alt='Español' width={30} height={30} style={{ marginRight: '5px' }} title='Español'/>
+                <Avatar src='/assets/svg/flags/es.svg' alt='Español' sx={{ width: 30, height: 30 }} style={{ marginRight: '5px' }} title='Español'/>
             </Link>
         </NextLink>
         <NextLink href='/es/' passHref legacyBehavior>
             <Link>
-                <Image src='/assets/svg/flags/gb.svg' alt='English' width={30} height={30} title='English' />
+                <Avatar src='/assets/svg/flags/gb.svg' alt='English' sx={{ width: 30, height: 30 }} title='English' />
             </Link>
         </NextLink>
     </Box>

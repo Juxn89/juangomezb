@@ -1,10 +1,11 @@
 import { NextPage } from 'next';
-import {MainLayout} from '@components/layouts/index';
+import {MainLayout} from '@components/layouts';
+import { AboutConntent } from '@components/about';
 
 const Home: NextPage = () => {
   return (
     <MainLayout>
-      <h1>Main Content</h1>
+      <AboutConntent />
     </MainLayout>
   )
 }

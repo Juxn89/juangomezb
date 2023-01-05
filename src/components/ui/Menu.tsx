@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import NextLink from 'next/link'
 import { Box, Link, List, ListItem } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -6,7 +7,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import {ListItemMenu} from '@components/ui/index';
 import { SOCIAL_NETWORKS } from '@helpers/index';
 
-export const Menu = () => {
+export const Menu: FC = () => {
   return (
     <Box>
       <Box flex={1}/>
