@@ -7,7 +7,7 @@ import { SOCIAL_NETWORKS } from '@helpers/index';
 export const enTranslation: ITranslations = {
 	flag: {
 		title: 'Go to spanish version',
-		url: './assets/svg/flags/es.svg'
+		url: '../assets/svg/flags/es.svg'
 	},
 	language: 'en',
 	menu: [
