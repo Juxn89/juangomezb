@@ -1,35 +1,27 @@
-import { FC, useEffect } from 'react';
+import { FC, } from 'react';
 import NextLink from 'next/link'
-import { Avatar, Box, Link } from '@mui/material'
+import { Box, Link } from '@mui/material'
 import { LanguageType } from '@common/types'
-import { FLAGS_URL } from '@common/constants'
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useTranslationsLabels } from '@hooks/useTranslationsLabels';
 
-interface IFlagsProps {
-    locale: LanguageType
-}
-
-export const Flags: FC<IFlagsProps> = ({ locale }) => {
+export const Flags: FC = () => {
+  const { locale, defaultLocale, pathname } = useRouter()
+  const {  flag } = useTranslationsLabels(locale as LanguageType)
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-        {
-            locale === 'en' &&
-            (<NextLink href='/es/' passHref legacyBehavior>
-                <Link>
-                    <Image src={ FLAGS_URL.ES_FLAG } alt='Español' width= {30} height= {30} style={{ marginRight: '5px' }} title='Español'/>
-                </Link>
-            </NextLink>)
-        }
-
-        {
-            locale === 'es' &&
-            (<NextLink href='/en/' passHref legacyBehavior>
-                <Link>
-                    <Image src={ FLAGS_URL.EN_FLAG } alt='English'  width= {32} height= {32} title='English' style={{ borderRadius: '8px' }}/>
-                </Link>
-            </NextLink>)
-        }
+      <NextLink 
+        href={ pathname }
+        passHref 
+        legacyBehavior
+        locale={ locale === defaultLocale ? 'es' : defaultLocale }
+      >
+        <Link>
+          <Image src={ flag.url } alt={ flag.title } width= {32} height= {32} title={ flag.title } style={{ borderRadius: '8px' }}/> 
+        </Link>
+      </NextLink>
     </Box>
   )
 }

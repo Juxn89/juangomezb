@@ -5,10 +5,10 @@ import '@styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={ lightTheme }>
-      <CssBaseline>
-        <Component {...pageProps} />
-      </CssBaseline>      
-    </ThemeProvider>
+      <ThemeProvider theme={ lightTheme }>
+        <CssBaseline>
+          <Component {...pageProps} />
+        </CssBaseline>      
+      </ThemeProvider>
   )
 }

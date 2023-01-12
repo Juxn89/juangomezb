@@ -8,7 +8,7 @@ export const Navbar: FC = () => {
         <Toolbar>            
             <Box flex={1}/>
             <SwitchTheme />
-            <Flags locale='es'/>
+            <Flags />
         </Toolbar>
     </AppBar>
   )

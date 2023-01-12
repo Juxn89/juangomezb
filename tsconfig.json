@@ -18,8 +18,12 @@
     "paths": {
       "@common/*": ["common/*"],
       "@components/*": ["components/*"],
+      "@context/*": ["context/*"],
       "@helpers/*": ["helpers/*"],
+      "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
+      "@provider/*": ["provider/*"],
+      "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
       "@themes/*": ["themes/*"],
       "@translations/*": ["translations/*"]
