@@ -2,12 +2,13 @@ import { ITranslations } from '@translations/index';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { FLAGS_BASE_URL } from '@common/index';
 import { SOCIAL_NETWORKS } from '@helpers/index';
 
 export const esTranslation: ITranslations = {
 	flag: {
 		title: 'Ir a la versión en inglés',
-		url: '../assets/svg/flags/us.svg'
+		url: `${FLAGS_BASE_URL}us.svg`
 	},
 	language: 'es',
 	menu: [

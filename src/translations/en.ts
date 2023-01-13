@@ -2,12 +2,13 @@ import { ITranslations } from '@translations/index';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { FLAGS_BASE_URL } from '@common/index';
 import { SOCIAL_NETWORKS } from '@helpers/index';
 
 export const enTranslation: ITranslations = {
 	flag: {
 		title: 'Go to spanish version',
-		url: '../assets/svg/flags/es.svg'
+		url: `${FLAGS_BASE_URL}es.svg`
 	},
 	language: 'en',
 	menu: [

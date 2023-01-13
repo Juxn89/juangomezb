@@ -1,8 +1,5 @@
 import { LanguageType } from "@common/index"
 
-export const FLAGS_URL = {
-	EN_FLAG: '/assets/svg/flags/gb.svg',
-	ES_FLAG: '/assets/svg/flags/es.svg'
-}
+export const FLAGS_BASE_URL = '../assets/svg/flags/';
 
 export const LANGUAGE_AVAILABLE: LanguageType[] = ['en', 'es']

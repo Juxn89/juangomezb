@@ -32,8 +32,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({children}) => {
         <Navbar />
       </nav>
 
-      <main style={{ marginTop: '80px' }}>
-        <Grid container spacing={1}>
+      <main>
+        <Grid container spacing={1} sx={{ mt: { xs: '30px', sm: '70px' } }}>
           <Grid item 
             xs={12} 
             sm={2}
