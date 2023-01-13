@@ -1,20 +1,15 @@
-import { useEffect } from 'react';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import {MainLayout} from '@components/layouts';
 import { AboutConntent } from '@components/about';
-import { useTranslationsLabels } from '../hooks/useTranslationsLabels';
+import { useTranslationsLabels } from '@hooks/index';
 
-const Home: NextPage = ({ locale }) => {
+const Home: NextPage = () => {
+  const { locale } = useRouter()
   const labels = useTranslationsLabels('es')
-
-  useEffect(() => {
-    console.log(`Locale: ${ locale }`);
-  }, [])
   
   return (
     <MainLayout>
-      <div>{ labels.language }</div>
-      <div>{ `locale: ${ locale  }` }</div>
       <AboutConntent />
     </MainLayout>
   )

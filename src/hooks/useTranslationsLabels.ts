@@ -1,7 +1,7 @@
 import { LanguageType } from "@common/index";
-import { ITRanslations, TranslationLabels } from "@translations/index";
+import { ITranslations, TranslationLabels } from "@translations/index";
 
-export const useTranslationsLabels = (locale: LanguageType): ITRanslations => {
+export const useTranslationsLabels = (locale: LanguageType): ITranslations => {
 	const translations = TranslationLabels[locale];
 
 	return translations;

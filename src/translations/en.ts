@@ -13,14 +13,14 @@ export const enTranslation: ITranslations = {
 	menu: [
 		{ label: 'About', title: 'About me', 'url': '/'},
 		{ label: 'Experience', title: 'My work experience', 'url': 'experience'},
-		{ label: 'My Skills', title: 'My skills', 'url': 'skills'},
+		{ label: 'Skills', title: 'My skills', 'url': 'skills'},
 		{ label: 'Contact', title: 'Contact me', 'url': 'contact'}
 	],
 	modeThene: {
 		title: ''
 	},
 	socialNetworks: [
-		{ label: 'Go to Linkedin profile....', icon: LinkedInIcon, url: SOCIAL_NETWORKS.linkedin },
+		{ label: 'Go to Linkedin profile....', icon: LinkedInIcon, url: `${SOCIAL_NETWORKS.linkedin}?locale=en_US` },
 		{ label: 'Go to GitHub profile....', icon: GitHubIcon, url: SOCIAL_NETWORKS.github },
 		{ label: 'Go to Twitter profile...', icon: TwitterIcon, url: SOCIAL_NETWORKS.twitter },
 	]
