@@ -13,7 +13,7 @@ export const darkTheme = createTheme({
       },
       styleOverrides: {
         root: {
-          backgroundColor: "white",
+          backgroundColor: grey[900],
           height: 60
         },
       }
