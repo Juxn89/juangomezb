@@ -1,11 +1,17 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Box, Typography } from '@mui/material'
+import { useAppSelector } from '@hooks/index'
+import { useDispatch } from 'react-redux'
+import { changeThemeMode } from '@reducer/index';
+import { saveLocalStorage } from '@helpers/index';
 
 export const SwitchTheme: FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false)
+  const { isDarkMode } = useAppSelector(state => state.themeMode)
+  const dispatch = useDispatch()
 
   const ChangeModeTheme = () => {
-    setIsDarkMode(!isDarkMode)
+    dispatch( changeThemeMode() )
+    saveLocalStorage('themeMode', (!isDarkMode).toString())
   }
 
   return (

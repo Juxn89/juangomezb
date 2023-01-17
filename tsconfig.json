@@ -22,11 +22,13 @@
       "@helpers/*": ["helpers/*"],
       "@hooks/*": ["hooks/*"],
       "@layouts/*": ["layouts/*"],
+      "@pages/*": ["pages/*"],
       "@provider/*": ["provider/*"],
+      "@reducer/*": ["reducer/*"],
       "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
       "@themes/*": ["themes/*"],
-      "@translations/*": ["translations/*"]
+      "@translations/*": ["translations/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
