@@ -12,6 +12,8 @@ export const MainLayout: FC<IMainLayoutProps> = ({children}) => {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
         { /* Personal information  */ }
         <title>Juan G&oacute;mez</title>
         <meta name='description' content='Juan Gómez portafolio' />
