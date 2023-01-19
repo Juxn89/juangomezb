@@ -6,7 +6,6 @@ export interface ITranslations {
 	flag: IFlagTranslation,
 	language: LanguageType,
 	menu: IMenuTranslations[],
-	modeThene: IModeTheme
 	socialNetworks: ISocialNetworksTranslations[],
 }
 
@@ -25,8 +24,4 @@ interface ISocialNetworksTranslations {
 export interface IFlagTranslation {
 	title: string,
 	url: string
-}
-
-interface IModeTheme {
-	title: string
 }

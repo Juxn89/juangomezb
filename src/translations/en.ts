@@ -17,9 +17,6 @@ export const enTranslation: ITranslations = {
 		{ label: 'Skills', title: 'My skills', 'url': 'skills'},
 		{ label: 'Contact', title: 'Contact me', 'url': 'contact'}
 	],
-	modeThene: {
-		title: ''
-	},
 	socialNetworks: [
 		{ label: 'Go to Linkedin profile....', icon: LinkedInIcon, url: `${SOCIAL_NETWORKS.linkedin}?locale=en_US` },
 		{ label: 'Go to GitHub profile....', icon: GitHubIcon, url: SOCIAL_NETWORKS.github },

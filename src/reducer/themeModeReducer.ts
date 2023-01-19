@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../store/store';
 
 interface ThemeModeState {
@@ -15,10 +15,13 @@ export const themeModeSlice = createSlice({
 	reducers: {
 		changeThemeMode: (state) => {
 			state.isDarkMode = !state.isDarkMode
+		},
+		setThemeMode: (state, action: PayloadAction<boolean>) => {
+			state.isDarkMode = action.payload
 		}
 	}
 })
 
-export const { changeThemeMode } = themeModeSlice.actions;
+export const { changeThemeMode, setThemeMode } = themeModeSlice.actions;
 export const selectThemeMode = (state: RootState) => state.themeMode
 export default themeModeSlice.reducer;
