@@ -21,7 +21,7 @@ export const darkTheme = createTheme({
 		MuiTypography: {
 			styleOverrides: {
 				root: {
-					color: grey[900]
+					color: "white"
 				}
 			}
 		}

@@ -1,10 +1,12 @@
-import { MainLayout } from '@components/layouts'
 import { NextPage } from 'next'
+import { Grid } from '@mui/material'
+import { MainLayout } from '@components/layouts'
+import { ExperienceTimeline } from '@components/experience/ExperienceTimeline'
 
 const experience: NextPage = () => {
   return (
     <MainLayout>
-        <h1>experience</h1>
+      <ExperienceTimeline />
     </MainLayout>
   )
 }

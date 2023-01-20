@@ -3,10 +3,24 @@ import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export interface ITranslations {
+	common: ICommonLabels,
 	flag: IFlagTranslation,
 	language: LanguageType,
 	menu: IMenuTranslations[],
+	cvFile: IcvFile,
 	socialNetworks: ISocialNetworksTranslations[],
+	workExperience: IWorkExperience[]
+}
+
+interface ICommonLabels {
+	current: string,
+	technologies: string
+}
+
+interface IcvFile {
+	title: string,
+	label: string,
+	url: string
 }
 
 interface IMenuTranslations {
@@ -24,4 +38,14 @@ interface ISocialNetworksTranslations {
 export interface IFlagTranslation {
 	title: string,
 	url: string
+}
+
+export interface IWorkExperience {
+	place: string,
+	position: string,
+	descriptions: string
+	dateStart: string,
+	dateEnd?: string,
+	isCurrentJob: boolean
+	technologies: string[]
 }
