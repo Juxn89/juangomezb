@@ -76,5 +76,10 @@ export const esTranslation: ITranslations = {
 			isCurrentJob: false,
 			technologies: ['.NET', 'ASP MVC', 'JS']
 		}
-	]
+	],
+	about: {
+		initialGetting: "Hola 👋! Bienvenido, Soy Juan",
+		subTitle: '',
+		description: ''
+	}
 }

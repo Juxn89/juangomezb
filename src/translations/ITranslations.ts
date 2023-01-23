@@ -9,6 +9,7 @@ export interface ITranslations {
 	menu: IMenuTranslations[],
 	cvFile: IcvFile,
 	socialNetworks: ISocialNetworksTranslations[],
+	about: IAbout,
 	workExperience: IWorkExperience[]
 }
 
@@ -48,4 +49,10 @@ export interface IWorkExperience {
 	dateEnd?: string,
 	isCurrentJob: boolean
 	technologies: string[]
+}
+
+interface IAbout {
+	initialGetting: string,
+	subTitle: string,
+	description: string,
 }

@@ -32,7 +32,7 @@ export const enTranslation: ITranslations = {
 		{ label: 'Go to Twitter profile...', icon: TwitterIcon, url: SOCIAL_NETWORKS.twitter },
 	],
 	workExperience: [
-		{ 
+		{
 			place: 'Stepstone',
 			descriptions: ``,
 			position: 'Senior .NET Developer',
@@ -40,7 +40,7 @@ export const enTranslation: ITranslations = {
 			isCurrentJob: true,
 			technologies: ['.NET', 'NET Core', 'C#', 'JS', 'React', 'Nest JS']
 		},
-		{ 
+		{
 			place: 'Axxis Systems',
 			descriptions: ``,
 			position: 'Senior .NET Developer',
@@ -66,7 +66,7 @@ export const enTranslation: ITranslations = {
 			dateEnd: '04-2017',
 			isCurrentJob: false,
 			technologies: ['.NET', 'WinForms', 'VB .NET', 'Oracle', 'Oracle Forms']
-		},		
+		},
 		{
 			place: 'Managua\'s Town Hall',
 			descriptions: ``,
@@ -76,5 +76,16 @@ export const enTranslation: ITranslations = {
 			isCurrentJob: false,
 			technologies: ['.NET', 'ASP MVC', 'JS']
 		}
-	]
+	],
+	about: {
+		initialGetting: "Hi there 👋! welcome, I'm Juan",
+		subTitle: 'Software engineer, .NET & react developer',
+		description:
+			`
+			sdlñfsdñlfjsdlkfjsdlkfjsdlkfjdslkfjdslkf
+			askdjaskldaskshfkjsdhgdkjshgfdsdjfkjshdaskjhdas
+			lcdsalkdjaslkdaskldjaskldas
+			asdasd
+			`
+	}
 }

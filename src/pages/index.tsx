@@ -10,9 +10,12 @@ const Home: NextPage = () => {
   const labels = useTranslationsLabels(locale as LanguageType)
   
   return (
-    <MainLayout>
-      <AboutConntent />
-    </MainLayout>
+    <>
+      <MainLayout>
+        <AboutConntent />
+      </MainLayout>    
+    </>
+
   )
 }
 

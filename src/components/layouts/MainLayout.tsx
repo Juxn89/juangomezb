@@ -12,17 +12,23 @@ export const MainLayout: FC<IMainLayoutProps> = ({children}) => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
-        { /* Personal information  */ }
         <title>Juan G&oacute;mez</title>
-        <meta name='description' content='Juan Gómez portafolio' />
+
+        <link rel='alternate' hrefLang='x-default' href='httsp://www.juangomezb.com/'/>
+        <link rel='alternate' hrefLang='en' href='httsp://www.juangomezb.com/'/>
+        <link rel='alternate' hrefLang='es' href='httsp://www.juangomezb.com/es'/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        { /* Personal information  */ }
+        <meta name='description' content="Juan Gómez's portafolio" />
         <meta name='keywords' content='Juan Gómez, Juan Gomez, Juan, Gómez, Gomez, developer, .NET, .NET Developer, NET Core, C#, react, typescript, javascript, nextjs, HTML, CSS' />
         <meta name='author' content='Juan Gómez, gb.jc@outlook.com'/>
         <meta name="url" content="htts://juangomezb.com" />
 
         { /* OG tags  */ }
         <meta name='og:title' content='Juan Gómez portafolio' />
+        <meta name='og:url' content='httsp://www.juangomezb.com/' />
         <meta name='og:description' content='Juan Gómez portafolio' />
         <meta name="twitter:card" content="summary" />
 
