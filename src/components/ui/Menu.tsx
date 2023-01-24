@@ -20,17 +20,17 @@ export const Menu: FC = () => {
           ))
         }
         <ListItem sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'row', alignItems: 'center', alignContent: 'center' }}>
-            <Box flex={1}/>
-            {
-              socialNetworks.map(item => (
-                <NextLink key={ item.label } href={ item.url } title={ item.label } passHref legacyBehavior>
-                    <Link target='_blank' >
-                        { <item.icon /> }
-                    </Link>
-                </NextLink>                
-              ))
-            }
-            <Box flex={1}/>
+          <Box flex={1}/>
+          {
+            socialNetworks.map(item => (
+              <NextLink key={ item.label } href={ item.url } title={ item.label } passHref legacyBehavior>
+                <Link target='_blank' >
+                  { <item.icon /> }
+                </Link>
+              </NextLink>                
+            ))
+          }
+          <Box flex={1}/>
         </ListItem>
       </List>
       <Box flex={1}/>

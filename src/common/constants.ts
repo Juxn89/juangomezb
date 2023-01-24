@@ -1,4 +1,4 @@
-import { LanguageType } from "@common/index"
+import { LanguageType } from '@common/index'
 
 export const FLAGS_BASE_URL = '../assets/svg/flags/';
 

@@ -6,20 +6,20 @@ interface ThemeModeState {
 }
 
 const initialState: ThemeModeState = {
-	isDarkMode: false
+  isDarkMode: false
 }
 
 export const themeModeSlice = createSlice({
-	name: 'ThemeMode',
-	initialState,
-	reducers: {
-		changeThemeMode: (state) => {
-			state.isDarkMode = !state.isDarkMode
-		},
-		setThemeMode: (state, action: PayloadAction<boolean>) => {
-			state.isDarkMode = action.payload
-		}
-	}
+  name: 'ThemeMode',
+  initialState,
+  reducers: {
+    changeThemeMode: (state) => {
+      state.isDarkMode = !state.isDarkMode
+    },
+    setThemeMode: (state, action: PayloadAction<boolean>) => {
+      state.isDarkMode = action.payload
+    }
+  }
 })
 
 export const { changeThemeMode, setThemeMode } = themeModeSlice.actions;

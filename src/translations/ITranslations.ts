@@ -1,6 +1,6 @@
-import { LanguageType } from "@common/index"
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { LanguageType } from '@common/index'
+import { SvgIconTypeMap } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 export interface ITranslations {
 	common: ICommonLabels,
@@ -33,7 +33,7 @@ interface IMenuTranslations {
 interface ISocialNetworksTranslations {
 	label: string,
 	url: string,
-	icon: OverridableComponent<SvgIconTypeMap<{}, "svg">>
+	icon: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>
 }
 
 export interface IFlagTranslation {

@@ -1,6 +1,9 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals"
+  ],
   "rules": {
-    // "indent": [ "error", 1 ]
+    "quotes": ["error", "single"],
+    "indent": ["error", 2]
   }
 }

@@ -1,12 +1,12 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material';
 import { grey } from '@mui/material/colors'
 
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
-	components: {
-		MuiAppBar: {
+  components: {
+    MuiAppBar: {
       defaultProps: {
         elevation: 0,
         position: 'fixed',
@@ -18,18 +18,18 @@ export const darkTheme = createTheme({
         },
       }
     },
-		MuiTypography: {
-			styleOverrides: {
-				root: {
-					color: "white"
-				},
-				h4: {
-					color: "#90caf9"
-				},
-				h6: {
-					color: "#3E8EBD"
-				}
-			}
-		}
-	}
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: 'white'
+        },
+        h4: {
+          color: '#90caf9'
+        },
+        h6: {
+          color: '#3E8EBD'
+        }
+      }
+    }
+  }
 });

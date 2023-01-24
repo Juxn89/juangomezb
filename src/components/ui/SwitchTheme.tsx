@@ -15,12 +15,12 @@ export const SwitchTheme: FC = () => {
   }
 
   return (
-	<Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
-    {
-      isDarkMode 
-        ? <Typography sx={{ fontSize: 29, cursor: 'pointer' }} title='Light version' onClick={ ChangeModeTheme }>☀️</Typography> 
-        : <Typography sx={{ fontSize: 29, cursor: 'pointer' }} title='Dark version' onClick={ ChangeModeTheme }>🌘</Typography>
-    }
-  </Box>
+    <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+      {
+        isDarkMode 
+          ? <Typography sx={{ fontSize: 29, cursor: 'pointer' }} title='Light version' onClick={ ChangeModeTheme }>☀️</Typography> 
+          : <Typography sx={{ fontSize: 29, cursor: 'pointer' }} title='Dark version' onClick={ ChangeModeTheme }>🌘</Typography>
+      }
+    </Box>
   )
 }

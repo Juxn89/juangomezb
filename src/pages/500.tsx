@@ -5,8 +5,8 @@ import { Typography } from '@mui/material'
 const InternalServerErrorPage: NextPage = () => {
   return (
     <MainLayout>
-        <Typography variant='h3' component='h1'>500</Typography>
-        <Typography variant='h5' component='h2'>Server-side error occurred</Typography>
+      <Typography variant='h3' component='h1'>500</Typography>
+      <Typography variant='h5' component='h2'>Server-side error occurred</Typography>
     </MainLayout>
   )
 }

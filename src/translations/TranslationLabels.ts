@@ -6,6 +6,6 @@ interface ITranslationLabels {
 };
 
 export const TranslationLabels: ITranslationLabels = {
-	'es': esTranslation,
-	'en': enTranslation
+  'es': esTranslation,
+  'en': enTranslation
 }
