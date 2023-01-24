@@ -3,11 +3,11 @@ root = true
 [{src/**}]
 charset = utf-8
 indent_size = 2
-indent_style = tab
+indent_style = space
 tab_width = 2
 
 [*.{ts, tsx}]
 charset = utf-8
 indent_size = 2
-indent_style = tab
+indent_style = space
 tab_width = 2
