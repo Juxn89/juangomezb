@@ -1,3 +1,4 @@
+export * from '@components/ui/DownloadCV'
 export * from '@components/ui/Flags'
 export * from '@components/ui/ListItemMenu'
 export * from '@components/ui/Menu'

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import {MainLayout} from '@components/layouts';
-import { AboutConntent } from '@components/about';
+import { AboutContent } from '@components/about';
 import { useTranslationsLabels } from '@hooks/index';
 import { LanguageType } from '@common/index';
 
@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <>
       <MainLayout>
-        <AboutConntent />
+        <AboutContent />
       </MainLayout>    
     </>
 

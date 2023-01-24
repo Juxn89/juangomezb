@@ -11,8 +11,8 @@ export const enTranslation: ITranslations = {
 		technologies: 'Technologies'
 	},
 	cvFile: {
-		label: 'Download CV (EN)',
-		title: `Download CV (EN)`,
+		label: 'Download resume',
+		title: `Download resume (EN)`,
 		url: `${CV_FILES_BASE_URL}EN.pdf`
 	},
 	flag: {
@@ -24,7 +24,8 @@ export const enTranslation: ITranslations = {
 		{ label: 'About', title: 'About me', 'url': '/' },
 		{ label: 'Experience', title: 'My work experience', 'url': 'experience' },
 		{ label: 'Skills', title: 'My skills', 'url': 'skills' },
-		{ label: 'Contact', title: 'Contact me', 'url': 'contact' }
+		{ label: 'Contact', title: 'Contact me', 'url': 'contact' },
+		{ label: 'Projects', title: 'My projects', 'url': 'projects' },
 	],
 	socialNetworks: [
 		{ label: 'Go to Linkedin profile...', icon: LinkedInIcon, url: `${SOCIAL_NETWORKS.linkedin}?locale=en_US` },
@@ -82,10 +83,7 @@ export const enTranslation: ITranslations = {
 		subTitle: 'Software engineer, .NET & react developer',
 		description:
 			`
-			sdlñfsdñlfjsdlkfjsdlkfjsdlkfjdslkfjdslkf
-			askdjaskldaskshfkjsdhgdkjshgfdsdjfkjshdaskjhdas
-			lcdsalkdjaslkdaskldjaskldas
-			asdasd
+			Software engineer with 10+ years experience,  
 			`
 	}
 }

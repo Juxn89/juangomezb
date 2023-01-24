@@ -36,7 +36,6 @@ export const ExperienceTimeline: FC = () => {
                             { experience.dateStart } - { experience.isCurrentJob ? common.current : experience.dateEnd }
                         </Typography>
                         <Typography>
-                            { `${common.technologies}` }
                             <Stack direction='row' spacing={1}>
                                 { experience.technologies.map(tech => (
                                     <Chip 
@@ -45,6 +44,7 @@ export const ExperienceTimeline: FC = () => {
                                         variant='outlined' 
                                         component='span'
                                         color='info'
+                                        size='small'
                                     />
                                 )) 
                                 }                                

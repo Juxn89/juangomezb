@@ -1,1 +1,1 @@
-export * from '@components/about/AboutConntent'
+export * from '@components/about/AboutContent'

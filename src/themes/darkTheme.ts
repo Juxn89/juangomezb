@@ -22,6 +22,12 @@ export const darkTheme = createTheme({
 			styleOverrides: {
 				root: {
 					color: "white"
+				},
+				h4: {
+					color: "#90caf9"
+				},
+				h6: {
+					color: "#3E8EBD"
 				}
 			}
 		}
