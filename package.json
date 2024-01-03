@@ -1,32 +1,18 @@
 {
-  "name": "juangomezb",
-  "version": "0.1.0",
-  "private": true,
+  "name": "juangomezb",    
   "author": {
     "name": "Juan Gómez",
     "email": "gb.jc@outlook.com",
     "url": "https://juangomezb.com"
   },
+  "license": "MIT",
+  "version": "1.0.0",
+  "description": "Personal portafolio",
+  "keywords": [],
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "firebase:deploy": "next build && next export && firebase deplyoy --only hosting",
-    "lint": "next lint",
-    "next:export": "next export",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "13.1.1",
-    "react-dom": "18.2.0",
-    "react": "18.2.0"
-  },
-  "devDependencies": {
-    "@next/font": "13.1.1",
-    "@types/node": "18.11.18",
-    "@types/react-dom": "18.0.10",
-    "@types/react": "18.0.26",
-    "eslint-config-next": "13.1.1",
-    "eslint": "8.30.0",
-    "typescript": "4.9.4"    
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

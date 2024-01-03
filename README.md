@@ -1,1 +1,0 @@
-# Juan Gómez | [juangomezb.com](https://juangomezb.com)
