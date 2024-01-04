@@ -1,18 +1,37 @@
 {
-  "name": "juangomezb",    
   "author": {
     "name": "Juan Gómez",
     "email": "gb.jc@outlook.com",
     "url": "https://juangomezb.com"
   },
-  "license": "MIT",
+  "name": "juangomezb",
+  "description": "Repository of personal web site",
   "version": "1.0.0",
-  "description": "Personal portafolio",
-  "keywords": [],
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "private": true,
+  "keywords": [
+    "React", "ReactJs", "JavaScript", "TypeScript", "NextJs", "Tailwind"
+  ],
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "18",
+    "react-dom": "18",
+    "next": "14.0.4"
+  },
+  "devDependencies": {
+    "typescript": "5",
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "autoprefixer": "10.0.1",
+    "postcss": "8",
+    "tailwindcss": "3.3.0",
+    "eslint": "8",
+    "eslint-config-next": "14.0.4"
   }
 }
