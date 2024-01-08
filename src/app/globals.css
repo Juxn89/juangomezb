@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 :root {
+	--dark-blue-1: #00132D;
+	--dark-blue-2: #00193B;
+	--dark-blue-3: #001E45;
+	--dark-blue-4: #002657;
+	--dark-blue-5: #002D67;
+	--dark-blue-6: #00377E;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -11,4 +17,6 @@
 }
 
 body {
+	background-image: linear-gradient(90deg, var(--dark-blue-1), var(--dark-blue-3), var(--dark-blue-5) );
+	height: 100vh;
 }
