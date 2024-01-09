@@ -27,6 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+			<head>
+				<link rel='icon' type='image/svg' href='/assets/svg/logos/logo.svg' sizes='114x114'/>
+			</head>
       <body className={inter.className}>{children}</body>
     </html>
   )

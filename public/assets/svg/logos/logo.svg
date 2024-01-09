@@ -1,5 +1,7 @@
-<svg viewBox="0 0 640 400" data-background-color="#ffffff" preserveAspectRatio="xMidYMid meet" height="400" width="640" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <rect width="640" height="400" x="0" y="0" opacity="1" fill="#ffffff" data-fill-palette-color="background" id="background"></rect>
+<svg viewBox="0 0 640 400" data-background-color="#ffffff" preserveAspectRatio="xMidYMid meet" height="400" width="640"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect width="640" height="400" x="0" y="0" opacity="1" fill="none" data-fill-palette-color="background" id="background"></rect>
   <g id="tight-bounds" transform="matrix(1,0,0,1,122.24000000000001,76.4)">
     <svg viewBox="0 0 395.52 247.2" height="247.2" width="395.52">
       <g>
