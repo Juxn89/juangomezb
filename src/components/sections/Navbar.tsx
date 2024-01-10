@@ -1,7 +1,7 @@
 'use client'
 
-import { FC } from "react";
-import { Languages } from "./Languages";
+import { FC } from 'react';
+import { Languages } from '../ui/Languages';
 
 export const Navbar: FC = () => {
 	return(
