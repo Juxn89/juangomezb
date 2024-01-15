@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import Image from 'next/image'
-import { getLabels } from '@/helpers/Labels';
+import { getI18NLabels } from '@/helpers/';
 
 export const Summary: FC = () => {
-	const { Summary } = getLabels('en')
+	const { Summary } = getI18NLabels()
 
 	return(
 		<section className='px-10'>
