@@ -5,14 +5,15 @@ type LanguagesType = {
 }
 
 export const LANGUAGES = {
-	ENGLISH: 'us',
-	SPANISH: 'es'
+	ENGLISH: 'EN',
+	SPANISH: 'ES'
 }
 
 export const getI18N = ({
-  currentLocale = 'es'
+  currentLocale = 'EN'
 }: LanguagesType) => {
   if (currentLocale === LANGUAGES.ENGLISH) return EN
   if (currentLocale === LANGUAGES.SPANISH) return ES
+	
   return EN
 }

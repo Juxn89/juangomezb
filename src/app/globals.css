@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
 	--dark-blue-1: #00132D;
 	--dark-blue-2: #00193B;
@@ -14,7 +10,7 @@
 		https://uicolors.app/create
 		Base Color: #00132D
 	*/
-	--midnight-50:  #e9f9ff;
+	--midnight-050: #e9f9ff;
 	--midnight-100: #cef1ff;
 	--midnight-200: #a7e9ff;
 	--midnight-300: #6be0ff;
@@ -25,17 +21,32 @@
 	--midnight-800: #004fe6;
 	--midnight-900: #0048b3;
 	--midnight-950: #00132d;
+
+	/*
+		https://mycolor.space/?hex=%23171F38&sub=1
+		Base color: #171F38
+	*/
+	
+	--base: #171F38;
+	--baseTextColor: #ffffff;
+	--secundary: #E1786B;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root { }
-}
-
-body {
-	background-image: linear-gradient(130deg, var(--dark-blue-2), var(--dark-blue-4), var(--dark-blue-6) );
+.main-container {
+	/* background-image: linear-gradient(130deg, var(--dark-blue-2), var(--dark-blue-4), var(--dark-blue-6) ); */
+	background-color: var(--base);
+	color: var(--baseTextColor);
 	height: 100vh;
 }
 
-h1 {
-	color: var(--midnight-200);
+@media (prefers-color-scheme: light) {
+	.main-container {		
+	  background-image: linear-gradient(130deg, var(--midnight-050), var(--midnight-100), var(--midnight-200) );
+	}
+}
+
+@media (max-width: 600px){
+	.main-container {
+		padding: 0 15px 0 15px;
+	}
 }

@@ -1,0 +1,11 @@
+nav {
+	height: 45px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	gap: 5px;
+}
+
+.flag {
+	border-radius: 20%;
+}

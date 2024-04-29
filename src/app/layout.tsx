@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const openSans = Open_Sans({ subsets: ['latin'], weight: ['300', '600'] })
 
 export const metadata: Metadata = {
   title: 'Juan Gómez',
@@ -30,7 +30,7 @@ export default function RootLayout({
 			<head>
 				<link rel='icon' type='image/svg' href='/assets/svg/logos/logo.svg' sizes='114x114'/>
 			</head>
-      <body className={inter.className}>{children}</body>
+      <body className={ `${openSans.className} main-container` }>{children}</body>
     </html>
   )
 }
