@@ -2,9 +2,16 @@ import { IconType } from 'react-icons';
 import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon';
 
 export interface Translation {
+	Commons: ICommons
 	Flag: IFlag,
-	Summary: ISummary
-	SocialMedia: ISocialMedia[]
+	Summary: ISummary,
+	SocialMedia: ISocialMedia[],
+	WorkExperience: IWorkExperience[],
+}
+
+interface ICommons {
+	CurrentLabel: string,
+	WorkExperienceSectionLabel: string
 }
 
 interface ISummary {	
@@ -22,4 +29,14 @@ interface ISocialMedia {
 	icon: React.ForwardRefExoticComponent<Omit<AntdIconProps, "ref"> & React.RefAttributes<HTMLSpanElement>>,
 	link: string,
 	title: string,
+}
+
+export interface IWorkExperience {
+	positionName: string,
+	companyName: string,
+	summary: string,
+	startDate: string,
+	endDate?: string,
+	isCurrent: boolean,
+	tags: string[]
 }

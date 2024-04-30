@@ -1,0 +1,42 @@
+.WorkExperienceSection {
+	margin: 0 15%;
+}
+
+.WorkExperienceCard {
+
+}
+
+.postionName {
+	margin: 0;
+	color: var(--midnight-300);
+}
+
+.companyName {
+	margin: 0;
+	color: var(--midnight-100);
+}
+
+.workExperiencePeriod {
+	margin: 0px;
+	font-size: 0.7rem;
+}
+
+.company_summary {
+	margin: 0;
+}
+
+.tags {
+	display: flex;
+	flex-direction: row;
+}
+
+.tag {
+	font-size: 0.7rem;
+	border: 1px solid var(--secundary);
+	background-color: var(--secundary);
+	margin-right: 2px;
+	border-radius: 10px;
+	padding: 3px;
+	min-width: 30px;
+	text-align: center;
+}
