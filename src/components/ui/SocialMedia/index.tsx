@@ -1,9 +1,14 @@
 import Link from 'next/link'
+import { MailOutlined } from '@ant-design/icons'
+import { getI18NLabels, CONST } from "@/helpers"
 import './SocialMedia.css'
-import { getI18NLabels } from "@/helpers"
 
 export const SocialMedia = () => {
 	const { SocialMedia } = getI18NLabels()
+
+	const copyEmailToClipboard = () => {
+		navigator.clipboard.writeText('gb.jc@outlook.com')
+	}
 
 	return (
 		<div className="SocialMediaContainer">
@@ -23,6 +28,12 @@ export const SocialMedia = () => {
 					</Link>
 				))
 			}
+			<MailOutlined 
+				className='SocialMediaIcon'
+				title={ CONST.email }
+				alt={ CONST.email }
+				onClick={ copyEmailToClipboard }
+			/>
 		</div>
 	)
 }

@@ -4,7 +4,7 @@ import './ProfilePicture.css'
 export const ProfilePicture = () => {
 	return (
 		<Image
-			src='/assets/img/profile_cv.png'
+			src='/assets/img/profile_black_white.png'
 			alt='Profile picture'
 			height={200}
 			width={200}

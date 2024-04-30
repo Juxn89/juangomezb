@@ -1,7 +1,7 @@
 .ProfilePicture {
 	background-color: var(--secundary);
-	padding: 5px;
-	border-radius: 20%;
+	padding: 2px;
+	border-radius: 100%;
 }
 
 @media (max-width: 600px) {

@@ -1,6 +1,6 @@
 import { Info } from "@/common";
-import { Translation } from "./Translations.interface";
 import { GithubFilled, LinkedinFilled } from "@ant-design/icons";
+import { Translation } from "./Translations.interface";
 import { CONST } from '@/helpers'
 
 export const EN: Translation = {
