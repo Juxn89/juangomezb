@@ -4,4 +4,9 @@ nav {
 	flex-direction: row;
 	justify-content: end;
 	gap: 5px;
+	margin: 0 10%;
+}
+
+.flag {
+	cursor: pointer;
 }

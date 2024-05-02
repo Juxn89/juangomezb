@@ -6,7 +6,9 @@ import { CONST } from '@/helpers'
 export const EN: Translation = {
 	Commons: {
 		CurrentLabel: 'Current',
-		WorkExperienceSectionLabel: 'Experience'
+		WorkExperienceSectionLabel: 'Experience',
+		ProjectsSectionLabel: 'Projects',
+		SkillsLabel: 'Skills'
 	},
 	Flag: {
 		title: "Cambiar idioma a Español",

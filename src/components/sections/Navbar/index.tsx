@@ -1,22 +1,30 @@
 'use client'
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Flag from 'react-world-flags';
-import Image from 'next/image'
-import { ThemeMode } from '@/components/ui'
 import './Navbar.css'
+import { redirect } from 'next/navigation';
 
 export const Navbar: FC = () => {
+	const [Language, setLanguage] = useState<'es' | 'en' | 'us'>('es')
+
+	const changeLanguage = () => {
+		const newLanguage = Language === 'es' ? 'us' : 'es';
+		setLanguage(newLanguage)
+
+		redirect('/es')
+	}
+
 	return(
 		<nav>
-			<ThemeMode />
 			<Flag 
 				className='flag' 
-				code='ES' 
+				code={ Language } 
 				height={40} 
 				width={40} 
-				alt='flag' 
-				title='flag'
+				alt='language_flag' 
+				title='Spanish Version'
+				onClick={ changeLanguage }
 			/>				
 		</nav>
 	)

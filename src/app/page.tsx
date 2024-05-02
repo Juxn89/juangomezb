@@ -1,5 +1,5 @@
 'use client'
-import { Navbar, Summary, WorkExperience } from '@/components/sections/'
+import { Navbar, Projects, Skills, Summary, WorkExperience } from '@/components/sections/'
 
 export default function Home() {
   return (
@@ -7,6 +7,8 @@ export default function Home() {
 			<Navbar />
 			<Summary />
 			<WorkExperience />
+			<Projects />
+			<Skills />
     </main>
   )
 }

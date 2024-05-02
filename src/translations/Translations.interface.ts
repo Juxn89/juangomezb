@@ -12,6 +12,8 @@ export interface Translation {
 interface ICommons {
 	CurrentLabel: string,
 	WorkExperienceSectionLabel: string
+	ProjectsSectionLabel: string,
+	SkillsLabel: string
 }
 
 interface ISummary {	
