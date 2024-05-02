@@ -1,7 +1,7 @@
 import { FC } from 'react'
+import { getI18NLabels } from '@/helpers'
 import { IWorkExperience } from '@/translations'
 import './WorkExperience.css'
-import { getI18NLabels } from '@/helpers'
 
 type WorkExperienceProps = {
 	WorkExperience: IWorkExperience
@@ -12,7 +12,8 @@ export const WorkExperienceCard: FC<WorkExperienceProps> = ({ WorkExperience }: 
 	const { Commons } = getI18NLabels()
 
 	return (
-		<>
+		<div className='WorkExperienceCard'>
+
 			<h4 className='postionName'>{ positionName }</h4>
 			<h5 className='companyName'>{ companyName }</h5>
 			<p className='workExperiencePeriod'>
@@ -35,6 +36,6 @@ export const WorkExperienceCard: FC<WorkExperienceProps> = ({ WorkExperience }: 
 					))
 				}
 			</p>
-		</>
+		</div>
 	)
 }

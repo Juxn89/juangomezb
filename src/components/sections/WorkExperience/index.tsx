@@ -9,7 +9,9 @@ export const WorkExperience = () => {
 	return (
 		<section className='WorkExperienceSection'>
 			<h2>{ Commons.WorkExperienceSectionLabel }</h2>
-			<WorkExperienceList />
+			<div className='WorkExperienceContainer'>
+				<WorkExperienceList />
+			</div>
 		</section>
 	)
 }

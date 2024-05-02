@@ -1,24 +1,33 @@
 .WorkExperienceSection {
-	margin: 0 15%;
+	margin: 0 10%;
+}
+
+.WorkExperienceContainer {
+	display: flex;
+	flex-direction: row;
 }
 
 .WorkExperienceCard {
-
+	border-radius: 20px;
+	border: 1px solid var(--secundary);
+	margin-right: 15px;
+	min-width: 380px;
+	padding: 7px;
 }
 
 .postionName {
-	margin: 0;
 	color: var(--midnight-300);
+	margin: 0;
 }
 
 .companyName {
-	margin: 0;
 	color: var(--midnight-100);
+	margin: 0;
 }
 
 .workExperiencePeriod {
-	margin: 0px;
 	font-size: 0.7rem;
+	margin: 0px;
 }
 
 .company_summary {
@@ -28,15 +37,38 @@
 .tags {
 	display: flex;
 	flex-direction: row;
+	margin: 10px 0px 0px 0px;
 }
 
 .tag {
-	font-size: 0.7rem;
-	border: 1px solid var(--secundary);
 	background-color: var(--secundary);
-	margin-right: 2px;
-	border-radius: 10px;
-	padding: 3px;
+	border-radius: 16px;
+	border: 1px solid var(--secundary);
+	font-size: 0.7rem;
+	margin-right: 4px;
 	min-width: 30px;
+	padding: 3px;
 	text-align: center;
+}
+
+@media (max-width: 600px) {
+	.WorkExperienceSection {
+		flex-direction: column;
+		align-items: center;
+		margin: 0 0;
+	}
+
+	.WorkExperienceContainer {
+		flex-direction: column;
+	}
+
+	.WorkExperienceCard {
+		min-width: 350px;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+
+	.tag {
+		margin-right: 3px;
+	}
 }
