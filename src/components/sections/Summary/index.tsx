@@ -4,8 +4,14 @@ import { getI18NLabels } from '@/helpers';
 import { AiOutlineEnvironment } from 'react-icons/ai'
 import './Summary.css'
 
-export const Summary: FC = () => {
+type SummaryProps = {
+	params: {
+		lang: string
+	}
+}
 
+export const Summary: FC = () => {
+	
 	const { Summary } = getI18NLabels()
 
 	return(
@@ -16,10 +22,10 @@ export const Summary: FC = () => {
 				<p className='Description'>
 					{ Summary.description }					
 				</p>
-				<span>
+				<SocialMedia />				
+				<span className='Location'>
 					<AiOutlineEnvironment /> { `Managua, Nicaragua` }
 				</span>
-				<SocialMedia />				
 			</div>
 			<ProfilePicture />
 		</section>

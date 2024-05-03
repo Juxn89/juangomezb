@@ -18,6 +18,11 @@ h2.Title {
 p.Description {
 	font-size: 1rem;
 	margin: 0;
+	padding-right: 50px;
+}
+
+.Location {
+	margin-top: 10px;
 }
 
 .summary-container h1.Name > span {
