@@ -13,11 +13,12 @@ export const Skills = () => {
 				{
 					CONST.skills.map(skill => (
 						<Image
-							key={ skill }
-							src={ `${CONST.baseURL_skills}${skill}.svg` }
-							alt={ skill }
-							width={ 80}
-							height={ 80 }
+							key={ skill.name }
+							src={ `${CONST.baseURL_skills}${skill.name}.svg` }
+							alt={ skill.name }
+							title={ skill.title }
+							width={ 38 }
+							height={ 38 }
 						/>
 					))
 				}
