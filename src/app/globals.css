@@ -36,7 +36,12 @@
 	/* background-image: linear-gradient(130deg, var(--dark-blue-2), var(--dark-blue-4), var(--dark-blue-6) ); */
 	background-color: var(--base);
 	color: var(--baseTextColor);
-	height: 100vh;
+	/* height: 100vh; */
+}
+
+main {
+	display: flex;
+	flex-direction: column;
 }
 
 @media (prefers-color-scheme: light) {

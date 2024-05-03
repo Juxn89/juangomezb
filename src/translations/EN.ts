@@ -18,7 +18,7 @@ export const EN: Translation = {
 	Summary: {
 		greeting: `Hi!, I'm Juan`,
 		description:
-			`Full Stack developer with ${ Info.yearsOfExperience }+ years of developing and implementing web applications using .NET technologies`
+			`Full Stack developer with ${ Info.yearsOfExperience }+ years of developing and implementing web applications using .NET and JavaScript technologies`
 	},
 	SocialMedia: [
 		{ title: 'LinkedIn profile', icon: LinkedinFilled, link: `${CONST.linkedin}?locale=en_US` },
