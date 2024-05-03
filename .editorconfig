@@ -1,7 +1,17 @@
 root = true
 
-[*.{ts, tsx}]
+[*]
 charset = utf-8
+indent_size = 2
+indent_style = tab
+tab_width = 2
+
+[*.xml]
+indent_size = 2
+indent_style = tab
+tab_width = 2
+
+[src/**.{css,js,ts,tsx}]
 indent_size = 2
 indent_style = tab
 tab_width = 2

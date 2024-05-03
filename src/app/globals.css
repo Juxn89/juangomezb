@@ -1,0 +1,57 @@
+:root {
+	--dark-blue-1: #00132D;
+	--dark-blue-2: #00193B;
+	--dark-blue-3: #001E45;
+	--dark-blue-4: #002657;
+	--dark-blue-5: #002D67;
+	--dark-blue-6: #00377E;
+
+	/* 
+		https://uicolors.app/create
+		Base Color: #00132D
+	*/
+	--midnight-050: #e9f9ff;
+	--midnight-100: #cef1ff;
+	--midnight-200: #a7e9ff;
+	--midnight-300: #6be0ff;
+	--midnight-400: #26c9ff;
+	--midnight-500: #00a2ff;
+	--midnight-600: #0078ff;
+	--midnight-700: #005dff;
+	--midnight-800: #004fe6;
+	--midnight-900: #0048b3;
+	--midnight-950: #00132d;
+
+	/*
+		https://mycolor.space/?hex=%23171F38&sub=1
+		Base color: #171F38
+	*/
+	
+	--base: #171F38;
+	--baseTextColor: #ffffff;
+	--secundary: #E1786B;
+}
+
+.main-container {
+	/* background-image: linear-gradient(130deg, var(--dark-blue-2), var(--dark-blue-4), var(--dark-blue-6) ); */
+	background-color: var(--base);
+	color: var(--baseTextColor);
+	/* height: 100vh; */
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (prefers-color-scheme: light) {
+	.main-container {		
+	  background-image: linear-gradient(130deg, var(--midnight-050), var(--midnight-100), var(--midnight-200) );
+	}
+}
+
+@media (max-width: 600px){
+	.main-container {
+		padding: 0 15px 0 15px;
+	}
+}
