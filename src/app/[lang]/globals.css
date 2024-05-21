@@ -1,0 +1,43 @@
+html {
+	font-size: 62.5%;
+}
+
+:root {
+	/* 
+		https://uicolors.app/create
+		Base Color: #00132D
+
+		https://mycolor.space/?hex=%23171F38&sub=1
+		Base color: #171F38
+	*/
+	
+	--primary: #171F38;
+	--base-50: #f1f6fd;
+	--base-100: #e0ebf9;
+	--base-200: #c7ddf6;
+	--base-300: #a1c7ef;
+	--secundary: #75a8e5;
+	--base-500: #548add;
+	--base-600: #3f6fd1;
+	--base-700: #365cbf;
+	--base-800: #314b9c;
+	--base-900: #2c427c;
+
+	--baseTextColor: #ffffff;
+}
+
+.main-container {
+	background-color: var(--primary);
+	color: var(--baseTextColor);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (max-width: 320px){
+	.main-container {
+		padding: 0 5px 0 5px;
+	}
+}

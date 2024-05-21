@@ -1,12 +1,12 @@
 import { Info } from "@/common";
-import { GithubFilled, LinkedinFilled } from "@ant-design/icons";
+import { GithubFilled, LinkedinFilled, MailOutlined } from "@ant-design/icons";
 import { Translation } from "./Translations.interface";
 import { CONST } from '@/helpers'
 
 export const EN: Translation = {
 	Commons: {
 		CurrentLabel: 'Current',
-		WorkExperienceSectionLabel: 'Experience',
+		WorkExperienceSectionLabel: 'Recent Work Experience',
 		ProjectsSectionLabel: 'Projects',
 		SkillsLabel: 'Skills'
 	},
@@ -23,6 +23,7 @@ export const EN: Translation = {
 	SocialMedia: [
 		{ title: 'LinkedIn profile', icon: LinkedinFilled, link: `${CONST.linkedin}?locale=en_US` },
 		{ title: 'GitHub repository', icon: GithubFilled, link: CONST.github },
+		{ title: 'Mail', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
 	],
 	WorkExperience: [
 		{
@@ -62,7 +63,7 @@ export const EN: Translation = {
 				control system for all applications and also my responsability were the maintenance of server such like: IIS, database and reporting
 				services. I migrated the application from .NET Framework to .NET Core and use Angular.js.
 			`,
-			tags: [ 'VB.NET', 'C#', 'ASP.NET', '.NET Core', 'SQL', 'IIS', 'Angular.js' ]
+			tags: [ 'VB.NET', 'C#', 'ASP.NET', '.NET Core', 'SQL', 'IIS' ]
 		},
 		{
 			positionName: 'Software Developer',

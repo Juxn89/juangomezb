@@ -1,9 +1,9 @@
 'use client'
 
 import { FC, useState } from 'react';
+import { redirect } from 'next/navigation';
 import Flag from 'react-world-flags';
 import './Navbar.css'
-import { redirect } from 'next/navigation';
 
 export const Navbar: FC = () => {
 	const [Language, setLanguage] = useState<'es' | 'en' | 'us'>('es')

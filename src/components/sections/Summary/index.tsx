@@ -1,18 +1,17 @@
+'use client'
+
 import { FC } from 'react';
-import { ProfilePicture, SocialMedia } from '@/components/ui';
-import { getI18NLabels } from '@/helpers';
 import { AiOutlineEnvironment } from 'react-icons/ai'
+import { ProfilePicture, SocialMedia } from '@/components/ui';
+import { ISummary, ISocialMedia } from '@/translations';
 import './Summary.css'
 
-type SummaryProps = {
-	params: {
-		lang: string
-	}
+type props = {
+	SummaryLabels: ISummary,
+	SocialMediaLabels: ISocialMedia[]
 }
 
-export const Summary: FC = () => {
-	
-	const { Summary } = getI18NLabels()
+export const Summary: FC<props> = ({ SummaryLabels, SocialMediaLabels }) => {
 
 	return(
 		<section className='summary-container'>
@@ -20,12 +19,12 @@ export const Summary: FC = () => {
 				<h1 className='Name'>Hi, I&apos;m <span>Juan G&oacute;mez</span>!</h1>
 				<h2 className='Title'>Full Stack Developer</h2>
 				<p className='Description'>
-					{ Summary.description }					
+					{ SummaryLabels.description }					
 				</p>
-				<SocialMedia />				
 				<span className='Location'>
 					<AiOutlineEnvironment /> { `Managua, Nicaragua` }
 				</span>
+				<SocialMedia SocialMedialLabels={ SocialMediaLabels }/>
 			</div>
 			<ProfilePicture />
 		</section>

@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import './ProfilePicture.css'
 
@@ -9,6 +11,7 @@ export const ProfilePicture = () => {
 			height={200}
 			width={200}
 			className='ProfilePicture'
+			priority
 		/>
 	)
 }

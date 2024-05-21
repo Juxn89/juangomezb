@@ -1,19 +1,19 @@
+'use client'
+
+import { FC } from 'react'
 import Link from 'next/link'
-import { MailOutlined } from '@ant-design/icons'
-import { getI18NLabels, CONST } from "@/helpers"
 import './SocialMedia.css'
+import { ISocialMedia } from '@/translations'
 
-export const SocialMedia = () => {
-	const { SocialMedia } = getI18NLabels()
+type props = {
+	SocialMedialLabels: ISocialMedia[]
+}
 
-	const copyEmailToClipboard = () => {
-		navigator.clipboard.writeText('gb.jc@outlook.com')
-	}
-
+export const SocialMedia: FC<props> = ({ SocialMedialLabels }) => {
 	return (
 		<div className="SocialMediaContainer">
 			{
-				SocialMedia.map( socialMedia => (
+				SocialMedialLabels.map( socialMedia => (
 					<Link 
 						key={socialMedia.title} 
 						href={ socialMedia.link } 
@@ -28,12 +28,6 @@ export const SocialMedia = () => {
 					</Link>
 				))
 			}
-			<MailOutlined 
-				className='SocialMediaIcon'
-				title={ CONST.email }
-				alt={ CONST.email }
-				onClick={ copyEmailToClipboard }
-			/>
 		</div>
 	)
 }

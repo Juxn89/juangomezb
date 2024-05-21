@@ -2,6 +2,10 @@
 	margin: 0 10%;
 }
 
+.SkillsSection h2 {
+	font-size: 2.3rem;
+}
+
 .SkillContainer {
 	display: flex;
 	flex-direction: row;

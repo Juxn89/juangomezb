@@ -1,7 +1,10 @@
 .SocialMediaContainer {
-	display: flex;
 	flex-direction: row;
 	margin-top: 10px;
+}
+
+.SocialMediaLink {
+	display: inline-block;
 }
 
 .SocialMediaLink, 
@@ -10,11 +13,30 @@
 }
 
 .SocialMediaIcon {
-	margin-right: 5px;
-	font-size: 1.5rem;
+	margin-right: 3px;
+	font-size: 3.2rem;
+	max-width: 48px;
+	max-height: 48px;
+	min-width: 48px;
+	min-height: 48px;
 }
 
 .SocialMediaIcon:hover {
 	cursor: pointer;
 	color: var(--secundary);
+}
+
+@media (max-width: 320px) {
+	.SocialMediaLink {
+		height: 48px;
+		width: 48px;
+	}
+
+	.SocialMediaIcon {
+		font-size: 2.5rem;
+	}
+
+	.SocialMediaIcon span {
+		margin: auto;
+	}
 }

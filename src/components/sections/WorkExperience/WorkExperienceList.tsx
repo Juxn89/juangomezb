@@ -1,15 +1,20 @@
+'use client'
+
 import { FC } from 'react'
 import { WorkExperienceCard } from './WorkExperienceCard'
-import { getI18NLabels } from '@/helpers'
 import './WorkExperience.css'
+import { IWorkExperience } from '@/translations';
 
-export const WorkExperienceList: FC = () => {
-	const { WorkExperience } = getI18NLabels()
+type props = {
+	WorkExperiencesLabels: IWorkExperience[]
+}
+
+export const WorkExperienceList: FC<props> = ({ WorkExperiencesLabels }) => {
 
 	return (
 		<>
 			{
-				WorkExperience.map(workExperience => (
+				WorkExperiencesLabels.slice(0,3).map(workExperience => (
 					<WorkExperienceCard 
 						key={workExperience.companyName}
 						WorkExperience={ workExperience }

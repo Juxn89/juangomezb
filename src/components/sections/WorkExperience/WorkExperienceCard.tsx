@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react'
 import { getI18NLabels } from '@/helpers'
 import { IWorkExperience } from '@/translations'
@@ -14,8 +16,8 @@ export const WorkExperienceCard: FC<WorkExperienceProps> = ({ WorkExperience }: 
 	return (
 		<div className='WorkExperienceCard'>
 
-			<h4 className='postionName'>{ positionName }</h4>
-			<h5 className='companyName'>{ companyName }</h5>
+			<h3 className='postionName'>{ positionName }</h3>
+			<h4 className='companyName'>{ companyName }</h4>
 			<p className='workExperiencePeriod'>
 				{  
 					isCurrent 
@@ -24,7 +26,7 @@ export const WorkExperienceCard: FC<WorkExperienceProps> = ({ WorkExperience }: 
 				}
 			</p>
 			<p className='company_summary'>{ summary }</p>
-			<p className='tags'>
+			<div className='tags'>
 				{
 					tags.map(tag => (
 						<span 
@@ -35,7 +37,7 @@ export const WorkExperienceCard: FC<WorkExperienceProps> = ({ WorkExperience }: 
 						</span>
 					))
 				}
-			</p>
+			</div>
 		</div>
 	)
 }
