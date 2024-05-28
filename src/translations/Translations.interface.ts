@@ -1,9 +1,7 @@
-import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon';
-
 export interface Translation {
 	Commons: ICommons
 	Flag: IFlag,
-	Summary: ISummary,
+	About: IAbout,
 	SocialMedia: ISocialMedia[],
 	WorkExperience: IWorkExperience[],
 }
@@ -15,7 +13,7 @@ export interface ICommons {
 	SkillsLabel: string
 }
 
-export interface ISummary {	
+export interface IAbout {	
 	greeting: string,
 	description: string
 }
@@ -27,7 +25,7 @@ export interface IFlag {
 }
 
 export interface ISocialMedia {
-	icon: React.ForwardRefExoticComponent<Omit<AntdIconProps, "ref"> & React.RefAttributes<HTMLSpanElement>>,
+	icon?: any,
 	link: string,
 	title: string,
 }

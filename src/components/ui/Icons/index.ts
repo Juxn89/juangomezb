@@ -1,0 +1,6 @@
+export { GitHubIcon } from './GitHubIcon'
+export { LinkedInIcon } from './LinkedInIcon'
+export { MailIcon } from './MailIcon'
+export { MenuIcon } from './MenuIcon'
+export { SpainFlagIcon } from './SpainFlagIcon'
+export { UnitedStateFlagIcon } from './UnitedStateFlagIcon'

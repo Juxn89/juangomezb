@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
+import { Lato } from 'next/font/google'
 import './globals.css'
 
-const openSans = Open_Sans({ subsets: ['latin'], weight: ['300', '600'] })
+const font = Lato({ 
+	subsets: ['latin'], 
+	weight: ['100', '300', '700', '900'], 
+	style: ['normal'], 
+	display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: 'Juan Gómez',
@@ -44,7 +49,7 @@ export default function RootLayout({
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="canonical" href="https://juangomezb.com" />
 			</head>
-      <body className={ `${openSans.className} main-container` }>
+      <body className={ `${font.className} bg-blue-950 relative` }>
 				{children}
 			</body>
     </html>

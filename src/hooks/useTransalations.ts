@@ -1,9 +1,9 @@
-import { getI18N } from "@/lang"
-import { Translation } from "@/translations/Translations.interface"
-import { useParams } from "next/navigation"
+import { LanguagesType } from "@/common";
+import { EN, ES, Translation } from "@/translations";
 
-export const useTranslations = (): Translation => {
-	const { lang } = useParams()
+export const useTranslations = (lang: LanguagesType = 'en'): Translation => {
+	if(lang === 'en') return EN;
+	if(lang === 'es') return ES;
 
-	return getI18N({ currentLocale: lang as string})
+	return EN;
 }

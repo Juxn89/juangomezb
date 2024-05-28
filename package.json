@@ -24,21 +24,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/icons": "5.3.6",
-    "country-flag-icons": "1.5.9",
-    "next": "^14.2.3",
+    "next": "14.2.3",
     "react": "18",
-    "react-dom": "18",
-    "react-icons": "5.0.1",
-    "react-world-flags": "1.6.0"
+    "react-dom": "18"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "14.2.3",
-    "@types/country-flag-icons": "1.2.2",
     "@types/node": "20",
     "@types/react": "18",
     "@types/react-dom": "18",
-    "@types/react-world-flags": "1.4.5",
     "autoprefixer": "10.0.1",
     "eslint": "8",
     "eslint-config-next": "14.0.4",

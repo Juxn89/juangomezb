@@ -1,20 +1,25 @@
 'use client'
-import { Summary, WorkExperience, Skills } from '@/components/sections'
-import { useTranslations } from '@/hooks/'
+
+import { LanguagesType } from "@/common"
+import { Header, About } from "@/components/sections"
+import { SideNav } from "@/components/ui"
+import { PortfolioProvider } from "@/context"
+import { useTranslations } from "@/hooks"
+import { useParams } from "next/navigation"
 
 export default function Home() {
-	const { 
-		Summary: SummaryLabels, 
-		SocialMedia: SocialMediaLabels, 
-		WorkExperience: WorkExperienceLabels,
-		Commons: CommonsLabels
-	} = useTranslations()
-	
+	const { lang }= useParams()
+	const { Commons, About: AboutLabels } = useTranslations(lang as LanguagesType )
+
   return (
-    <main className="center text-white">
-			<Summary SummaryLabels={ SummaryLabels } SocialMediaLabels={ SocialMediaLabels }/>
-			<WorkExperience WorkExperienceLabels={ WorkExperienceLabels } CommonsLabels={ CommonsLabels }/>
-			<Skills CommonsLabels={ CommonsLabels }/>
-    </main>
+		<PortfolioProvider>
+			<div className="w-full h-full">
+				<Header />
+				<SideNav />
+				<main>
+					<About />
+				</main>
+			</div>			
+		</PortfolioProvider>
   )
 }

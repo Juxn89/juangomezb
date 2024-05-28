@@ -1,4 +1,3 @@
-import { GithubFilled, LinkedinFilled, MailOutlined } from '@ant-design/icons';
 import { CONST } from '@/helpers';
 import { Translation } from '@/translations';
 import { Info } from '@/common';
@@ -15,14 +14,14 @@ export const ES: Translation = {
 		code: 'US',
 		alt: 'English version'
 	},
-	Summary: {
+	About: {
 		greeting: 'Hola!, Soy Juan',
 		description: `+${Info.yearsOfExperience} años de experiencia cómo desarrollador Full Stack. Enfocado en `
 	},
 	SocialMedia: [
-		{ title: 'Perfil de LinkedIn', icon: LinkedinFilled, link: `${CONST.linkedin}?locale=en_US` },
-		{ title: 'Repositorio en GitHub', icon: GithubFilled, link: CONST.github },
-		{ title: 'Correo personal', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
+		{ title: 'Perfil de LinkedIn', icon: null, link: `${CONST.linkedin}?locale=en_US` },
+		{ title: 'Repositorio en GitHub', icon: null, link: CONST.github },
+		{ title: 'Correo personal', icon: null, link: `mailto:gb.jc@outlook.com` },
 	],
 	WorkExperience: [
 		{

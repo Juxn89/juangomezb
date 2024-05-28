@@ -1,5 +1,4 @@
 import { Info } from "@/common";
-import { GithubFilled, LinkedinFilled, MailOutlined } from "@ant-design/icons";
 import { Translation } from "./Translations.interface";
 import { CONST } from '@/helpers'
 
@@ -15,15 +14,15 @@ export const EN: Translation = {
 		code: 'ES',
 		alt: "Cambiar idioma a Español"
 	},
-	Summary: {
+	About: {
 		greeting: `Hi!, I'm Juan`,
 		description:
 			`Full Stack developer with ${ Info.yearsOfExperience }+ years of developing and implementing web applications using .NET and JavaScript technologies`
 	},
 	SocialMedia: [
-		{ title: 'LinkedIn profile', icon: LinkedinFilled, link: `${CONST.linkedin}?locale=en_US` },
-		{ title: 'GitHub repository', icon: GithubFilled, link: CONST.github },
-		{ title: 'Mail', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
+		{ title: 'LinkedIn profile', icon:null, link: `${CONST.linkedin}?locale=en_US` },
+		{ title: 'GitHub repository', icon: null, link: CONST.github },
+		{ title: 'Mail', icon: null, link: `mailto:gb.jc@outlook.com` },
 	],
 	WorkExperience: [
 		{
