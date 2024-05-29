@@ -1,7 +1,7 @@
 export interface Translation {
 	Commons: ICommons
 	Flag: IFlag,
-	About: IAbout,
+	Summary: ISummary,
 	SocialMedia: ISocialMedia[],
 	WorkExperience: IWorkExperience[],
 }
@@ -13,8 +13,11 @@ export interface ICommons {
 	SkillsLabel: string
 }
 
-export interface IAbout {	
+export interface ISummary {	
 	greeting: string,
+	yearsOfExperience: string,
+	grade: string,
+	location: string,
 	description: string
 }
 

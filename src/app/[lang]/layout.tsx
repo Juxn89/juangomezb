@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Lato } from 'next/font/google'
+import { Onest } from 'next/font/google'
 import './globals.css'
 
-const font = Lato({ 
+const font = Onest({ 
 	subsets: ['latin'], 
 	weight: ['100', '300', '700', '900'], 
 	style: ['normal'], 
@@ -10,7 +10,7 @@ const font = Lato({
 })
 
 export const metadata: Metadata = {
-  title: 'Juan Gómez',
+  title: `Juan Gómez's portfolioc - Full Stack Web Developer and programmer with +9 years of experience`,
   description: `Juan Gómez's Personal portfolio`,
 	authors: {
 		name: 'Juan Gómez',

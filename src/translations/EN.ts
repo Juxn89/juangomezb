@@ -5,24 +5,26 @@ import { CONST } from '@/helpers'
 export const EN: Translation = {
 	Commons: {
 		CurrentLabel: 'Current',
-		WorkExperienceSectionLabel: 'Recent Work Experience',
 		ProjectsSectionLabel: 'Projects',
-		SkillsLabel: 'Skills'
+		SkillsLabel: 'Skills',
+		WorkExperienceSectionLabel: 'Recent work experience',
 	},
 	Flag: {
-		title: "Cambiar idioma a Español",
+		alt: "Cambiar idioma a Español",
 		code: 'ES',
-		alt: "Cambiar idioma a Español"
+		title: "Cambiar idioma a Español",
 	},
-	About: {
+	Summary: {
+		description: 'Specialized in web development with .NET and JavaScript.',
+		grade: 'Software engineer and Full Stack developer ',
 		greeting: `Hi!, I'm Juan`,
-		description:
-			`Full Stack developer with ${ Info.yearsOfExperience }+ years of developing and implementing web applications using .NET and JavaScript technologies`
+		location: 'from Nicaragua 🇳🇮. ',
+		yearsOfExperience: `+${Info.yearsOfExperience} years of experience. `,
 	},
 	SocialMedia: [
 		{ title: 'LinkedIn profile', icon:null, link: `${CONST.linkedin}?locale=en_US` },
 		{ title: 'GitHub repository', icon: null, link: CONST.github },
-		{ title: 'Mail', icon: null, link: `mailto:gb.jc@outlook.com` },
+		{ title: 'Get in touch!', icon: null, link: `mailto:gb.jc@outlook.com` },
 	],
 	WorkExperience: [
 		{

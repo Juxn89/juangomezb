@@ -5,18 +5,21 @@ import { Info } from '@/common';
 export const ES: Translation = {
 	Commons: {
 		CurrentLabel: 'Actualmente',
-		WorkExperienceSectionLabel: 'Experiencia más reciente',
 		ProjectsSectionLabel: 'Proyectos',
-		SkillsLabel: 'Habilidadtes'
+		SkillsLabel: 'Habilidadtes',
+		WorkExperienceSectionLabel: 'Experiencia más reciente',
 	},
 	Flag: {
-		title: 'English version',
+		alt: 'English version',
 		code: 'US',
-		alt: 'English version'
+		title: 'English version',
 	},
-	About: {
+	Summary: {
+		description: `Especializado en desarrollo web con .NET y JavaScript`,
+		grade: 'Ingenieron de software y desarrollador Full Stack. ',
 		greeting: 'Hola!, Soy Juan',
-		description: `+${Info.yearsOfExperience} años de experiencia cómo desarrollador Full Stack. Enfocado en `
+		location: 'de Nicaragua 🇳🇮',
+		yearsOfExperience: `+${Info.yearsOfExperience} años de experiencia. `,
 	},
 	SocialMedia: [
 		{ title: 'Perfil de LinkedIn', icon: null, link: `${CONST.linkedin}?locale=en_US` },
