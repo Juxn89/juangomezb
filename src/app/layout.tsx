@@ -49,7 +49,7 @@ export default function RootLayout({
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="canonical" href="https://juangomezb.com" />
 			</head>
-      <body className={ `${font.className} bg-blue-950 relative` }>
+      <body className={ `${font.className} bg-slate-900 relative` }>
 				{children}
 			</body>
     </html>

@@ -4,6 +4,7 @@ export interface Translation {
 	Summary: ISummary,
 	SocialMedia: ISocialMedia[],
 	WorkExperience: IWorkExperience[],
+	Projects: IProject[]
 }
 
 export interface ICommons {
@@ -41,4 +42,11 @@ export interface IWorkExperience {
 	endDate?: string,
 	isCurrent: boolean,
 	tags: string[]
+}
+
+export interface IProject {
+	image: string,
+	description: string,
+	respository: string,
+	demo: string
 }

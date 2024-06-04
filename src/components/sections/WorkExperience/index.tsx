@@ -10,12 +10,11 @@ type WorkExperienceProps = {
 }
 
 export const WorkExperience: FC<WorkExperienceProps> = (props) => {
-	const { common, labels } = props.labels
-	const workExperiences = labels.splice(0, 3)
+	const { common, labels: workExperiences } = props.labels
 
 	return (
 		<section id="WorkExperience" className='flex flex-col mt-2 text-white text-xl'>
-			<h2 className='text-xl font-semibold' suppressHydrationWarning>
+			<h2 className='text-xl font-semibold text-orange-300'>
 				<LaptopOutlined className='mr-2'/>
 				{ common.WorkExperienceSectionLabel }
 			</h2>
@@ -25,13 +24,13 @@ export const WorkExperience: FC<WorkExperienceProps> = (props) => {
 					workExperiences.map(workExperience => (
 						<li className="ms-4" key={ workExperience.companyName }>
 							<div className="absolute w-3 h-3 bg-yellow-300 rounded-full mt-1.5 -start-1.5 border border-yellow-300"></div>
-							<time className="mb-1 text-sm font-normal leading-none text-yellow-300" suppressHydrationWarning>
+							<time className="mb-1 text-sm font-normal leading-none text-yellow-300" >
 								{ workExperience.isCurrent ? common.CurrentLabel : workExperience.endDate }
 							</time>
-							<h3 className="text-lg font-semibold text-blue-300" suppressHydrationWarning>
+							<h3 className="text-lg font-semibold text-blue-300" >
 								{ workExperience.positionName }
 							</h3>
-							<p className="text-base font-normal text-white" suppressHydrationWarning>
+							<p className="text-base font-normal text-white" >
 								{ workExperience.summary }
 							</p>
 						</li>						

@@ -66,51 +66,60 @@ export const EN: Translation = {
 			`,
 			tags: [ 'VB.NET', 'C#', 'ASP.NET', '.NET Core', 'SQL', 'IIS' ]
 		},
+
+		// {
+		// 	positionName: 'Software Developer',
+		// 	companyName: 'Office of Attorney General',
+		// 	startDate: 'Mar 2014',
+		// 	endDate: 'Apr 2017',
+		// 	isCurrent: false,
+		// 	summary: `
+		// 	Development of the cadastral system for all hall towns (153) of the country. I was the responsable of migration of taxpayers 
+		// 	from cadastre system (SISCAT) to financial system (SIAFI) in all hall towns of the country. Created link up between 
+		// 	cadastral system (SISCAT/INIFOM) and physical cadastre system (SISCAF/INETER).
+		// 	`,
+		// 	tags: [ 'VB.NET', 'WinForm', 'C#', 'SQL' ]
+		// },
+		// {
+		// 	positionName: 'Software Developer',
+		// 	companyName: 'Town Hall',
+		// 	startDate: 'Jan 2013',
+		// 	endDate: 'Mar 2014',
+		// 	isCurrent: false,
+		// 	summary: `
+		// 	I built and implement the Plannification Software and Project Management Software for the Town Hall with ASP MVC and Oracle as database manager`,
+		// 	tags: [ 'ASP MVC', 'C#', 'Oracle', 'Knockout.js', 'IIS', 'JS' ]
+		// },
+		// {
+		// 	positionName: 'Software Analyst and Developer',
+		// 	companyName: 'FIX',
+		// 	startDate: 'Aug 2012',
+		// 	endDate: 'Jan 2013',
+		// 	isCurrent: false,
+		// 	summary: `
+		// 	Support and fix bugs to Sales Software of the company and I collaborated in the develop of ADAPTA system.
+		// 	`,
+		// 	tags: [ 'ASP.NET', 'ASP MVC', 'C#', 'Oracle', 'Knockout.js', 'IIS', 'JS' ]
+		// },
+		// {
+		// 	positionName: 'Inter developer',
+		// 	companyName: 'ES Consultores',
+		// 	startDate: 'Jan 2010',
+		// 	endDate: 'Aug 2010',
+		// 	isCurrent: false,
+		// 	summary: `
+		// 	As inter, my responsabilites were give support and add small feactures for the all systems buit with Oracle Forms and a Oracle Reports,
+		// 	both in the 6i version.
+		// 	`,
+		// 	tags: [ 'Oracle Forms', 'Oracle Reports', 'Oracle DB' ]
+		// },
+	],
+	Projects: [
 		{
-			positionName: 'Software Developer',
-			companyName: 'Office of Attorney General',
-			startDate: 'Mar 2014',
-			endDate: 'Apr 2017',
-			isCurrent: false,
-			summary: `
-			Development of the cadastral system for all hall towns (153) of the country. I was the responsable of migration of taxpayers 
-			from cadastre system (SISCAT) to financial system (SIAFI) in all hall towns of the country. Created link up between 
-			cadastral system (SISCAT/INIFOM) and physical cadastre system (SISCAF/INETER).
-			`,
-			tags: [ 'VB.NET', 'WinForm', 'C#', 'SQL' ]
-		},
-		{
-			positionName: 'Software Developer',
-			companyName: 'Town Hall',
-			startDate: 'Jan 2013',
-			endDate: 'Mar 2014',
-			isCurrent: false,
-			summary: `
-			I built and implement the Plannification Software and Project Management Software for the Town Hall with ASP MVC and Oracle as database manager`,
-			tags: [ 'ASP MVC', 'C#', 'Oracle', 'Knockout.js', 'IIS', 'JS' ]
-		},
-		{
-			positionName: 'Software Analyst and Developer',
-			companyName: 'FIX',
-			startDate: 'Aug 2012',
-			endDate: 'Jan 2013',
-			isCurrent: false,
-			summary: `
-			Support and fix bugs to Sales Software of the company and I collaborated in the develop of ADAPTA system.
-			`,
-			tags: [ 'ASP.NET', 'ASP MVC', 'C#', 'Oracle', 'Knockout.js', 'IIS', 'JS' ]
-		},
-		{
-			positionName: 'Inter developer',
-			companyName: 'ES Consultores',
-			startDate: 'Jan 2010',
-			endDate: 'Aug 2010',
-			isCurrent: false,
-			summary: `
-			As inter, my responsabilites were give support and add small feactures for the all systems buit with Oracle Forms and a Oracle Reports,
-			both in the 6i version.
-			`,
-			tags: [ 'Oracle Forms', 'Oracle Reports', 'Oracle DB' ]
-		},
+			image: "",
+			description: "",
+			respository: "",
+			demo: ""
+		}
 	]
 }

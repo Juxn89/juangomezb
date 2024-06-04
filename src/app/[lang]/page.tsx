@@ -1,5 +1,5 @@
 import { LanguagesType } from "@/common"
-import { Header, Summary, WorkExperience } from "@/components/sections"
+import { Header, Projects, Summary, WorkExperience } from "@/components/sections"
 import { SideNav } from "@/components/ui"
 import { PortfolioProvider } from "@/context"
 import { useTranslations } from "@/hooks"
@@ -23,7 +23,8 @@ export default function Home(props: HomeProps) {
 		Commons, 
 		SocialMedia, 
 		Summary: SummaryLabels, 
-		WorkExperience: Experiences 
+		WorkExperience: Experiences,
+		Projects: ProjectsLabel
 	} = useTranslations(lang as LanguagesType )
 
   return (
@@ -34,6 +35,7 @@ export default function Home(props: HomeProps) {
 				<main className="p-2">
 					<Summary labels={ SummaryLabels } socialLabels={ SocialMedia } />
 					<WorkExperience labels={ { common: Commons, labels: Experiences } } />
+					<Projects labels={ { common: Commons, projects: ProjectsLabel } }/>
 				</main>
 			</div>			
 		</PortfolioProvider>

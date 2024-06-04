@@ -19,10 +19,18 @@ export const SideNav = () => {
 					<li 
 						className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'
 					>
-						<a href='#home'>Home</a>
+						<a href='#home' onClick={ () => closeSideNav() }>Home</a>
 					</li>
-					<li className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'>Experience</li>
-					<li className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'>Projects</li>
+					<li 
+						className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'
+					>
+						<a href='#WorkExperience onClick={ () => closeSideNav() }'>Experience</a>						
+					</li>
+					<li 
+						className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'
+					>
+						<a href='#Projects' onClick={ () => closeSideNav() }>Projects</a>						
+					</li>
 					<li className='text-2xl hover:bg-blue-300 hover:text-blue-950 cursor-pointer m-0 p-2 font-medium'>Skill</li>
 				</ul>
 			</div>

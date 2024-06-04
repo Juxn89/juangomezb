@@ -1,5 +1,6 @@
 .SideNav {
 	width: 250px;
-	height: calc(100vh - 1%);
+	height: 100vh;
 	top: 0;
+	z-index: 1;
 }
