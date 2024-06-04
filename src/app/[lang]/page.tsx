@@ -1,14 +1,24 @@
-'use client'
-
 import { LanguagesType } from "@/common"
 import { Header, Summary, WorkExperience } from "@/components/sections"
 import { SideNav } from "@/components/ui"
 import { PortfolioProvider } from "@/context"
 import { useTranslations } from "@/hooks"
-import { useParams } from "next/navigation"
 
-export default function Home() {
-	const { lang }= useParams()
+type HomeProps = {
+	params: { lang: string }
+}
+
+export async function generateStaticParams() {
+	return [
+		{ lang: 'es' },
+		{ lang: 'en' }
+	]
+}
+
+export default function Home(props: HomeProps) {
+	const { params } = props
+	const { lang } = params
+
 	const { 
 		Commons, 
 		SocialMedia, 

@@ -1,10 +1,10 @@
 'use client'
 
 import { useContext } from 'react'
+import { CloseOutlined } from '@ant-design/icons'
 import { PortfolioContext } from '@/context'
 import { ContextType } from '@/common'
 import './styles.css'
-import { CloseOutlined } from '@ant-design/icons'
 
 export const SideNav = () => {
 	const { isOpenSideNav, closeSideNav } = useContext(PortfolioContext) as ContextType

@@ -7,13 +7,18 @@
 
 ### TailwindCSS
 - [Responsive Design](https://tailwindcss.com/docs/responsive-design)
-- [Tailwind CSS Color Generator](https://uicolors.app/create)
 - [Width - TailwindCSS](https://tailwindcss.com/docs/width)
 - [Customizing Colors](https://tailwindcss.com/docs/customizing-colors)
+- [Tailwind CSS Color Generator](https://uicolors.app/create)
 
 ### Icons
 - [Svgl](https://svgl.app/)
 - [Tabler icons](https://tabler.io/icons)
+- [Ant.design](https://ant.design/docs/spec/icon)
+
+### Others
+- [Shots](https://www.shots.so/)
+- [shadcn/ui - Build your component library](https://ui.shadcn.com/)
 
 ## Articles
 ### React
@@ -25,3 +30,4 @@
 
 ### TailwindCSS
 - [3 Examples of Brilliant Vertical Timelines with Tailwind CSS](https://cruip.com/3-examples-of-brilliant-vertical-timelines-with-tailwind-css/)
+- [Tailwind CSS Timeline - Flowbite](https://flowbite.com/docs/components/timeline/)

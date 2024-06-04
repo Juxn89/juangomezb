@@ -1,5 +1,3 @@
-'use client'
-
 import { FC } from 'react'
 import { ISocialMedia, ISummary } from '@/translations'
 import { ProfilePicture, SocialMedia } from '@/components/ui'

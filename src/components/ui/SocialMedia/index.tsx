@@ -14,13 +14,13 @@ export const SocialMedia: FC<SocialMediaProps> = ({ labels }) => {
 	return (
 		<nav className="flex text-2xl flex-wrap gap-2 mt-2">
 			<a className='w-[45px] h-[45px] p-1' href={ LinkedIn.link } target="_blank" rel="noopener noreferrer" role="link" title={ LinkedIn.title } >
-				<LinkedinOutlined className='text-4xl'/>
+				<LinkedinOutlined className='text-4xl hover:text-blue-400'/>
 			</a>
 			<a className='w-[45px] h-[45px] p-1' href={ GitHub.link } target="_blank" rel="noopener noreferrer" role="link" title={ GitHub.title } >
-				<GithubOutlined className='text-4xl'/>
+				<GithubOutlined className='text-4xl hover:text-blue-400'/>
 			</a>
 			<a className='w-[45px] h-[45px] p-1' href={ Mail.link } target="_blank" rel="noopener noreferrer" role="link" title={ Mail.title } >
-				<MailOutlined className='text-4xl'/>
+				<MailOutlined className='text-4xl hover:text-blue-400'/>
 			</a>
 		</nav>
 	)
