@@ -1,6 +1,7 @@
+import { FilePdfOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from "@ant-design/icons";
 import { Info } from "@/common";
-import { Translation } from "./Translations.interface";
 import { CONST } from '@/helpers'
+import { Translation } from "./Translations.interface";
 
 export const EN: Translation = {
 	Commons: {
@@ -22,9 +23,10 @@ export const EN: Translation = {
 		yearsOfExperience: `+${Info.yearsOfExperience} years of experience. `,
 	},
 	SocialMedia: [
-		{ title: 'LinkedIn profile', icon:null, link: `${CONST.linkedin}?locale=en_US` },
-		{ title: 'GitHub repository', icon: null, link: CONST.github },
-		{ title: 'Get in touch!', icon: null, link: `mailto:gb.jc@outlook.com` },
+		{ label: 'LinkedIn', title: 'LinkedIn profile', icon: LinkedinOutlined, link: `${CONST.linkedin}?locale=en_US` },
+		{ label: 'GitHub', title: 'GitHub repository', icon: GithubOutlined, link: CONST.github },
+		{ label: 'Reach out me', title: 'Reach out me', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
+		{ label: 'Download CV', title: 'Download CV', icon: FilePdfOutlined, link: ``, style: 'p-1 bg-yellow-950 text-yellow-50 rounded-2xl text-lg w-40' },
 	],
 	WorkExperience: [
 		{

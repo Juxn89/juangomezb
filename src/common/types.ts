@@ -11,3 +11,8 @@ export type ContextType = {
 }
 
 export type LanguagesType = 'es' | 'en'
+
+export enum LanguagesEnum {
+	es = 'es',
+	en = 'en'
+}

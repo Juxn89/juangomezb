@@ -1,6 +1,7 @@
 import { CONST } from '@/helpers';
 import { Translation } from '@/translations';
 import { Info } from '@/common';
+import { FilePdfOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
 
 export const ES: Translation = {
 	Commons: {
@@ -22,9 +23,10 @@ export const ES: Translation = {
 		yearsOfExperience: `+${Info.yearsOfExperience} años de experiencia. `,
 	},
 	SocialMedia: [
-		{ title: 'Perfil de LinkedIn', icon: null, link: `${CONST.linkedin}?locale=en_US` },
-		{ title: 'Repositorio en GitHub', icon: null, link: CONST.github },
-		{ title: 'Correo personal', icon: null, link: `mailto:gb.jc@outlook.com` },
+		{ label: 'LinkedIn', title: 'Perfil de LinkedIn', icon: LinkedinOutlined, link: `${CONST.linkedin}?locale=en_US` },
+		{ label: 'GitHub', title: 'Repositorio en GitHub', icon: GithubOutlined, link: CONST.github },
+		{ label: 'Contáctame', title: 'Contáctame', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
+		{ label: 'Descargar CV', title: 'Descargar CV', icon: FilePdfOutlined, link: ``, style: '' },
 	],
 	WorkExperience: [
 		{

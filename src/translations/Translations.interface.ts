@@ -1,3 +1,5 @@
+import { AntdIconProps } from "@ant-design/icons/lib/components/AntdIcon"
+
 export interface Translation {
 	Commons: ICommons
 	Flag: IFlag,
@@ -29,8 +31,10 @@ export interface IFlag {
 }
 
 export interface ISocialMedia {
-	icon?: any,
+	icon: React.ForwardRefExoticComponent<Omit<AntdIconProps, "ref"> & React.RefAttributes<HTMLSpanElement>>,
+	label: string,
 	link: string,
+	style?: string,
 	title: string,
 }
 
