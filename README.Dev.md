@@ -27,6 +27,10 @@
 ### Next.js
 - [Next.js | robots.txt](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
 - [Next.js | sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
+- [Next.js and Lighthouse: Tackling performance scores](https://www.linkedin.com/pulse/nextjs-lighthouse-tackling-performance-scores-natalia-reyes-she-her-/)
+- [Fix Lighthouse "Reduce unused JavaScript" using Next.js Bundle Analyzer](https://www.charlievuong.com/fix-lighthouse-reduce-unused-javascript-using-next-js-bundle-analyzer)
+- [The Right way to Optimize Next.js to Score 100 in lighthouse](https://www.youtube.com/watch?v=TvrQnBDIDpI)
+- [How to keep your Lighthouse score high in Next.js applications - a checklist](https://tsh.io/blog/how-to-keep-your-lighthouse-score-high-in-next-js-applications-a-checklist/)
 
 ### TailwindCSS
 - [3 Examples of Brilliant Vertical Timelines with Tailwind CSS](https://cruip.com/3-examples-of-brilliant-vertical-timelines-with-tailwind-css/)

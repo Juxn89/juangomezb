@@ -1,8 +1,8 @@
-import { LanguagesType } from "@/common"
-import { Header, Projects, Summary, WorkExperience } from "@/components/sections"
-import { SideNav } from "@/components/ui"
-import { PortfolioProvider } from "@/context"
-import { useTranslations } from "@/hooks"
+import { LanguagesType } from '@/common'
+import { SideNav } from '@/components/ui'
+import { useTranslations } from '@/hooks'
+import { PortfolioProvider } from '@/context'
+import { Header, Projects, Summary, WorkExperience } from '@/components/sections'
 
 type HomeProps = {
 	params: { lang: string }

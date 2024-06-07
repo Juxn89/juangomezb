@@ -14,7 +14,7 @@ type SummaryLabels = {
 		<section id='home' className='text-white'>
 			<ProfilePicture />
 			<h1 className='text-3xl font-semibold'>{ greeting }</h1>
-			<p className='text-lg'>
+			<p className='text-lg my-3'>
 				{ yearsOfExperience }
 				<strong className='text-blue-300'>{ grade }</strong>
 				{ location }

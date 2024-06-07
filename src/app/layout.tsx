@@ -4,7 +4,7 @@ import './globals.css'
 
 const font = Onest({ 
 	subsets: ['latin'], 
-	weight: ['100', '300', '700', '900'], 
+	weight: ['100'], 
 	style: ['normal'], 
 	display: 'swap'
 })

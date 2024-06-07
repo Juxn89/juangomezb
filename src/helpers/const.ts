@@ -1,8 +1,9 @@
 export const CONST = {
+	baseURL_cv: '/assets/docs/Juan_Gomez_CV_',
+	baseURL_skills: '/svg/tech/',
 	email: 'gb.jc@outlook.com',
-	linkedin: 'https://www.linkedin.com/in/jcgomez89/',
 	github: 'https://github.com/Juxn89/',
-	baseURL_skills: '/assets/svg/tech/',
+	linkedin: 'https://www.linkedin.com/in/jcgomez89/',
 	skills: [
 		{ name: 'github-icon', title: 'GitHub'},
 		{ name: 'html5', title: 'HTML5'},

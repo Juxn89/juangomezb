@@ -13,7 +13,7 @@ export const WorkExperience: FC<WorkExperienceProps> = (props) => {
 	const { common, labels: workExperiences } = props.labels
 
 	return (
-		<section id="WorkExperience" className='flex flex-col mt-2 text-white text-xl'>
+		<section id="WorkExperience" className='flex flex-col my-4 text-white text-xl'>
 			<h2 className='text-xl font-semibold text-orange-300'>
 				<LaptopOutlined className='mr-2'/>
 				{ common.WorkExperienceSectionLabel }

@@ -18,10 +18,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev",
+    "lint": "next lint",
+    "lint:fix": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@ant-design/icons": "5.3.7",

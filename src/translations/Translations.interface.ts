@@ -36,6 +36,7 @@ export interface ISocialMedia {
 	link: string,
 	style?: string,
 	title: string,
+	download?: boolean
 }
 
 export interface IWorkExperience {
