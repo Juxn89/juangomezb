@@ -10,9 +10,9 @@ export const SideNav = () => {
 	const { isOpenSideNav, closeSideNav } = useContext(PortfolioContext) as ContextType
 	const menuLinks = [
 		{ label: 'Home', link: '#home' },
-		{ label: 'Experience', link: '#WorkExperience' },
+		{ label: 'Experience', link: '#WorkExperiences' },
 		{ label: 'Projects', link: '#Projects' },
-		{ label: 'Skill', link: '#Skill' },
+		{ label: 'Skills', link: '#Skills' },
 	]
 
 	return(

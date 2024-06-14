@@ -2,7 +2,7 @@ import { LanguagesType } from '@/common'
 import { SideNav } from '@/components/ui'
 import { useTranslations } from '@/hooks'
 import { PortfolioProvider } from '@/context'
-import { Header, Projects, Summary, WorkExperience } from '@/components/sections'
+import { Header, Projects, Skills, Summary, WorkExperience } from '@/components/sections'
 
 type HomeProps = {
 	params: { lang: string }
@@ -36,6 +36,7 @@ export default function Home(props: HomeProps) {
 					<Summary labels={ SummaryLabels } socialLabels={ SocialMedia } />
 					<WorkExperience labels={ { common: Commons, labels: Experiences } } />
 					<Projects labels={ { common: Commons, projects: ProjectsLabel } }/>
+					<Skills labels={{ common: Commons }}/>
 				</main>
 			</div>			
 		</PortfolioProvider>

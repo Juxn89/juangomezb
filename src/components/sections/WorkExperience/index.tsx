@@ -24,7 +24,7 @@ export const WorkExperience: FC<WorkExperienceProps> = (props) => {
 					workExperiences.map(workExperience => (
 						<li className="ms-4" key={ workExperience.companyName }>
 							<div className="absolute w-3 h-3 bg-yellow-300 rounded-full mt-1.5 -start-1.5 border border-yellow-300"></div>
-							<time className="mb-1 text-sm font-normal leading-none text-yellow-300" >
+							<time className="mb-1 text-sm leading-none text-yellow-300 font-semibold" >
 								{ workExperience.isCurrent ? common.CurrentLabel : workExperience.endDate }
 							</time>
 							<h3 className="text-lg font-semibold text-blue-300" >
