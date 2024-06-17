@@ -1,4 +1,6 @@
-import { AntdIconProps } from "@ant-design/icons/lib/components/AntdIcon"
+import { FC } from 'react'
+import { AntdIconProps } from '@ant-design/icons/lib/components/AntdIcon'
+import { SvgProps } from '@/common'
 
 export interface Translation {
 	Commons: ICommons
@@ -11,9 +13,10 @@ export interface Translation {
 
 export interface ICommons {
 	CurrentLabel: string,
-	WorkExperienceSectionLabel: string
+	OpenToWorkLabel: string,
 	ProjectsSectionLabel: string,
 	SkillsLabel: string
+	WorkExperienceSectionLabel: string
 }
 
 export interface ISummary {	
@@ -27,7 +30,9 @@ export interface ISummary {
 export interface IFlag {
 	title: string,
 	code: 'ES' | 'US'
-	alt: string
+	alt: string,
+	url: string,
+	flag: FC<SvgProps>
 }
 
 export interface ISocialMedia {

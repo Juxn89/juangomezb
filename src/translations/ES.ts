@@ -2,10 +2,12 @@ import { FilePdfOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from 
 import { Info } from '@/common';
 import { CONST } from '@/helpers';
 import { Translation } from '@/translations';
+import { UnitedStateFlagIcon } from '@/components/ui/Icons';
 
 export const ES: Translation = {
 	Commons: {
 		CurrentLabel: 'Actualmente',
+		OpenToWorkLabel: 'Disponible para trabajar',
 		ProjectsSectionLabel: 'Proyectos',
 		SkillsLabel: 'Habilidadtes',
 		WorkExperienceSectionLabel: 'Experiencia más reciente',
@@ -13,20 +15,22 @@ export const ES: Translation = {
 	Flag: {
 		alt: 'English version',
 		code: 'US',
+		flag: UnitedStateFlagIcon,
 		title: 'English version',
+		url: '/en'
 	},
 	Summary: {
 		description: `Especializado en desarrollo web con .NET y JavaScript`,
-		grade: 'Ingenieron de software y desarrollador Full Stack. ',
+		grade: 'Ingeniero de software y desarrollador Full Stack. ',
 		greeting: 'Hola!, Soy Juan',
-		location: 'de Nicaragua 🇳🇮',
+		location: 'de Nicaragua 🇳🇮. ',
 		yearsOfExperience: `+${Info.yearsOfExperience} años de experiencia. `,
 	},
 	SocialMedia: [
 		{ label: 'LinkedIn', title: 'Perfil de LinkedIn', icon: LinkedinOutlined, link: `${CONST.linkedin}?locale=en_US` },
 		{ label: 'GitHub', title: 'Repositorio en GitHub', icon: GithubOutlined, link: CONST.github },
 		{ label: 'Contáctame', title: 'Contáctame', icon: MailOutlined, link: `mailto:gb.jc@outlook.com` },
-		{ label: 'Descargar CV', title: 'Descargar CV', icon: FilePdfOutlined, link: `${ CONST.baseURL_cv }ES.pdf`, style: 'p-1 bg-yellow-950 text-yellow-50 rounded-2xl text-lg w-40 min-w-40 min-h-9 h-9' },
+		{ label: 'Descargar CV', title: 'Descargar CV', icon: FilePdfOutlined, link: `${ CONST.baseURL_cv }ES.pdf` }, 
 	],
 	WorkExperience: [
 		{
@@ -35,11 +39,9 @@ export const ES: Translation = {
 			startDate: 'Ene 2022',
 			isCurrent: true,
 			summary: `
-				Build user interfaces with React.js and TypeScript as front-end developer, also implement microservices with 
-				.NET Core and NestJS technologies for the differentes brands of the company as back-end developer. Create new feature and 
-				support to differents site in Central America.
+				Construir interfaces de usuario con React.js y TypeScript como desarrollador front-end, e implementar microservicios con tecnologías .NET Core y NestJS para las diferentes marcas de la empresa como desarrollador back-end. Crear nuevas funcionalidades y proporcionar soporte a diferentes sitios en Centroamérica.
 
-				Currently I'm working with multi-cultural co-workers from: England, Poland, Irish and Central American.
+				Actualmente, estoy trabajando con compañeros de trabajo multiculturales de Inglaterra, Polonia, Irlanda y Centroamérica.
 			`,
 			tags: [ 'C#', 'ASP MVC', 'AWS', 'React', 'NestJS', 'SQL', 'JS' ]
 		},
@@ -50,8 +52,8 @@ export const ES: Translation = {
 			endDate: 'Dic 2021',
 			isCurrent: false,
 			summary: `
-			Build and implement scalable solutions for the insurance sector, using .NET techologies in the back-end and Ext.Js in the front-end.
-			I supported to create new feautes for differents companies in differents countries. 
+				Construir e implementar soluciones escalables para el sector de seguros, utilizando tecnologías .NET en el back-end y Ext.Js en el front-end. 
+				Apoyé la creación de nuevas funcionalidades para diferentes empresas en distintos países.
 			`,
 			tags: [ 'C#', 'ASP MVC API', 'SQL', 'Ext.js' ]
 		},
@@ -62,9 +64,9 @@ export const ES: Translation = {
 			endDate: 'Jun 2020',
 			isCurrent: false,
 			summary: `
-				I built web application for all Town Halls in the country using .NET technologies. As team lead, I implemented TFS as version 
-				control system for all applications and also my responsability were the maintenance of server such like: IIS, database and reporting
-				services. I migrated the application from .NET Framework to .NET Core and use Angular.js.
+				Construí una aplicación web para todos los Ayuntamientos del país utilizando tecnologías .NET. Como líder de equipo, implementé TFS como el 
+				sistema de control de versiones para todas las aplicaciones, y mis responsabilidades incluían el mantenimiento de servidores como IIS, bases de datos y 
+				servicios de informes. Migré la aplicación de .NET Framework a .NET Core y utilicé Angular.js.
 			`,
 			tags: [ 'VB.NET', 'C#', 'ASP.NET', '.NET Core', 'SQL', 'IIS' ]
 		},

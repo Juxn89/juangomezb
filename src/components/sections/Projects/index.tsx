@@ -15,7 +15,8 @@ export const Projects: FC<ProjectsProps> = ({ labels }) => {
 	return (
 		<section id='Projects' className='mt-2 text-white'>
 			<h2 className='text-xl font-semibold text-orange-300'>
-				<ExperimentOutlined /> { common.ProjectsSectionLabel }
+				<ExperimentOutlined className='mr-2'/> 
+				{ common.ProjectsSectionLabel }
 			</h2>
 			<div>
 				

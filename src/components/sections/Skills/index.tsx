@@ -2,6 +2,7 @@
 
 import { FC } from 'react'
 import Image from 'next/image'
+import { AppstoreAddOutlined } from '@ant-design/icons'
 import { CONST } from '@/helpers'
 import { ICommons } from '@/translations'
 
@@ -17,8 +18,11 @@ export const Skills: FC<SkillsPops> = ({ labels }) => {
 
 	return (
 		<section id='Skills' className='mt-2 text-white'>
-			<h3 className='text-xl font-semibold text-orange-300'>{ common.SkillsLabel }</h3>
-			<div className='flex flex-wrap gap-4 w-full'>
+			<h3 className='text-xl font-semibold text-orange-300'>
+				<AppstoreAddOutlined className='mr-2'/>
+				{ common.SkillsLabel }
+			</h3>
+			<div className='flex flex-wrap gap-7 w-full mt-2 md:gap-12'>
 				{
 					skills.map(skill => (
 						<Image

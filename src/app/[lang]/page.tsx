@@ -21,24 +21,29 @@ export default function Home(props: HomeProps) {
 
 	const { 
 		Commons, 
+		Flag,
+		Projects: ProjectsLabel,
 		SocialMedia, 
 		Summary: SummaryLabels, 
-		WorkExperience: Experiences,
-		Projects: ProjectsLabel
+		WorkExperience: Experiences
 	} = useTranslations(lang as LanguagesType )
 
   return (
-		<PortfolioProvider>
-			<div className="w-full h-full">
-				<Header />
-				<SideNav />
-				<main className="p-2">
-					<Summary labels={ SummaryLabels } socialLabels={ SocialMedia } />
-					<WorkExperience labels={ { common: Commons, labels: Experiences } } />
-					<Projects labels={ { common: Commons, projects: ProjectsLabel } }/>
-					<Skills labels={{ common: Commons }}/>
-				</main>
-			</div>			
-		</PortfolioProvider>
+	<PortfolioProvider>
+		<div className="w-full h-full md:px-56">
+			<Header
+				labels={{ src: Flag.url, title: Flag.title }}
+			>
+				<Flag.flag className='w-[45px] h-[45px] rounded-lg mr-2' />
+			</Header>
+			<SideNav />
+			<main className="p-2">
+				<Summary labels={ SummaryLabels } socialLabels={ SocialMedia } openToWork={ Commons.OpenToWorkLabel }/>
+				<WorkExperience labels={ { common: Commons, labels: Experiences } } />
+				<Projects labels={ { common: Commons, projects: ProjectsLabel } }/>
+				<Skills labels={{ common: Commons }}/>
+			</main>
+		</div>
+	</PortfolioProvider>
   )
 }

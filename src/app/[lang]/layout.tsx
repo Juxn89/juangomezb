@@ -38,12 +38,14 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
+	params,
   children,
 }: {
+	params: { lang: string },
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang={ params.lang }>
 			<head>
 				<link rel='icon' type='image/svg' href='/assets/svg/logos/logo.svg' sizes='114x114'/>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />

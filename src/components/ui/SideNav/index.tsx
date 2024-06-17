@@ -26,7 +26,7 @@ export const SideNav = () => {
 						menuLinks.map(menu => (
 							<li
 								key={ menu.label }
-								className='text-2xl hover:bg-slate-500 hover:text-slate-950 cursor-pointer m-0 p-2 font-medium'
+								className='text-2xl hover:bg-slate-500 hover:text-white cursor-pointer m-0 p-2 font-medium'
 							>
 								<a href={ menu.link } onClick={ () => closeSideNav() }> { menu.label } </a>
 							</li>

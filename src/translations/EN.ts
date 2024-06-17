@@ -2,18 +2,22 @@ import { FilePdfOutlined, GithubOutlined, LinkedinOutlined, MailOutlined } from 
 import { Info } from '@/common';
 import { CONST } from '@/helpers'
 import { Translation } from '@/translations';
+import { SpainFlagIcon } from '@/components/ui/Icons';
 
 export const EN: Translation = {
 	Commons: {
 		CurrentLabel: 'Current',
+		OpenToWorkLabel: 'Open to work',
 		ProjectsSectionLabel: 'Projects',
 		SkillsLabel: 'Skills',
 		WorkExperienceSectionLabel: 'Recent work experience',
 	},
 	Flag: {
-		alt: "Cambiar idioma a Español",
+		alt: 'Versión en Español',
 		code: 'ES',
-		title: "Cambiar idioma a Español",
+		flag: SpainFlagIcon,
+		title: 'Versión en Español',
+		url: '/es'
 	},
 	Summary: {
 		description: 'Specialized in web development with .NET and JavaScript.',
@@ -35,11 +39,10 @@ export const EN: Translation = {
 			startDate: 'Jan 2022',
 			isCurrent: true,
 			summary: `
-				Build user interfaces with React.js and TypeScript as front-end developer, also implement microservices with 
-				.NET Core and NestJS technologies for the differentes brands of the company as back-end developer. Create new feature and 
-				support to differents site in Central America.
+				Build user interfaces with React.js and TypeScript as a front-end developer, and implement microservices with .NET Core and NestJS technologies 
+				for the different brands of the company as a back-end developer. Create new features and provide support to different sites in Central America.
 
-				Currently I'm working with multi-cultural co-workers from: England, Poland, Irish and Central American.
+				Currently, I'm working with multicultural co-workers from England, Poland, Ireland, and Central America.
 			`,
 			tags: [ 'C#', 'ASP MVC', 'AWS', 'React', 'NestJS', 'SQL', 'JS' ]
 		},
@@ -50,8 +53,8 @@ export const EN: Translation = {
 			endDate: 'Dec 2021',
 			isCurrent: false,
 			summary: `
-			Build and implement scalable solutions for the insurance sector, using .NET techologies in the back-end and Ext.Js in the front-end.
-			I supported to create new feautes for differents companies in differents countries. 
+				Build and implement scalable solutions for the insurance sector, using .NET technologies in the back-end and Ext.Js in the front-end. 
+				I supported the creation of new features for different companies in different countries.
 			`,
 			tags: [ 'C#', 'ASP MVC API', 'SQL', 'Ext.js' ]
 		},
@@ -62,9 +65,9 @@ export const EN: Translation = {
 			endDate: 'Jun 2020',
 			isCurrent: false,
 			summary: `
-				I built web application for all Town Halls in the country using .NET technologies. As team lead, I implemented TFS as version 
-				control system for all applications and also my responsability were the maintenance of server such like: IIS, database and reporting
-				services. I migrated the application from .NET Framework to .NET Core and use Angular.js.
+				I built a web application for all Town Halls in the country using .NET technologies. As a team lead, I implemented TFS as the version control 
+				system for all applications, and my responsibilities included the maintenance of servers such as IIS, databases, and reporting services. 
+				I migrated the application from .NET Framework to .NET Core and used Angular.js.
 			`,
 			tags: [ 'VB.NET', 'C#', 'ASP.NET', '.NET Core', 'SQL', 'IIS' ]
 		},

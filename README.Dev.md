@@ -30,6 +30,7 @@
 - [Next.js | robots.txt](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots)
 - [Next.js | sitemap.xml](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap)
 - [Next.js and Lighthouse: Tackling performance scores](https://www.linkedin.com/pulse/nextjs-lighthouse-tackling-performance-scores-natalia-reyes-she-her-/)
+- [Support to set <html lang /> from metadata?](https://github.com/vercel/next.js/discussions/49415)
 - [The Right way to Optimize Next.js to Score 100 in lighthouse](https://www.youtube.com/watch?v=TvrQnBDIDpI)
 
 ### TailwindCSS
