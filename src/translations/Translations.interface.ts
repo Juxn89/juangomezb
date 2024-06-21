@@ -12,6 +12,7 @@ export interface Translation {
 }
 
 export interface ICommons {
+	TitleMetadata: string,
 	CurrentLabel: string,
 	OpenToWorkLabel: string,
 	ProjectsSectionLabel: string,

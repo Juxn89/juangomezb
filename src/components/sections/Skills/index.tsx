@@ -22,12 +22,13 @@ export const Skills: FC<SkillsPops> = ({ labels }) => {
 				<AppstoreAddOutlined className='mr-2'/>
 				{ common.SkillsLabel }
 			</h3>
-			<div className='flex flex-wrap gap-7 w-full mt-2 md:gap-12'>
+			<div className='flex flex-wrap gap-7 w-full mt-2 md:gap-5'>
 				{
 					skills.map(skill => (
 						<Image
 							key={ skill.name }
 							alt={ skill.title }
+							title={ skill.title }
 							src={ `${baseURL_skills}${skill.name}.svg` }
 							width={ 48 }
 							height={ 48 }

@@ -6,6 +6,7 @@ import { SpainFlagIcon } from '@/components/ui/Icons';
 
 export const EN: Translation = {
 	Commons: {
+		TitleMetadata: `Juan Gómez's portfolio - Full Stack Web Developer and programmer with +${Info.yearsOfExperience} years of experience`,
 		CurrentLabel: 'Current',
 		OpenToWorkLabel: 'Open to work',
 		ProjectsSectionLabel: 'Projects',

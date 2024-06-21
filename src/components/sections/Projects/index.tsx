@@ -18,9 +18,6 @@ export const Projects: FC<ProjectsProps> = ({ labels }) => {
 				<ExperimentOutlined className='mr-2'/> 
 				{ common.ProjectsSectionLabel }
 			</h2>
-			<div>
-				
-			</div>
 		</section>
 	)
 }

@@ -10,7 +10,7 @@ const font = Onest({
 })
 
 export const metadata: Metadata = {
-  title: `Juan Gómez's portfolioc - Full Stack Web Developer and programmer with +9 years of experience`,
+  title: `Juan Gómez's portfolio - Full Stack Web Developer and programmer with +9 years of experience`,
   description: `Juan Gómez's Personal portfolio`,
 	authors: {
 		name: 'Juan Gómez',
@@ -44,12 +44,17 @@ export default function RootLayout({
 	params: { lang: string },
   children: React.ReactNode
 }) {
+	const title = params.lang === 'en' 
+		? `Juan Gómez's portfolio - Full Stack Web Developer and programmer with +9 years of experience` 
+		: `Portafolio de Juan Gómez - Desarrollador Full Stack con +9 años de experiencia`
+
   return (
     <html lang={ params.lang }>
 			<head>
 				<link rel='icon' type='image/svg' href='/assets/svg/logos/logo.svg' sizes='114x114'/>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="canonical" href="https://juangomezb.com" />
+				<title>{ title }</title>
 			</head>
       <body className={ `${font.className} bg-slate-900 relative` }>
 				{children}
