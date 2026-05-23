@@ -1,0 +1,77 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"projects": "Projects",
+		"experience": "Experience",
+		"blog": "Blog",
+		"contact": "Contact"
+	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"name": "Juan Gomez",
+		"title": "Senior Software Engineer",
+		"description": "Building scalable, modern web applications with cutting-edge technologies. Passionate about creating exceptional user experiences and solving complex problems.",
+		"cta": {
+			"primary": "View Projects",
+			"secondary": "Contact Me"
+		}
+	},
+	"about": {
+		"title": "About Me",
+		"subtitle": "Get to know me better",
+		"bio": "I'm a Senior Software Engineer with extensive experience in building modern web applications. I specialize in React, Next.js, and TypeScript, with a passion for creating performant and accessible user interfaces.",
+		"downloadCV": "Download CV"
+	},
+	"projects": {
+		"title": "Projects",
+		"subtitle": "A showcase of my work",
+		"viewDetails": "View Details",
+		"viewLive": "View Live",
+		"viewCode": "View Code",
+		"allProjects": "All Projects",
+		"featured": "Featured"
+	},
+	"experience": {
+		"title": "Experience",
+		"subtitle": "My professional journey",
+		"present": "Present"
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Thoughts and tutorials",
+		"readMore": "Read More",
+		"readingTime": "{minutes} min read",
+		"publishedOn": "Published on"
+	},
+	"contact": {
+		"title": "Get In Touch",
+		"subtitle": "Let's work together",
+		"name": "Name",
+		"email": "Email",
+		"message": "Message",
+		"send": "Send Message",
+		"sending": "Sending...",
+		"success": "Message sent successfully!",
+		"error": "Failed to send message. Please try again."
+	},
+	"footer": {
+		"rights": "All rights reserved.",
+		"social": "Follow me"
+	},
+	"theme": {
+		"light": "Light Mode",
+		"dark": "Dark Mode",
+		"system": "System"
+	},
+	"language": {
+		"english": "English",
+		"spanish": "Spanish"
+	},
+	"common": {
+		"loading": "Loading...",
+		"error": "An error occurred",
+		"notFound": "Page not found",
+		"backHome": "Back to Home"
+	}
+}

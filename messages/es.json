@@ -1,0 +1,77 @@
+{
+	"nav": {
+		"home": "Inicio",
+		"about": "Acerca de",
+		"projects": "Proyectos",
+		"experience": "Experiencia",
+		"blog": "Blog",
+		"contact": "Contacto"
+	},
+	"hero": {
+		"greeting": "Hola, soy",
+		"name": "Juan Gomez",
+		"title": "Ingeniero de Software Senior",
+		"description": "Construyendo aplicaciones web modernas y escalables con tecnologías de vanguardia. Apasionado por crear experiencias de usuario excepcionales y resolver problemas complejos.",
+		"cta": {
+			"primary": "Ver Proyectos",
+			"secondary": "Contáctame"
+		}
+	},
+	"about": {
+		"title": "Acerca de Mí",
+		"subtitle": "Conóceme mejor",
+		"bio": "Soy un Ingeniero de Software Senior con amplia experiencia en la construcción de aplicaciones web modernas. Me especializo en React, Next.js y TypeScript, con pasión por crear interfaces de usuario eficientes y accesibles.",
+		"downloadCV": "Descargar CV"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"subtitle": "Una muestra de mi trabajo",
+		"viewDetails": "Ver Detalles",
+		"viewLive": "Ver Demo",
+		"viewCode": "Ver Código",
+		"allProjects": "Todos los Proyectos",
+		"featured": "Destacado"
+	},
+	"experience": {
+		"title": "Experiencia",
+		"subtitle": "Mi trayectoria profesional",
+		"present": "Presente"
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Pensamientos y tutoriales",
+		"readMore": "Leer Más",
+		"readingTime": "{minutes} min de lectura",
+		"publishedOn": "Publicado el"
+	},
+	"contact": {
+		"title": "Contáctame",
+		"subtitle": "Trabajemos juntos",
+		"name": "Nombre",
+		"email": "Correo Electrónico",
+		"message": "Mensaje",
+		"send": "Enviar Mensaje",
+		"sending": "Enviando...",
+		"success": "¡Mensaje enviado exitosamente!",
+		"error": "Error al enviar el mensaje. Por favor intenta de nuevo."
+	},
+	"footer": {
+		"rights": "Todos los derechos reservados.",
+		"social": "Sígueme"
+	},
+	"theme": {
+		"light": "Modo Claro",
+		"dark": "Modo Oscuro",
+		"system": "Sistema"
+	},
+	"language": {
+		"english": "Inglés",
+		"spanish": "Español"
+	},
+	"common": {
+		"loading": "Cargando...",
+		"error": "Ocurrió un error",
+		"notFound": "Página no encontrada",
+		"backHome": "Volver al Inicio"
+	}
+}
