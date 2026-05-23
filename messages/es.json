@@ -56,8 +56,10 @@
 		"error": "Error al enviar el mensaje. Por favor intenta de nuevo."
 	},
 	"footer": {
-		"rights": "Todos los derechos reservados.",
-		"social": "Sígueme"
+		"name": "Juan Carlos Gómez",
+		"tagline": "Ingeniero de Software • Managua, Nicaragua",
+		"rights": "Todos los derechos reservados",
+		"madeWith": "Hecho con ❤️, 🤖 y ☕"
 	},
 	"theme": {
 		"light": "Modo Claro",

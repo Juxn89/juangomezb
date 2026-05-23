@@ -5,6 +5,7 @@ import {routing} from '@/routing';
 import {notFound} from 'next/navigation';
 import {Providers} from '@/components/providers/Providers';
 import {Header} from '@/components/layouts/Header';
+import {Footer} from '@/components/layouts/Footer';
 import '../globals.css';
 
 const geistSans = Geist({
@@ -55,6 +56,7 @@ export default async function RootLayout({
 					<main className="flex-1">
 						{children}
 					</main>
+					<Footer />
 				</Providers>
 			</body>
 		</html>
