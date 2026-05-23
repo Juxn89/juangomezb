@@ -113,6 +113,11 @@
 	border-color: rgb(var(--color-border));
 }
 
+html {
+	/* Prevent flash during transitions */
+	background-color: rgb(var(--color-bg-primary));
+}
+
 body {
 	background-color: rgb(var(--color-bg-primary));
 	color: rgb(var(--color-text-primary));
@@ -121,6 +126,8 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	/* Smooth page transitions */
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ============================================
