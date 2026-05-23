@@ -99,7 +99,7 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 		closed: {
 			x: '100%',
 			transition: {
-				type: 'spring',
+				type: 'spring' as const,
 				stiffness: 400,
 				damping: 40,
 			},
@@ -107,7 +107,7 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 		open: {
 			x: 0,
 			transition: {
-				type: 'spring',
+				type: 'spring' as const,
 				stiffness: 400,
 				damping: 40,
 			},
@@ -139,7 +139,7 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 			opacity: 1,
 			transition: {
 				delay: i * 0.1,
-				type: 'spring',
+				type: 'spring' as const,
 				stiffness: 300,
 				damping: 24,
 			},

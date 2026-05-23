@@ -62,7 +62,7 @@ export function AboutSection() {
 			y: 0,
 			transition: {
 				duration: 0.5,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1] as const,
 			},
 		},
 	};
@@ -172,7 +172,7 @@ export function AboutSection() {
 										transition={{
 											delay: index * 0.03,
 											duration: 0.4,
-											ease: [0.22, 1, 0.36, 1],
+										ease: [0.22, 1, 0.36, 1] as const,
 										}}
 										whileHover={{scale: 1.1, y: -2}}
 										className={cn(

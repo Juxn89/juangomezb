@@ -223,5 +223,10 @@
 		"error": "Ocurrió un error",
 		"notFound": "Página no encontrada",
 		"backHome": "Volver al Inicio"
+	},
+	"error": {
+		"title": "¡Ups! Algo salió mal",
+		"message": "Encontramos un error inesperado. Por favor, inténtalo de nuevo.",
+		"tryAgain": "Intentar de Nuevo"
 	}
 }

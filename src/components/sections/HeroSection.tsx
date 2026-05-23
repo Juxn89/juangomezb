@@ -27,7 +27,7 @@ export function HeroSection() {
 			y: 0,
 			transition: {
 				duration: 0.6,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1] as const,
 			},
 		},
 	};
@@ -37,7 +37,7 @@ export function HeroSection() {
 		transition: {
 			duration: 6,
 			repeat: Infinity,
-			ease: 'easeInOut',
+			ease: 'easeInOut' as const,
 		},
 	};
 
@@ -61,14 +61,14 @@ export function HeroSection() {
 				<motion.div
 					animate={{
 						y: [10, -10, 10],
-						transition: {duration: 8, repeat: Infinity, ease: 'easeInOut'},
+						transition: {duration: 8, repeat: Infinity, ease: 'easeInOut' as const},
 					}}
 					className="absolute bottom-20 -right-20 w-96 h-96 bg-accent-secondary/20 rounded-full blur-3xl"
 				/>
 				<motion.div
 					animate={{
 						y: [-15, 15, -15],
-						transition: {duration: 7, repeat: Infinity, ease: 'easeInOut'},
+						transition: {duration: 7, repeat: Infinity, ease: 'easeInOut' as const},
 					}}
 					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent-tertiary/10 rounded-full blur-3xl"
 				/>

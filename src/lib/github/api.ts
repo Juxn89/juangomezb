@@ -32,10 +32,10 @@ export interface ProjectData {
 	technologies: string[];
 	highlights: string[];
 	demoUrl: string;
-	codeUrl: string;
+	codeUrl?: string;
 	featured: boolean;
-	stars: number;
-	language: string | null;
+	stars?: number;
+	language?: string | null;
 }
 
 /**
@@ -191,8 +191,8 @@ export async function getPinnedProjects(
 		// Transform to project format
 		const projects = repos.map((repo) => transformRepoToProject(repo, locale));
 
-		// Sort by stars
-		const sorted = projects.sort((a, b) => b.stars - a.stars);
+		// Sort by stars (handle undefined values)
+		const sorted = projects.sort((a, b) => (b.stars || 0) - (a.stars || 0));
 
 		return sorted.slice(0, limit);
 	} catch (error) {

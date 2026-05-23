@@ -48,7 +48,11 @@ setInterval(() => {
 }, 60000);
 
 export async function middleware(request: NextRequest) {
-	const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+	// Get client IP from headers (Next.js 16.2 doesn't have request.ip)
+	const ip =
+		request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+		request.headers.get('x-real-ip') ||
+		'unknown';
 	const userAgent = request.headers.get('user-agent') || '';
 
 	// 1. Rate Limiting

@@ -28,7 +28,7 @@ interface ToggleItemProps {
 	onClick?: () => void;
 	'aria-label'?: string;
 	title?: string;
-	'aria-current'?: string;
+	'aria-current'?: boolean | 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
 }
 
 export function ToggleItem({
