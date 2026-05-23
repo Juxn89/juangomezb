@@ -35,6 +35,48 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 		};
 	}, [isOpen]);
 
+	// Intersection Observer para detectar sección activa al hacer scroll
+	useEffect(() => {
+		const navigation = [
+			{key: 'home', href: '#home'},
+			{key: 'about', href: '#about'},
+			{key: 'experience', href: '#experience'},
+			{key: 'projects', href: '#projects'},
+			{key: 'contact', href: '#contact'}
+		];
+
+		const observerOptions = {
+			root: null,
+			rootMargin: '-20% 0px -60% 0px',
+			threshold: 0.1
+		};
+
+		const observerCallback = (entries: IntersectionObserverEntry[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveSection(entry.target.id);
+				}
+			});
+		};
+
+		const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+		// Observar todas las secciones
+		const sections = navigation.map(({href}) => 
+			document.getElementById(href.replace('#', ''))
+		).filter(Boolean);
+
+		sections.forEach((section) => {
+			if (section) observer.observe(section);
+		});
+
+		return () => {
+			sections.forEach((section) => {
+				if (section) observer.unobserve(section);
+			});
+		};
+	}, []);
+
 	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
 		e.preventDefault();
 		const section = document.getElementById(sectionId);

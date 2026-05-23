@@ -62,7 +62,7 @@ export function ExperienceSection() {
 					<div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-accent1 via-accent2 to-accent3 md:block" />
 
 					{/* Jobs */}
-					<div className="space-y-12">
+				<div className="space-y-8">
 						{jobsData.map((job, index) => (
 							<motion.div
 								key={job.id}
@@ -107,7 +107,7 @@ export function ExperienceSection() {
 								{/* Job card */}
 								<div className="ml-0 md:ml-20">
 									<motion.div
-										className="group relative overflow-hidden rounded-2xl border border-border bg-bg-primary p-6 shadow-lg transition-all hover:shadow-xl hover:shadow-accent1/10"
+									className="group relative overflow-hidden rounded-2xl border border-border bg-bg-primary p-5 shadow-lg transition-all hover:shadow-xl hover:shadow-accent1/10"
 										whileHover={{y: -4}}
 										transition={{duration: 0.2}}
 									>
@@ -117,52 +117,52 @@ export function ExperienceSection() {
 										</div>
 
 										{/* Header */}
-										<div className="mb-4">
-											<div className="mb-2 flex flex-wrap items-start justify-between gap-4">
-												<div>
-													<h3 className="text-2xl font-bold text-text-primary">
-														{job.position}
-													</h3>
-													<p className="text-xl font-semibold text-accent1">
-														{job.company}
-													</p>
-												</div>
-												{index === 0 && (
-													<motion.span
-														className="inline-flex items-center gap-1.5 rounded-full bg-accent1/10 px-3 py-1 text-sm font-medium text-accent1"
-														animate={{
-															scale: [1, 1.05, 1],
-														}}
-														transition={{
-															duration: 2,
-															repeat: Infinity,
-														}}
-													>
-														{t('present')}
-													</motion.span>
-												)}
+									<div className="mb-3">
+										<div className="mb-2 flex flex-wrap items-start justify-between gap-3">
+											<div>
+												<h3 className="text-xl font-bold text-text-primary md:text-2xl">
+													{job.position}
+												</h3>
+												<p className="text-lg font-semibold text-accent1 md:text-xl">
+													{job.company}
+												</p>
+											</div>
+											{index === 0 && (
+												<motion.span
+											className="inline-flex items-center gap-1.5 rounded-full bg-accent-primary px-3 py-1 text-sm font-bold text-white shadow-lg shadow-accent-primary/30 ring-2 ring-accent-primary/20"
+													animate={{
+														scale: [1, 1.05, 1],
+													}}
+													transition={{
+														duration: 2,
+														repeat: Infinity,
+													}}
+												>
+													{t('present')}
+												</motion.span>
+											)}
 											</div>
 
-											<div className="flex flex-wrap gap-4 text-sm text-text-secondary">
-												<div className="flex items-center gap-1.5">
-													<Calendar className="h-4 w-4" />
-													<span>{job.period}</span>
-												</div>
-												<div className="flex items-center gap-1.5">
-													<MapPin className="h-4 w-4" />
-													<span>{job.location}</span>
-												</div>
+										<div className="flex flex-wrap gap-3 text-sm text-text-secondary">
+											<div className="flex items-center gap-1.5">
+												<Calendar className="h-4 w-4" />
+												<span>{job.period}</span>
+											</div>
+											<div className="flex items-center gap-1.5">
+												<MapPin className="h-4 w-4" />
+												<span>{job.location}</span>
 											</div>
 										</div>
+									</div>
 
-										{/* Description */}
-										<p className="mb-4 text-text-secondary">
-											{job.description}
-										</p>
+									{/* Description */}
+									<p className="mb-3 text-sm text-text-secondary">
+										{job.description}
+									</p>
 
-										{/* Achievements */}
-										<div className="mb-4">
-											<ul className="space-y-2">
+									{/* Achievements */}
+									<div className="mb-3">
+										<ul className="space-y-1.5">
 												{job.achievements.map((achievement, i) => (
 													<motion.li
 														key={i}
@@ -187,7 +187,7 @@ export function ExperienceSection() {
 											{job.technologies.map((tech, i) => (
 												<motion.span
 													key={i}
-													className="rounded-full bg-accent2/10 px-3 py-1 text-xs font-medium text-accent2 transition-colors hover:bg-accent2/20"
+										className="rounded-full bg-accent-secondary px-3 py-1 text-xs font-bold text-slate-900 shadow-md transition-all hover:scale-105 hover:shadow-lg hover:shadow-accent-secondary/30 dark:text-white"
 													initial={{opacity: 0, scale: 0.8}}
 													whileInView={{opacity: 1, scale: 1}}
 													viewport={{once: true}}

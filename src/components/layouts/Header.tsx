@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useTranslations} from 'next-intl';
 import {Link} from '@/routing';
 import {LocaleSwitcher} from '@/components/ui/LocaleSwitcher';
@@ -14,13 +14,47 @@ const navigation = [
 	{key: 'about', href: '#about'},
 	{key: 'experience', href: '#experience'},
 	{key: 'projects', href: '#projects'},
-	{key: 'contact', href: '#contact'},
+	{key: 'contact', href: '#contact'}
 ];
 
 export function Header() {
 	const t = useTranslations('nav');
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('home');
+
+	// Intersection Observer para detectar sección activa al hacer scroll
+	useEffect(() => {
+		const observerOptions = {
+			root: null,
+			rootMargin: '-20% 0px -60% 0px',
+			threshold: 0.1
+		};
+
+		const observerCallback = (entries: IntersectionObserverEntry[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					setActiveSection(entry.target.id);
+				}
+			});
+		};
+
+		const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+		// Observar todas las secciones
+		const sections = navigation.map(({href}) => 
+			document.getElementById(href.replace('#', ''))
+		).filter(Boolean);
+
+		sections.forEach((section) => {
+			if (section) observer.observe(section);
+		});
+
+		return () => {
+			sections.forEach((section) => {
+				if (section) observer.unobserve(section);
+			});
+		};
+	}, []);
 
 	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
 		e.preventDefault();

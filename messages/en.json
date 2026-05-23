@@ -7,16 +7,97 @@
 		"contact": "Contact"
 	},
 	"projects": {
-		"title": "Projects",
-		"subtitle": "Some of my recent work",
-		"comingSoon": "Projects showcase coming soon..."
+		"title": "Featured Projects",
+		"subtitle": "Showcasing innovation and technical excellence",
+		"viewDemo": "View Demo",
+		"viewCode": "View Code",
+		"items": [
+			{
+				"id": 1,
+				"title": "Cloud Banking Platform",
+				"description": "Microservices-based banking platform handling 10M+ daily transactions with 99.9% uptime. Migrated from monolithic .NET to cloud-native architecture.",
+				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "PostgreSQL"],
+				"highlights": [
+					"Real-time transaction processing",
+					"OAuth2 & JWT authentication",
+					"Automated CI/CD pipeline"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 2,
+				"title": "E-Commerce Analytics Dashboard",
+				"description": "Real-time analytics platform for e-commerce operations. Processes $2M+ annual revenue with advanced data visualization and reporting.",
+				"technologies": ["TypeScript", "React", "Node.js", "MongoDB", "Redis", "D3.js"],
+				"highlights": [
+					"Real-time data streaming",
+					"Custom visualization charts",
+					"Performance optimization"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 3,
+				"title": "Healthcare Management System",
+				"description": "HIPAA-compliant patient management system for healthcare providers. Streamlined workflows and improved patient care coordination.",
+				"technologies": [".NET", "Angular", "SQL Server", "Azure", "SignalR"],
+				"highlights": [
+					"HIPAA compliance & security",
+					"Real-time notifications",
+					"Electronic health records"
+				],
+				"demoUrl": "#",
+				"featured": false
+			},
+			{
+				"id": 4,
+				"title": "DevOps Automation Suite",
+				"description": "Comprehensive CI/CD automation suite reducing deployment time by 60%. Integrated with AWS, Docker, and Kubernetes.",
+				"technologies": ["Python", "Bash", "Docker", "Kubernetes", "AWS", "Terraform"],
+				"highlights": [
+					"Infrastructure as Code",
+					"Automated testing & deployment",
+					"Monitoring & alerting"
+				],
+				"demoUrl": "#",
+				"featured": false
+			}
+		]
 	},
 	"contact": {
 		"title": "Get In Touch",
-		"subtitle": "Let's work together on your next project",
-		"location": "Location",
-		"formTitle": "Contact Form",
-		"formComingSoon": "Contact form coming soon..."
+		"subtitle": "Have a project in mind? Let's work together",
+		"info": {
+			"email": "Email",
+			"emailValue": "contact@juangomez.dev",
+			"location": "Location",
+			"locationValue": "Managua, Nicaragua",
+			"availability": "Availability",
+			"availabilityValue": "Open to opportunities"
+		},
+		"form": {
+			"title": "Send a Message",
+			"name": "Your Name",
+			"namePlaceholder": "Juan Carlos Gómez",
+			"email": "Your Email",
+			"emailPlaceholder": "juan@example.com",
+			"message": "Your Message",
+			"messagePlaceholder": "Tell me about your project...",
+			"submit": "Send Message",
+			"sending": "Sending...",
+			"success": "Message sent successfully! I'll get back to you soon.",
+			"error": "Failed to send message. Please try again or email me directly."
+		},
+		"validation": {
+			"nameRequired": "Name is required",
+			"nameMin": "Name must be at least 2 characters",
+			"emailRequired": "Email is required",
+			"emailInvalid": "Please enter a valid email address",
+			"messageRequired": "Message is required",
+			"messageMin": "Message must be at least 10 characters"
+		}
 	},
 	"hero": {
 		"greeting": "Hi, I'm",

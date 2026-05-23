@@ -7,16 +7,97 @@
 		"contact": "Contacto"
 	},
 	"projects": {
-		"title": "Proyectos",
-		"subtitle": "Algunos de mis trabajos recientes",
-		"comingSoon": "Portafolio de proyectos próximamente..."
+		"title": "Proyectos Destacados",
+		"subtitle": "Mostrando innovación y excelencia técnica",
+		"viewDemo": "Ver Demo",
+		"viewCode": "Ver Código",
+		"items": [
+			{
+				"id": 1,
+				"title": "Plataforma Bancaria en la Nube",
+				"description": "Plataforma bancaria basada en microservicios manejando más de 10M transacciones diarias con 99.9% de disponibilidad. Migración de .NET monolítico a arquitectura cloud-native.",
+				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "PostgreSQL"],
+				"highlights": [
+					"Procesamiento en tiempo real",
+					"Autenticación OAuth2 & JWT",
+					"Pipeline CI/CD automatizado"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 2,
+				"title": "Dashboard de Analíticas E-Commerce",
+				"description": "Plataforma de analíticas en tiempo real para operaciones de e-commerce. Procesa más de $2M en ingresos anuales con visualización avanzada de datos.",
+				"technologies": ["TypeScript", "React", "Node.js", "MongoDB", "Redis", "D3.js"],
+				"highlights": [
+					"Streaming de datos en tiempo real",
+					"Gráficos personalizados",
+					"Optimización de rendimiento"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 3,
+				"title": "Sistema de Gestión Hospitalaria",
+				"description": "Sistema de gestión de pacientes con cumplimiento HIPAA para proveedores de salud. Flujos optimizados y mejor coordinación del cuidado.",
+				"technologies": [".NET", "Angular", "SQL Server", "Azure", "SignalR"],
+				"highlights": [
+					"Cumplimiento HIPAA y seguridad",
+					"Notificaciones en tiempo real",
+					"Registros médicos electrónicos"
+				],
+				"demoUrl": "#",
+				"featured": false
+			},
+			{
+				"id": 4,
+				"title": "Suite de Automatización DevOps",
+				"description": "Suite completa de automatización CI/CD reduciendo tiempo de despliegue en 60%. Integrada con AWS, Docker y Kubernetes.",
+				"technologies": ["Python", "Bash", "Docker", "Kubernetes", "AWS", "Terraform"],
+				"highlights": [
+					"Infraestructura como Código",
+					"Pruebas y despliegue automático",
+					"Monitoreo y alertas"
+				],
+				"demoUrl": "#",
+				"featured": false
+			}
+		]
 	},
 	"contact": {
 		"title": "Contáctame",
-		"subtitle": "Trabajemos juntos en tu próximo proyecto",
-		"location": "Ubicación",
-		"formTitle": "Formulario de Contacto",
-		"formComingSoon": "Formulario de contacto próximamente..."
+		"subtitle": "¿Tienes un proyecto en mente? Trabajemos juntos",
+		"info": {
+			"email": "Correo",
+			"emailValue": "contact@juangomez.dev",
+			"location": "Ubicación",
+			"locationValue": "Managua, Nicaragua",
+			"availability": "Disponibilidad",
+			"availabilityValue": "Abierto a oportunidades"
+		},
+		"form": {
+			"title": "Enviar Mensaje",
+			"name": "Tu Nombre",
+			"namePlaceholder": "Juan Carlos Gómez",
+			"email": "Tu Correo",
+			"emailPlaceholder": "juan@ejemplo.com",
+			"message": "Tu Mensaje",
+			"messagePlaceholder": "Cuéntame sobre tu proyecto...",
+			"submit": "Enviar Mensaje",
+			"sending": "Enviando...",
+			"success": "¡Mensaje enviado exitosamente! Te responderé pronto.",
+			"error": "Error al enviar mensaje. Intenta de nuevo o envíame un correo directo."
+		},
+		"validation": {
+			"nameRequired": "El nombre es requerido",
+			"nameMin": "El nombre debe tener al menos 2 caracteres",
+			"emailRequired": "El correo es requerido",
+			"emailInvalid": "Por favor ingresa un correo válido",
+			"messageRequired": "El mensaje es requerido",
+			"messageMin": "El mensaje debe tener al menos 10 caracteres"
+		}
 	},
 	"hero": {
 		"greeting": "Hola, soy",
