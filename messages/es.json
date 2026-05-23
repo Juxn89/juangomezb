@@ -2,10 +2,21 @@
 	"nav": {
 		"home": "Inicio",
 		"about": "Acerca de",
-		"projects": "Proyectos",
 		"experience": "Experiencia",
-		"blog": "Blog",
+		"projects": "Proyectos",
 		"contact": "Contacto"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"subtitle": "Algunos de mis trabajos recientes",
+		"comingSoon": "Portafolio de proyectos próximamente..."
+	},
+	"contact": {
+		"title": "Contáctame",
+		"subtitle": "Trabajemos juntos en tu próximo proyecto",
+		"location": "Ubicación",
+		"formTitle": "Formulario de Contacto",
+		"formComingSoon": "Formulario de contacto próximamente..."
 	},
 	"hero": {
 		"greeting": "Hola, soy",
@@ -37,19 +48,72 @@
 			"cloud": "Infraestructura cloud en AWS y Azure. Experto en Docker, pipelines CI/CD y prácticas DevOps para sistemas de alta disponibilidad."
 		}
 	},
-	"projects": {
-		"title": "Proyectos",
-		"subtitle": "Una muestra de mi trabajo",
-		"viewDetails": "Ver Detalles",
-		"viewLive": "Ver Demo",
-		"viewCode": "Ver Código",
-		"allProjects": "Todos los Proyectos",
-		"featured": "Destacado"
-	},
 	"experience": {
 		"title": "Experiencia",
 		"subtitle": "Mi trayectoria profesional",
-		"present": "Presente"
+		"present": "Presente",
+		"jobs": [
+			{
+				"id": 1,
+				"company": "TechCorp Solutions",
+				"position": "Ingeniero de Software Senior",
+				"period": "2020 - Presente",
+				"location": "Managua, Nicaragua",
+				"description": "Liderando la modernización de sistemas legacy a arquitecturas cloud-native. Logré una mejora del 35% en rendimiento y 99.9% de disponibilidad en aplicaciones críticas.",
+				"achievements": [
+					"Migré aplicaciones .NET monolíticas a arquitectura de microservicios en AWS",
+					"Implementé pipelines CI/CD reduciendo el tiempo de despliegue en 60%",
+					"Lideré un equipo de 8 desarrolladores en metodología ágil",
+					"Modernicé frontend con React y Next.js, mejorando la experiencia de usuario"
+				],
+				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "TypeScript"]
+			},
+			{
+				"id": 2,
+				"company": "GlobalBank International",
+				"position": "Desarrollador Fullstack",
+				"period": "2016 - 2020",
+				"location": "Remoto",
+				"description": "Desarrollé y mantuve aplicaciones bancarias críticas sirviendo a millones de usuarios. Enfoque en seguridad, rendimiento y confiabilidad.",
+				"achievements": [
+					"Construí APIs RESTful manejando +10M de transacciones diarias",
+					"Implementé mejores prácticas de seguridad (OAuth2, JWT, encriptación)",
+					"Reduje el tiempo de carga de páginas en 45% mediante optimización",
+					"Mentoré desarrolladores junior y realicé revisiones de código"
+				],
+				"technologies": [".NET", "Angular", "SQL Server", "Azure", "C#"]
+			},
+			{
+				"id": 3,
+				"company": "InnovateTech Startup",
+				"position": "Desarrollador de Software",
+				"period": "2012 - 2016",
+				"location": "Managua, Nicaragua",
+				"description": "Desarrollo full-stack de aplicaciones web empresariales. Trabajé en proyectos variados en diferentes industrias incluyendo e-commerce, salud y logística.",
+				"achievements": [
+					"Desarrollé plataforma de e-commerce procesando +$2M en ingresos anuales",
+					"Creé suite de pruebas automatizadas mejorando la calidad del código",
+					"Integré pasarelas de pago y APIs de terceros",
+					"Colaboré con diseñadores UX para mejorar las interfaces de usuario"
+				],
+				"technologies": [".NET Framework", "JavaScript", "jQuery", "SQL", "HTML/CSS"]
+			},
+			{
+				"id": 4,
+				"company": "Digital Solutions Agency",
+				"position": "Desarrollador Junior",
+				"period": "2010 - 2012",
+				"location": "Managua, Nicaragua",
+				"description": "Inicié mi carrera construyendo sitios web y aplicaciones pequeñas para negocios locales. Adquirí conocimientos fundamentales en desarrollo de software y mejores prácticas.",
+				"achievements": [
+					"Entregué +20 proyectos de sitios web para clientes PyME",
+					"Aprendí control de versiones y colaboración en equipo",
+					"Brindé soporte técnico y mantenimiento",
+					"Adquirí rápidamente nuevas habilidades en múltiples tecnologías"
+				],
+				"technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]
+			}
+		]
 	},
 	"blog": {
 		"title": "Blog",
@@ -57,17 +121,6 @@
 		"readMore": "Leer Más",
 		"readingTime": "{minutes} min de lectura",
 		"publishedOn": "Publicado el"
-	},
-	"contact": {
-		"title": "Contáctame",
-		"subtitle": "Trabajemos juntos",
-		"name": "Nombre",
-		"email": "Correo Electrónico",
-		"message": "Mensaje",
-		"send": "Enviar Mensaje",
-		"sending": "Enviando...",
-		"success": "¡Mensaje enviado exitosamente!",
-		"error": "Error al enviar el mensaje. Por favor intenta de nuevo."
 	},
 	"footer": {
 		"name": "Juan Carlos Gómez",

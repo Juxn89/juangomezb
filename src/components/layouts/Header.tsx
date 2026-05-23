@@ -2,7 +2,7 @@
 
 import {useState} from 'react';
 import {useTranslations} from 'next-intl';
-import {Link, usePathname} from '@/routing';
+import {Link} from '@/routing';
 import {LocaleSwitcher} from '@/components/ui/LocaleSwitcher';
 import {ThemeToggle} from '@/components/ui/ThemeToggle';
 import {MobileMenu} from './MobileMenu';
@@ -10,18 +10,26 @@ import {Menu} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
 
 const navigation = [
-	{key: 'home', href: '/'},
-	{key: 'about', href: '/about'},
-	{key: 'projects', href: '/projects'},
-	{key: 'experience', href: '/experience'},
-	{key: 'blog', href: '/blog'},
-	{key: 'contact', href: '/contact'},
+	{key: 'home', href: '#home'},
+	{key: 'about', href: '#about'},
+	{key: 'experience', href: '#experience'},
+	{key: 'projects', href: '#projects'},
+	{key: 'contact', href: '#contact'},
 ];
 
 export function Header() {
 	const t = useTranslations('nav');
-	const pathname = usePathname();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState('home');
+
+	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+		e.preventDefault();
+		const section = document.getElementById(sectionId);
+		if (section) {
+			section.scrollIntoView({behavior: 'smooth'});
+			setActiveSection(sectionId);
+		}
+	};
 
 	return (
 		<>
@@ -29,25 +37,31 @@ export function Header() {
 				<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex h-16 items-center justify-between">
 						{/* Logo */}
-						<Link href="/" className="flex items-center gap-2">
+						<a 
+							href="#home" 
+							onClick={(e) => handleNavClick(e, 'home')}
+							className="flex items-center gap-2 cursor-pointer"
+						>
 							<span className="text-xl font-bold gradient-text">JG</span>
-						</Link>
+						</a>
 
 						{/* Desktop Navigation */}
 						<div className="hidden md:flex items-center gap-6">
 							{navigation.map(({key, href}) => {
-								const isActive = pathname === href;
+								const sectionId = href.replace('#', '');
+								const isActive = activeSection === sectionId;
 								return (
-									<Link
+									<a
 										key={key}
 										href={href}
+										onClick={(e) => handleNavClick(e, sectionId)}
 										className={cn(
-											'text-sm font-medium transition-colors hover:text-accent-primary',
+											'text-sm font-medium transition-colors hover:text-accent-primary cursor-pointer',
 											isActive ? 'text-accent-primary' : 'text-text-secondary'
 										)}
 									>
 										{t(key)}
-									</Link>
+									</a>
 								);
 							})}
 						</div>

@@ -1,6 +1,22 @@
 @import "tailwindcss";
 
 /* ============================================
+   SMOOTH SCROLLING
+   ============================================ */
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 4rem; /* Offset for sticky header */
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+/* ============================================
    CYBER SUNSET COLOR PALETTE
    Vibrant gradients inspired by cyberpunk & digital sunsets
    ============================================ */

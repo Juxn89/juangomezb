@@ -2,7 +2,6 @@
 
 import {useState, useEffect} from 'react';
 import {useTranslations} from 'next-intl';
-import {Link, usePathname} from '@/routing';
 import {motion, AnimatePresence} from 'framer-motion';
 import {X} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
@@ -16,8 +15,8 @@ interface MobileMenuProps {
 
 export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 	const t = useTranslations('nav');
-	const pathname = usePathname();
 	const [mounted, setMounted] = useState(false);
+	const [activeSection, setActiveSection] = useState('home');
 
 	useEffect(() => {
 		setMounted(true);
@@ -36,13 +35,22 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 		};
 	}, [isOpen]);
 
+	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+		e.preventDefault();
+		const section = document.getElementById(sectionId);
+		if (section) {
+			section.scrollIntoView({behavior: 'smooth'});
+			setActiveSection(sectionId);
+			onClose();
+		}
+	};
+
 	const navigation = [
-		{name: t('home'), href: '/'},
-		{name: t('about'), href: '/about'},
-		{name: t('projects'), href: '/projects'},
-		{name: t('experience'), href: '/experience'},
-		{name: t('blog'), href: '/blog'},
-		{name: t('contact'), href: '/contact'},
+		{key: 'home', name: t('home'), href: '#home'},
+		{key: 'about', name: t('about'), href: '#about'},
+		{key: 'experience', name: t('experience'), href: '#experience'},
+		{key: 'projects', name: t('projects'), href: '#projects'},
+		{key: 'contact', name: t('contact'), href: '#contact'},
 	];
 
 	const menuVariants = {
@@ -153,24 +161,25 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 							<nav className="flex-1 p-6">
 								<ul className="space-y-2">
 									{navigation.map((item, index) => {
-										const isActive = pathname === item.href;
+										const sectionId = item.href.replace('#', '');
+										const isActive = activeSection === sectionId;
 										return (
 											<motion.li
-												key={item.href}
+												key={item.key}
 												custom={index}
 												initial="closed"
 												animate="open"
 												exit="closed"
 												variants={listItemVariants}
 											>
-												<Link
+												<a
 													href={item.href}
-													onClick={onClose}
+													onClick={(e) => handleNavClick(e, sectionId)}
 													className={cn(
 														'flex items-center gap-3 px-4 py-3 rounded-lg',
 														'text-base font-medium',
 														'transition-all duration-200',
-														'group',
+														'group cursor-pointer',
 														isActive
 															? 'bg-accent-primary text-white shadow-md'
 															: 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary'
@@ -185,7 +194,7 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 														)}
 													/>
 													{item.name}
-												</Link>
+												</a>
 											</motion.li>
 										);
 									})}
