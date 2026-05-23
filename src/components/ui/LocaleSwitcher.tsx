@@ -3,9 +3,10 @@
 import {Link} from '@/routing';
 import {routing} from '@/routing';
 import {useTranslations, useLocale} from 'next-intl';
-import {cn} from '@/lib/utils/cn';
 import {useEffect, useState} from 'react';
 import {usePathname} from 'next/navigation';
+import {ToggleGroup} from './ToggleGroup';
+import {cn} from '@/lib/utils/cn';
 
 export function LocaleSwitcher() {
 	const pathname = usePathname();
@@ -32,24 +33,33 @@ export function LocaleSwitcher() {
 
 	if (!mounted) {
 		return (
-			<div className="inline-flex items-center gap-1 p-1 rounded-lg bg-bg-secondary border border-border">
-				<div className="px-3 py-2">
+			<ToggleGroup>
+				<div className="px-3 py-1.5">
 					<span>🌐</span>
 				</div>
-			</div>
+			</ToggleGroup>
 		);
 	}
 
 	return (
-		<div className="inline-flex items-center gap-1 p-1 rounded-lg bg-bg-secondary border border-border">
+		<ToggleGroup>
 			{locales.map(({value, label, flag}) => {
 				const isActive = locale === value;
+				const baseClasses = cn(
+					'px-3 py-1.5 rounded-md text-sm font-medium',
+					'flex items-center justify-center gap-2 min-h-[32px]',
+					'transition-all duration-300 ease-in-out',
+					'focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-1'
+				);
 
 				if (isActive) {
 					return (
 						<div
 							key={value}
-							className="px-3 py-2 rounded-md text-sm font-medium bg-accent-primary text-white shadow-md scale-100 cursor-default flex items-center gap-2"
+							className={cn(
+								baseClasses,
+								'bg-accent-primary text-white shadow-md cursor-default'
+							)}
 							aria-current="true"
 						>
 							<span className="text-base">{flag}</span>
@@ -64,11 +74,9 @@ export function LocaleSwitcher() {
 						href={getPathForLocale(value)}
 						locale={value}
 						className={cn(
-							'px-3 py-2 rounded-md text-sm font-medium',
-							'flex items-center gap-2',
-							'transition-all duration-300 ease-in-out',
-							'focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-1',
-							'text-text-secondary hover:text-text-primary hover:bg-bg-primary hover:scale-105 active:scale-95'
+							baseClasses,
+							'text-text-secondary hover:text-text-primary',
+							'hover:bg-bg-primary hover:scale-105 active:scale-95'
 						)}
 						aria-label={label}
 						title={label}
@@ -78,6 +86,6 @@ export function LocaleSwitcher() {
 					</Link>
 				);
 			})}
-		</div>
+		</ToggleGroup>
 	);
 }

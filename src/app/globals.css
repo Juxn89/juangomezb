@@ -116,18 +116,24 @@
 html {
 	/* Prevent flash during transitions */
 	background-color: rgb(var(--color-bg-primary));
+	transition: background-color 0.15s ease;
+}
+
+html.dark {
+	/* Ensure dark background persists during navigation */
+	background-color: rgb(15 20 25);
 }
 
 body {
-	background-color: rgb(var(--color-bg-primary));
+	background-color: transparent;
 	color: rgb(var(--color-text-primary));
 	font-feature-settings: "rlig" 1, "calt" 1;
 	font-synthesis-weight: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	/* Smooth page transitions */
-	transition: background-color 0.2s ease, color 0.2s ease;
+	/* Smooth transitions */
+	transition: color 0.15s ease;
 }
 
 /* ============================================

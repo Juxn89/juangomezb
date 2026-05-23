@@ -2,9 +2,9 @@
 
 import {useTheme} from '@/lib/context/theme-context';
 import {Sun, Moon, Monitor} from 'lucide-react';
-import {cn} from '@/lib/utils/cn';
 import {useTranslations} from 'next-intl';
 import {useEffect, useState} from 'react';
+import {ToggleGroup, ToggleItem} from './ToggleGroup';
 
 export function ThemeToggle() {
 	const {theme, setTheme} = useTheme();
@@ -24,33 +24,27 @@ export function ThemeToggle() {
 
 	if (!mounted) {
 		return (
-			<div className="inline-flex items-center gap-1 p-1 rounded-lg bg-bg-secondary border border-border">
-				<div className="p-2 rounded-md">
+			<ToggleGroup>
+				<div className="px-3 py-1.5">
 					<Monitor className="w-4 h-4" />
 				</div>
-			</div>
+			</ToggleGroup>
 		);
 	}
 
 	return (
-		<div className="inline-flex items-center gap-1 p-1 rounded-lg bg-bg-secondary border border-border">
+		<ToggleGroup>
 			{themes.map(({value, icon: Icon, label}) => (
-				<button
+				<ToggleItem
 					key={value}
+					active={theme === value}
 					onClick={() => setTheme(value)}
-					className={cn(
-						'p-2 rounded-md transition-all duration-200',
-						'hover:bg-bg-primary focus:outline-none focus:ring-2 focus:ring-accent-primary',
-						theme === value
-							? 'bg-accent-primary text-white shadow-md'
-							: 'text-text-secondary hover:text-text-primary'
-					)}
 					aria-label={label}
 					title={label}
 				>
 					<Icon className="w-4 h-4" />
-				</button>
+				</ToggleItem>
 			))}
-		</div>
+		</ToggleGroup>
 	);
 }
