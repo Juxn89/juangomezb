@@ -9,9 +9,9 @@
 	},
 	"hero": {
 		"greeting": "Hi, I'm",
-		"name": "Juan Gomez",
+		"name": "Juan Gómez",
 		"title": "Senior Software Engineer",
-		"description": "Building scalable, modern web applications with cutting-edge technologies. Passionate about creating exceptional user experiences and solving complex problems.",
+		"description": "15+ years of experience modernizing legacy systems and building scalable fullstack solutions. Expert in .NET, JavaScript, TypeScript, React, Angular, Node.js, AWS, and Azure.",
 		"cta": {
 			"primary": "View Projects",
 			"secondary": "Contact Me"
@@ -20,8 +20,22 @@
 	"about": {
 		"title": "About Me",
 		"subtitle": "Get to know me better",
-		"bio": "I'm a Senior Software Engineer with extensive experience in building modern web applications. I specialize in React, Next.js, and TypeScript, with a passion for creating performant and accessible user interfaces.",
-		"downloadCV": "Download CV"
+		"bio": "Senior Software Engineer with 15+ years of experience modernizing legacy systems and building scalable fullstack solutions in multinational settings. Proven leader delivering high-availability (>99.9%) and performance gains (+35%) in critical projects. Skilled in agile, CI/CD, and team leadership.",
+		"bioTitle": "Professional Summary",
+		"downloadCV": "Download CV",
+		"skillsTitle": "Technical Skills",
+		"expertiseTitle": "Areas of Expertise",
+		"stats": {
+			"years": "Years Experience",
+			"projects": "Projects Delivered",
+			"availability": "Uptime",
+			"performance": "Performance Gain"
+		},
+		"expertise": {
+			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",
+			"backend": "Scalable server-side solutions with .NET, Node.js, and SQL databases. Experience with RESTful APIs, microservices, and data processing.",
+			"cloud": "Cloud infrastructure on AWS and Azure. Proficient in Docker, CI/CD pipelines, and DevOps practices for high-availability systems."
+		}
 	},
 	"projects": {
 		"title": "Projects",
@@ -57,7 +71,7 @@
 	},
 	"footer": {
 		"name": "Juan Carlos Gómez",
-		"tagline": "Software Engineer • Managua, Nicaragua",
+		"tagline": "Senior Software Engineer • Managua, Nicaragua",
 		"rights": "All rights reserved",
 		"madeWith": "Made with ❤️, 🤖 & ☕"
 	},

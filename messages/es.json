@@ -9,9 +9,9 @@
 	},
 	"hero": {
 		"greeting": "Hola, soy",
-		"name": "Juan Gomez",
+		"name": "Juan Gómez",
 		"title": "Ingeniero de Software Senior",
-		"description": "Construyendo aplicaciones web modernas y escalables con tecnologías de vanguardia. Apasionado por crear experiencias de usuario excepcionales y resolver problemas complejos.",
+		"description": "15+ años de experiencia modernizando sistemas legacy y construyendo soluciones fullstack escalables. Experto en .NET, JavaScript, TypeScript, React, Angular, Node.js, AWS y Azure.",
 		"cta": {
 			"primary": "Ver Proyectos",
 			"secondary": "Contáctame"
@@ -20,8 +20,22 @@
 	"about": {
 		"title": "Acerca de Mí",
 		"subtitle": "Conóceme mejor",
-		"bio": "Soy un Ingeniero de Software Senior con amplia experiencia en la construcción de aplicaciones web modernas. Me especializo en React, Next.js y TypeScript, con pasión por crear interfaces de usuario eficientes y accesibles.",
-		"downloadCV": "Descargar CV"
+		"bio": "Ingeniero de Software Senior con 15+ años de experiencia modernizando sistemas legacy y construyendo soluciones fullstack escalables en entornos multinacionales. Líder comprobado entregando alta disponibilidad (>99.9%) y mejoras de rendimiento (+35%) en proyectos críticos. Experto en metodologías ágiles, CI/CD y liderazgo de equipos.",
+		"bioTitle": "Resumen Profesional",
+		"downloadCV": "Descargar CV",
+		"skillsTitle": "Habilidades Técnicas",
+		"expertiseTitle": "Áreas de Especialización",
+		"stats": {
+			"years": "Años de Experiencia",
+			"projects": "Proyectos Entregados",
+			"availability": "Disponibilidad",
+			"performance": "Mejora de Rendimiento"
+		},
+		"expertise": {
+			"frontend": "Aplicaciones web modernas con React, Next.js, TypeScript y Angular. Experiencia en construcción de interfaces responsivas, accesibles y de alto rendimiento.",
+			"backend": "Soluciones escalables del lado del servidor con .NET, Node.js y bases de datos SQL. Experiencia con APIs RESTful, microservicios y procesamiento de datos.",
+			"cloud": "Infraestructura cloud en AWS y Azure. Experto en Docker, pipelines CI/CD y prácticas DevOps para sistemas de alta disponibilidad."
+		}
 	},
 	"projects": {
 		"title": "Proyectos",
@@ -57,7 +71,7 @@
 	},
 	"footer": {
 		"name": "Juan Carlos Gómez",
-		"tagline": "Ingeniero de Software • Managua, Nicaragua",
+		"tagline": "Ingeniero de Software Senior • Managua, Nicaragua",
 		"rights": "Todos los derechos reservados",
 		"madeWith": "Hecho con ❤️, 🤖 y ☕"
 	},
