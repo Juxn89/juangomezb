@@ -71,9 +71,9 @@ export function Footer() {
 					
 					{/* Decorative Line */}
 					<div className="mt-6 flex items-center justify-center gap-3">
-						<div className="h-px w-12 bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent" />
+						<div className="h-px w-12 bg-linear-to-r from-transparent via-accent-primary/50 to-transparent" />
 						<div className="w-1.5 h-1.5 rounded-full bg-accent-primary/70" />
-						<div className="h-px w-12 bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent" />
+						<div className="h-px w-12 bg-linear-to-r from-transparent via-accent-primary/50 to-transparent" />
 					</div>
 				</div>
 
@@ -107,7 +107,7 @@ export function Footer() {
 				</div>
 
 				{/* Divider */}
-				<div className="mt-12 mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+				<div className="mt-12 mb-8 h-px bg-linear-to-r from-transparent via-border to-transparent" />
 
 				{/* Copyright & Made With */}
 				<div className="text-center space-y-3">

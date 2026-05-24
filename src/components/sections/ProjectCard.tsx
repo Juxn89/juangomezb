@@ -58,7 +58,7 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 			{/* Project Card */}
 			<div className="relative h-full rounded-2xl border border-border bg-bg-secondary p-6 transition-all duration-300 hover:border-accent-primary/50 hover:shadow-2xl hover:shadow-accent-primary/10 hover:-translate-y-1">
 				{/* Gradient overlay on hover */}
-				<div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+				<div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 				<div className="relative z-10">
 					{/* Project Header */}
@@ -81,7 +81,7 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 									viewport={{once: true}}
 									className="flex items-start gap-2"
 								>
-									<CheckCircle2 className="w-4 h-4 text-accent-secondary mt-0.5 flex-shrink-0" />
+										<CheckCircle2 className="w-4 h-4 text-accent-secondary mt-0.5 shrink-0" />
 									<span className="text-sm text-text-secondary">{highlight}</span>
 								</motion.div>
 							))}

@@ -122,7 +122,7 @@ export function AboutSection() {
 						variants={itemVariants}
 						className={cn(
 							'p-8 rounded-2xl mb-16',
-							'bg-gradient-to-br from-bg-secondary to-bg-primary',
+							'bg-linear-to-br from-bg-secondary to-bg-primary',
 							'border border-border',
 							'shadow-lg'
 						)}

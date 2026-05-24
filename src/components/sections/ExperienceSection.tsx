@@ -59,7 +59,7 @@ export function ExperienceSection() {
 				{/* Timeline */}
 				<div className="relative">
 					{/* Vertical line - hidden on mobile, shown on md+ */}
-					<div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-accent1 via-accent2 to-accent3 md:block" />
+					<div className="absolute left-8 top-0 hidden h-full w-0.5 bg-linear-to-b from-accent1 via-accent2 to-accent3 md:block" />
 
 					{/* Jobs */}
 				<div className="space-y-8">

@@ -95,6 +95,7 @@ export function generateSEOMetadata({
 				{url: '/favicon.svg', type: 'image/svg+xml'},
 			],
 			shortcut: '/favicon.svg',
+			apple: '/apple-touch-icon.png',
 		},
 	};
 }

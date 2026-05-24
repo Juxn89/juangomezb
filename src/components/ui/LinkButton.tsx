@@ -37,7 +37,7 @@ export function LinkButton({
 			whileTap={{scale: 0.95}}
 			className={`${baseClasses} ${variantClasses[variant]} ${className}`}
 		>
-			{icon && <span className="w-4 h-4 flex-shrink-0">{icon}</span>}
+			{icon && <span className="w-4 h-4 shrink-0">{icon}</span>}
 			<span className="whitespace-nowrap">{children}</span>
 		</motion.a>
 	);

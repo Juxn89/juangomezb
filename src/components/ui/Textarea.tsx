@@ -29,7 +29,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						'placeholder:text-text-secondary',
 						'transition-all duration-200',
 						'disabled:opacity-50 disabled:cursor-not-allowed',
-						'resize-y min-h-[100px]',
+					'resize-y min-h-25',
 						error && 'border-error focus:ring-error',
 						className
 					)}
