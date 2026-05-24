@@ -92,9 +92,8 @@ export function generateSEOMetadata({
 		icons: {
 			icon: [
 				{url: '/favicon.svg', type: 'image/svg+xml'},
-				{url: '/favicon.ico', sizes: 'any'},
 			],
-			apple: '/apple-touch-icon.png',
+			shortcut: '/favicon.svg',
 		},
 	};
 }
@@ -102,7 +101,7 @@ export function generateSEOMetadata({
 /**
  * Generate JSON-LD structured data for Person schema
  */
-export function generatePersonSchema(locale: 'en' | 'es') {
+export function generatePersonSchema(_locale: 'en' | 'es') {
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
 
 	return {
@@ -111,13 +110,13 @@ export function generatePersonSchema(locale: 'en' | 'es') {
 		name: 'Juan Carlos Gómez Bermúdez',
 		alternateName: 'Juan Gomez',
 		url: baseUrl,
-		image: `${baseUrl}/images/profile.jpg`,
+		image: `${baseUrl}/images/profile_photo.png`,
 		jobTitle: 'Senior Software Engineer',
 		worksFor: {
 			'@type': 'Organization',
 			name: 'Freelance',
 		},
-		email: 'contact@juangomez.dev',
+		email: 'gb.jc@outlook.com',
 		address: {
 			'@type': 'PostalAddress',
 			addressLocality: 'Managua',
@@ -125,7 +124,7 @@ export function generatePersonSchema(locale: 'en' | 'es') {
 		},
 		sameAs: [
 			'https://github.com/juxn89',
-			'https://linkedin.com/in/juan-carlos-gomez',
+			'https://www.linkedin.com/in/jcgomez89/',
 			'https://twitter.com/juxn89',
 		],
 		knowsAbout: [
@@ -180,7 +179,7 @@ export function generateWebSiteSchema(locale: 'en' | 'es') {
  */
 export function generateBreadcrumbSchema(
 	items: Array<{name: string; url: string}>,
-	locale: 'en' | 'es'
+	_locale: 'en' | 'es'
 ) {
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
 
