@@ -23,7 +23,8 @@ export function generateSEOMetadata({
 }: SEOProps): Metadata {
 	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
 	const url = `${baseUrl}/${locale}${path}`;
-	const fullTitle = title.includes('Senior Software Engineer') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
+	// Avoid duplicating if title already includes full name and "Portfolio"
+	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
 
 	return {
 		title: fullTitle,

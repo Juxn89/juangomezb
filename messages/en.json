@@ -102,7 +102,7 @@
 	"hero": {
 		"greeting": "Hi, I'm",
 		"name": "Juan Gómez",
-		"title": "Senior Software Engineer",
+		"title": "Juan Gómez - Software Engineer - Portfolio",
 		"description": "15+ years of experience modernizing legacy systems and building scalable fullstack solutions. Expert in .NET, JavaScript, TypeScript, React, Angular, Node.js, AWS, and Azure.",
 		"cta": {
 			"primary": "View Projects",
