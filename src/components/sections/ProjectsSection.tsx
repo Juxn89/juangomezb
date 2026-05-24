@@ -38,7 +38,7 @@ export async function ProjectsSection() {
 				<div className="mb-16 text-center">
 					<div className="inline-flex items-center gap-2 rounded-full bg-accent-primary/10 px-4 py-2 mb-6">
 						<Sparkles className="w-4 h-4 text-accent-primary" />
-						<span className="text-sm font-bold text-accent-primary">{t('title')}</span>
+						<span className="text-sm font-bold text-text-primary">{t('title')}</span>
 					</div>
 
 					<h2 className="text-4xl font-bold gradient-text mb-4">{t('title')}</h2>

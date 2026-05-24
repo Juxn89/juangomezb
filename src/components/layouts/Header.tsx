@@ -5,9 +5,14 @@ import {useTranslations} from 'next-intl';
 import {Link} from '@/routing';
 import {LocaleSwitcher} from '@/components/ui/LocaleSwitcher';
 import {ThemeToggle} from '@/components/ui/ThemeToggle';
-import {MobileMenu} from './MobileMenu';
+import dynamic from 'next/dynamic';
 import {Menu} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+
+// Lazy load MobileMenu - only loads when needed (mobile devices)
+const MobileMenu = dynamic(() => import('./MobileMenu').then(mod => ({default: mod.MobileMenu})), {
+	ssr: false,
+});
 
 const navigation = [
 	{key: 'home', href: '#home'},

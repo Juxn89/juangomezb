@@ -65,7 +65,7 @@ export function Footer() {
 					<h3 className="text-3xl md:text-4xl font-bold gradient-text mb-3">
 						{tFooter('name')}
 					</h3>
-					<p className="text-sm md:text-base text-text-secondary/80">
+					<p className="text-sm md:text-base text-text-secondary/90">
 						{tFooter('tagline')}
 					</p>
 					
@@ -111,10 +111,10 @@ export function Footer() {
 
 				{/* Copyright & Made With */}
 				<div className="text-center space-y-3">
-					<p className="text-sm text-text-secondary/80">
+					<p className="text-sm text-text-secondary/90">
 						© {currentYear} {tFooter('name')}. {tFooter('rights')}
 					</p>
-					<p className="text-xs text-text-secondary/60 font-medium">
+					<p className="text-xs text-text-secondary/90 font-medium">
 						{tFooter('madeWith')}
 					</p>
 				</div>

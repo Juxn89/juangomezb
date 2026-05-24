@@ -60,7 +60,7 @@ export function LocaleSwitcher() {
 								baseClasses,
 								'bg-accent-primary text-white shadow-md cursor-default'
 							)}
-							aria-current="true"
+							aria-current={true}
 						>
 							<span className="text-base">{flag}</span>
 							<span className="font-semibold">{value.toUpperCase()}</span>

@@ -28,7 +28,7 @@ html {
 	
 	/* Text Colors (Light Mode) */
 	--color-text-primary: 26 29 41; /* #1A1D29 - casi negro azulado */
-	--color-text-secondary: 100 116 139; /* #64748B - gris azulado */
+	--color-text-secondary: 71 85 105; /* #475569 - gris azulado más oscuro para mejor contraste (WCAG AA) */
 	
 	/* Accent Colors (Light Mode) */
 	--color-accent-primary: 255 107 53; /* #FF6B35 - naranja coral */

@@ -83,7 +83,7 @@ export function HeroSection() {
 			>
 				{/* Greeting */}
 				<motion.div variants={itemVariants} className="mb-4">
-					<span className="inline-block px-4 py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-sm font-medium text-accent-primary">
+					<span className="inline-block px-4 py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-sm font-medium text-text-primary">
 						{t('greeting')}
 					</span>
 				</motion.div>
@@ -163,7 +163,7 @@ export function HeroSection() {
 					transition={{delay: 1.5, duration: 0.6}}
 					className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
 				>
-					<a href="#about" onClick={(e) => handleScroll(e, 'about')}>
+				<a href="#about" onClick={(e) => handleScroll(e, 'about')} aria-label="Scroll to About section">
 						<motion.div
 							animate={{y: [0, 10, 0]}}
 							transition={{duration: 1.5, repeat: Infinity, ease: 'easeInOut'}}
