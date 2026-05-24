@@ -136,63 +136,80 @@
 		"jobs": [
 			{
 				"id": 1,
-				"company": "TechCorp Solutions",
-				"position": "Ingeniero de Software Senior",
-				"period": "2020 - Presente",
-				"location": "Managua, Nicaragua",
-				"description": "Liderando la modernización de sistemas legacy a arquitecturas cloud-native. Logré una mejora del 35% en rendimiento y 99.9% de disponibilidad en aplicaciones críticas.",
+				"company": "The Stepstone Group",
+				"position": "Ingeniero de Software",
+				"period": "Ene 2022 - Presente",
+				"location": "Reino Unido",
+				"description": "Líder técnico y desarrollador para plataformas digitales de reclutamiento en 6 marcas internacionales (Europa, América Central y el Caribe), impactando a millones de usuarios y miles de empresas.",
 				"achievements": [
-					"Migré aplicaciones .NET monolíticas a arquitectura de microservicios en AWS",
-					"Implementé pipelines CI/CD reduciendo el tiempo de despliegue en 60%",
-					"Lideré un equipo de 8 desarrolladores en metodología ágil",
-					"Modernicé frontend con React y Next.js, mejorando la experiencia de usuario"
+					"Implementé arquitecturas modernas con microfrontends, microservicios y colas de mensajería, mejorando la escalabilidad y mantenibilidad del sistema",
+					"Reduje los tiempos de despliegue en aproximadamente 25% mediante automatización y migración a microservicios",
+					"Mejoré la experiencia de usuario y actualicé el look & feel de varias marcas, recibiendo retroalimentación positiva de usuarios y stakeholders",
+					"Resolví bugs críticos, entregué nuevas funcionalidades orientadas al negocio, y actualicé modelos de precios alineados con la estrategia de la empresa",
+					"Aseguré alta disponibilidad y rendimiento de servicios en AWS",
+					"Construyo interfaces de usuario usando ReactJS como desarrollador front-end",
+					"Desarrollo microservicios usando .NET como desarrollador back-end para las diferentes marcas de la empresa",
+					"Creo aplicaciones para ayudar a los buscadores de empleo a encontrar mejores trabajos en varias regiones, como Reino Unido, Alemania, Irlanda, América Central y otras"
 				],
-				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "TypeScript"]
+				"technologies": ["ReactJS", ".NET", "Microservicios", "Microfrontends", "AWS", "Colas de Mensajería"]
 			},
 			{
 				"id": 2,
-				"company": "GlobalBank International",
-				"position": "Desarrollador Fullstack",
-				"period": "2016 - 2020",
-				"location": "Remoto",
-				"description": "Desarrollé y mantuve aplicaciones bancarias críticas sirviendo a millones de usuarios. Enfoque en seguridad, rendimiento y confiabilidad.",
+				"company": "Axxis-Systems",
+				"position": "Desarrollador .NET",
+				"period": "Jun 2020 - Dic 2021",
+				"location": "Nicaragua",
+				"description": "Desarrollé plataformas centrales de seguros para clientes en América Latina y Europa, soportando operaciones de negocio en múltiples países.",
 				"achievements": [
-					"Construí APIs RESTful manejando +10M de transacciones diarias",
-					"Implementé mejores prácticas de seguridad (OAuth2, JWT, encriptación)",
-					"Reduje el tiempo de carga de páginas en 45% mediante optimización",
-					"Mentoré desarrolladores junior y realicé revisiones de código"
+					"Mejoré la eficiencia operacional en aproximadamente 15% y reduje significativamente procesos manuales mediante automatización y mejoras del sistema",
+					"Mejoré la usabilidad de la plataforma y reduje los tiempos de carga en alrededor de 20% usando ExtJS y técnicas de optimización de rendimiento",
+					"Responsable de la corrección de bugs y el desarrollo de nuevas funcionalidades críticas para el negocio, asegurando la confiabilidad del sistema y mejora continua",
+					"Diseñé e implementé cálculos para pólizas de seguros, manejando grandes conjuntos de datos y reglas de negocio complejas",
+					"Colaboré con equipos multifuncionales para entregar soluciones escalables y amigables alineadas con las necesidades del cliente"
 				],
-				"technologies": [".NET", "Angular", "SQL Server", "Azure", "C#"]
+				"technologies": ["ExtJS", "JavaScript", ".NET", "Optimización de Rendimiento", "Automatización"]
 			},
 			{
 				"id": 3,
-				"company": "InnovateTech Startup",
-				"position": "Desarrollador de Software",
-				"period": "2012 - 2016",
-				"location": "Managua, Nicaragua",
-				"description": "Desarrollo full-stack de aplicaciones web empresariales. Trabajé en proyectos variados en diferentes industrias incluyendo e-commerce, salud y logística.",
+				"company": "INIFOM",
+				"position": "Líder de Equipo",
+				"period": "Abr 2017 - Jun 2020",
+				"location": "Nicaragua",
+				"description": "Desarrollé y mantuve soluciones de software para las 153 municipalidades de Nicaragua, soportando operaciones críticas del sector público con tecnologías .NET.",
 				"achievements": [
-					"Desarrollé plataforma de e-commerce procesando +$2M en ingresos anuales",
-					"Creé suite de pruebas automatizadas mejorando la calidad del código",
-					"Integré pasarelas de pago y APIs de terceros",
-					"Colaboré con diseñadores UX para mejorar las interfaces de usuario"
+					"Lideré la implementación de Team Foundation Server (TFS) como sistema de control de versiones, mejorando la colaboración y gestión del código",
+					"Gestioné servidores e infraestructura, incluyendo IIS, SQL Server, Reporting Services, y administración de TFS",
+					"Migré aplicaciones legacy de ASP.NET a .NET Core, mejorando rendimiento, seguridad y mantenibilidad",
+					"Brindé soporte continuo y actualizaciones para sistemas legacy construidos en VB 6.0, asegurando continuidad del negocio y modernización gradual"
 				],
-				"technologies": [".NET Framework", "JavaScript", "jQuery", "SQL", "HTML/CSS"]
+				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
 			},
 			{
 				"id": 4,
-				"company": "Digital Solutions Agency",
-				"position": "Desarrollador Junior",
-				"period": "2010 - 2012",
-				"location": "Managua, Nicaragua",
-				"description": "Inicié mi carrera construyendo sitios web y aplicaciones pequeñas para negocios locales. Adquirí conocimientos fundamentales en desarrollo de software y mejores prácticas.",
+				"company": "Procuraduría General de la República",
+				"position": "Desarrollador de Software",
+				"period": "Mar 2014 - Abr 2017",
+				"location": "Nicaragua / Panamá",
+				"description": "Lideré el desarrollo e implementación del sistema catastral para los 153 gobiernos municipales a nivel nacional, permitiendo la gestión eficiente de información territorial y de propiedades a escala nacional.",
 				"achievements": [
-					"Entregué +20 proyectos de sitios web para clientes PyME",
-					"Aprendí control de versiones y colaboración en equipo",
-					"Brindé soporte técnico y mantenimiento",
-					"Adquirí rápidamente nuevas habilidades en múltiples tecnologías"
+					"Integré exitosamente el sistema catastral municipal (SISCAT, INIFOM) con el sistema de catastro físico (SISCAF, INETER), permitiendo la administración centralizada y actualizada de propiedades municipales",
+					"Coordiné la migración de datos de contribuyentes desde SISCAT al sistema administrativo financiero (SIAFI) en todas las municipalidades, mejorando la recaudación municipal y la trazabilidad financiera"
 				],
-				"technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]
+				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "Integración de Sistemas"]
+			},
+			{
+				"id": 5,
+				"company": "Alcaldía de Managua",
+				"position": "Desarrollador Web y .NET",
+				"period": "Ene 2010 - Mar 2014",
+				"location": "Nicaragua",
+				"description": "Desarrollé sistemas administrativos y de planificación basados en web para operaciones del gobierno municipal.",
+				"achievements": [
+					"Desarrollé el Sistema de Planificación Estratégica como aplicación web usando ASP MVC, permitiendo la gestión centralizada y accesible de planes institucionales",
+					"Lideré el desarrollo e implementación del Sistema de Formulación de Proyectos en plataforma web (ASP MVC), agilizando la creación, evaluación y monitoreo de proyectos institucionales",
+					"Gestioné la migración exitosa del Sistema de Formulación de Proyectos desde un entorno de escritorio a una solución basada en web, mejorando la accesibilidad, colaboración y escalabilidad para los usuarios"
+				],
+				"technologies": ["ASP MVC", ".NET", "Desarrollo Web"]
 			}
 		]
 	},

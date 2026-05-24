@@ -136,63 +136,80 @@
 		"jobs": [
 			{
 				"id": 1,
-				"company": "TechCorp Solutions",
-				"position": "Senior Software Engineer",
-				"period": "2020 - Present",
-				"location": "Managua, Nicaragua",
-				"description": "Leading the modernization of legacy systems to cloud-native architectures. Achieved 35% performance improvement and 99.9% uptime in critical applications.",
+				"company": "The Stepstone Group",
+				"position": "Software Engineer",
+				"period": "Jan 2022 - Present",
+				"location": "United Kingdom",
+				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands (Europe, Central America, and the Caribbean), impacting millions of users and thousands of companies.",
 				"achievements": [
-					"Migrated monolithic .NET applications to microservices architecture on AWS",
-					"Implemented CI/CD pipelines reducing deployment time by 60%",
-					"Led a team of 8 developers in agile methodology",
-					"Modernized frontend with React and Next.js, improving user experience"
+					"Implemented modern architectures with microfrontends, microservices, and messaging queues, improving system scalability and maintainability",
+					"Reduced deployment times by approximately 25% through automation and migration to microservices",
+					"Enhanced user experience and updated the look & feel for several brands, receiving positive feedback from users and stakeholders",
+					"Resolved critical bugs, delivered new business-driven features, and updated pricing models to align with company strategy",
+					"Ensured high availability and performance of services on AWS",
+					"Build user interfaces using ReactJS as a front-end developer",
+					"Develop microservices using .NET as a back-end developer for the company's different brands",
+					"Create applications to help jobseekers find better jobs in various regions, such as the UK, Germany, Ireland, Central America, and others"
 				],
-				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "TypeScript"]
+				"technologies": ["ReactJS", ".NET", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
 			},
 			{
 				"id": 2,
-				"company": "GlobalBank International",
-				"position": "Fullstack Developer",
-				"period": "2016 - 2020",
-				"location": "Remote",
-				"description": "Developed and maintained critical banking applications serving millions of users. Focused on security, performance, and reliability.",
+				"company": "Axxis-Systems",
+				"position": ".NET Developer",
+				"period": "Jun 2020 - Dec 2021",
+				"location": "Nicaragua",
+				"description": "Developed core insurance platforms for clients in Latin America and Europe, supporting business operations across multiple countries.",
 				"achievements": [
-					"Built RESTful APIs handling 10M+ daily transactions",
-					"Implemented security best practices (OAuth2, JWT, encryption)",
-					"Reduced page load time by 45% through optimization",
-					"Mentored junior developers and conducted code reviews"
+					"Improved operational efficiency by approximately 15% and significantly reduced manual processes through automation and system enhancements",
+					"Enhanced platform usability and reduced load times by around 20% using ExtJS and performance optimization techniques",
+					"Responsible for bug fixing and the development of new business-critical features, ensuring system reliability and continuous improvement",
+					"Designed and implemented calculations for insurance policies, handling large datasets and complex business rules",
+					"Collaborated with cross-functional teams to deliver scalable, user-friendly solutions aligned with client needs"
 				],
-				"technologies": [".NET", "Angular", "SQL Server", "Azure", "C#"]
+				"technologies": ["ExtJS", "JavaScript", ".NET", "Performance Optimization", "Automation"]
 			},
 			{
 				"id": 3,
-				"company": "InnovateTech Startup",
-				"position": "Software Developer",
-				"period": "2012 - 2016",
-				"location": "Managua, Nicaragua",
-				"description": "Full-stack development of enterprise web applications. Worked on various projects across different industries including e-commerce, healthcare, and logistics.",
+				"company": "INIFOM",
+				"position": "Team Leader",
+				"period": "Apr 2017 - Jun 2020",
+				"location": "Nicaragua",
+				"description": "Developed and maintained software solutions for all 153 municipalities across Nicaragua, supporting critical public sector operations with .NET technologies.",
 				"achievements": [
-					"Developed e-commerce platform processing $2M+ in annual revenue",
-					"Created automated testing suite improving code quality",
-					"Integrated payment gateways and third-party APIs",
-					"Collaborated with UX designers to improve user interfaces"
+					"Led the implementation of Team Foundation Server (TFS) as the version control system, improving collaboration and code management",
+					"Managed servers and infrastructure, including IIS, SQL Server, Reporting Services, and TFS administration",
+					"Migrated legacy ASP.NET applications to .NET Core, enhancing performance, security, and maintainability",
+					"Provided ongoing support and updates for legacy systems built in VB 6.0, ensuring business continuity and gradual modernization"
 				],
-				"technologies": [".NET Framework", "JavaScript", "jQuery", "SQL", "HTML/CSS"]
+				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
 			},
 			{
 				"id": 4,
-				"company": "Digital Solutions Agency",
-				"position": "Junior Developer",
-				"period": "2010 - 2012",
-				"location": "Managua, Nicaragua",
-				"description": "Started my career building websites and small applications for local businesses. Gained foundational knowledge in software development and best practices.",
+				"company": "Attorney General's Office",
+				"position": "Software Developer",
+				"period": "Mar 2014 - Apr 2017",
+				"location": "Nicaragua / Panama",
+				"description": "Led the development and implementation of the cadastre system for all 153 municipal governments nationwide, enabling efficient management of territorial and property information at a national scale.",
 				"achievements": [
-					"Delivered 20+ website projects for SMB clients",
-					"Learned version control and team collaboration",
-					"Provided technical support and maintenance",
-					"Rapidly acquired new skills in multiple technologies"
+					"Successfully integrated the municipal cadastral system (SISCAT, INIFOM) with the physical cadastre system (SISCAF, INETER), allowing centralized and up-to-date administration of municipal properties",
+					"Coordinated the migration of taxpayer data from SISCAT to the financial administrative system (SIAFI) across all municipalities, improving municipal revenue collection and financial traceability"
 				],
-				"technologies": ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]
+				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "System Integration"]
+			},
+			{
+				"id": 5,
+				"company": "Managua's Town Hall",
+				"position": "Web and .NET Developer",
+				"period": "Jan 2010 - Mar 2014",
+				"location": "Nicaragua",
+				"description": "Developed web-based administrative and planning systems for municipal government operations.",
+				"achievements": [
+					"Developed the Strategic Planning System as a web application using ASP MVC, enabling centralized and accessible management and monitoring of institutional plans",
+					"Led the development and implementation of the Project Formulation System on a web platform (ASP MVC), streamlining the creation, evaluation, and monitoring of institutional projects",
+					"Managed the successful migration of the Project Formulation System from a desktop environment to a web-based solution, enhancing accessibility, collaboration, and scalability for users"
+				],
+				"technologies": ["ASP MVC", ".NET", "Web Development"]
 			}
 		]
 	},
