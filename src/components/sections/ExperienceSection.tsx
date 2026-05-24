@@ -113,11 +113,11 @@ export function ExperienceSection() {
 									>
 										{/* Gradient border on hover */}
 										<div className="absolute inset-0 -z-10 opacity-0 transition-opacity group-hover:opacity-100">
-											<div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent1/20 via-accent2/20 to-accent3/20 blur-xl" />
+											<div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent1/20 via-accent2/20 to-accent3/20 blur-xl" />
 										</div>
 
 										{/* Header */}
-									<div className="mb-3">
+										<div className="mb-3">
 										<div className="mb-2 flex flex-wrap items-start justify-between gap-3">
 											<div>
 												<h3 className="text-xl font-bold text-text-primary md:text-2xl">
@@ -175,7 +175,7 @@ export function ExperienceSection() {
 															delay: index * 0.1 + i * 0.05,
 														}}
 													>
-														<CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent2" />
+														<CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent2" />
 														<span>{achievement}</span>
 													</motion.li>
 												))}
