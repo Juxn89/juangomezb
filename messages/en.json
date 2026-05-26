@@ -126,10 +126,10 @@
 		"skillsTitle": "Technical Skills",
 		"expertiseTitle": "Areas of Expertise",
 		"stats": {
-			"years": "Years of Experience",
-			"companies": "International Companies",
-			"reach": "Municipalities Impacted",
-			"scope": "Countries Reached"
+			"experience": "Years Experience",
+			"users": "Users Impacted",
+			"role": "Professional Role",
+			"principle": "Core Principle"
 		},
 		"expertise": {
 			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",

@@ -42,10 +42,10 @@ export function AboutSection() {
 	];
 
 	const stats = [
-		{label: t('stats.years'), value: '15+'},
-		{label: t('stats.companies'), value: '6'},
-		{label: t('stats.reach'), value: '153'},
-		{label: t('stats.scope'), value: '8+'},
+		{label: t('stats.experience'), value: '15+'},
+		{label: t('stats.users'), value: '500K+'},
+		{label: t('stats.role'), value: 'Architect'},
+		{label: t('stats.principle'), value: 'Scalable'},
 	];
 
 	const containerVariants = {
