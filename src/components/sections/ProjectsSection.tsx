@@ -41,7 +41,7 @@ export async function ProjectsSection() {
 						<span className="text-sm font-bold text-text-primary">{t('title')}</span>
 					</div>
 
-					<h2 className="text-4xl font-bold gradient-text mb-4">{t('title')}</h2>
+					<h2 className="text-4xl font-bold gradient-text mb-4 pb-1 leading-tight">{t('title')}</h2>
 					<p className="text-lg text-text-secondary max-w-2xl mx-auto">{t('subtitle')}</p>
 				</div>
 

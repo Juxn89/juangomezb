@@ -24,7 +24,7 @@ export function ContactSection() {
 					viewport={{once: true}}
 					className="mb-16 text-center"
 				>
-					<h2 className="text-4xl font-bold gradient-text mb-4">
+					<h2 className="text-4xl font-bold gradient-text mb-4 pb-1 leading-tight">
 						{t('title')}
 					</h2>
 					<p className="text-lg text-text-secondary max-w-2xl mx-auto">

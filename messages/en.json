@@ -4,6 +4,7 @@
 		"about": "About",
 		"experience": "Experience",
 		"projects": "Projects",
+		"blog": "Blog",
 		"contact": "Contact"
 	},
 	"projects": {
@@ -103,7 +104,14 @@
 		"greeting": "Hi, I'm",
 		"name": "Juan Gómez",
 		"title": "Juan Gómez - Software Engineer - Portfolio",
-		"description": "15+ years of experience modernizing legacy systems and building scalable fullstack solutions. Expert in .NET, JavaScript, TypeScript, React, Angular, Node.js, AWS, and Azure.",
+		"roles": [
+			"Software Engineer",
+			"Backend Developer",
+			"Frontend Developer",
+			"Full Stack Developer",
+			"AI Developer"
+		],
+		"description": "Building enterprise-grade applications for international companies and public sector. Expert in full-stack development, cloud architecture, and team leadership.",
 		"cta": {
 			"primary": "View Projects",
 			"secondary": "Contact Me"
@@ -118,10 +126,10 @@
 		"skillsTitle": "Technical Skills",
 		"expertiseTitle": "Areas of Expertise",
 		"stats": {
-			"years": "Years Experience",
-			"projects": "Projects Delivered",
-			"availability": "Uptime",
-			"performance": "Performance Gain"
+			"years": "Years of Experience",
+			"companies": "International Companies",
+			"reach": "Municipalities Impacted",
+			"scope": "Countries Reached"
 		},
 		"expertise": {
 			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",

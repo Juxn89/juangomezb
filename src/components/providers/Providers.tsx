@@ -13,7 +13,11 @@ type ProvidersProps = {
 export function Providers({children, messages, locale}: ProvidersProps) {
 	return (
 		<ThemeProvider>
-			<NextIntlClientProvider messages={messages} locale={locale}>
+			<NextIntlClientProvider 
+				messages={messages} 
+				locale={locale}
+				timeZone="America/Managua"
+			>
 				{children}
 			</NextIntlClientProvider>
 		</ThemeProvider>

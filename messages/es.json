@@ -4,6 +4,7 @@
 		"about": "Acerca de",
 		"experience": "Experiencia",
 		"projects": "Proyectos",
+		"blog": "Blog",
 		"contact": "Contacto"
 	},
 	"projects": {
@@ -103,7 +104,14 @@
 		"greeting": "Hola, soy",
 		"name": "Juan Gómez",
 		"title": "Juan Gómez - Ingeniero de Software - Portfolio",
-		"description": "15+ años de experiencia modernizando sistemas legacy y construyendo soluciones fullstack escalables. Experto en .NET, JavaScript, TypeScript, React, Angular, Node.js, AWS y Azure.",
+		"roles": [
+			"Ingeniero de Software",
+			"Desarrollador Backend",
+			"Desarrollador Frontend",
+			"Desarrollador Full Stack",
+			"Desarrollador IA"
+		],
+		"description": "Construyendo aplicaciones de nivel empresarial para compañías internacionales y sector público. Experto en desarrollo full-stack, arquitectura cloud y liderazgo de equipos.",
 		"cta": {
 			"primary": "Ver Proyectos",
 			"secondary": "Contáctame"
@@ -119,9 +127,9 @@
 		"expertiseTitle": "Áreas de Especialización",
 		"stats": {
 			"years": "Años de Experiencia",
-			"projects": "Proyectos Entregados",
-			"availability": "Disponibilidad",
-			"performance": "Mejora de Rendimiento"
+			"companies": "Empresas Internacionales",
+			"reach": "Municipalidades Impactadas",
+			"scope": "Países Alcanzados"
 		},
 		"expertise": {
 			"frontend": "Aplicaciones web modernas con React, Next.js, TypeScript y Angular. Experiencia en construcción de interfaces responsivas, accesibles y de alto rendimiento.",

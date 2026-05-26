@@ -40,9 +40,9 @@ export function AboutSection() {
 
 	const stats = [
 		{label: t('stats.years'), value: '15+'},
-		{label: t('stats.projects'), value: '50+'},
-		{label: t('stats.availability'), value: '99.9%'},
-		{label: t('stats.performance'), value: '+35%'},
+		{label: t('stats.companies'), value: '6'},
+		{label: t('stats.reach'), value: '153'},
+		{label: t('stats.scope'), value: '8+'},
 	];
 
 	const containerVariants = {
@@ -82,7 +82,7 @@ export function AboutSection() {
 				>
 					{/* Header */}
 					<motion.div variants={itemVariants} className="text-center mb-16">
-						<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4">
+					<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold gradient-text mb-4 pb-1 leading-tight">
 							{t('title')}
 						</h2>
 						<p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
@@ -107,7 +107,7 @@ export function AboutSection() {
 									'transition-colors duration-300'
 								)}
 							>
-								<div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+								<div className="text-3xl md:text-4xl font-bold gradient-text mb-2 pb-1 leading-tight">
 									{stat.value}
 								</div>
 								<div className="text-sm text-text-secondary">

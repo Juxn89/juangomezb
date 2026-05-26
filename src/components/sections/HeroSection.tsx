@@ -91,7 +91,7 @@ export function HeroSection() {
 				{/* Name */}
 				<motion.h1
 					variants={itemVariants}
-					className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
+					className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 pb-1 leading-tight"
 				>
 					<span className="gradient-text">{t('name')}</span>
 				</motion.h1>
