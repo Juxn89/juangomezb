@@ -27,7 +27,7 @@ export default function NotFound() {
 			transition: {
 				delay: i * 0.1,
 				duration: 0.8,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1] as const,
 			},
 		}),
 	};
@@ -40,7 +40,7 @@ export default function NotFound() {
 			y: 0,
 			transition: {
 				duration: 1,
-				ease: 'easeOut',
+				ease: [0, 0, 0.58, 1] as const,
 			},
 		},
 	};

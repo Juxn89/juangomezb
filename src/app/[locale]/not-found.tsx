@@ -29,7 +29,7 @@ export default function NotFound() {
 			transition: {
 				delay: i * 0.1,
 				duration: 0.8,
-				ease: [0.22, 1, 0.36, 1],
+				ease: [0.22, 1, 0.36, 1] as const,
 			},
 		}),
 	};
@@ -42,7 +42,7 @@ export default function NotFound() {
 			y: 0,
 			transition: {
 				duration: 1,
-				ease: 'easeOut',
+				ease: [0, 0, 0.58, 1] as const,
 			},
 		},
 	};
@@ -267,9 +267,9 @@ export default function NotFound() {
 					</motion.a>
 				</motion.div>
 
-				{/* Decorative Bottom Trees */}
+				{/* Decorative Bottom Tech Icons */}
 				<div className="mt-20 flex items-end justify-center gap-8 opacity-10">
-					{[1, 2, 3, 4, 5].map((i) => (
+					{[Terminal, Code, Server, Database, Cpu].map((Icon, i) => (
 						<motion.div
 							key={i}
 							initial={{opacity: 0, y: 20}}
@@ -279,7 +279,7 @@ export default function NotFound() {
 								duration: 0.8,
 							}}
 						>
-							<TreePine
+							<Icon
 								className="text-accent-primary"
 								style={{
 									width: `${40 + i * 8}px`,
