@@ -1,0 +1,265 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"experience": "Experience",
+		"projects": "Projects",
+		"blog": "Blog",
+		"contact": "Contact"
+	},
+	"projects": {
+		"title": "Featured Projects",
+		"subtitle": "Showcasing innovation and technical excellence",
+		"viewDemo": "View Demo",
+		"viewCode": "View Code",
+		"items": [
+			{
+				"id": 1,
+				"title": "Cloud Banking Platform",
+				"description": "Microservices-based banking platform handling 10M+ daily transactions with 99.9% uptime. Migrated from monolithic .NET to cloud-native architecture.",
+				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "PostgreSQL"],
+				"highlights": [
+					"Real-time transaction processing",
+					"OAuth2 & JWT authentication",
+					"Automated CI/CD pipeline"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 2,
+				"title": "E-Commerce Analytics Dashboard",
+				"description": "Real-time analytics platform for e-commerce operations. Processes $2M+ annual revenue with advanced data visualization and reporting.",
+				"technologies": ["TypeScript", "React", "Node.js", "MongoDB", "Redis", "D3.js"],
+				"highlights": [
+					"Real-time data streaming",
+					"Custom visualization charts",
+					"Performance optimization"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 3,
+				"title": "Healthcare Management System",
+				"description": "HIPAA-compliant patient management system for healthcare providers. Streamlined workflows and improved patient care coordination.",
+				"technologies": [".NET", "Angular", "SQL Server", "Azure", "SignalR"],
+				"highlights": [
+					"HIPAA compliance & security",
+					"Real-time notifications",
+					"Electronic health records"
+				],
+				"demoUrl": "#",
+				"featured": false
+			},
+			{
+				"id": 4,
+				"title": "DevOps Automation Suite",
+				"description": "Comprehensive CI/CD automation suite reducing deployment time by 60%. Integrated with AWS, Docker, and Kubernetes.",
+				"technologies": ["Python", "Bash", "Docker", "Kubernetes", "AWS", "Terraform"],
+				"highlights": [
+					"Infrastructure as Code",
+					"Automated testing & deployment",
+					"Monitoring & alerting"
+				],
+				"demoUrl": "#",
+				"featured": false
+			}
+		]
+	},
+	"contact": {
+		"title": "Get In Touch",
+		"subtitle": "Have a project in mind? Let's work together",
+		"info": {
+			"email": "Email",
+			"emailValue": "contact@juangomez.dev",
+			"location": "Location",
+			"locationValue": "Managua, Nicaragua",
+			"availability": "Availability",
+			"availabilityValue": "Open to opportunities"
+		},
+		"form": {
+			"title": "Send a Message",
+			"name": "Your Name",
+			"namePlaceholder": "Juan Carlos Gómez",
+			"email": "Your Email",
+			"emailPlaceholder": "juan@example.com",
+			"message": "Your Message",
+			"messagePlaceholder": "Tell me about your project...",
+			"submit": "Send Message",
+			"sending": "Sending...",
+			"success": "Message sent successfully! I'll get back to you soon.",
+			"error": "Failed to send message. Please try again or email me directly."
+		},
+		"validation": {
+			"nameRequired": "Name is required",
+			"nameMin": "Name must be at least 2 characters",
+			"emailRequired": "Email is required",
+			"emailInvalid": "Please enter a valid email address",
+			"messageRequired": "Message is required",
+			"messageMin": "Message must be at least 10 characters"
+		}
+	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"name": "Juan Gómez",
+		"title": "Juan Gómez - Software Engineer - Portfolio",
+		"roles": [
+			"Software Engineer",
+			"Backend Developer",
+			"Frontend Developer",
+			"Full Stack Developer",
+			"AI Developer"
+		],
+		"description": "Building enterprise-grade applications for international companies and public sector. Expert in full-stack development, cloud architecture, and team leadership.",
+		"cta": {
+			"primary": "View Projects",
+			"secondary": "Contact Me"
+		}
+	},
+	"about": {
+		"title": "About Me",
+		"subtitle": "Get to know me better",
+		"bio": "Senior Software Engineer with 15+ years of experience modernizing legacy systems and building scalable fullstack solutions in multinational settings. Proven leader delivering high-availability (>99.9%) and performance gains (+35%) in critical projects. Skilled in agile, CI/CD, and team leadership.",
+		"bioTitle": "Professional Summary",
+		"downloadCV": "Download CV",
+		"skillsTitle": "Technical Skills",
+		"expertiseTitle": "Areas of Expertise",
+		"stats": {
+			"experience": "Years Experience",
+			"users": "Users Impacted",
+			"role": "Professional Role",
+			"principle": "Core Principle"
+		},
+		"expertise": {
+			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",
+			"backend": "Scalable server-side solutions with .NET, Node.js, and SQL databases. Experience with RESTful APIs, microservices, and data processing.",
+			"cloud": "Cloud infrastructure on AWS and Azure. Proficient in Docker, CI/CD pipelines, and DevOps practices for high-availability systems."
+		}
+	},
+	"experience": {
+		"title": "Experience",
+		"subtitle": "My professional journey",
+		"present": "Present",
+		"jobs": [
+			{
+				"id": 1,
+				"company": "The Stepstone Group",
+				"position": "Software Engineer",
+				"period": "Jan 2022 - Present",
+				"location": "United Kingdom",
+				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands (Europe, Central America, and the Caribbean), impacting millions of users and thousands of companies.",
+				"achievements": [
+					"Implemented modern architectures with microfrontends, microservices, and messaging queues, improving system scalability and maintainability",
+					"Reduced deployment times by approximately 25% through automation and migration to microservices",
+					"Enhanced user experience and updated the look & feel for several brands, receiving positive feedback from users and stakeholders",
+					"Resolved critical bugs, delivered new business-driven features, and updated pricing models to align with company strategy",
+					"Ensured high availability and performance of services on AWS",
+					"Build user interfaces using ReactJS as a front-end developer",
+					"Develop microservices using .NET as a back-end developer for the company's different brands",
+					"Create applications to help jobseekers find better jobs in various regions, such as the UK, Germany, Ireland, Central America, and others"
+				],
+				"technologies": ["ReactJS", ".NET", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
+			},
+			{
+				"id": 2,
+				"company": "Axxis-Systems",
+				"position": ".NET Developer",
+				"period": "Jun 2020 - Dec 2021",
+				"location": "Nicaragua",
+				"description": "Developed core insurance platforms for clients in Latin America and Europe, supporting business operations across multiple countries.",
+				"achievements": [
+					"Improved operational efficiency by approximately 15% and significantly reduced manual processes through automation and system enhancements",
+					"Enhanced platform usability and reduced load times by around 20% using ExtJS and performance optimization techniques",
+					"Responsible for bug fixing and the development of new business-critical features, ensuring system reliability and continuous improvement",
+					"Designed and implemented calculations for insurance policies, handling large datasets and complex business rules",
+					"Collaborated with cross-functional teams to deliver scalable, user-friendly solutions aligned with client needs"
+				],
+				"technologies": ["ExtJS", "JavaScript", ".NET", "Performance Optimization", "Automation"]
+			},
+			{
+				"id": 3,
+				"company": "INIFOM",
+				"position": "Team Leader",
+				"period": "Apr 2017 - Jun 2020",
+				"location": "Nicaragua",
+				"description": "Developed and maintained software solutions for all 153 municipalities across Nicaragua, supporting critical public sector operations with .NET technologies.",
+				"achievements": [
+					"Led the implementation of Team Foundation Server (TFS) as the version control system, improving collaboration and code management",
+					"Managed servers and infrastructure, including IIS, SQL Server, Reporting Services, and TFS administration",
+					"Migrated legacy ASP.NET applications to .NET Core, enhancing performance, security, and maintainability",
+					"Provided ongoing support and updates for legacy systems built in VB 6.0, ensuring business continuity and gradual modernization"
+				],
+				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
+			},
+			{
+				"id": 4,
+				"company": "Attorney General's Office",
+				"position": "Software Developer",
+				"period": "Mar 2014 - Apr 2017",
+				"location": "Nicaragua / Panama",
+				"description": "Led the development and implementation of the cadastre system for all 153 municipal governments nationwide, enabling efficient management of territorial and property information at a national scale.",
+				"achievements": [
+					"Successfully integrated the municipal cadastral system (SISCAT, INIFOM) with the physical cadastre system (SISCAF, INETER), allowing centralized and up-to-date administration of municipal properties",
+					"Coordinated the migration of taxpayer data from SISCAT to the financial administrative system (SIAFI) across all municipalities, improving municipal revenue collection and financial traceability"
+				],
+				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "System Integration"]
+			},
+			{
+				"id": 5,
+				"company": "Managua's Town Hall",
+				"position": "Web and .NET Developer",
+				"period": "Jan 2010 - Mar 2014",
+				"location": "Nicaragua",
+				"description": "Developed web-based administrative and planning systems for municipal government operations.",
+				"achievements": [
+					"Developed the Strategic Planning System as a web application using ASP MVC, enabling centralized and accessible management and monitoring of institutional plans",
+					"Led the development and implementation of the Project Formulation System on a web platform (ASP MVC), streamlining the creation, evaluation, and monitoring of institutional projects",
+					"Managed the successful migration of the Project Formulation System from a desktop environment to a web-based solution, enhancing accessibility, collaboration, and scalability for users"
+				],
+				"technologies": ["ASP MVC", ".NET", "Web Development"]
+			}
+		]
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Thoughts and tutorials",
+		"readMore": "Read More",
+		"readingTime": "{minutes} min read",
+		"publishedOn": "Published on"
+	},
+	"footer": {
+		"name": "Juan Carlos Gómez",
+		"tagline": "Senior Software Engineer • Managua, Nicaragua",
+		"rights": "All rights reserved",
+		"madeWith": "Made with ❤️, 🤖 & ☕"
+	},
+	"theme": {
+		"light": "Light Mode",
+		"dark": "Dark Mode",
+		"system": "System"
+	},
+	"language": {
+		"english": "English",
+		"spanish": "Spanish"
+	},
+	"common": {
+		"loading": "Loading...",
+		"error": "An error occurred",
+		"notFound": "Page not found",
+		"backHome": "Back to Home",
+		"goBack": "Go Back"
+	},
+	"notFound": {
+		"title": "404: Page Not Found",
+		"subtitle": "Houston, we have a problem with this URL",
+		"description": "The page you're trying to reach seems to be in another dimension. It might have been refactored, deprecated, or lost in a merge conflict.",
+		"goBack": "Go Back",
+		"backHome": "Return Home"
+	},
+	"error": {
+		"title": "Oops! Something went wrong",
+		"message": "We encountered an unexpected error. Please try again.",
+		"tryAgain": "Try Again"
+	}
+}

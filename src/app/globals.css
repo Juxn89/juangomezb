@@ -1,57 +1,289 @@
+@import "tailwindcss";
+
+/* ============================================
+   SMOOTH SCROLLING
+   ============================================ */
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 4rem; /* Offset for sticky header */
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+/* ============================================
+   FOREST CODE COLOR PALETTE
+   Natural + tech: emerald green, violet & amber
+   ============================================ */
+
 :root {
-	--dark-blue-1: #00132D;
-	--dark-blue-2: #00193B;
-	--dark-blue-3: #001E45;
-	--dark-blue-4: #002657;
-	--dark-blue-5: #002D67;
-	--dark-blue-6: #00377E;
-
-	/* 
-		https://uicolors.app/create
-		Base Color: #00132D
-	*/
-	--midnight-050: #e9f9ff;
-	--midnight-100: #cef1ff;
-	--midnight-200: #a7e9ff;
-	--midnight-300: #6be0ff;
-	--midnight-400: #26c9ff;
-	--midnight-500: #00a2ff;
-	--midnight-600: #0078ff;
-	--midnight-700: #005dff;
-	--midnight-800: #004fe6;
-	--midnight-900: #0048b3;
-	--midnight-950: #00132d;
-
-	/*
-		https://mycolor.space/?hex=%23171F38&sub=1
-		Base color: #171F38
-	*/
+	/* Background Colors (Light Mode) */
+	--color-bg-primary: 255 254 251; /* #FFFEFB - blanco cálido */
+	--color-bg-secondary: 245 247 244; /* #F5F7F4 - verde muy claro */
 	
-	--base: #171F38;
-	--baseTextColor: #ffffff;
-	--secundary: #E1786B;
+	/* Text Colors (Light Mode) */
+	--color-text-primary: 28 40 38; /* #1C2826 - verde oscuro casi negro */
+	--color-text-secondary: 90 108 99; /* #5A6C63 - verde grisáceo */
+	
+	/* Accent Colors (Light Mode) */
+	--color-accent-primary: 4 120 87; /* #047857 - verde esmeralda */
+	--color-accent-secondary: 124 58 237; /* #7C3AED - violeta vibrante */
+	--color-accent-tertiary: 251 191 36; /* #FBBF24 - ámbar dorado */
+	
+	/* Border & Divider (Light Mode) */
+	--color-border: 209 213 219; /* #D1D5DB */
+	
+	/* Semantic Colors */
+	--color-success: 34 197 94;
+	--color-warning: 234 179 8;
+	--color-error: 239 68 68;
+	--color-info: 59 130 246;
+	
+	/* Shadows */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	--shadow-glow: 0 0 20px rgb(78 205 196 / 0.3);
+	
+	/* Transitions */
+	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	
+	/* Border Radius */
+	--radius-sm: 0.375rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
+	--radius-xl: 1rem;
+	--radius-full: 9999px;
 }
 
-.main-container {
-	/* background-image: linear-gradient(130deg, var(--dark-blue-2), var(--dark-blue-4), var(--dark-blue-6) ); */
-	background-color: var(--base);
-	color: var(--baseTextColor);
-	/* height: 100vh; */
+/* ============================================
+   DARK MODE - FOREST CODE
+   ============================================ */
+
+.dark {
+	/* Background Colors (Dark Mode) */
+	--color-bg-primary: 12 23 19; /* #0C1713 - verde muy oscuro */
+	--color-bg-secondary: 23 36 32; /* #172420 - verde oscuro */
+	
+	/* Text Colors (Dark Mode) */
+	--color-text-primary: 240 253 244; /* #F0FDF4 - blanco verdoso */
+	--color-text-secondary: 156 163 175; /* #9CA3AF - gris claro */
+	
+	/* Accent Colors (Dark Mode) */
+	--color-accent-primary: 16 185 129; /* #10B981 - verde brillante */
+	--color-accent-secondary: 167 139 250; /* #A78BFA - violeta suave */
+	--color-accent-tertiary: 252 211 77; /* #FCD34D - amarillo dorado */
+	
+	/* Border & Divider (Dark Mode) */
+	--color-border: 55 65 81; /* #374151 */
+	
+	/* Shadows (Dark Mode - more subtle) */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+	--shadow-glow: 0 0 30px rgb(94 234 212 / 0.4);
 }
 
-main {
-	display: flex;
-	flex-direction: column;
+/* ============================================
+   THEME CONFIGURATION FOR TAILWIND
+   ============================================ */
+
+@theme inline {
+	/* Background Colors */
+	--color-bg-primary: rgb(var(--color-bg-primary));
+	--color-bg-secondary: rgb(var(--color-bg-secondary));
+	
+	/* Text Colors */
+	--color-text-primary: rgb(var(--color-text-primary));
+	--color-text-secondary: rgb(var(--color-text-secondary));
+	
+	/* Accent Colors */
+	--color-accent-primary: rgb(var(--color-accent-primary));
+	--color-accent-secondary: rgb(var(--color-accent-secondary));
+	--color-accent-tertiary: rgb(var(--color-accent-tertiary));
+	
+	/* Border */
+	--color-border: rgb(var(--color-border));
+	
+	/* Semantic Colors */
+	--color-success: rgb(var(--color-success));
+	--color-warning: rgb(var(--color-warning));
+	--color-error: rgb(var(--color-error));
+	--color-info: rgb(var(--color-info));
 }
 
-@media (prefers-color-scheme: light) {
-	.main-container {		
-	  background-image: linear-gradient(130deg, var(--midnight-050), var(--midnight-100), var(--midnight-200) );
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+	border-color: rgb(var(--color-border));
+}
+
+html {
+	/* Prevent flash during transitions */
+	background-color: rgb(var(--color-bg-primary));
+	transition: background-color 0.15s ease;
+}
+
+html.dark {
+	/* Ensure dark background persists during navigation */
+	background-color: rgb(15 20 25);
+}
+
+body {
+	background-color: transparent;
+	color: rgb(var(--color-text-primary));
+	font-feature-settings: "rlig" 1, "calt" 1;
+	font-synthesis-weight: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Smooth transitions */
+	transition: color 0.15s ease;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.bg-primary {
+	background-color: rgb(var(--color-bg-primary));
+}
+
+.bg-secondary {
+	background-color: rgb(var(--color-bg-secondary));
+}
+
+.text-primary {
+	color: rgb(var(--color-text-primary));
+}
+
+.text-secondary {
+	color: rgb(var(--color-text-secondary));
+}
+
+.text-accent-primary {
+	color: rgb(var(--color-accent-primary));
+}
+
+.text-accent-secondary {
+	color: rgb(var(--color-accent-secondary));
+}
+
+.text-accent-tertiary {
+	color: rgb(var(--color-accent-tertiary));
+}
+
+/* Gradient Utilities */
+.gradient-hero {
+	background: linear-gradient(135deg, rgb(4 120 87) 0%, rgb(124 58 237) 50%, rgb(251 191 36) 100%);
+}
+
+.gradient-card-hover {
+	background: linear-gradient(to bottom right, rgb(4 120 87 / 0.1), rgb(251 191 36 / 0.1));
+}
+
+.gradient-button {
+	background: linear-gradient(to right, rgb(4 120 87), rgb(124 58 237));
+}
+
+.gradient-text {
+	background: linear-gradient(135deg, rgb(4 120 87), rgb(124 58 237), rgb(251 191 36));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Glow Effects */
+.glow-primary {
+	box-shadow: 0 0 20px rgb(4 120 87 / 0.3);
+}
+
+.glow-secondary {
+	box-shadow: 0 0 20px rgb(124 58 237 / 0.3);
+}
+
+.glow-tertiary {
+	box-shadow: 0 0 20px rgb(251 191 36 / 0.3);
+}
+
+/* Dark mode glow effects */
+.dark .glow-primary {
+	box-shadow: 0 0 30px rgb(16 185 129 / 0.4);
+}
+
+.dark .glow-secondary {
+	box-shadow: 0 0 30px rgb(167 139 250 / 0.4);
+}
+
+.dark .glow-tertiary {
+	box-shadow: 0 0 30px rgb(252 211 77 / 0.4);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
-@media (max-width: 600px){
-	.main-container {
-		padding: 0 15px 0 15px;
+.animate-fade-in {
+	animation: fade-in var(--transition-slow) ease-out;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
 	}
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(var(--color-bg-secondary));
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgb(var(--color-accent-primary));
+	border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(var(--color-accent-secondary));
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(var(--color-accent-primary)) rgb(var(--color-bg-secondary));
 }

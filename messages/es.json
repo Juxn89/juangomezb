@@ -1,0 +1,265 @@
+{
+	"nav": {
+		"home": "Inicio",
+		"about": "Acerca de",
+		"experience": "Experiencia",
+		"projects": "Proyectos",
+		"blog": "Blog",
+		"contact": "Contacto"
+	},
+	"projects": {
+		"title": "Proyectos Destacados",
+		"subtitle": "Mostrando innovación y excelencia técnica",
+		"viewDemo": "Ver Demo",
+		"viewCode": "Ver Código",
+		"items": [
+			{
+				"id": 1,
+				"title": "Plataforma Bancaria en la Nube",
+				"description": "Plataforma bancaria basada en microservicios manejando más de 10M transacciones diarias con 99.9% de disponibilidad. Migración de .NET monolítico a arquitectura cloud-native.",
+				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "PostgreSQL"],
+				"highlights": [
+					"Procesamiento en tiempo real",
+					"Autenticación OAuth2 & JWT",
+					"Pipeline CI/CD automatizado"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 2,
+				"title": "Dashboard de Analíticas E-Commerce",
+				"description": "Plataforma de analíticas en tiempo real para operaciones de e-commerce. Procesa más de $2M en ingresos anuales con visualización avanzada de datos.",
+				"technologies": ["TypeScript", "React", "Node.js", "MongoDB", "Redis", "D3.js"],
+				"highlights": [
+					"Streaming de datos en tiempo real",
+					"Gráficos personalizados",
+					"Optimización de rendimiento"
+				],
+				"demoUrl": "#",
+				"featured": true
+			},
+			{
+				"id": 3,
+				"title": "Sistema de Gestión Hospitalaria",
+				"description": "Sistema de gestión de pacientes con cumplimiento HIPAA para proveedores de salud. Flujos optimizados y mejor coordinación del cuidado.",
+				"technologies": [".NET", "Angular", "SQL Server", "Azure", "SignalR"],
+				"highlights": [
+					"Cumplimiento HIPAA y seguridad",
+					"Notificaciones en tiempo real",
+					"Registros médicos electrónicos"
+				],
+				"demoUrl": "#",
+				"featured": false
+			},
+			{
+				"id": 4,
+				"title": "Suite de Automatización DevOps",
+				"description": "Suite completa de automatización CI/CD reduciendo tiempo de despliegue en 60%. Integrada con AWS, Docker y Kubernetes.",
+				"technologies": ["Python", "Bash", "Docker", "Kubernetes", "AWS", "Terraform"],
+				"highlights": [
+					"Infraestructura como Código",
+					"Pruebas y despliegue automático",
+					"Monitoreo y alertas"
+				],
+				"demoUrl": "#",
+				"featured": false
+			}
+		]
+	},
+	"contact": {
+		"title": "Contáctame",
+		"subtitle": "¿Tienes un proyecto en mente? Trabajemos juntos",
+		"info": {
+			"email": "Correo",
+			"emailValue": "contact@juangomez.dev",
+			"location": "Ubicación",
+			"locationValue": "Managua, Nicaragua",
+			"availability": "Disponibilidad",
+			"availabilityValue": "Abierto a oportunidades"
+		},
+		"form": {
+			"title": "Enviar Mensaje",
+			"name": "Tu Nombre",
+			"namePlaceholder": "Juan Carlos Gómez",
+			"email": "Tu Correo",
+			"emailPlaceholder": "juan@ejemplo.com",
+			"message": "Tu Mensaje",
+			"messagePlaceholder": "Cuéntame sobre tu proyecto...",
+			"submit": "Enviar Mensaje",
+			"sending": "Enviando...",
+			"success": "¡Mensaje enviado exitosamente! Te responderé pronto.",
+			"error": "Error al enviar mensaje. Intenta de nuevo o envíame un correo directo."
+		},
+		"validation": {
+			"nameRequired": "El nombre es requerido",
+			"nameMin": "El nombre debe tener al menos 2 caracteres",
+			"emailRequired": "El correo es requerido",
+			"emailInvalid": "Por favor ingresa un correo válido",
+			"messageRequired": "El mensaje es requerido",
+			"messageMin": "El mensaje debe tener al menos 10 caracteres"
+		}
+	},
+	"hero": {
+		"greeting": "Hola, soy",
+		"name": "Juan Gómez",
+		"title": "Juan Gómez - Ingeniero de Software - Portfolio",
+		"roles": [
+			"Ingeniero de Software",
+			"Desarrollador Backend",
+			"Desarrollador Frontend",
+			"Desarrollador Full Stack",
+			"Desarrollador IA"
+		],
+		"description": "Construyendo aplicaciones de nivel empresarial para compañías internacionales y sector público. Experto en desarrollo full-stack, arquitectura cloud y liderazgo de equipos.",
+		"cta": {
+			"primary": "Ver Proyectos",
+			"secondary": "Contáctame"
+		}
+	},
+	"about": {
+		"title": "Acerca de Mí",
+		"subtitle": "Conóceme mejor",
+		"bio": "Ingeniero de Software Senior con 15+ años de experiencia modernizando sistemas legacy y construyendo soluciones fullstack escalables en entornos multinacionales. Líder comprobado entregando alta disponibilidad (>99.9%) y mejoras de rendimiento (+35%) en proyectos críticos. Experto en metodologías ágiles, CI/CD y liderazgo de equipos.",
+		"bioTitle": "Resumen Profesional",
+		"downloadCV": "Descargar CV",
+		"skillsTitle": "Habilidades Técnicas",
+		"expertiseTitle": "Áreas de Especialización",
+		"stats": {
+			"experience": "Años de Experiencia",
+			"users": "Usuarios Impactados",
+			"role": "Rol Profesional",
+			"principle": "Principio Fundamental"
+		},
+		"expertise": {
+			"frontend": "Aplicaciones web modernas con React, Next.js, TypeScript y Angular. Experiencia en construcción de interfaces responsivas, accesibles y de alto rendimiento.",
+			"backend": "Soluciones escalables del lado del servidor con .NET, Node.js y bases de datos SQL. Experiencia con APIs RESTful, microservicios y procesamiento de datos.",
+			"cloud": "Infraestructura cloud en AWS y Azure. Experto en Docker, pipelines CI/CD y prácticas DevOps para sistemas de alta disponibilidad."
+		}
+	},
+	"experience": {
+		"title": "Experiencia",
+		"subtitle": "Mi trayectoria profesional",
+		"present": "Presente",
+		"jobs": [
+			{
+				"id": 1,
+				"company": "The Stepstone Group",
+				"position": "Ingeniero de Software",
+				"period": "Ene 2022 - Presente",
+				"location": "Reino Unido",
+				"description": "Líder técnico y desarrollador para plataformas digitales de reclutamiento en 6 marcas internacionales (Europa, América Central y el Caribe), impactando a millones de usuarios y miles de empresas.",
+				"achievements": [
+					"Implementé arquitecturas modernas con microfrontends, microservicios y colas de mensajería, mejorando la escalabilidad y mantenibilidad del sistema",
+					"Reduje los tiempos de despliegue en aproximadamente 25% mediante automatización y migración a microservicios",
+					"Mejoré la experiencia de usuario y actualicé el look & feel de varias marcas, recibiendo retroalimentación positiva de usuarios y stakeholders",
+					"Resolví bugs críticos, entregué nuevas funcionalidades orientadas al negocio, y actualicé modelos de precios alineados con la estrategia de la empresa",
+					"Aseguré alta disponibilidad y rendimiento de servicios en AWS",
+					"Construyo interfaces de usuario usando ReactJS como desarrollador front-end",
+					"Desarrollo microservicios usando .NET como desarrollador back-end para las diferentes marcas de la empresa",
+					"Creo aplicaciones para ayudar a los buscadores de empleo a encontrar mejores trabajos en varias regiones, como Reino Unido, Alemania, Irlanda, América Central y otras"
+				],
+				"technologies": ["ReactJS", ".NET", "Microservicios", "Microfrontends", "AWS", "Colas de Mensajería"]
+			},
+			{
+				"id": 2,
+				"company": "Axxis-Systems",
+				"position": "Desarrollador .NET",
+				"period": "Jun 2020 - Dic 2021",
+				"location": "Nicaragua",
+				"description": "Desarrollé plataformas centrales de seguros para clientes en América Latina y Europa, soportando operaciones de negocio en múltiples países.",
+				"achievements": [
+					"Mejoré la eficiencia operacional en aproximadamente 15% y reduje significativamente procesos manuales mediante automatización y mejoras del sistema",
+					"Mejoré la usabilidad de la plataforma y reduje los tiempos de carga en alrededor de 20% usando ExtJS y técnicas de optimización de rendimiento",
+					"Responsable de la corrección de bugs y el desarrollo de nuevas funcionalidades críticas para el negocio, asegurando la confiabilidad del sistema y mejora continua",
+					"Diseñé e implementé cálculos para pólizas de seguros, manejando grandes conjuntos de datos y reglas de negocio complejas",
+					"Colaboré con equipos multifuncionales para entregar soluciones escalables y amigables alineadas con las necesidades del cliente"
+				],
+				"technologies": ["ExtJS", "JavaScript", ".NET", "Optimización de Rendimiento", "Automatización"]
+			},
+			{
+				"id": 3,
+				"company": "INIFOM",
+				"position": "Líder de Equipo",
+				"period": "Abr 2017 - Jun 2020",
+				"location": "Nicaragua",
+				"description": "Desarrollé y mantuve soluciones de software para las 153 municipalidades de Nicaragua, soportando operaciones críticas del sector público con tecnologías .NET.",
+				"achievements": [
+					"Lideré la implementación de Team Foundation Server (TFS) como sistema de control de versiones, mejorando la colaboración y gestión del código",
+					"Gestioné servidores e infraestructura, incluyendo IIS, SQL Server, Reporting Services, y administración de TFS",
+					"Migré aplicaciones legacy de ASP.NET a .NET Core, mejorando rendimiento, seguridad y mantenibilidad",
+					"Brindé soporte continuo y actualizaciones para sistemas legacy construidos en VB 6.0, asegurando continuidad del negocio y modernización gradual"
+				],
+				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
+			},
+			{
+				"id": 4,
+				"company": "Procuraduría General de la República",
+				"position": "Desarrollador de Software",
+				"period": "Mar 2014 - Abr 2017",
+				"location": "Nicaragua / Panamá",
+				"description": "Lideré el desarrollo e implementación del sistema catastral para los 153 gobiernos municipales a nivel nacional, permitiendo la gestión eficiente de información territorial y de propiedades a escala nacional.",
+				"achievements": [
+					"Integré exitosamente el sistema catastral municipal (SISCAT, INIFOM) con el sistema de catastro físico (SISCAF, INETER), permitiendo la administración centralizada y actualizada de propiedades municipales",
+					"Coordiné la migración de datos de contribuyentes desde SISCAT al sistema administrativo financiero (SIAFI) en todas las municipalidades, mejorando la recaudación municipal y la trazabilidad financiera"
+				],
+				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "Integración de Sistemas"]
+			},
+			{
+				"id": 5,
+				"company": "Alcaldía de Managua",
+				"position": "Desarrollador Web y .NET",
+				"period": "Ene 2010 - Mar 2014",
+				"location": "Nicaragua",
+				"description": "Desarrollé sistemas administrativos y de planificación basados en web para operaciones del gobierno municipal.",
+				"achievements": [
+					"Desarrollé el Sistema de Planificación Estratégica como aplicación web usando ASP MVC, permitiendo la gestión centralizada y accesible de planes institucionales",
+					"Lideré el desarrollo e implementación del Sistema de Formulación de Proyectos en plataforma web (ASP MVC), agilizando la creación, evaluación y monitoreo de proyectos institucionales",
+					"Gestioné la migración exitosa del Sistema de Formulación de Proyectos desde un entorno de escritorio a una solución basada en web, mejorando la accesibilidad, colaboración y escalabilidad para los usuarios"
+				],
+				"technologies": ["ASP MVC", ".NET", "Desarrollo Web"]
+			}
+		]
+	},
+	"blog": {
+		"title": "Blog",
+		"subtitle": "Pensamientos y tutoriales",
+		"readMore": "Leer Más",
+		"readingTime": "{minutes} min de lectura",
+		"publishedOn": "Publicado el"
+	},
+	"footer": {
+		"name": "Juan Carlos Gómez",
+		"tagline": "Ingeniero de Software Senior • Managua, Nicaragua",
+		"rights": "Todos los derechos reservados",
+		"madeWith": "Hecho con ❤️, 🤖 y ☕"
+	},
+	"theme": {
+		"light": "Modo Claro",
+		"dark": "Modo Oscuro",
+		"system": "Sistema"
+	},
+	"language": {
+		"english": "Inglés",
+		"spanish": "Español"
+	},
+	"common": {
+		"loading": "Cargando...",
+		"error": "Ocurrió un error",
+		"notFound": "Página no encontrada",
+		"backHome": "Volver al Inicio",
+		"goBack": "Regresar"
+	},
+	"notFound": {
+		"title": "404: Página No Encontrada",
+		"subtitle": "Houston, tenemos un problema con esta URL",
+		"description": "La página que intentas alcanzar parece estar en otra dimensión. Pudo haber sido refactorizada, deprecada, o perdida en un conflicto de merge.",
+		"goBack": "Regresar",
+		"backHome": "Volver al Inicio"
+	},
+	"error": {
+		"title": "¡Ups! Algo salió mal",
+		"message": "Encontramos un error inesperado. Por favor, inténtalo de nuevo.",
+		"tryAgain": "Intentar de Nuevo"
+	}
+}
