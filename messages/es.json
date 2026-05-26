@@ -247,6 +247,14 @@
 		"loading": "Cargando...",
 		"error": "Ocurrió un error",
 		"notFound": "Página no encontrada",
+		"backHome": "Volver al Inicio",
+		"goBack": "Regresar"
+	},
+	"notFound": {
+		"title": "404: Página No Encontrada",
+		"subtitle": "Houston, tenemos un problema con esta URL",
+		"description": "La página que intentas alcanzar parece estar en otra dimensión. Pudo haber sido refactorizada, deprecada, o perdida en un conflicto de merge.",
+		"goBack": "Regresar",
 		"backHome": "Volver al Inicio"
 	},
 	"error": {

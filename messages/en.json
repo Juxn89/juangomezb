@@ -247,7 +247,15 @@
 		"loading": "Loading...",
 		"error": "An error occurred",
 		"notFound": "Page not found",
-		"backHome": "Back to Home"
+		"backHome": "Back to Home",
+		"goBack": "Go Back"
+	},
+	"notFound": {
+		"title": "404: Page Not Found",
+		"subtitle": "Houston, we have a problem with this URL",
+		"description": "The page you're trying to reach seems to be in another dimension. It might have been refactored, deprecated, or lost in a merge conflict.",
+		"goBack": "Go Back",
+		"backHome": "Return Home"
 	},
 	"error": {
 		"title": "Oops! Something went wrong",

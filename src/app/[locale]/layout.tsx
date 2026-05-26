@@ -8,12 +8,11 @@ import {Providers} from '@/components/providers/Providers';
 import {Header} from '@/components/layouts/Header';
 import {Footer} from '@/components/layouts/Footer';
 import {generateSEOMetadata, generatePersonSchema, generateWebSiteSchema} from '@/lib/utils/seo';
-import '../globals.css';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
 	subsets: ['latin'],
-	display: 'swap', // Improve font loading performance
+	display: 'swap',
 	preload: true,
 });
 
@@ -21,7 +20,7 @@ const geistMono = Geist_Mono({
 	variable: '--font-geist-mono',
 	subsets: ['latin'],
 	display: 'swap',
-	preload: false, // Not critical, lazy load
+	preload: false,
 });
 
 export async function generateMetadata({
@@ -75,12 +74,10 @@ export default async function RootLayout({
 			suppressHydrationWarning
 		>
 			<head>
-				{/* Structured Data - Person Schema */}
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{__html: JSON.stringify(personSchema)}}
 				/>
-				{/* Structured Data - WebSite Schema */}
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
