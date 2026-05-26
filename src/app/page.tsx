@@ -1,12 +1,8 @@
-'use client'
-import { Navbar, Projects, Skills, Summary, WorkExperience } from '@/components/sections/'
+import {redirect} from 'next/navigation';
+import {routing} from '@/routing';
 
-export default function Home() {
-  return (
-    <main className="center text-white px-2 sm:px-10">
-			<Summary />
-			<WorkExperience />
-			<Skills />
-    </main>
-  )
+// This page only renders when the user visits `/` without a locale
+export default function RootPage() {
+	// Redirect to the default locale
+	redirect(`/${routing.defaultLocale}`);
 }
