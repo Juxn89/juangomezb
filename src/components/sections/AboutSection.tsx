@@ -2,7 +2,7 @@
 
 import {useTranslations, useLocale} from 'next-intl';
 import {motion} from 'framer-motion';
-import {Download, Code, Database, Cloud, Layers, GitBranch, Zap} from 'lucide-react';
+import {Download, Code, Database, Cloud, Layers, GitBranch, Zap, Package, Network} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
 
 export function AboutSection() {
@@ -10,32 +10,35 @@ export function AboutSection() {
 	const locale = useLocale();
 
 	const skills = [
-		// Frontend
+		// Backend (Expertise principal - 15+ años)
+		{name: '.NET', category: 'backend', icon: Code},
+		{name: 'SQL Server', category: 'backend', icon: Database},
+		{name: 'REST APIs', category: 'backend', icon: Database},
+		{name: 'Microservices', category: 'architecture', icon: Layers},
+		// Frontend (Expertise moderno)
+		{name: 'TypeScript', category: 'frontend', icon: Code},
 		{name: 'React', category: 'frontend', icon: Code},
 		{name: 'Next.js', category: 'frontend', icon: Code},
-		{name: 'TypeScript', category: 'frontend', icon: Code},
-		{name: 'JavaScript', category: 'frontend', icon: Code},
 		{name: 'Angular', category: 'frontend', icon: Code},
-		{name: 'HTML/CSS', category: 'frontend', icon: Code},
-		{name: 'Tailwind CSS', category: 'frontend', icon: Code},
-		// Backend
-		{name: '.NET', category: 'backend', icon: Database},
-		{name: 'Node.js', category: 'backend', icon: Database},
-		{name: 'C#', category: 'backend', icon: Database},
-		{name: 'SQL Server', category: 'backend', icon: Database},
+		// Backend Complementario
+		{name: 'Node.js', category: 'backend', icon: Code},
 		{name: 'PostgreSQL', category: 'backend', icon: Database},
-		{name: 'REST APIs', category: 'backend', icon: Database},
-		// Cloud & DevOps
-		{name: 'AWS', category: 'cloud', icon: Cloud},
-		{name: 'Azure', category: 'cloud', icon: Cloud},
-		{name: 'Docker', category: 'cloud', icon: Cloud},
-		{name: 'CI/CD', category: 'devops', icon: GitBranch},
+		{name: 'NoSQL', category: 'backend', icon: Database},
+		// DevOps (Uso diario)
 		{name: 'Git', category: 'devops', icon: GitBranch},
-		{name: 'TFS', category: 'devops', icon: GitBranch},
-		// Architecture
-		{name: 'Microservices', category: 'architecture', icon: Layers},
+		{name: 'CI/CD', category: 'devops', icon: GitBranch},
+		{name: 'Docker', category: 'cloud', icon: Package},
+		// Cloud (Uso frecuente)
+		{name: 'Azure', category: 'cloud', icon: Cloud},
+		{name: 'AWS', category: 'cloud', icon: Cloud},
+		{name: 'Kubernetes', category: 'cloud', icon: Network},
+		// Frontend & Architecture
+		{name: 'Tailwind CSS', category: 'frontend', icon: Code},
 		{name: 'Microfrontends', category: 'architecture', icon: Layers},
-		{name: 'Agile/Scrum', category: 'architecture', icon: Zap},
+		// APIs & Testing
+		{name: 'GraphQL', category: 'backend', icon: Database},
+		{name: 'xUnit', category: 'testing', icon: Zap},
+		{name: 'Cypress', category: 'testing', icon: Zap},
 	];
 
 	const stats = [
