@@ -17,26 +17,26 @@ html {
 }
 
 /* ============================================
-   CYBER SUNSET COLOR PALETTE
-   Vibrant gradients inspired by cyberpunk & digital sunsets
+   FOREST CODE COLOR PALETTE
+   Natural + tech: emerald green, violet & amber
    ============================================ */
 
 :root {
 	/* Background Colors (Light Mode) */
-	--color-bg-primary: 250 251 252; /* #FAFBFC - off-white cálido */
-	--color-bg-secondary: 240 241 243; /* #F0F1F3 - gris suave */
+	--color-bg-primary: 255 254 251; /* #FFFEFB - blanco cálido */
+	--color-bg-secondary: 245 247 244; /* #F5F7F4 - verde muy claro */
 	
 	/* Text Colors (Light Mode) */
-	--color-text-primary: 26 29 41; /* #1A1D29 - casi negro azulado */
-	--color-text-secondary: 71 85 105; /* #475569 - gris azulado más oscuro para mejor contraste (WCAG AA) */
+	--color-text-primary: 28 40 38; /* #1C2826 - verde oscuro casi negro */
+	--color-text-secondary: 90 108 99; /* #5A6C63 - verde grisáceo */
 	
 	/* Accent Colors (Light Mode) */
-	--color-accent-primary: 255 107 53; /* #FF6B35 - naranja coral */
-	--color-accent-secondary: 78 205 196; /* #4ECDC4 - turquesa vibrante */
-	--color-accent-tertiary: 247 37 133; /* #F72585 - magenta eléctrico */
+	--color-accent-primary: 4 120 87; /* #047857 - verde esmeralda */
+	--color-accent-secondary: 124 58 237; /* #7C3AED - violeta vibrante */
+	--color-accent-tertiary: 251 191 36; /* #FBBF24 - ámbar dorado */
 	
 	/* Border & Divider (Light Mode) */
-	--color-border: 226 232 240; /* #E2E8F0 */
+	--color-border: 209 213 219; /* #D1D5DB */
 	
 	/* Semantic Colors */
 	--color-success: 34 197 94;
@@ -65,25 +65,25 @@ html {
 }
 
 /* ============================================
-   DARK MODE - CYBER SUNSET
+   DARK MODE - FOREST CODE
    ============================================ */
 
 .dark {
 	/* Background Colors (Dark Mode) */
-	--color-bg-primary: 15 20 25; /* #0F1419 - negro azulado profundo */
-	--color-bg-secondary: 26 32 46; /* #1A202E - azul oscuro */
+	--color-bg-primary: 12 23 19; /* #0C1713 - verde muy oscuro */
+	--color-bg-secondary: 23 36 32; /* #172420 - verde oscuro */
 	
 	/* Text Colors (Dark Mode) */
-	--color-text-primary: 247 250 252; /* #F7FAFC - blanco suave */
-	--color-text-secondary: 160 174 192; /* #A0AEC0 - gris claro */
+	--color-text-primary: 240 253 244; /* #F0FDF4 - blanco verdoso */
+	--color-text-secondary: 156 163 175; /* #9CA3AF - gris claro */
 	
 	/* Accent Colors (Dark Mode) */
-	--color-accent-primary: 255 122 89; /* #FF7A59 - naranja brillante */
-	--color-accent-secondary: 94 234 212; /* #5EEAD4 - turquesa neón */
-	--color-accent-tertiary: 255 63 157; /* #FF3F9D - rosa neón */
+	--color-accent-primary: 16 185 129; /* #10B981 - verde brillante */
+	--color-accent-secondary: 167 139 250; /* #A78BFA - violeta suave */
+	--color-accent-tertiary: 252 211 77; /* #FCD34D - amarillo dorado */
 	
 	/* Border & Divider (Dark Mode) */
-	--color-border: 45 55 72; /* #2D3748 */
+	--color-border: 55 65 81; /* #374151 */
 	
 	/* Shadows (Dark Mode - more subtle) */
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
@@ -186,19 +186,19 @@ body {
 
 /* Gradient Utilities */
 .gradient-hero {
-	background: linear-gradient(135deg, rgb(255 107 53) 0%, rgb(247 37 133) 50%, rgb(78 205 196) 100%);
+	background: linear-gradient(135deg, rgb(4 120 87) 0%, rgb(124 58 237) 50%, rgb(251 191 36) 100%);
 }
 
 .gradient-card-hover {
-	background: linear-gradient(to bottom right, rgb(255 107 53 / 0.1), rgb(78 205 196 / 0.1));
+	background: linear-gradient(to bottom right, rgb(4 120 87 / 0.1), rgb(251 191 36 / 0.1));
 }
 
 .gradient-button {
-	background: linear-gradient(to right, rgb(255 107 53), rgb(247 37 133));
+	background: linear-gradient(to right, rgb(4 120 87), rgb(124 58 237));
 }
 
 .gradient-text {
-	background: linear-gradient(135deg, rgb(255 107 53), rgb(247 37 133), rgb(78 205 196));
+	background: linear-gradient(135deg, rgb(4 120 87), rgb(124 58 237), rgb(251 191 36));
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -206,28 +206,28 @@ body {
 
 /* Glow Effects */
 .glow-primary {
-	box-shadow: 0 0 20px rgb(255 107 53 / 0.3);
+	box-shadow: 0 0 20px rgb(4 120 87 / 0.3);
 }
 
 .glow-secondary {
-	box-shadow: 0 0 20px rgb(78 205 196 / 0.3);
+	box-shadow: 0 0 20px rgb(124 58 237 / 0.3);
 }
 
 .glow-tertiary {
-	box-shadow: 0 0 20px rgb(247 37 133 / 0.3);
+	box-shadow: 0 0 20px rgb(251 191 36 / 0.3);
 }
 
 /* Dark mode glow effects */
 .dark .glow-primary {
-	box-shadow: 0 0 30px rgb(255 122 89 / 0.4);
+	box-shadow: 0 0 30px rgb(16 185 129 / 0.4);
 }
 
 .dark .glow-secondary {
-	box-shadow: 0 0 30px rgb(94 234 212 / 0.4);
+	box-shadow: 0 0 30px rgb(167 139 250 / 0.4);
 }
 
 .dark .glow-tertiary {
-	box-shadow: 0 0 30px rgb(255 63 157 / 0.4);
+	box-shadow: 0 0 30px rgb(252 211 77 / 0.4);
 }
 
 /* ============================================

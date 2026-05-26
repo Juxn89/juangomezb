@@ -51,7 +51,7 @@ export function ExperienceSection() {
 							{t('subtitle')}
 						</span>
 					</div>
-					<h2 className="text-4xl font-bold text-text-primary md:text-5xl">
+					<h2 className="text-4xl font-bold gradient-text md:text-5xl pb-1 leading-tight">
 						{t('title')}
 					</h2>
 				</motion.div>
