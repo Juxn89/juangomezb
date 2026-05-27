@@ -60,7 +60,7 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 				{/* Gradient overlay on hover */}
 				<div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-				<div className="relative z-10">
+				<div className="relative z-10 flex flex-col h-full">
 					{/* Project Header */}
 					<div className="mb-4">
 						<h3 className="text-2xl font-bold text-text-primary mb-3 group-hover:text-accent-primary transition-colors">
@@ -109,7 +109,7 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 					)}
 
 					{/* Action Buttons */}
-					<div className="flex flex-wrap gap-3">
+					<div className="flex flex-wrap gap-3 mt-auto">
 						<LinkButton
 							href={project.demoUrl}
 							variant="primary"
