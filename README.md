@@ -321,6 +321,40 @@ pnpm build
 
 ---
 
+## 📚 Documentation & Context Preservation
+
+### **Complete Documentation Suite**
+
+This project includes comprehensive documentation to preserve all development context:
+
+| Document | Purpose |
+|----------|---------|
+| **README.md** (this file) | Project overview, features, getting started |
+| **[SETUP.md](./SETUP.md)** | Step-by-step setup guide after cloning |
+| **[DEVELOPMENT.md](./DEVELOPMENT.md)** | Complete development context, decisions, problems & solutions |
+| **[CONVERSATION_HISTORY.md](./CONVERSATION_HISTORY.md)** | Full chronological history of AI-assisted development |
+| **[CHANGELOG.md](./CHANGELOG.md)** | Version history and changes |
+| **[AGENTS.md](./AGENTS.md)** | AI agent guidelines for code generation |
+| **[docs/transcripts/](./docs/transcripts/)** | Raw conversation transcripts (JSONL format) |
+
+### **Why This Matters**
+
+After formatting your laptop or switching machines, you can:
+- ✅ Quickly set up the project (SETUP.md)
+- ✅ Understand all architectural decisions (DEVELOPMENT.md)
+- ✅ See the complete development journey (CONVERSATION_HISTORY.md)
+- ✅ Review specific problems and solutions
+- ✅ Maintain consistent code quality with AI assistance
+
+### **Quick Start After Formatting**
+
+1. Clone repository: `git clone git@github.com:juxn89/juangomezb.git`
+2. Follow **SETUP.md** checklist
+3. Run `pnpm install && pnpm dev`
+4. Review **DEVELOPMENT.md** for context
+
+---
+
 ## 🤝 Contributing
 
 This is a personal portfolio project, but suggestions and bug reports are welcome!
