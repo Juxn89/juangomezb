@@ -88,9 +88,10 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 						</div>
 					)}
 
-					{/* Technologies */}
-					{project.technologies.length > 0 && (
-						<div className="mb-6">
+					{/* Technologies + Action Buttons — always anchored to the bottom */}
+					<div className="mt-auto space-y-4">
+						{/* Technologies */}
+						{project.technologies.length > 0 && (
 							<div className="flex flex-wrap gap-2">
 								{project.technologies.map((tech, i) => (
 									<motion.span
@@ -105,28 +106,28 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 									</motion.span>
 								))}
 							</div>
-						</div>
-					)}
-
-					{/* Action Buttons */}
-					<div className="flex flex-wrap gap-3 mt-auto">
-						<LinkButton
-							href={project.demoUrl}
-							variant="primary"
-							icon={<ExternalLink className="w-4 h-4" />}
-						>
-							{viewDemoText}
-						</LinkButton>
-						
-						{project.codeUrl && (
-							<LinkButton
-								href={project.codeUrl}
-								variant="secondary"
-								icon={<GithubIcon className="w-4 h-4" />}
-							>
-								{viewCodeText}
-							</LinkButton>
 						)}
+
+						{/* Action Buttons */}
+						<div className="flex flex-wrap gap-3">
+							<LinkButton
+								href={project.demoUrl}
+								variant="primary"
+								icon={<ExternalLink className="w-4 h-4" />}
+							>
+								{viewDemoText}
+							</LinkButton>
+
+							{project.codeUrl && (
+								<LinkButton
+									href={project.codeUrl}
+									variant="secondary"
+									icon={<GithubIcon className="w-4 h-4" />}
+								>
+									{viewCodeText}
+								</LinkButton>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
