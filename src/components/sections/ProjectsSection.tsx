@@ -52,7 +52,6 @@ export async function ProjectsSection() {
 							key={project.id}
 							project={project}
 							index={index}
-							viewDemoText={t('viewDemo')}
 							viewCodeText={t('viewCode')}
 						/>
 					))}

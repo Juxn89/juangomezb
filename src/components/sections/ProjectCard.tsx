@@ -1,7 +1,7 @@
 'use client';
 
 import {motion} from 'framer-motion';
-import {ExternalLink, Sparkles, CheckCircle2} from 'lucide-react';
+import {Sparkles, CheckCircle2} from 'lucide-react';
 import {LinkButton} from '@/components/ui/LinkButton';
 
 // Custom GitHub Icon
@@ -28,11 +28,10 @@ interface ProjectCardProps {
 		featured: boolean;
 	};
 	index: number;
-	viewDemoText: string;
 	viewCodeText: string;
 }
 
-export function ProjectCard({project, index, viewDemoText, viewCodeText}: ProjectCardProps) {
+export function ProjectCard({project, index, viewCodeText}: ProjectCardProps) {
 	return (
 		<motion.article
 			initial={{opacity: 0, y: 30}}
@@ -110,18 +109,10 @@ export function ProjectCard({project, index, viewDemoText, viewCodeText}: Projec
 
 						{/* Action Buttons */}
 						<div className="flex flex-wrap gap-3">
-							<LinkButton
-								href={project.demoUrl}
-								variant="primary"
-								icon={<ExternalLink className="w-4 h-4" />}
-							>
-								{viewDemoText}
-							</LinkButton>
-
 							{project.codeUrl && (
 								<LinkButton
 									href={project.codeUrl}
-									variant="secondary"
+									variant="primary"
 									icon={<GithubIcon className="w-4 h-4" />}
 								>
 									{viewCodeText}
