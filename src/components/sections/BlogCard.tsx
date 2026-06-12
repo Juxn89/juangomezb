@@ -115,7 +115,7 @@ export function BlogCard({article, index}: BlogCardProps) {
 					target="_blank"
 					rel="noopener noreferrer"
 					className={cn(
-						'inline-flex items-center gap-2 px-4 py-2 rounded-lg',
+						'group/btn inline-flex items-center gap-2 px-4 py-2 rounded-lg',
 						'bg-accent-primary/10 text-accent-primary',
 						'hover:bg-accent-primary hover:text-white',
 						'border border-accent-primary/20',
@@ -124,7 +124,7 @@ export function BlogCard({article, index}: BlogCardProps) {
 					)}
 				>
 					{t('readMore')}
-					<ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+					<ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
 				</a>
 			</div>
 
