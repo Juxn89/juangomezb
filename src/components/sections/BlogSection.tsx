@@ -1,4 +1,4 @@
-import {getTranslations} from 'next-intl/server';
+import {getTranslations, getLocale} from 'next-intl/server';
 import {getDevToArticles} from '@/lib/api/devto';
 import {BlogCard} from './BlogCard';
 import {Suspense} from 'react';
@@ -32,8 +32,8 @@ function BlogSkeleton() {
 }
 
 // Blog content component (async Server Component)
-async function BlogContent() {
-	const articles = await getDevToArticles('jgomezdev', 6);
+async function BlogContent({locale}: {locale: string}) {
+	const articles = await getDevToArticles('jgomezdev', locale, 6);
 
 	if (articles.length === 0) {
 		return (
@@ -54,7 +54,7 @@ async function BlogContent() {
 
 // Main Blog Section (Server Component)
 export async function BlogSection() {
-	const t = await getTranslations('blog');
+	const [t, locale] = await Promise.all([getTranslations('blog'), getLocale()]);
 
 	return (
 		<section id="blog" className="relative py-20 px-4 overflow-hidden">
@@ -77,7 +77,7 @@ export async function BlogSection() {
 
 				{/* Articles Grid */}
 				<Suspense fallback={<BlogSkeleton />}>
-					<BlogContent />
+					<BlogContent locale={locale} />
 				</Suspense>
 
 				{/* View All Link */}

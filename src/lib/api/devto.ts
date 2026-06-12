@@ -16,34 +16,47 @@ export type DevToArticle = {
 	comments_count: number;
 	published_timestamp: string;
 	slug: string;
+	language: string;
 };
 
 const DEV_TO_USERNAME = 'jgomezdev';
 const DEV_TO_API_URL = 'https://dev.to/api/articles';
 
 /**
- * Fetch articles from Dev.to for a specific user
+ * Fetch articles from Dev.to for a specific user, filtered by locale language.
  * @param username - Dev.to username (default: jgomezdev)
- * @param limit - Number of articles to fetch (default: 6)
- * @returns Array of Dev.to articles
+ * @param locale - Locale code used to filter articles by language ('en' | 'es')
+ * @param limit - Number of articles to return after filtering (default: 6)
+ * @returns Array of Dev.to articles matching the locale language
  */
 export async function getDevToArticles(
 	username: string = DEV_TO_USERNAME,
+	locale: string = 'en',
 	limit: number = 6
 ): Promise<DevToArticle[]> {
 	try {
-		const response = await fetch(`${DEV_TO_API_URL}?username=${username}&per_page=${limit}`, {
+		// Fetch more than needed to account for filtering by language
+		const url = new URL(DEV_TO_API_URL);
+		url.searchParams.set('username', username);
+		url.searchParams.set('per_page', String(limit * 3));
+		url.searchParams.set('state', 'fresh');
+
+		const response = await fetch(url.toString(), {
 			next: {
-				revalidate: 3600, // Revalidate every hour (ISR)
+				revalidate: 1800, // Revalidate every 30 minutes
+				tags: ['devto-articles'],
 			},
 		});
 
 		if (!response.ok) {
-			throw new Error(`Dev.to API error: ${response.status}`);
+			throw new Error(`Dev.to API error: ${response.status} ${response.statusText}`);
 		}
 
 		const articles: DevToArticle[] = await response.json();
-		return articles;
+
+		return articles
+			.filter((a) => a.published_at !== null && a.language === locale)
+			.slice(0, limit);
 	} catch (error) {
 		console.error('Error fetching Dev.to articles:', error);
 		return [];

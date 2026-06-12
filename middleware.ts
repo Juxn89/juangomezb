@@ -36,8 +36,15 @@ const SECURITY_HEADERS = {
 	'X-Content-Type-Options': 'nosniff',
 	'Referrer-Policy': 'strict-origin-when-cross-origin',
 	'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-	'Content-Security-Policy':
-		"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com https://dev.to; frame-ancestors 'none';",
+	'Content-Security-Policy': [
+		"default-src 'self'",
+		"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+		"style-src 'self' 'unsafe-inline'",
+		"img-src 'self' data: blob: https://media2.dev.to https://dev-to-uploads.s3.amazonaws.com https://avatars.githubusercontent.com",
+		"font-src 'self' data:",
+		"connect-src 'self' https://vitals.vercel-insights.com https://dev.to https://api.github.com",
+		"frame-ancestors 'none'",
+	].join('; '),
 };
 
 export async function middleware(request: NextRequest) {
