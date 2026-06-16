@@ -117,8 +117,8 @@ export function BlogCard({article, index}: BlogCardProps) {
 					className={cn(
 						'group/btn inline-flex items-center gap-2 px-4 py-2 rounded-lg',
 						'bg-accent-primary/10 text-accent-primary',
-						'hover:bg-accent-primary hover:text-white hover:border-accent-primary',
-						'[&:hover>*]:text-white',
+						'hover:bg-accent-primary/40 hover:text-white hover:border-accent-primary',
+						// '[&:hover>*]:text-white',
 						'border border-accent-primary/20',
 						'transition-all duration-300',
 						'text-sm font-medium'
