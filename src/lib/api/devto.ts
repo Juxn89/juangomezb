@@ -20,7 +20,7 @@ export type DevToArticle = {
 };
 
 const DEV_TO_USERNAME = 'jgomezdev';
-const DEV_TO_API_URL = 'https://dev.to/api/articles';
+const DEV_TO_API_URL = 'https://dev.to/api/articles/latest';
 
 /**
  * Fetch articles from Dev.to for a specific user, filtered by locale language.
@@ -38,8 +38,7 @@ export async function getDevToArticles(
 		// Fetch more than needed to account for filtering by language
 		const url = new URL(DEV_TO_API_URL);
 		url.searchParams.set('username', username);
-		url.searchParams.set('per_page', String(limit * 3));
-		url.searchParams.set('state', 'fresh');
+		url.searchParams.set('per_page', String(limit * 2));
 
 		const response = await fetch(url.toString(), {
 			next: {
