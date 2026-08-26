@@ -3,6 +3,29 @@ import type {NextRequest} from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import {routing} from './src/routing';
 
+// List of blocked/malicious user agents (scrapers, scanners, exploitation tools)
+const BLOCKED_USER_AGENTS = [
+	'python-requests', // Python HTTP library (commonly used by bots)
+	'scrapy', // Web scraping framework
+	'sqlmap', // SQL injection testing tool
+	'nikto', // Web server scanner
+	'nessus', // Vulnerability scanner
+	'nmap', // Network mapper/port scanner
+	'cms-checker', // CMS vulnerability scanner
+	'palo alto', // Palo Alto Networks scanner
+	'nuclei', // Vulnerability scanner
+	'burpsuite', // Web application security testing
+	'metasploit', // Exploitation framework
+	'zap', // OWASP ZAP security scanner
+	'masscan', // Rapid network scanner
+	'shodan', // Search engine for devices (scanning tool context)
+];
+
+function isBlockedUserAgent(userAgent: string): boolean {
+	const ua = userAgent.toLowerCase();
+	return BLOCKED_USER_AGENTS.some((pattern) => ua.includes(pattern));
+}
+
 // Create the next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
@@ -96,6 +119,15 @@ export async function middleware(request: NextRequest) {
 		if (!timingSafeEqual(shieldHeader, originShieldSecret)) {
 			return NextResponse.json({error: 'Forbidden'}, {status: 404});
 		}
+	}
+
+	// Block known malicious/scraping user agents
+	const userAgent = request.headers.get('user-agent') || '';
+	if (isBlockedUserAgent(userAgent)) {
+		return NextResponse.json(
+			{error: 'Access denied'},
+			{status: 403, headers: {'Retry-After': '3600'}}
+		);
 	}
 
 	// Rate limiting (differentiated for API routes)
