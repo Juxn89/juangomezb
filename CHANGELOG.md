@@ -5,6 +5,62 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-08-26
+
+### Added
+
+#### Security Enhancements
+- 🛡️ Vulnerability scanner path blocking in middleware
+  - Detects and blocks 60+ known scanner paths (/.env, /.git, /admin.php, /wp-content, etc.)
+  - Prevents automated reconnaissance from tools like Shodan and Censys
+  - Reduces bandwidth waste and keeps analytics clean
+- 🛡️ Enhanced DDoS mitigation documentation
+  - Checklist for DDoS defense strategies
+  - Free tier monitoring guide
+  - Expected traffic patterns and mitigation techniques
+
+#### Bug Fixes
+- 🐛 Fixed CV file generation for both EN and ES locales
+- 🐛 Fixed Dev.to article URL rendering to display more than 1 post
+- 🐛 Fixed button hover state cursor behavior
+- 🐛 Fixed blog card button text color consistency on hover
+
+#### Testing Infrastructure
+- ✅ GitHub Actions CI/CD workflow with test gate before build
+- ✅ Vitest unit tests setup and integration
+- ✅ Playwright E2E test suite configuration
+
+#### Content & Features
+- 📝 Blog filtering by locale and on-demand revalidation
+- 🎯 Removed ContactSection from homepage (cleaner layout)
+- 🛡️ CSP (Content Security Policy) fixes for cross-origin requests
+- 🖼️ Dev.to image domains configured in Next.js image optimization
+
+### Changed
+
+#### Documentation
+- 📖 Moved DDoS documentation to `docs/summaries/` for better organization
+- 📖 Vulnerability scanner mitigation guide added with threat analysis
+
+#### UI/UX
+- 🔄 Improved article grid centering in blog section
+- 🔄 Removed demo button from blog interface
+
+### Fixed
+
+- 🐛 Template content invisible on initial page load
+- 🐛 Cross-origin blocked requests for Dev.to and GitHub
+- 🐛 ProjectCard button position inconsistency
+- 🐛 CSP configuration to allow external image domains
+
+### Security
+
+- 🔒 Middleware blocks vulnerability scanner paths automatically
+- 🔒 Continues existing rate limiting and bot detection
+- 🔒 Maintains CSRF protection and security headers
+
+---
+
 ## [2.0.0] - 2026-05-26
 
 ### Added
