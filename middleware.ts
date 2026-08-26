@@ -26,6 +26,36 @@ function isBlockedUserAgent(userAgent: string): boolean {
 	return BLOCKED_USER_AGENTS.some((pattern) => ua.includes(pattern));
 }
 
+// Paths targeted by vulnerability scanners (CMS/WordPress/PHP probes, config exposure)
+const SCANNER_PATHS = [
+	/^\/.env/i, // .env file exposure
+	/^\/.git\//i, // Git repo exposure
+	/^\/.vscode\//i, // VSCode settings
+	/sftp-config/i, // SFTP credentials
+	/\.php$/i, // PHP files (Next.js doesn't serve PHP)
+	/^\/wp-/i, // WordPress paths
+	/wlwmanifest/i, // WordPress manifest
+	/^\/admin\//i, // Generic admin panels
+	/^\/administrator\//i, // Joomla admin
+	/\/cms\//i, // CMS paths
+	/\/data\//i, // Data directories
+	/\/zb_users\//i, // ZbBlog
+	/\/ucms\//i, // UCMS
+	/\/plus\//i, // DedeCMS
+	/\/dayui\//i, // Dayui CMS
+	/shell\.php/i, // Web shells
+	/makeasmtp\.php/i, // Mail exploit
+	/adminfuns/i, // Admin functions
+	/\/include\/ckeditor/i, // CMS editors
+	/\/plugins\//i, // Plugin directories
+	/\/themes\//i, // Theme directories
+	/\/modules\//i, // Module directories
+];
+
+function isScannerPath(pathname: string): boolean {
+	return SCANNER_PATHS.some((pattern) => pattern.test(pathname));
+}
+
 // Create the next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
@@ -119,6 +149,11 @@ export async function middleware(request: NextRequest) {
 		if (!timingSafeEqual(shieldHeader, originShieldSecret)) {
 			return NextResponse.json({error: 'Forbidden'}, {status: 404});
 		}
+	}
+
+	// Block vulnerability scanner paths (CMS/WordPress/PHP probes, config exposure)
+	if (isScannerPath(pathname)) {
+		return NextResponse.json({error: 'Not found'}, {status: 404, headers: {'Retry-After': '3600'}});
 	}
 
 	// Block known malicious/scraping user agents
