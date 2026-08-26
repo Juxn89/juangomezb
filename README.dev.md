@@ -64,7 +64,8 @@ En Vercel, configurar las mismas variables en **Settings → Environment Variabl
 > Para forzar la actualización **de inmediato**, ejecuta:
 >
 > ```bash
-> curl -X POST "https://www.juangomezb.com/api/revalidate?secret=TU_REVALIDATE_SECRET"
+> curl -X POST "https://www.juangomezb.com/api/revalidate" \
+>   -H "Authorization: Bearer TU_REVALIDATE_SECRET"
 > ```
 >
 > **Prerequisito**: la variable `REVALIDATE_SECRET` debe estar configurada en Vercel con el mismo valor que uses en el comando.

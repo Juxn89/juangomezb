@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import {getMessages, getTranslations} from 'next-intl/server';
 import {routing} from '@/routing';
 import {notFound} from 'next/navigation';
+import {headers} from 'next/headers';
 import {Analytics} from '@vercel/analytics/react';
 import {Providers} from '@/components/providers/Providers';
 import {Header} from '@/components/layouts/Header';
@@ -67,6 +68,9 @@ export default async function RootLayout({
 	const personSchema = generatePersonSchema(locale as 'en' | 'es');
 	const websiteSchema = generateWebSiteSchema(locale as 'en' | 'es');
 
+	// Get nonce from middleware for CSP
+	const nonce = (await headers()).get('x-nonce') || undefined;
+
 	return (
 		<html
 			lang={locale}
@@ -76,10 +80,12 @@ export default async function RootLayout({
 			<head>
 				<script
 					type="application/ld+json"
+					nonce={nonce}
 					dangerouslySetInnerHTML={{__html: JSON.stringify(personSchema)}}
 				/>
 				<script
 					type="application/ld+json"
+					nonce={nonce}
 					dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
 				/>
 			</head>
