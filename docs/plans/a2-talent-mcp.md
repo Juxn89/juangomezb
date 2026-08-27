@@ -129,6 +129,16 @@ Comprobado el 25 ago 2026: `Talent.Mcp.*` no existe en NuGet y no hay prefijo re
 tampoco colisiona con los repos actuales de `juxn89`. **Los ids de NuGet son lo único irreversible del
 proyecto** — se reconfirman justo antes de la F5, que es cuando se publica.
 
+### GitHub repository metadata
+
+**Description:**
+MCP server in C# for the recruitment domain — typed tools for job search, candidate-fit scoring, and skill extraction, built against the 2026-07-28 Model Context Protocol revision. Stateless Streamable HTTP, OAuth 2.1 + PKCE, published as a NuGet package and dotnet tool.
+
+**Topics:**
+mcp, model-context-protocol, csharp, dotnet, ai-tooling, oauth2, nuget, hr-tech, clean-architecture, llm-agents, agentic-ai, postgresql, docker, dotnet-tool
+
+---
+
 Aplica el lineamiento 6 del catálogo (**Clean Architecture con la regla de dependencia verificada en CI**).
 Una versión anterior de este plan ponía EF Core dentro de `Talent.Domain` — eso violaba la regla y quedó
 corregido: la persistencia vive en `Infrastructure` y el dominio no conoce a nadie.

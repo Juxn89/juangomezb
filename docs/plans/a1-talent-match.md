@@ -76,6 +76,14 @@ Según la [convención de nombres y tracking](./featured-projects-catalog.md#con
 
 A1 **no publica paquetes**: es una aplicación, no una librería. Su artefacto es la imagen y el repo.
 
+### GitHub repository metadata
+
+**Description:**
+Bilingual (EN/ES) RAG engine for CV-to-job matching in .NET 10. Hybrid retrieval (Postgres full-text + pgvector) with cross-encoder reranking, LLM-grounded match explanations via SSE, and a reproducible eval harness (precision@k, MRR, nDCG) comparing five retrieval strategies across four language pairs.
+
+**Topics:**
+dotnet, csharp, rag, pgvector, retrieval-augmented-generation, hybrid-search, semantic-search, ollama, hr-tech, embeddings, reranking, information-retrieval, clean-architecture, postgresql, evaluation, cross-lingual, minimal-api, docker
+
 ---
 
 ## Arquitectura

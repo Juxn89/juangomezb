@@ -364,6 +364,12 @@ GitHub cuentan una historia deliberada. Los del backlog son de otros dominios y 
 Backlog, por si se activan: A4 `brand-shell` · A5 `strangler-kit` · A6 `rating-engine` ·
 A7 `talent-screener` · A8 `brand-flags` · A9 `legacy-otel-bridge`.
 
+**GitHub metadata:** Cada repo nuevo lleva una subsección `### GitHub repository metadata` en su plan con
+la descripción (one-liner para la búsqueda) y topics (etiquetas de discoverabilidad). Ver en:
+- [A1 metadata](./a1-talent-match.md#github-repository-metadata)
+- [A2 metadata](./a2-talent-mcp.md#github-repository-metadata)
+- [A3 metadata](./a3-talent-flow.md#github-repository-metadata)
+
 **Verificado el 25 ago 2026:** `Talent.Mcp.*` está libre en NuGet (0 resultados, sin prefijo reservado) y
 ninguno de estos nombres colisiona con los repos existentes de `juxn89`. Conviene reconfirmarlo al crear
 cada repo — los ids de NuGet son lo único que no se puede cambiar después de publicar.

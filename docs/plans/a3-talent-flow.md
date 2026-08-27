@@ -73,6 +73,14 @@ no se recortan**: son el proyecto.
 | Imágenes | `ghcr.io/juxn89/talent-flow-{gateway,jobs,applications,notifications}` |
 | Prefijo de proyectos | `TalentFlow.*` |
 
+### GitHub repository metadata
+
+**Description:**
+Event-driven job platform in .NET: three microservices (Jobs, Applications, Notifications) behind a YARP gateway. Hand-rolled outbox, inbox, and saga (no MassTransit) for eventual consistency over RabbitMQ, PostgreSQL, and Valkey, with full OpenTelemetry tracing and k6-benchmarked throughput.
+
+**Topics:**
+dotnet, csharp, microservices, event-driven-architecture, rabbitmq, saga-pattern, outbox-pattern, yarp, postgresql, valkey, opentelemetry, distributed-systems, clean-architecture, docker, k6, hr-tech
+
 ---
 
 ## Arquitectura
