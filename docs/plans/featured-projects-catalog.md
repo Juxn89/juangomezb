@@ -397,152 +397,32 @@ En el modelo de datos, `demoUrl` se mantiene opcional (por si algún proyecto fu
 nunca renderiza un botón de demo cuando el campo está ausente.
 
 ---
+## Parte 2 — Implementación en el portfolio
 
-## Parte 2 — Implementación
+> **Extraída a su propio plan:** [`portfolio-projects-section.md`](./portfolio-projects-section.md).
+> Ese documento está escrito contra el estado real del código (verificado el 27 ago 2026) y corrige varias
+> suposiciones que este borrador arrastraba.
 
-> Los repos A1/A3/A2 se construyen en repositorios aparte. Este plan cubre **el portfolio**: el modelo de
-> contenido, las tarjetas y los case studies. Un proyecto puede publicarse con estado `in-progress` y su
-> case study desde el día uno, con el enlace al repo apareciendo cuando exista.
+Resumen de lo decidido allí:
 
-Cómo aterrizan aquí los lineamientos 6-9, que en un proyecto Next.js no se traducen literalmente:
+- **Se publican solo B1 (Stepstone) y B2 (Axxis) ahora.** A1, A2 y A3 son ~4 meses de trabajo; publicar tres
+  tarjetas en estado "en construcción" sin enlace a código durante meses resta en vez de sumar. Cada repo
+  entra cuando exista y tenga algo que enseñar, y añadirlo será **editar dos JSON**, sin tocar código.
+- **Rutas nuevas `/projects` y `/projects/[slug]`**, dejando la home como one-page con anclas.
+- **Docker sale del alcance** y va a un plan aparte: el lineamiento 1 se escribió para los repos nuevos,
+  donde levantar Postgres, Ollama o RabbitMQ con un comando es esencial. Aquí `pnpm dev` ya funciona y Vercel
+  construye desde el repo.
 
-- **Dirección de dependencia** (6): `src/lib/**` no importa nada de `src/components/**`. `get-projects.ts` es
-  el **único** punto por el que los componentes acceden al contenido y a GitHub — hoy `ProjectsSection.tsx:11`
-  llama a la API de GitHub directamente, y eso es exactamente lo que se elimina.
-- **Sin literales sueltos** (7): el username `'juxn89'` sale del componente a constante o env var; los
-  `slug`, `kind` y `status` se tipan con `as const` + union types (ya previsto en `types.ts`); los TTL de
-  revalidación y el `limit` de destacados dejan de ser números incrustados.
-- **E2E** (8): ya cubierto por Playwright en la Fase 5.
-- **Verificar antes de aplicar** (9): la lista de comprobaciones manuales del final es el gate; ningún cambio
-  se cierra sin `pnpm test && pnpm lint && pnpm build` en verde.
+Hallazgos de la verificación que este borrador no contemplaba:
 
-### Fase 1 — Modelo de datos y fuente de verdad
-
-**Nuevo** `src/lib/projects/types.ts` — tipo único, exportado y reutilizado (hoy el shape está duplicado
-entre `src/lib/github/api.ts:28` y `ProjectCard.tsx:20-29`):
-
-```ts
-export type ProjectKind = 'oss' | 'case-study';
-export type ProjectStatus = 'live' | 'in-progress' | 'archived';
-
-export interface ProjectMetric { label: string; value: string; }
-
-export interface ProjectCaseStudy {
-  context: string;
-  constraints: string[];
-  architecture: string;      // prosa; el diagrama es un SVG por slug en el componente
-  decisions: Array<{title: string; rationale: string; tradeoff: string}>;
-  results: string[];
-}
-
-export interface Project {
-  slug: string;              // 'rag-job-matching' — clave de ruta y de i18n
-  kind: ProjectKind;
-  status: ProjectStatus;
-  featured: boolean;
-  year: string;              // '2026' | '2022–2026'
-  role: string;
-  title: string;
-  tagline: string;           // 1 línea para la tarjeta
-  description: string;
-  metrics: ProjectMetric[];  // 2-3 números por proyecto
-  stack: string[];
-  highlights: string[];
-  repoUrl?: string;          // ausente en case studies
-  demoUrl?: string;
-  caseStudy?: ProjectCaseStudy;  // problema → restricciones → arquitectura → decisiones → resultados
-  // enriquecimiento en runtime, nunca en el contenido:
-  stars?: number;
-  lastPushedAt?: string;
-}
-```
-
-**Contenido** en `messages/en.json` / `messages/es.json` → `projects.items`, reemplazando los 4 placeholders.
-Se mantiene la convención que ya usa `experience.jobs` (contenido completo en los mensajes, ambos locales).
-Corregir el `id: 1` numérico actual: la clave pasa a ser `slug` (string).
-
-Redactar los 5 proyectos en EN y ES es la parte más pesada del trabajo, no el código. Dos reglas:
-- **Métricas solo verificables.** Reutilizar las que ya están públicas en su CV y en `experience.jobs`
-  (>99.9% uptime, -25% deploy time, +35% rendimiento, +15% eficiencia, -20% carga). Nada inventado — es
-  exactamente el error que arrastra la sección hoy.
-- **B1 y B2 seguros ante NDA.** Describir arquitectura, problema y resultados sin nombres de clientes
-  internos, sin identificadores de sistemas privados y sin capturas de producto. Marco temporal y rol propios,
-  en primera persona sobre *su* contribución.
-
-**Nuevo** `src/lib/projects/get-projects.ts`:
-- `getProjects(locale)` → lee `t.raw('items')`, **valida con Zod** (`zod@4` ya es dependencia) y descarta
-  entradas inválidas en lugar de castear a ciegas.
-- `getFeaturedProjects(locale, limit)` y `getProjectBySlug(locale, slug)`.
-- Enriquecimiento opcional: para los items con `repoUrl`, resolver `stars` / `lastPushedAt`. Reutilizar el
-  fetch de `src/lib/github/api.ts` cambiando `pinnedItems` por consulta puntual de repos, y **añadir un
-  cache tag** `'github-projects'` para que `src/app/api/revalidate/route.ts` (que hoy solo revalida
-  `'devto-articles'`) pueda refrescarlo on-demand. Si GitHub falla, el proyecto se renderiza igual sin badges.
-
-`getPinnedProjects` deja de decidir los destacados, pero **se reutiliza tal cual** para alimentar el bloque
-secundario "más repos" de `/projects` (subiendo el `limit` y filtrando el repo `juangomezb`). Sus 17 tests en
-`src/lib/github/api.test.ts` siguen siendo válidos; solo se añade el caso del filtro de exclusión.
-
-### Fase 2 — Tarjeta y sección
-
-- `src/components/sections/ProjectCard.tsx`: importar `Project` en vez de redeclarar el shape. Añadir fila
-  de **métricas** (el gancho principal), chips de rol/año, badge de `kind` (`Open Source` / `Case Study`) y
-  de `status`, y CTA a `/{locale}/projects/{slug}` como acción primaria + repo/demo como secundarias.
-  Traducir el badge `Featured` hoy hardcodeado en inglés (`ProjectCard.tsx:53`).
-  Un proyecto con `status: 'in-progress'` muestra su badge y **oculta** el CTA de repo hasta que exista
-  — nunca un botón que no lleva a ningún lado (el bug actual del fallback con `demoUrl: "#"`).
-  Como se decidió no publicar demos, la clave muerta `projects.viewDemo` se **elimina** de ambos locales en
-  lugar de conectarse, y el botón de demo solo se renderiza si algún proyecto futuro trae `demoUrl`.
-- `src/components/sections/ProjectsSection.tsx`: usar `getFeaturedProjects`, quitar el username hardcodeado
-  `'juxn89'` (a constante o `NEXT_PUBLIC_GITHUB_USERNAME`), y envolver el fetch de enriquecimiento en
-  `<Suspense>` para que GitHub no bloquee el TTFB de la home. Añadir enlace "ver todos" a `/projects`.
-
-### Fase 3 — Rutas de case study
-
-- **Nuevo** `src/app/[locale]/projects/page.tsx` — los 5 proyectos curados, más un bloque secundario
-  "más repos" (nombre, lenguaje, link) alimentado por `getPinnedProjects` con `juangomezb` excluido.
-- **Nuevo** `src/app/[locale]/projects/[slug]/page.tsx` — case study con `generateStaticParams` sobre los
-  slugs de ambos locales, `generateMetadata` reutilizando `generateSEOMetadata` de `src/lib/utils/seo.ts`,
-  y JSON-LD. Secciones: contexto → restricciones → arquitectura → decisiones (con trade-offs) → resultados.
-- `src/app/sitemap.ts`: hoy solo emite `''`. Extender `routes` con `/projects` y con `/projects/{slug}` por
-  locale, manteniendo el bloque `alternates.languages` existente.
-- Diagramas de arquitectura: SVG inline en el componente (theme-aware con `currentColor`), no imágenes —
-  evita tocar `images.remotePatterns` en `next.config.ts`, que hoy solo permite los hosts de dev.to.
-
-### Fase 4 — Dockerizar el portfolio
-
-Para cumplir la restricción también en este repo (hoy no tiene `Dockerfile`):
-
-- **Nuevo** `Dockerfile` multi-stage con `output: 'standalone'` en `next.config.ts`, usuario no-root y
-  `pnpm` con `--frozen-lockfile`. Node 24 (`.nvmrc` y `engines` ya lo fijan).
-- **Nuevo** `compose.yaml` para dev con hot-reload y el `.env.local` montado.
-- Vercel no usa el Dockerfile —sigue construyendo desde el repo— así que esto es paridad dev/prod y la
-  opción de autohospedarlo, no un cambio de despliegue. Costo cero.
-
-### Fase 5 — Tests
-
-- `src/lib/projects/get-projects.test.ts` (Vitest): parseo Zod válido/inválido, filtro de destacados,
-  `getProjectBySlug` con slug inexistente, y que el enriquecimiento de GitHub caído no rompa el render.
-- `tests/e2e/projects.spec.ts` (Playwright): la sección muestra N tarjetas en `en` y `es`; click en una
-  tarjeta navega a su case study; un slug inexistente da 404; los case studies cargan en ambos locales.
-- Ampliar `tests/e2e/home.spec.ts:26` — hoy solo asserta que el heading "Featured Projects" es visible.
-
----
-
-## Verificación
-
-```bash
-pnpm test          # Vitest: get-projects + github api
-pnpm lint
-pnpm build         # valida generateStaticParams y el sitemap
-pnpm dev           # revisar /en y /es: home + /projects + un case study
-pnpm test:e2e      # Playwright
-```
-
-Comprobaciones manuales:
-1. `/en` y `/es`: cada tarjeta muestra métricas y su CTA al case study — ninguna tarjeta sin botón
-   (el bug actual del fallback) y ningún botón de demo.
-2. Con `GITHUB_TOKEN` ausente, la sección sigue renderizando (solo sin stars).
-3. `curl localhost:3000/sitemap.xml` incluye los case studies en ambos locales con sus `alternates`.
-4. Lighthouse en un case study ≥ 90 y sin desplazamiento horizontal a 320px.
-5. `docker compose up` levanta el portfolio y responde en `localhost:3000` en ambos locales.
-6. Ninguna tarjeta `in-progress` muestra un CTA que no lleve a ningún lado.
+- **El sitio es hoy una sola página.** No existe ninguna ruta `[slug]`, ni `/blog`, ni `/projects`. Añadir
+  case studies introduce navegación multi-página donde no había.
+- **Los enlaces del Header quedarían muertos en las subpáginas.** Son anclas desnudas (`#about`) con
+  `preventDefault()` + `getElementById()`; en `/en/projects/{slug}` esas secciones no existen. Es trabajo
+  real que hay que hacer, no un detalle.
+- **`ProjectCard` no tiene botón de demo en absoluto** — `demoUrl` nunca se lee. Así que `demoUrl` se
+  elimina del modelo y la clave muerta `projects.viewDemo` se borra, en lugar de conectarse.
+- **Dos métricas del catálogo no son trazables.** ">99.9% uptime" y "+35% rendimiento" no están en
+  `experience.jobs`, y el texto del CV en PDF no se pudo extraer para comprobarlas. Quedan pendientes de
+  confirmar con una fuente concreta, o no se usan.
+- **`LocaleSwitcher` ya preserva la ruta** — un riesgo menos de los previstos.
