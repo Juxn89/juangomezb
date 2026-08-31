@@ -70,9 +70,7 @@ export function AboutSection() {
 		},
 	};
 
-	const cvUrl = locale === 'es'
-		? 'https://ajzggfj0pyd8jm3a.public.blob.vercel-storage.com/resume/juan-gomez-cv-es.pdf'
-		: 'https://ajzggfj0pyd8jm3a.public.blob.vercel-storage.com/resume/juan-gomez-cv-en.pdf';
+	const cvUrl = `/api/download-cv?locale=${locale}`;
 
 	return (
 		<section id="about" className="min-h-screen py-20 px-4 bg-bg-primary">
