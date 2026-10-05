@@ -129,13 +129,17 @@ Todo el copy va en `messages/en.json` **y** `messages/es.json`, con las mismas c
   - El canonical de `/en` y `/es` debe seguir siendo self-referencing (`seo.ts:84`). Ponerlo hacia DEV.to desindexaría la home.
 - **API**: `GET /api/articles/latest?username=jgomezdev` ya devuelve `canonical_url`, igual a `url` cuando está vacío en DEV.to. No hace falta otro endpoint.
 
+**Decisión (2026-10-05)**: por ahora no se crean páginas de artículo. Sin ellas, el canonical **no aporta SEO**:
+- El portfolio no duplica contenido; un listado con título y descripción es normal.
+- `canonical_url` coincide con `url` en los posts revisados, así que el HTML no cambia.
+
+Se descarta el JSON-LD `BlogPosting` en la home: no genera rich results y su valor es marginal. Se implementa solo lo mínimo, como preparación para el futuro.
+
 **Cambios**:
 1. **`src/lib/api/devto.ts`**: añadir `canonical_url: string` a `DevToArticle`.
-2. **`BlogCard.tsx:114`**: el link "Read more" usa `article.canonical_url ?? article.url`. Respeta la URL canónica declarada sin construirla a mano.
-3. **JSON-LD del blog**: añadir en `BlogSection` un `ItemList` de `BlogPosting` con `url` y `mainEntityOfPage` = `article.canonical_url`, `headline`, `datePublished`, `inLanguage` y `author` → Person. Así Google asocia los posts a la persona sin reclamar su procedencia.
-   - Reutilizar el patrón de JSON-LD que ya existe en `src/lib/utils/seo.ts` (Person schema), añadiendo un helper `generateBlogPostingsSchema(articles)`.
-4. **Guardarraíl para el futuro**: dejar documentado en `devto.ts` y en este plan que, si algún día se crean páginas `/[locale]/blog/[slug]` con el texto completo, su `generateMetadata` debe usar `alternates.canonical = article.canonical_url`, tomado del objeto de la API y no construido a mano.
-5. **Resiliencia ante fallo o rate limit de la API**:
+2. **`BlogCard.tsx:114`**: el link "Read more" usa `article.canonical_url || article.url`. Respeta la URL canónica declarada sin construirla a mano.
+3. **Guardarraíl para el futuro**: un comentario de una línea en `DevToArticle.canonical_url`. Si algún día se crean páginas `/[locale]/blog/[slug]` con el texto completo, su `generateMetadata` debe usar `alternates.canonical = article.canonical_url`.
+4. **Resiliencia ante fallo o rate limit de la API** (independiente del canonical; es lo que ve quien llega buscándote):
    - `getDevToArticles` devuelve `{articles, status: 'ok' | 'empty' | 'error'}` en vez de `[]` silencioso.
      - Un 429 o un 5xx cuenta como `'error'`.
      - El cache de ISR sigue sirviendo la última versión buena; el fallback solo aplica si no la hay.
@@ -162,7 +166,6 @@ Todo el copy va en `messages/en.json` **y** `messages/es.json`, con las mismas c
    - Abrir los PDF nuevos y revisar que el layout no se rompe, que los links (GitHub `juxn89`, portfolio, LinkedIn) funcionan y que el contenido EN = ES.
    - Tras subir a Blob, probar `/api/download-cv?locale=en` y `?locale=es` en local.
 7. Blog / DEV.to:
-   - En el código fuente de `/en` y `/es`, los links de las cards y el JSON-LD `BlogPosting` deben apuntar al `canonical_url` de DEV.to.
+   - En el código fuente de `/en` y `/es`, los links de las cards deben apuntar al `canonical_url` de DEV.to.
    - El `<link rel="canonical">` de la home debe seguir apuntando a `juangomezb.com/{locale}`.
    - Para simular un fallo de la API, apuntar temporalmente `DEV_TO_API_URL` a una URL inválida o mockear un 429 en vitest. Debe verse el estado de error traducido con el CTA a DEV.to, y no "No articles found.".
-   - Validar el JSON-LD con el Rich Results Test de Google tras el deploy.
