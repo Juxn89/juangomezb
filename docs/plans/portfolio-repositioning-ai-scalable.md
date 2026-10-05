@@ -150,6 +150,16 @@ Se descarta el JSON-LD `BlogPosting` en la home: no genera rich results y su val
      - Claves nuevas: `blog.error`, `blog.errorCta`.
    - Actualizar `src/lib/api/devto.test.ts`: los casos de error/429 devuelven `status: 'error'`, y se comprueba que `canonical_url` se preserva.
 
+**Implementado (2026-10-05)**: puntos 1–4.
+- **Bug previo corregido de paso**: faltaba `setRequestLocale(locale)` en `src/app/[locale]/layout.tsx` y `page.tsx`.
+  - Por eso `getLocale()` en `BlogSection` devolvía `en` en `/es`.
+  - En `/es` se mostraban los posts en inglés y el encabezado del blog en inglés.
+- **E2E con fallos previos**: 4 tests fallan igual sin estos cambios.
+  - `home.spec.ts:35` (footer tagline)
+  - `i18n.spec.ts:16` (switch EN→ES)
+  - `navigation.spec.ts:18` (scroll a sección)
+  - `navigation.spec.ts:25` (dark mode)
+
 ### Fuera de alcance (pendiente para el usuario)
 - **GitHub**: fijar en `juxn89` algún repo de IA con buena description/topics. La sección Projects se alimenta de los repos pinned.
 - **Otros**: OG image inexistente (`/og-image.jpg`) y `ContactSection` no renderizada.

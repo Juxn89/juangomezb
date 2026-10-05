@@ -111,7 +111,7 @@ export function BlogCard({article, index}: BlogCardProps) {
 
 				{/* Read More Link */}
 				<a
-					href={article.url}
+					href={article.canonical_url || article.url}
 					target="_blank"
 					rel="noopener noreferrer"
 					className={cn(

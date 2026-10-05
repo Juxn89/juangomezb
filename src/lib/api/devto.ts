@@ -8,6 +8,8 @@ export type DevToArticle = {
 	title: string;
 	description: string;
 	url: string;
+	/** Dev.to fills this with its own URL when left empty. Future article pages must use it as `alternates.canonical`. */
+	canonical_url: string;
 	published_at: string;
 	cover_image: string | null;
 	tag_list: string[];
@@ -19,6 +21,11 @@ export type DevToArticle = {
 	language: string;
 };
 
+export type DevToArticlesResult = {
+	status: 'ok' | 'empty' | 'error';
+	articles: DevToArticle[];
+};
+
 const DEV_TO_USERNAME = 'jgomezdev';
 const DEV_TO_API_URL = 'https://dev.to/api/articles/latest';
 
@@ -27,13 +34,13 @@ const DEV_TO_API_URL = 'https://dev.to/api/articles/latest';
  * @param username - Dev.to username (default: jgomezdev)
  * @param locale - Locale code used to filter articles by language ('en' | 'es')
  * @param limit - Number of articles to return after filtering (default: 6)
- * @returns Array of Dev.to articles matching the locale language
+ * @returns Articles matching the locale language, with 'error' status on API failure or rate limiting
  */
 export async function getDevToArticles(
 	username: string = DEV_TO_USERNAME,
 	locale: string = 'en',
 	limit: number = 6
-): Promise<DevToArticle[]> {
+): Promise<DevToArticlesResult> {
 	try {
 		// Fetch more than needed to account for filtering by language
 		const url = new URL(DEV_TO_API_URL);
@@ -53,12 +60,14 @@ export async function getDevToArticles(
 
 		const articles: DevToArticle[] = await response.json();
 
-		return articles
+		const filtered = articles
 			.filter((a) => a.published_at !== null && a.language === locale)
 			.slice(0, limit);
+
+		return {status: filtered.length > 0 ? 'ok' : 'empty', articles: filtered};
 	} catch (error) {
 		console.error('Error fetching Dev.to articles:', error);
-		return [];
+		return {status: 'error', articles: []};
 	}
 }
 
