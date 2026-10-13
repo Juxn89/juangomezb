@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
-import {getMessages, getTranslations} from 'next-intl/server';
+import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/routing';
 import {notFound} from 'next/navigation';
 import {headers} from 'next/headers';
@@ -60,6 +60,8 @@ export default async function RootLayout({
 	if (!routing.locales.includes(locale as any)) {
 		notFound();
 	}
+
+	setRequestLocale(locale);
 
 	// Load messages for the specific locale
 	const messages = await getMessages({locale});

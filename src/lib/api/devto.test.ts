@@ -9,6 +9,7 @@ const makeArticle = (overrides: Partial<DevToArticle> = {}): DevToArticle => ({
 	title: 'Test Article',
 	description: 'A test article',
 	url: 'https://dev.to/test/article',
+	canonical_url: 'https://dev.to/test/article',
 	published_at: '2026-06-10T21:20:58Z',
 	cover_image: null,
 	tag_list: ['typescript', 'nextjs'],
@@ -60,8 +61,9 @@ describe('getDevToArticles', () => {
 
 		const result = await getDevToArticles('jgomezdev', 'en', 6);
 
-		expect(result).toHaveLength(1);
-		expect(result[0]?.language).toBe('en');
+		expect(result.status).toBe('ok');
+		expect(result.articles).toHaveLength(1);
+		expect(result.articles[0]?.language).toBe('en');
 	});
 
 	it('returns only Spanish articles when locale is es', async () => {
@@ -72,8 +74,9 @@ describe('getDevToArticles', () => {
 
 		const result = await getDevToArticles('jgomezdev', 'es', 6);
 
-		expect(result).toHaveLength(1);
-		expect(result[0]?.language).toBe('es');
+		expect(result.status).toBe('ok');
+		expect(result.articles).toHaveLength(1);
+		expect(result.articles[0]?.language).toBe('es');
 	});
 
 	it('respects the limit after filtering', async () => {
@@ -88,10 +91,10 @@ describe('getDevToArticles', () => {
 
 		const result = await getDevToArticles('jgomezdev', 'en', 3);
 
-		expect(result).toHaveLength(3);
+		expect(result.articles).toHaveLength(3);
 	});
 
-	it('returns empty array when API responds with non-ok status', async () => {
+	it('returns error status when API responds with non-ok status', async () => {
 		vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
 			ok: false,
 			status: 500,
@@ -100,15 +103,15 @@ describe('getDevToArticles', () => {
 
 		const result = await getDevToArticles('jgomezdev', 'en', 6);
 
-		expect(result).toEqual([]);
+		expect(result).toEqual({status: 'error', articles: []});
 	});
 
-	it('returns empty array when fetch throws', async () => {
+	it('returns error status when fetch throws', async () => {
 		vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network error')));
 
 		const result = await getDevToArticles('jgomezdev', 'en', 6);
 
-		expect(result).toEqual([]);
+		expect(result).toEqual({status: 'error', articles: []});
 	});
 
 	it('excludes articles with null published_at', async () => {
@@ -121,7 +124,42 @@ describe('getDevToArticles', () => {
 
 		const result = await getDevToArticles('jgomezdev', 'en', 6);
 
-		expect(result).toHaveLength(1);
-		expect(result[0]?.id).toBe(enArticle.id);
+		expect(result.articles).toHaveLength(1);
+		expect(result.articles[0]?.id).toBe(enArticle.id);
+	});
+
+	it('returns error status when API rate limits the request', async () => {
+		vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+			ok: false,
+			status: 429,
+			statusText: 'Too Many Requests',
+		}));
+
+		const result = await getDevToArticles('jgomezdev', 'en', 6);
+
+		expect(result).toEqual({status: 'error', articles: []});
+	});
+
+	it('returns empty status when no articles match the locale', async () => {
+		vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+			ok: true,
+			json: async () => [esArticle],
+		}));
+
+		const result = await getDevToArticles('jgomezdev', 'en', 6);
+
+		expect(result).toEqual({status: 'empty', articles: []});
+	});
+
+	it('preserves canonical_url from the API response', async () => {
+		const canonical = 'https://dev.to/jgomezdev/original-post-abc1';
+		vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+			ok: true,
+			json: async () => [makeArticle({canonical_url: canonical})],
+		}));
+
+		const result = await getDevToArticles('jgomezdev', 'en', 6);
+
+		expect(result.articles[0]?.canonical_url).toBe(canonical);
 	});
 });

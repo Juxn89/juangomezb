@@ -70,9 +70,7 @@ export function AboutSection() {
 		},
 	};
 
-	const cvUrl = locale === 'es' 
-		? '/resume/juan-gomez-cv-es.pdf'
-		: '/resume/juan-gomez-cv-en.pdf';
+	const cvUrl = `/api/download-cv?locale=${locale}`;
 
 	return (
 		<section id="about" className="min-h-screen py-20 px-4 bg-bg-primary">
