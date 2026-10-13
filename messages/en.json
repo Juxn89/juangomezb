@@ -226,7 +226,11 @@
 		"subtitle": "Thoughts and tutorials",
 		"readMore": "Read More",
 		"readingTime": "{minutes} min read",
-		"publishedOn": "Published on"
+		"publishedOn": "Published on",
+		"empty": "No articles published yet.",
+		"error": "Articles couldn't be loaded right now.",
+		"errorCta": "Read them on Dev.to",
+		"viewAll": "View All Articles on Dev.to"
 	},
 	"footer": {
 		"name": "Juan Carlos Gómez",
