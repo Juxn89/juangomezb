@@ -1,399 +1,316 @@
-# 🚀 Juan Gomez - Senior Software Engineer Portfolio
+<div align="center">
 
-Modern, high-performance portfolio website built with Next.js 16, React 19, and TypeScript. Features a creative design with Forest Code color palette, multilingual support (English/Spanish), and full integration with Dev.to blog.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/readme/hero-dark.svg">
+  <img src="docs/readme/hero-light.svg" alt="Juan Gómez — Senior Software Engineer. Scalable .NET systems, cloud architecture and AI that ships." width="100%">
+</picture>
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.6-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.4-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38bdf8)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+<br><br>
 
----
+<a href="https://www.juangomezb.com"><img src="https://img.shields.io/badge/Visit-juangomezb.com-047857?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit juangomezb.com"></a>
+<a href="https://dev.to/jgomezdev"><img src="https://img.shields.io/badge/Read-the_blog-7c3aed?style=for-the-badge&logo=devdotto&logoColor=white" alt="Read the blog on DEV"></a>
+<a href="https://www.linkedin.com/in/jcgomez89/"><img src="https://img.shields.io/badge/Connect-LinkedIn-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect on LinkedIn"></a>
 
-## ✨ Features
+<a href="https://github.com/Juxn89/juangomezb/actions/workflows/ci.yml"><img src="https://github.com/Juxn89/juangomezb/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+<img src="https://img.shields.io/badge/Next.js-16.2-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 16.2">
+<img src="https://img.shields.io/badge/React-19.2-149ECA?style=flat-square&logo=react&logoColor=white" alt="React 19.2">
+<img src="https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript strict">
+<img src="https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4">
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-f59e0b?style=flat-square" alt="MIT License"></a>
 
-### 🎨 **Modern Design**
-- **Forest Code Color Palette**: Emerald green, violet, and amber gradients
-- **Responsive Design**: Mobile-first approach (320px → 4K)
-- **Dark/Light Mode**: System preference detection with smooth transitions
-- **Smooth Animations**: Framer Motion with performance optimization
-- **Gradient Text Effects**: Custom gradients without clipping issues
+</div>
 
-### 🌍 **Internationalization (i18n)**
-- **Languages**: English (en) & Spanish (es)
-- **Library**: next-intl 4.12.0 for Server Components
-- **Auto-detection**: Browser language, cookies, URL path
-- **SEO-friendly**: `hreflang` tags and locale-specific sitemaps
+<br>
 
-### 📝 **Content Management**
-- **Dev.to Integration**: Automatic blog post fetching via API
-- **ISR Caching**: 1-hour revalidation for optimal performance
-- **Local MDX Support**: Ready for custom content
-- **Dynamic Metadata**: SEO optimized for each page
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/readme/stats-dark.svg">
+  <img src="docs/readme/stats-light.svg" alt="15+ years building software · 500K+ users reached · every page in English and Spanish · no UI kits, all components custom" width="100%">
+</picture>
 
-### 🛡️ **Security & Performance**
-- **Rate Limiting**: In-memory limiter (production-ready)
-- **Security Headers**: CSP, XSS protection, CSRF prevention
-- **Edge Middleware**: Bot protection and DDoS mitigation
-- **Core Web Vitals**: Optimized for 90+ Lighthouse scores
+<br><br>
 
-### 🎯 **Key Sections**
-- **Hero**: Profile photo, typewriter animation (5 roles), social links
-- **About**: Professional stats (15+ years, 500K+ users, Architect, Scalable)
-- **Experience**: Timeline of professional journey
-- **Projects**: Featured work with case studies
-- **Blog**: Dev.to articles integration
-- **Contact**: Secure contact form
-- **404 Page**: Creative tech-themed animated error page
+The source of my personal site: a **bilingual Next.js 16 portfolio** rendered with React Server
+Components, fed by my DEV.to articles and GitHub repositories, and **hardened at the edge** like a
+production service — because a portfolio is also a sample of how I build.
 
----
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/readme/showcase-dark.png">
+    <img src="docs/readme/showcase-light.png" alt="juangomezb.com in a desktop browser and, in Spanish, on a phone" width="100%">
+  </picture>
+</p>
 
-## 🛠️ Tech Stack
+<p align="center"><img src="docs/readme/divider.svg" width="100%" alt=""></p>
 
-### **Core**
-- **Framework**: [Next.js 16.2.6](https://nextjs.org/) (App Router, Turbopack)
-- **React**: [React 19.2.4](https://reactjs.org/) (Server Components, Suspense)
-- **Language**: [TypeScript 5+](https://www.typescriptlang.org/) (strict mode)
-- **Runtime**: Node.js 20+
+## ✦ What's inside
 
-### **Styling**
-- **CSS Framework**: [Tailwind CSS 4](https://tailwindcss.com/) (JIT mode, modern syntax)
-- **Animations**: [Framer Motion 12.40.0](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/) (Terminal, Code, Server, Database, Cpu, etc.)
-- **Fonts**: [Geist Sans & Geist Mono](https://vercel.com/font) (Google Fonts)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/readme/icon-bilingual.svg" width="44" alt=""><br>
+      <b>Bilingual by design</b><br>
+      <sub>English and Spanish on every route (<code>/en</code>, <code>/es</code>) with next-intl, <code>hreflang</code> alternates and a localized sitemap.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/readme/icon-theme.svg" width="44" alt=""><br>
+      <b>Light, dark or system</b><br>
+      <sub>A three-way theme toggle over CSS variables of the <i>Forest Code</i> palette, remembered across visits.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src="docs/readme/icon-blog.svg" width="44" alt=""><br>
+      <b>Blog from DEV.to</b><br>
+      <sub>Articles fetched from the DEV API and cached with ISR for 30 minutes; a secured endpoint refreshes them on demand.</sub>
+    </td>
+    <td valign="top">
+      <img src="docs/readme/icon-projects.svg" width="44" alt=""><br>
+      <b>Projects from GitHub</b><br>
+      <sub>Pinned repositories read through the GitHub GraphQL API, so the site follows the profile.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src="docs/readme/icon-security.svg" width="44" alt=""><br>
+      <b>Hardened edge</b><br>
+      <sub>Scanner and bad-bot blocking, rate limiting, nonce-based CSP, HSTS and an origin shield — in middleware, before any page work.</sub>
+    </td>
+    <td valign="top">
+      <img src="docs/readme/icon-seo.svg" width="44" alt=""><br>
+      <b>Search-ready</b><br>
+      <sub>Per-page metadata, Open Graph, JSON-LD (<code>Person</code>, <code>WebSite</code>) and dynamic <code>sitemap.xml</code> / <code>robots.txt</code>.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src="docs/readme/icon-mobile.svg" width="44" alt=""><br>
+      <b>Mobile-first</b><br>
+      <sub>Designed from 320&nbsp;px up; the same content in a single column on phones, with a dedicated menu.</sub>
+    </td>
+    <td valign="top">
+      <img src="docs/readme/icon-cv.svg" width="44" alt=""><br>
+      <b>CV on demand</b><br>
+      <sub><code>/api/download-cv?locale=en|es</code> serves the PDF in the visitor's language.</sub>
+    </td>
+  </tr>
+</table>
 
-### **Internationalization**
-- **i18n**: [next-intl 4.12.0](https://next-intl-docs.vercel.app/)
-- **Timezone**: America/Managua
-- **Locales**: en (default), es
+## ✦ How a request flows
 
-### **Content & Data**
-- **Blog**: [Dev.to Public API](https://dev.to/api) (username: jgomezdev)
-- **MDX**: [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) (ready for local content)
-- **Analytics**: [Vercel Analytics](https://vercel.com/analytics) (privacy-focused)
+```mermaid
+flowchart LR
+    V([Visitor]) --> EDGE{{"<b>Edge middleware</b><br/>block scanners & bots<br/>rate limit · i18n<br/>CSP nonce · headers"}}
 
-### **Development Tools**
-- **Package Manager**: pnpm (fast, efficient)
-- **Linting**: ESLint with Next.js config
-- **Testing**: Playwright (E2E, ready for CI/CD)
-- **Git Remote**: origin-ssh (SSH authentication)
+    subgraph APP["Next.js App Router"]
+        PAGE["Pages<br/>Server Components"]
+        REVAL["/api/revalidate"]
+        CV["/api/download-cv"]
+    end
 
----
+    subgraph EXT["External services"]
+        DEVTO[("DEV.to API")]
+        GH[("GitHub GraphQL")]
+        BLOB[("Vercel Blob")]
+    end
 
-## 📂 Project Structure
+    EDGE --> PAGE & REVAL & CV
+    PAGE -->|"ISR · 30 min"| DEVTO
+    PAGE --> GH
+    REVAL -.->|purges cache| PAGE
+    CV --> BLOB
+
+    classDef edge fill:#047857,stroke:#10b981,color:#ffffff
+    classDef app fill:#6d28d9,stroke:#a78bfa,color:#ffffff
+    classDef ext fill:#f59e0b,stroke:#b45309,color:#1f2937
+    class EDGE edge
+    class PAGE,REVAL,CV app
+    class DEVTO,GH,BLOB ext
+```
+
+> [!TIP]
+> Requests from scanners and blocked user agents end at the edge — they never reach a page, an API
+> route or an external API. Only what needs the browser (theme, menus, animations) ships as client
+> JavaScript; everything else renders on the server.
+
+## ✦ Tech stack
+
+<table>
+  <tr>
+    <th align="left">Frontend</th>
+    <td>
+      <img src="https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 16">
+      <img src="https://img.shields.io/badge/React_19-149ECA?style=flat-square&logo=react&logoColor=white" alt="React 19">
+      <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
+      <img src="https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4">
+      <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion">
+      <img src="https://img.shields.io/badge/Lucide-F56565?style=flat-square&logo=lucide&logoColor=white" alt="Lucide icons">
+    </td>
+  </tr>
+  <tr>
+    <th align="left">Content &amp; i18n</th>
+    <td>
+      <img src="https://img.shields.io/badge/next--intl_4-0F172A?style=flat-square" alt="next-intl 4">
+      <img src="https://img.shields.io/badge/DEV.to_API-0A0A0A?style=flat-square&logo=devdotto&logoColor=white" alt="DEV.to API">
+      <img src="https://img.shields.io/badge/GitHub_GraphQL-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub GraphQL API">
+      <img src="https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white" alt="Zod">
+    </td>
+  </tr>
+  <tr>
+    <th align="left">Quality</th>
+    <td>
+      <img src="https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=vitest&logoColor=white" alt="Vitest">
+      <img src="https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white" alt="Playwright">
+      <img src="https://img.shields.io/badge/ESLint_9-4B32C3?style=flat-square&logo=eslint&logoColor=white" alt="ESLint 9">
+      <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions">
+    </td>
+  </tr>
+  <tr>
+    <th align="left">Platform</th>
+    <td>
+      <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel">
+      <img src="https://img.shields.io/badge/Vercel_Blob-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel Blob">
+      <img src="https://img.shields.io/badge/Vercel_Analytics-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel Analytics">
+      <img src="https://img.shields.io/badge/Node.js_24-5FA04E?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 24">
+      <img src="https://img.shields.io/badge/pnpm_9-F69220?style=flat-square&logo=pnpm&logoColor=white" alt="pnpm 9">
+    </td>
+  </tr>
+</table>
+
+## ✦ Quick start
+
+```bash
+git clone https://github.com/Juxn89/juangomezb.git && cd juangomezb
+pnpm install
+pnpm dev            # → http://localhost:3000
+```
+
+<details>
+<summary><b>Environment variables</b> — all optional for local development</summary>
+<br>
+
+Put them in `.env.local`:
+
+| Variable | Used for | Without it |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, robots | Falls back to `https://juangomezb.com` |
+| `GITHUB_TOKEN` | GitHub GraphQL API (pinned repositories) | Unauthenticated calls, lower rate limit |
+| `REVALIDATE_SECRET` | Protects `POST /api/revalidate` | The endpoint refuses every request |
+| `ORIGIN_SHIELD_SECRET` | Only requests through the CDN (header `x-origin-shield`) reach the app | The origin is reachable directly |
+
+</details>
+
+<details>
+<summary><b>Scripts</b></summary>
+<br>
+
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Development server (Turbopack) |
+| `pnpm build` · `pnpm start` | Production build · production server |
+| `pnpm lint` | ESLint |
+| `pnpm test` · `pnpm test:watch` · `pnpm test:coverage` | Unit tests (Vitest) · watch mode · coverage of `src/lib` |
+| `pnpm test:e2e` · `pnpm test:e2e:ui` | Playwright end-to-end tests · in UI mode |
+| `pnpm ci` | Unit tests, then a production build |
+
+</details>
+
+## ✦ Quality gate
+
+```mermaid
+flowchart LR
+    PUSH([push / pull request]) --> TSC[Type check] --> UNIT[Unit tests<br/>Vitest] --> BUILD[Production build] --> SHIP([Vercel deploy])
+
+    classDef step fill:#047857,stroke:#10b981,color:#ffffff
+    classDef io fill:#6d28d9,stroke:#a78bfa,color:#ffffff
+    class TSC,UNIT,BUILD step
+    class PUSH,SHIP io
+```
+
+- **Unit tests** (`src/**/*.test.ts`): the DEV.to and GitHub clients, SEO metadata and utilities.
+- **End to end** (`tests/e2e`): home page, navigation and both locales in a real browser.
+- **CI** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): a failing check stops the build.
+
+## ✦ Security at the edge
+
+| Layer | What it stops |
+|---|---|
+| 🚫 **Scanner paths** | Probes for `/.env`, `/.git`, WordPress, PHP admin panels… never reach the app |
+| 🤖 **Bad user agents** | Known scanners and exploitation tools (nikto, nmap, nuclei, ZAP…) |
+| ⏱️ **Rate limiting** | 100 requests / 15 min per IP for pages, 5 for API routes |
+| 🔐 **CSP with a per-request nonce** | Injected scripts: no `unsafe-inline` in production |
+| 🛡️ **Security headers** | Clickjacking, MIME sniffing, downgrade (HSTS), unneeded browser APIs |
+| 🧱 **Origin shield** | Traffic that bypasses the CDN (404 without the shared secret) |
+| 🔑 **Constant-time secret checks** | Timing attacks on the origin-shield header and the revalidation token |
+
+Everything lives in [`middleware.ts`](middleware.ts). Background and decisions:
+[docs/security-hardening.md](docs/security-hardening.md) · [docs/summaries](docs/summaries).
+
+## ✦ Project structure
+
+<details>
+<summary>Show the tree</summary>
 
 ```
-juangomezb/
+├── middleware.ts            # Edge: blocking, rate limiting, CSP, i18n routing
+├── messages/                # en.json · es.json — every UI string
 ├── src/
 │   ├── app/
-│   │   ├── [locale]/           # Localized routes (en, es)
-│   │   │   ├── layout.tsx      # Root layout with i18n
-│   │   │   ├── page.tsx        # Home page (all sections)
-│   │   │   └── not-found.tsx   # Localized 404 page
-│   │   ├── layout.tsx          # Root layout (non-locale routes)
-│   │   ├── not-found.tsx       # Root 404 page
-│   │   ├── globals.css         # Global styles + Forest Code palette
-│   │   ├── sitemap.ts          # Dynamic sitemap generation
-│   │   └── robots.ts           # Dynamic robots.txt
+│   │   ├── [locale]/        # Localized pages, layout, error and 404
+│   │   ├── api/             # revalidate · download-cv
+│   │   ├── sitemap.ts       # Multilingual sitemap
+│   │   └── robots.ts
 │   ├── components/
-│   │   ├── layouts/
-│   │   │   ├── Header.tsx      # Navigation with locale switcher
-│   │   │   └── Footer.tsx      # Footer with social links
-│   │   ├── sections/
-│   │   │   ├── HeroSection.tsx         # Landing with typewriter
-│   │   │   ├── AboutSection.tsx        # Stats, skills, expertise
-│   │   │   ├── ExperienceSection.tsx   # Career timeline
-│   │   │   ├── ProjectsSection.tsx     # Featured projects
-│   │   │   ├── BlogSection.tsx         # Dev.to integration
-│   │   │   ├── BlogCard.tsx            # Blog post card
-│   │   │   └── ContactSection.tsx      # Contact form
-│   │   ├── providers/
-│   │   │   └── Providers.tsx   # Theme, i18n providers
-│   │   └── ui/                 # Reusable UI components
+│   │   ├── sections/        # Hero, About, Experience, Projects, Blog
+│   │   ├── layouts/         # Header, Footer, MobileMenu
+│   │   └── ui/              # Button, Card, Badge, ThemeToggle, LocaleSwitcher…
 │   ├── lib/
-│   │   ├── api/
-│   │   │   └── devto.ts        # Dev.to API client
-│   │   ├── utils/
-│   │   │   ├── cn.ts           # className utility (clsx + twMerge)
-│   │   │   └── seo.ts          # SEO metadata generation
-│   │   └── security/
-│   │       └── rate-limiter.ts # In-memory rate limiting
-│   └── types/                  # TypeScript definitions
-├── messages/
-│   ├── en.json                 # English translations
-│   └── es.json                 # Spanish translations
-├── public/
-│   ├── images/
-│   │   └── profile_photo.png   # Hero profile photo
-│   ├── resume/
-│   │   ├── juan-gomez-cv-en.pdf
-│   │   └── juan-gomez-cv-es.pdf
-│   └── favicon.svg             # Forest Code gradient favicon
-├── middleware.ts               # Edge middleware (security, rate limiting)
-├── i18n.ts                     # next-intl configuration
-├── routing.ts                  # Locale routing config
-├── next.config.ts              # Next.js configuration
-├── tailwind.config.ts          # Tailwind CSS configuration
-├── tsconfig.json               # TypeScript configuration
-└── package.json                # Dependencies
+│   │   ├── api/devto.ts     # DEV.to client (ISR)
+│   │   ├── github/api.ts    # GitHub GraphQL client
+│   │   ├── context/         # Theme context
+│   │   └── utils/           # cn, SEO helpers
+│   └── i18n.ts · routing.ts # next-intl configuration
+├── tests/e2e/               # Playwright
+├── scripts/readme/          # Generates the artwork of this README
+└── docs/                    # Plans, security notes, transcripts
 ```
 
----
+</details>
 
-## 🚀 Getting Started
+## ✦ Deployment
 
-### **Prerequisites**
-- Node.js 20+ ([Download](https://nodejs.org/))
-- pnpm 8+ ([Installation](https://pnpm.io/installation))
-
-### **Installation**
+Deployed on **Vercel** from `main` (Node 24, `pnpm build`), with the environment variables above in
+*Settings → Environment Variables*. A new DEV.to article shows up within 30 minutes; to publish it
+right away:
 
 ```bash
-# Clone the repository
-git clone git@github.com:Juxn89/juangomezb.git
-cd juangomezb
-
-# Install dependencies
-pnpm install
+curl -X POST "https://www.juangomezb.com/api/revalidate" \
+  -H "Authorization: Bearer $REVALIDATE_SECRET"
 ```
 
-### **Development Server**
+## ✦ Documentation
 
-```bash
-# Start dev server (localhost:3000)
-pnpm dev
+| | Document | Purpose |
+|---|---|---|
+| 🧭 | [SETUP.md](SETUP.md) | Step-by-step setup after cloning |
+| 🧠 | [DEVELOPMENT.md](DEVELOPMENT.md) | Decisions, problems and their solutions |
+| 🛠️ | [README.dev.md](README.dev.md) | Developer notes (Spanish): commands, integrations, gotchas |
+| 📜 | [CHANGELOG.md](CHANGELOG.md) | Version history |
+| 🤖 | [AGENTS.md](AGENTS.md) | Rules for the AI coding agents that work on this repo |
+| 💬 | [CONVERSATION_HISTORY.md](CONVERSATION_HISTORY.md) · [docs/transcripts](docs/transcripts) | How it was built with AI assistance |
+| 🗺️ | [docs/plans](docs/plans) | Implementation plans |
 
-# Start dev server with Turbopack (faster)
-pnpm dev --turbo
-```
+<p align="center"><img src="docs/readme/divider.svg" width="100%" alt=""></p>
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+<div align="center">
 
-### **Build for Production**
+### Let's build something
 
-```bash
-# Create optimized production build
-pnpm build
+<a href="https://www.juangomezb.com"><img src="https://img.shields.io/badge/juangomezb.com-047857?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website"></a>
+<a href="https://www.linkedin.com/in/jcgomez89/"><img src="https://img.shields.io/badge/LinkedIn-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="https://github.com/Juxn89"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+<a href="https://dev.to/jgomezdev"><img src="https://img.shields.io/badge/DEV-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white" alt="DEV"></a>
+<a href="mailto:gb.jc@outlook.com"><img src="https://img.shields.io/badge/Email-7c3aed?style=for-the-badge" alt="Email"></a>
 
-# Preview production build locally
-pnpm start
-```
+<sub>Code under the <a href="LICENSE">MIT License</a> · Artwork generated by <a href="scripts/readme/build-assets.mjs"><code>scripts/readme/build-assets.mjs</code></a></sub>
 
-### **Testing**
-
-```bash
-# Run Playwright E2E tests
-pnpm test
-
-# Run tests in UI mode (visual debugging)
-pnpm test:ui
-
-# Run tests in headed mode (browser visible)
-pnpm test:headed
-```
-
----
-
-## ⚙️ Configuration
-
-### **Environment Variables**
-
-Create a `.env.local` file in the root directory:
-
-```bash
-# Public
-NEXT_PUBLIC_SITE_URL=https://juangomezb.com
-
-# Optional (for production scaling)
-UPSTASH_REDIS_REST_URL=your_redis_url
-UPSTASH_REDIS_REST_TOKEN=your_redis_token
-```
-
-### **Locales**
-
-Configure locales in `i18n.ts`:
-
-```typescript
-export default getRequestConfig(async ({locale}) => ({
-  messages: (await import(`./messages/${locale}.json`)).default,
-  timeZone: 'America/Managua',
-}));
-```
-
-### **Dev.to Username**
-
-Update username in `src/lib/api/devto.ts`:
-
-```typescript
-const DEVTO_USERNAME = 'jgomezdev'; // Change to your username
-```
-
----
-
-## 🎨 Customization
-
-### **Color Palette (Forest Code)**
-
-Edit `src/app/globals.css`:
-
-```css
-:root {
-  --color-accent-primary: 4 120 87;     /* Emerald green */
-  --color-accent-secondary: 124 58 237; /* Violet */
-  --color-accent-tertiary: 251 191 36;  /* Amber */
-}
-
-.dark {
-  --color-accent-primary: 16 185 129;   /* Bright green */
-  --color-accent-secondary: 167 139 250;/* Soft violet */
-  --color-accent-tertiary: 252 211 77;  /* Golden yellow */
-}
-```
-
-### **Skills List**
-
-Edit `src/components/sections/AboutSection.tsx`:
-
-```typescript
-const skills = [
-  {name: '.NET', category: 'backend', icon: Code},
-  {name: 'React', category: 'frontend', icon: Code},
-  // Add your skills...
-];
-```
-
-### **Stats Cards**
-
-Edit `src/components/sections/AboutSection.tsx`:
-
-```typescript
-const stats = [
-  {label: t('stats.experience'), value: '15+'},
-  {label: t('stats.users'), value: '500K+'},
-  // Customize your stats...
-];
-```
-
----
-
-## 🌐 Deployment
-
-### **Vercel (Recommended)**
-
-1. Push to GitHub:
-   ```bash
-   git push origin-ssh main
-   ```
-
-2. Import project in [Vercel Dashboard](https://vercel.com/new)
-
-3. Configure:
-   - Framework: Next.js
-   - Root Directory: `./`
-   - Build Command: `pnpm build`
-   - Output Directory: `.next`
-
-4. Add environment variables in Vercel dashboard
-
-5. Deploy! 🎉
-
-### **Manual Deploy**
-
-```bash
-# Build
-pnpm build
-
-# Deploy .next folder to your hosting provider
-```
-
----
-
-## 📝 Scripts
-
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Create production build |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm test` | Run Playwright tests |
-| `pnpm test:ui` | Run tests in UI mode |
-
----
-
-## 📚 Documentation & Context Preservation
-
-### **Complete Documentation Suite**
-
-This project includes comprehensive documentation to preserve all development context:
-
-| Document | Purpose |
-|----------|---------|
-| **README.md** (this file) | Project overview, features, getting started |
-| **[SETUP.md](./SETUP.md)** | Step-by-step setup guide after cloning |
-| **[DEVELOPMENT.md](./DEVELOPMENT.md)** | Complete development context, decisions, problems & solutions |
-| **[CONVERSATION_HISTORY.md](./CONVERSATION_HISTORY.md)** | Full chronological history of AI-assisted development |
-| **[CHANGELOG.md](./CHANGELOG.md)** | Version history and changes |
-| **[AGENTS.md](./AGENTS.md)** | AI agent guidelines for code generation |
-| **[docs/transcripts/](./docs/transcripts/)** | Raw conversation transcripts (JSONL format) |
-
-### **Why This Matters**
-
-After formatting your laptop or switching machines, you can:
-- ✅ Quickly set up the project (SETUP.md)
-- ✅ Understand all architectural decisions (DEVELOPMENT.md)
-- ✅ See the complete development journey (CONVERSATION_HISTORY.md)
-- ✅ Review specific problems and solutions
-- ✅ Maintain consistent code quality with AI assistance
-
-### **Quick Start After Formatting**
-
-1. Clone repository: `git clone git@github.com:juxn89/juangomezb.git`
-2. Follow **SETUP.md** checklist
-3. Run `pnpm install && pnpm dev`
-4. Review **DEVELOPMENT.md** for context
-
----
-
-## 🤝 Contributing
-
-This is a personal portfolio project, but suggestions and bug reports are welcome!
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
-
-**Juan Gomez**
-- Portfolio: [juangomezb.com](https://juangomezb.com)
-- GitHub: [@Juxn89](https://github.com/Juxn89)
-- LinkedIn: [jcgomez89](https://www.linkedin.com/in/jcgomez89/)
-- Email: gb.jc@outlook.com
-- Dev.to: [@jgomezdev](https://dev.to/jgomezdev)
-
----
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React Framework
-- [Vercel](https://vercel.com/) - Deployment platform
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
-- [Framer Motion](https://www.framer.com/motion/) - Animation library
-- [next-intl](https://next-intl-docs.vercel.app/) - Internationalization
-- [Dev.to](https://dev.to/) - Blogging platform API
-- [Lucide](https://lucide.dev/) - Icon library
-
----
-
-**Built with ❤️ using Next.js 16 and React 19**
+</div>

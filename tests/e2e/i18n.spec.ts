@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {revealHeaderControls} from '../helpers/header';
 
 test.describe('Internationalization', () => {
 	test('loads English content at /en', async ({page}) => {
@@ -13,11 +14,14 @@ test.describe('Internationalization', () => {
 		await expect(page.getByRole('heading', {name: 'Acerca de Mí'})).toBeVisible();
 	});
 
-	test('switching locale from EN to ES updates the URL and content', async ({page}) => {
+	test('switching locale from EN to ES updates the URL and content', async ({page, isMobile}) => {
 		await page.goto('/en');
-		await page.getByRole('button', {name: /en|es|language|idioma/i}).first().click();
-		await page.getByRole('option', {name: /español|es/i}).click();
-		await expect(page).toHaveURL(/\/es/);
+		await revealHeaderControls(page, isMobile);
+		// The switcher is a toggle group: the active locale is plain text, the other one a link
+		// labelled with its language name in the current locale.
+		await page.getByRole('link', {name: 'Spanish'}).filter({visible: true}).click();
+		// The dev server compiles /es on first visit, which can exceed the default 5 s under parallel load.
+		await expect(page).toHaveURL(/\/es/, {timeout: 20_000});
 		await expect(page.getByText('Hola, soy')).toBeVisible();
 	});
 

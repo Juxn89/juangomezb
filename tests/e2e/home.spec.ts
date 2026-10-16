@@ -33,6 +33,9 @@ test.describe('Home Page', () => {
 	});
 
 	test('footer is visible with tagline', async ({page}) => {
-		await expect(page.getByText('Senior Software Engineer')).toBeVisible();
+		// Scoped to the footer: the About section also starts with "Senior Software Engineer".
+		const footer = page.getByRole('contentinfo');
+		await footer.scrollIntoViewIfNeeded();
+		await expect(footer.getByText('Senior Software Engineer')).toBeVisible();
 	});
 });

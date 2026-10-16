@@ -1,23 +1,19 @@
 'use client';
 
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {useRouter} from 'next/navigation';
 import {motion} from 'framer-motion';
 import {Home, ArrowLeft, Terminal, Code, Server, Database, Cpu} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+import {createParticles} from '@/lib/utils/particles';
 
 export default function NotFound() {
 	const t = useTranslations('notFound');
+	const locale = useLocale();
 	const router = useRouter();
 
 	// Floating particles animation
-	const particles = Array.from({length: 20}, (_, i) => ({
-		id: i,
-		x: Math.random() * 100,
-		y: Math.random() * 100,
-		delay: Math.random() * 2,
-		duration: 3 + Math.random() * 2,
-	}));
+	const particles = createParticles(20);
 
 	// 404 number animation
 	const number404Variants = {
@@ -51,7 +47,7 @@ export default function NotFound() {
 		if (window.history.length > 1) {
 			router.back();
 		} else {
-			router.push('/');
+			router.push(`/${locale}`);
 		}
 	};
 
@@ -238,7 +234,7 @@ export default function NotFound() {
 
 					{/* Home Button */}
 					<motion.a
-						href="/"
+						href={`/${locale}`}
 						whileHover={{scale: 1.05, y: -2}}
 						whileTap={{scale: 0.95}}
 						className={cn(
