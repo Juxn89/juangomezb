@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import {revealHeaderControls} from '../helpers/header';
 
 test.describe('Navigation', () => {
 	test.beforeEach(async ({page}) => {
@@ -15,19 +16,27 @@ test.describe('Navigation', () => {
 		await expect(page.getByRole('navigation')).toBeVisible();
 	});
 
-	test('clicking nav link scrolls to the correct section', async ({page}) => {
-		await page.getByRole('link', {name: 'About'}).click();
+	test('clicking nav link scrolls to the correct section', async ({page, isMobile}) => {
+		await revealHeaderControls(page, isMobile);
+		// Exact name: the hero's scroll indicator is "Scroll to About section". Visible only: the desktop
+		// and mobile menus both render the link.
+		await page.getByRole('link', {name: 'About', exact: true}).filter({visible: true}).click();
 		await page.waitForTimeout(600);
 		const aboutSection = page.locator('#about');
 		await expect(aboutSection).toBeInViewport();
 	});
 
-	test('dark mode toggle adds dark class to html element', async ({page}) => {
+	test('dark mode toggle adds dark class to html element', async ({page, isMobile}) => {
+		// The theme selector has three buttons (Light Mode, Dark Mode, System); start from a light system theme.
+		await page.emulateMedia({colorScheme: 'light'});
+		await revealHeaderControls(page, isMobile);
 		const html = page.locator('html');
-		const initialClass = await html.getAttribute('class') ?? '';
-		await page.getByRole('button', {name: /theme|dark|light/i}).click();
-		const updatedClass = await html.getAttribute('class') ?? '';
-		expect(updatedClass).not.toBe(initialClass);
+
+		await page.getByRole('button', {name: 'Dark Mode'}).filter({visible: true}).click();
+		await expect(html).toHaveClass(/\bdark\b/);
+
+		await page.getByRole('button', {name: 'Light Mode'}).filter({visible: true}).click();
+		await expect(html).not.toHaveClass(/\bdark\b/);
 	});
 
 	test('mobile: hamburger menu opens and shows nav links', async ({page}) => {
