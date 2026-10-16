@@ -1,4 +1,5 @@
 import {Metadata} from 'next';
+import {GITHUB_PROFILE_URL, getSiteUrl} from '@/lib/constants/site';
 
 interface SEOProps {
 	title: string;
@@ -21,7 +22,7 @@ export function generateSEOMetadata({
 	publishedTime,
 	authors,
 }: SEOProps): Metadata {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+	const baseUrl = getSiteUrl();
 	const url = `${baseUrl}/${locale}${path}`;
 	// Avoid duplicating if title already includes full name and "Portfolio"
 	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
@@ -103,8 +104,8 @@ export function generateSEOMetadata({
 /**
  * Generate JSON-LD structured data for Person schema
  */
-export function generatePersonSchema(_locale: 'en' | 'es') {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+export function generatePersonSchema() {
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -125,7 +126,7 @@ export function generatePersonSchema(_locale: 'en' | 'es') {
 			addressCountry: 'NI',
 		},
 		sameAs: [
-			'https://github.com/juxn89',
+			GITHUB_PROFILE_URL,
 			'https://www.linkedin.com/in/jcgomez89/',
 			'https://twitter.com/juxn89',
 		],
@@ -148,7 +149,7 @@ export function generatePersonSchema(_locale: 'en' | 'es') {
  * Generate JSON-LD structured data for WebSite schema
  */
 export function generateWebSiteSchema(locale: 'en' | 'es') {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -179,11 +180,8 @@ export function generateWebSiteSchema(locale: 'en' | 'es') {
 /**
  * Generate JSON-LD structured data for BreadcrumbList
  */
-export function generateBreadcrumbSchema(
-	items: Array<{name: string; url: string}>,
-	_locale: 'en' | 'es'
-) {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+export function generateBreadcrumbSchema(items: Array<{name: string; url: string}>) {
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -194,5 +192,35 @@ export function generateBreadcrumbSchema(
 			name: item.name,
 			item: `${baseUrl}${item.url}`,
 		})),
+	};
+}
+
+/**
+ * Generate JSON-LD structured data for an open-source project page
+ */
+export function generateProjectSchema(project: {
+	title: string;
+	description: string;
+	path: string;
+	repoUrl?: string;
+	stack: string[];
+	locale: 'en' | 'es';
+}) {
+	const baseUrl = getSiteUrl();
+
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareSourceCode',
+		name: project.title,
+		description: project.description,
+		url: `${baseUrl}/${project.locale}${project.path}`,
+		...(project.repoUrl && {codeRepository: project.repoUrl}),
+		keywords: project.stack.join(', '),
+		inLanguage: project.locale === 'en' ? 'en-US' : 'es-ES',
+		author: {
+			'@type': 'Person',
+			name: 'Juan Carlos Gómez Bermúdez',
+			url: baseUrl,
+		},
 	};
 }

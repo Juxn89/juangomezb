@@ -1,37 +1,22 @@
 'use client';
 
 import {motion} from 'framer-motion';
-import {Sparkles, CheckCircle2} from 'lucide-react';
+import {useTranslations} from 'next-intl';
+import {ArrowRight, ExternalLink, PlayCircle} from 'lucide-react';
+import {Badge} from '@/components/ui/Badge';
+import {GithubIcon} from '@/components/ui/GithubIcon';
 import {LinkButton} from '@/components/ui/LinkButton';
-
-// Custom GitHub Icon
-const GithubIcon = ({className}: {className?: string}) => (
-	<svg
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		className={className}
-		aria-hidden="true"
-	>
-		<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-	</svg>
-);
+import type {Project} from '@/lib/projects/types';
 
 interface ProjectCardProps {
-	project: {
-		id: string;
-		title: string;
-		description: string;
-		technologies: string[];
-		highlights: string[];
-		demoUrl: string;
-		codeUrl?: string;
-		featured: boolean;
-	};
+	project: Project;
 	index: number;
-	viewCodeText: string;
 }
 
-export function ProjectCard({project, index, viewCodeText}: ProjectCardProps) {
+export function ProjectCard({project, index}: ProjectCardProps) {
+	const t = useTranslations('projects');
+	const caseStudyHref = `/projects/${project.slug}`;
+
 	return (
 		<motion.article
 			initial={{opacity: 0, y: 30}}
@@ -39,83 +24,70 @@ export function ProjectCard({project, index, viewCodeText}: ProjectCardProps) {
 			transition={{duration: 0.5, delay: index * 0.1}}
 			viewport={{once: true}}
 			className="group relative"
+			aria-labelledby={`project-${project.slug}`}
 		>
-			{/* Featured Badge */}
-			{project.featured && (
-				<motion.div
-					initial={{opacity: 0, x: -20}}
-					whileInView={{opacity: 1, x: 0}}
-					transition={{duration: 0.5, delay: index * 0.1 + 0.2}}
-					viewport={{once: true}}
-					className="absolute -top-3 -left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-accent-tertiary px-3 py-1 text-xs font-bold text-white shadow-lg shadow-accent-tertiary/30"
-				>
-					<Sparkles className="w-3 h-3" />
-					Featured
-				</motion.div>
-			)}
-
-			{/* Project Card */}
-			<div className="relative h-full rounded-2xl border border-border bg-bg-secondary p-6 transition-all duration-300 hover:border-accent-primary/50 hover:shadow-2xl hover:shadow-accent-primary/10 hover:-translate-y-1">
-				{/* Gradient overlay on hover */}
+			<div className="relative h-full rounded-2xl border border-border bg-bg-secondary p-6 transition-all duration-300 hover:border-accent-primary/50 hover:shadow-2xl hover:shadow-accent-primary/10 hover:-translate-y-1 motion-reduce:hover:translate-y-0">
 				<div className="absolute inset-0 rounded-2xl bg-linear-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
 				<div className="relative z-10 flex flex-col h-full">
-					{/* Project Header */}
-					<div className="mb-4">
-						<h3 className="text-2xl font-bold text-text-primary mb-3 group-hover:text-accent-primary transition-colors">
-							{project.title}
-						</h3>
-						<p className="text-text-secondary leading-relaxed">{project.description}</p>
+					<div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-text-secondary">
+						<Badge>{t(`kind.${project.kind}`)}</Badge>
+						<Badge variant="success">{t(`status.${project.status}`)}</Badge>
+						<span>{project.year}</span>
 					</div>
 
-					{/* Highlights */}
-					{project.highlights.length > 0 && (
-						<div className="mb-6 space-y-2">
-							{project.highlights.map((highlight, i) => (
-								<motion.div
-									key={i}
-									initial={{opacity: 0, x: -10}}
-									whileInView={{opacity: 1, x: 0}}
-									transition={{duration: 0.3, delay: index * 0.1 + i * 0.1}}
-									viewport={{once: true}}
-									className="flex items-start gap-2"
-								>
-										<CheckCircle2 className="w-4 h-4 text-accent-secondary mt-0.5 shrink-0" />
-									<span className="text-sm text-text-secondary">{highlight}</span>
-								</motion.div>
-							))}
-						</div>
-					)}
+					<h3
+						id={`project-${project.slug}`}
+						className="text-2xl font-bold text-text-primary mb-3 break-words group-hover:text-accent-primary transition-colors"
+					>
+						{project.title}
+					</h3>
+					<p className="text-text-secondary leading-relaxed mb-6">{project.tagline}</p>
 
-					{/* Technologies + Action Buttons — always anchored to the bottom */}
-					<div className="mt-auto space-y-4">
-						{/* Technologies */}
-						{project.technologies.length > 0 && (
-							<div className="flex flex-wrap gap-2">
-								{project.technologies.map((tech, i) => (
-									<motion.span
-										key={i}
-										initial={{opacity: 0, scale: 0.8}}
-										whileInView={{opacity: 1, scale: 1}}
-										transition={{duration: 0.3, delay: index * 0.1 + i * 0.05}}
-										viewport={{once: true}}
-										className="rounded-lg bg-bg-primary px-3 py-1.5 text-xs font-medium text-text-secondary border border-border transition-all hover:border-accent-primary hover:text-accent-primary hover:scale-105"
-									>
-										{tech}
-									</motion.span>
-								))}
+					<dl className="mb-6 grid grid-cols-2 gap-3" aria-label={t('metricsLabel')}>
+						{project.metrics.map((metric) => (
+							// Column-reverse shows the value first while the markup keeps the dt/dd order.
+							<div key={metric.label} className="flex flex-col-reverse justify-end rounded-xl border border-border bg-bg-primary p-3">
+								<dt className="mt-1 text-xs leading-snug text-text-secondary">{metric.label}</dt>
+								<dd className="text-xl font-bold text-accent-primary">{metric.value}</dd>
 							</div>
-						)}
+						))}
+					</dl>
 
-						{/* Action Buttons */}
-						<div className="flex flex-wrap gap-3">
-							{project.codeUrl && (
-								<LinkButton
-									href={project.codeUrl}
-									variant="primary"
-									icon={<GithubIcon className="w-4 h-4" />}
+					<div className="mt-auto space-y-5">
+						<ul className="flex flex-wrap gap-2" aria-label={t('stackLabel')}>
+							{project.stack.map((tech) => (
+								<li
+									key={tech}
+									className="rounded-lg bg-bg-primary px-3 py-1.5 text-xs font-medium text-text-secondary border border-border"
 								>
-									{viewCodeText}
+									{tech}
+								</li>
+							))}
+						</ul>
+
+						<div className="flex flex-wrap gap-3">
+							<LinkButton href={caseStudyHref} external={false} icon={<ArrowRight className="w-4 h-4" />}>
+								{t('viewCaseStudy')}
+							</LinkButton>
+							{project.video && (
+								<LinkButton
+									href={`${caseStudyHref}#demo`}
+									external={false}
+									variant="secondary"
+									icon={<PlayCircle className="w-4 h-4" />}
+								>
+									{t('watchVideo')}
+								</LinkButton>
+							)}
+							{project.demoUrl && (
+								<LinkButton href={project.demoUrl} variant="secondary" icon={<ExternalLink className="w-4 h-4" />}>
+									{t('viewDemo')}
+								</LinkButton>
+							)}
+							{project.repoUrl && (
+								<LinkButton href={project.repoUrl} variant="secondary" icon={<GithubIcon className="w-4 h-4" />}>
+									{t('viewCode')}
 								</LinkButton>
 							)}
 						</div>

@@ -1,15 +1,15 @@
 'use client';
 
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {motion} from 'framer-motion';
 import {Mail} from 'lucide-react';
 import {TypeAnimation} from 'react-type-animation';
 import Image from 'next/image';
 import {cn} from '@/lib/utils/cn';
+import {GITHUB_PROFILE_URL} from '@/lib/constants/site';
 
 export function HeroSection() {
 	const t = useTranslations('hero');
-	const locale = useLocale();
 
 	// Get roles array from translations
 	const roles = t.raw('roles') as string[];
@@ -75,7 +75,7 @@ export function HeroSection() {
 	const socialLinks = [
 		{
 			name: 'GitHub',
-			url: 'https://github.com/juxn89',
+			url: GITHUB_PROFILE_URL,
 			icon: GitHubIcon,
 			label: 'GitHub Profile',
 		},

@@ -1,12 +1,12 @@
 'use client';
 
-import {NextIntlClientProvider} from 'next-intl';
+import {NextIntlClientProvider, type AbstractIntlMessages} from 'next-intl';
 import {ThemeProvider} from '@/lib/context/theme-context';
 import type {ReactNode} from 'react';
 
 type ProvidersProps = {
 	children: ReactNode;
-	messages: any;
+	messages: AbstractIntlMessages;
 	locale: string;
 };
 
