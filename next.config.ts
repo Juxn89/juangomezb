@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
+	experimental: {
+		// The root layout is app/[locale]/layout.tsx; app/global-not-found.tsx serves URLs no route matches.
+		globalNotFound: true,
+	},
 	images: {
 		remotePatterns: [
 			{

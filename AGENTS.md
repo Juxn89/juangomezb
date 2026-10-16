@@ -125,7 +125,7 @@ Senior Software Engineer portfolio built with modern, scalable, and production-r
   /fixtures
   /helpers
 
-/middleware.ts           # Edge middleware (security, rate limiting)
+/src/proxy.ts            # Proxy, formerly middleware (security headers, CSP nonce, rate limiting, i18n); must sit next to /src/app
 /i18n.ts                 # next-intl configuration
 /next.config.ts          # Next.js configuration
 /tailwind.config.ts      # Tailwind CSS configuration
@@ -584,17 +584,17 @@ export const metadata: Metadata = {
 ## 🛡️ Security Implementation
 
 ### Next.js 16.2 Proxy Configuration (Modern Approach)
-**Note:** Middleware is NOT deprecated. Next.js 16.2 uses Edge Middleware + Proxy patterns.
+**Note:** In Next.js 16 the `middleware` file and export are deprecated and renamed to `proxy` (see `node_modules/next/dist/docs/01-app/02-guides/upgrading/version-16.md`). It runs on the Node.js runtime and must sit at the same level as `app` — here `src/proxy.ts`. A root-level `middleware.ts` next to `src/app` was not picked up by `next dev`.
 
 ```typescript
-// /middleware.ts (Edge Runtime)
+// /src/proxy.ts (Node.js runtime)
 import {NextResponse} from 'next/server';
 import type {NextRequest} from 'next/server';
 import {createRateLimiter} from './lib/security/rate-limiter';
 
 const rateLimiter = createRateLimiter();
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
   const userAgent = request.headers.get('user-agent') || '';
 

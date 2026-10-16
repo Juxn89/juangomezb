@@ -1,6 +1,6 @@
 # 🛡️ Security Hardening Guide: Vercel + Cloudflare
 
-Este documento incluye pasos de configuración manual en Vercel y Cloudflare para complementar los endurecimientos de código implementados en `middleware.ts`, API routes, y config de Next.js.
+Este documento incluye pasos de configuración manual en Vercel y Cloudflare para complementar los endurecimientos de código implementados en `src/proxy.ts` (antes `middleware.ts`), API routes, y config de Next.js.
 
 **Referencia**: Ver `docs/plans/security-hardening-vercel-cloudflare.md` para el plan técnico detallado.
 

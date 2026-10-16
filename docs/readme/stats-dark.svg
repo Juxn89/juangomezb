@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="132" viewBox="0 0 1280 132" role="img" aria-label="15+ years building software. 500K+ users reached. Every page in English and Spanish. No UI kits: all components custom.">
+<defs>
+	<linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+		<stop offset="0" stop-color="#10b981"/>
+		<stop offset="0.55" stop-color="#7c3aed"/>
+		<stop offset="1" stop-color="#f59e0b"/>
+	</linearGradient>
+	<radialGradient id="orbGreen"><stop offset="0" stop-color="#10b981" stop-opacity="0.22"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/></radialGradient>
+	<radialGradient id="orbViolet"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.22"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+	<radialGradient id="orbAmber"><stop offset="0" stop-color="#f59e0b" stop-opacity="0.132"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient>
+	<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+		<path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+	</pattern></defs>
+<rect x="0.5" y="0.5" width="1279" height="131" rx="22" fill="#111a18" stroke="#1f2e2a"/>
+
+	<g transform="translate(160 0)">
+		<text y="66" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" fill="url(#brand)">15+</text>
+		<text y="98" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#9ca3af">years building software</text>
+	</g>
+	<g transform="translate(480 0)">
+		<text y="66" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" fill="url(#brand)">500K+</text>
+		<text y="98" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#9ca3af">users reached by my work</text>
+	</g><line x1="320" y1="34" x2="320" y2="102" stroke="#1f2e2a"/>
+	<g transform="translate(800 0)">
+		<text y="66" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" fill="url(#brand)">EN · ES</text>
+		<text y="98" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#9ca3af">every page, both languages</text>
+	</g><line x1="640" y1="34" x2="640" y2="102" stroke="#1f2e2a"/>
+	<g transform="translate(1120 0)">
+		<text y="66" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="800" fill="url(#brand)">0</text>
+		<text y="98" text-anchor="middle" font-family="'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#9ca3af">UI kits — all components custom</text>
+	</g><line x1="960" y1="34" x2="960" y2="102" stroke="#1f2e2a"/>
+</svg>

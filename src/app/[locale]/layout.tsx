@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
+import {hasLocale} from 'next-intl';
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/routing';
 import {notFound} from 'next/navigation';
@@ -8,6 +9,7 @@ import {Analytics} from '@vercel/analytics/react';
 import {Providers} from '@/components/providers/Providers';
 import {Header} from '@/components/layouts/Header';
 import {Footer} from '@/components/layouts/Footer';
+import '../globals.css';
 import {generateSEOMetadata, generatePersonSchema, generateWebSiteSchema} from '@/lib/utils/seo';
 
 const geistSans = Geist({
@@ -57,7 +59,7 @@ export default async function RootLayout({
 	const {locale} = await params;
 
 	// Ensure that the incoming `locale` is valid
-	if (!routing.locales.includes(locale as any)) {
+	if (!hasLocale(routing.locales, locale)) {
 		notFound();
 	}
 
@@ -80,14 +82,17 @@ export default async function RootLayout({
 			suppressHydrationWarning
 		>
 			<head>
+				{/* Browsers hide a nonce's value from the DOM (it reads as ""), so React would report a mismatch on every load */}
 				<script
 					type="application/ld+json"
 					nonce={nonce}
+					suppressHydrationWarning
 					dangerouslySetInnerHTML={{__html: JSON.stringify(personSchema)}}
 				/>
 				<script
 					type="application/ld+json"
 					nonce={nonce}
+					suppressHydrationWarning
 					dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
 				/>
 			</head>
