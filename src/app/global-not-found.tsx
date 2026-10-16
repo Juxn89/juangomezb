@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
+import {connection} from 'next/server';
 import {NotFoundView} from '@/components/features/NotFoundView';
 import './globals.css';
 
@@ -23,7 +24,11 @@ export const metadata: Metadata = {
 	robots: {index: false},
 };
 
-export default function GlobalNotFound() {
+export default async function GlobalNotFound() {
+	// Rendered per request so Next.js can put the CSP nonce on its inline scripts. A prerendered 404
+	// has none, the production CSP blocks them, nothing hydrates and the animated content stays at opacity 0.
+	await connection();
+
 	return (
 		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
 			<body className="min-h-full">

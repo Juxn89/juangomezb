@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
+import {hasLocale} from 'next-intl';
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/routing';
 import {notFound} from 'next/navigation';
@@ -58,7 +59,7 @@ export default async function RootLayout({
 	const {locale} = await params;
 
 	// Ensure that the incoming `locale` is valid
-	if (!routing.locales.includes(locale as any)) {
+	if (!hasLocale(routing.locales, locale)) {
 		notFound();
 	}
 

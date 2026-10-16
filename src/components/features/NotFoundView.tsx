@@ -4,19 +4,14 @@ import {useRouter} from 'next/navigation';
 import {motion} from 'framer-motion';
 import {Home, ArrowLeft, Terminal, Code, Server, Database, Cpu} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+import {createParticles} from '@/lib/utils/particles';
 
 /** The 404 for URLs outside any locale (rendered by app/global-not-found.tsx). English only: there is no locale to read. */
 export function NotFoundView() {
 	const router = useRouter();
 
 	// Floating particles animation
-	const particles = Array.from({length: 20}, (_, i) => ({
-		id: i,
-		x: Math.random() * 100,
-		y: Math.random() * 100,
-		delay: Math.random() * 2,
-		duration: 3 + Math.random() * 2,
-	}));
+	const particles = createParticles(20);
 
 	// 404 number animation
 	const number404Variants = {
