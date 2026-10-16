@@ -1,7 +1,7 @@
 # P1 · `docs-assistant`: chatbot de soporte con RAG, embebible en cualquier web
 
 > Índice: [`../README.md`](../README.md) · Base: [`dotnet-ai-template`](../dotnet-ai-template/plan.md) ·
-> Semanas 1-2 · Repo: `juxn89/docs-assistant` · Demo: **pública, embebida en juangomezb.com** ·
+> Semanas 1-2 · Repo: `juxn89/docs-assistant` · Demo: **video de 75 s + galería** (decisión del 16 oct 2026, ver §9) ·
 > Versiones verificadas el 13 oct 2026.
 > Fuentes: "AI Support Chatbot" + "Docs Q&A with RAG" (lista *C# Projects for the AI Era*).
 
@@ -16,9 +16,9 @@ las propuestas que compiten envuelven una API sin control: alucinan, no citan fu
 costo y no saben decir "no sé". Este proyecto se diferencia justo ahí: **responde con citas, sabe cuándo
 escalar a un humano y cada respuesta tiene costo y calidad medidos**.
 
-**La demo es el propio portfolio:** un botón "Pregúntame sobre Juan" en juangomezb.com responde sobre la
-experiencia, los proyectos y los artículos de DEV.to. El cliente de Workana lo prueba en vivo en el sitio del
-que lo contrata.
+**La demo es un video de 75 s con texto en español** más una galería de 9 imágenes, adjuntos a la ficha de
+Workana (que acepta videos, imágenes y galerías). La idea original era una demo en vivo embebida en
+juangomezb.com ("Pregúntame sobre Juan"), pero queda como opción, no como requisito: ver §9.
 
 ## 2. Alcance del MVP
 
@@ -158,6 +158,22 @@ Los resultados se versionan en `evals/results/` y la tabla resumida va al README
 
 ## 9. Demo y hosting
 
+> **Decisión del 16 oct 2026: video en lugar de demo pública.** Cálculo de costo mensual de un despliegue
+> público (precios del día en la API de precios de Azure y en neon.com/pricing):
+> - **Apagado sin tráfico** (Container Apps con escala a cero + Neon Free): ≈ USD 0 de infraestructura, a
+>   cambio de un arranque en frío en la primera pregunta.
+> - **Siempre encendido:** ≈ USD 30–55. Los workers consultan la base cada 30 s, así que Neon nunca se
+>   suspende y agota sus 100 CU-h gratis hacia el día 16 del mes; hace falta el plan Launch (≈ USD 19).
+> - **En ambos casos se suma el modelo:** USD 0,33 por 1.000 preguntas, hasta ≈ USD 20/mes en el peor caso
+>   con el límite de la demo.
+>
+> Un chat público expone además ese gasto a bots y abusos. El video cuesta USD 0 recurrente y muestra la mejor
+> versión. Se generó con `widget/scripts/video.mjs`: ensayo extractivo gratis y toma final con Claude Haiku 5.5
+> (4 llamadas, USD 0,00045, registrado en el ledger). Está en `docs-assistant/docs/demo/`, con 9 capturas
+> 1920×1080 y el README enlazándolo (commit `4953e54`). El plan de despliegue de abajo queda para cuando un
+> cliente lo pida.
+
+
 - **API** en Azure Container Apps (scale-to-zero), **DB** en un proyecto Neon propio, **panel** en Vercel.
 - **Tenant demo "juangomezb"** precargado con `public/cv/*.pdf` y los artículos de DEV.to, con un job que
   re-ingiere los artículos cada semana.
@@ -189,8 +205,8 @@ Los resultados se versionan en `evals/results/` y la tabla resumida va al README
 | 6 | ✅ 14 oct 2026: handoff (ADR-0009): conversaciones registradas (`conversationId` en `done`), `POST /v1/handoff/{key}` guarda el lead primero (202) y un worker envía el email al operador con la transcripción (Reply-To el visitante, texto plano, reintentos con backoff, lease + xmin). Límite propio 5/hora/IP, dedup de doble envío, aislamiento por tenant probado con mutación. Tests contra Mailpit real (Testcontainers), incluido servidor de correo caído. Pendiente: CORS para el widget (día 7), retención de conversaciones |
 | 7 | ✅ 15 oct 2026: widget (ADR-0010): TS sin framework, Shadow DOM, 6,5 KB gzip (presupuesto 15 KB en el build), SSE por fetch, citas, handoff, ES/EN, teclado y lector de pantalla, modo oscuro, pantalla completa en móvil. CORS por asistente (desde `allowedOrigins`), CORS antes del rate limit para que el 429 sea legible, preflights fuera de la cuota. Tests: Playwright con API simulada (XSS, errores, 429, axe, móvil) y E2E real navegador → API → Postgres → Mailpit en CI |
 | 8 | Panel Next.js: documentos, conversaciones, leads y dashboard de costo y calidad |
-| 9 | Despliegue (Azure + Neon + Vercel), tenant demo, `AskJuan` en el portfolio, CSP |
-| 10 | E2E, README (diagrama, ADRs, evals), video, capturas y `workana.md` |
+| 9 | ⏸ Despliegue (Azure + Neon + Vercel), tenant demo, `AskJuan` en el portfolio, CSP: en pausa por la decisión de §9 |
+| 10 | ✅ (parcial) 16 oct 2026: evals con Claude Haiku 5.5 ([evals-haiku-plan.md](evals-haiku-plan.md)), video de 75 s y 9 capturas (`docs/demo`). Pendiente: `workana.md` |
 
 ## 11. GitHub metadata y ficha Workana
 
