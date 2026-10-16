@@ -1,6 +1,7 @@
 'use client';
 
 import {useTranslations} from 'next-intl';
+import {CONTACT_EMAIL} from '@/lib/constants/site';
 import {motion} from 'framer-motion';
 import {Briefcase, MapPin, Calendar, CheckCircle2} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
@@ -217,18 +218,12 @@ export function ExperienceSection() {
 					transition={{duration: 0.5, delay: 0.3}}
 				>
 					<p className="text-text-secondary">
-						Want to know more about my work?{' '}
+						{t('cta.question')}{' '}
 						<a
-							href="#contact"
-							className="font-semibold text-accent1 transition-colors hover:text-accent1/80"
-							onClick={(e) => {
-								e.preventDefault();
-								document
-									.getElementById('contact')
-									?.scrollIntoView({behavior: 'smooth'});
-							}}
+							href={`mailto:${CONTACT_EMAIL}`}
+							className="font-semibold text-accent-primary transition-colors hover:underline"
 						>
-							Let's connect →
+							{t('cta.action')} →
 						</a>
 					</p>
 				</motion.div>

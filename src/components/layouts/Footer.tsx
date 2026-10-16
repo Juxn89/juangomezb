@@ -3,7 +3,7 @@
 import {useTranslations, useLocale} from 'next-intl';
 import {Mail} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
-import {GITHUB_PROFILE_URL} from '@/lib/constants/site';
+import {CONTACT_EMAIL, GITHUB_PROFILE_URL} from '@/lib/constants/site';
 
 // Custom SVG Icons
 const GithubIcon = ({className}: {className?: string}) => (
@@ -52,7 +52,7 @@ export function Footer() {
 		},
 		{
 			name: 'Email',
-			href: 'mailto:gb.jc@outlook.com',
+			href: `mailto:${CONTACT_EMAIL}`,
 			icon: Mail,
 			ariaLabel: 'Send email',
 		},

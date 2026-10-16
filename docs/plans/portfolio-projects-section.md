@@ -10,8 +10,11 @@
 >   `public/projects/docs-assistant/` con `<video preload="none">` y el CTA de la tarjeta lleva a `#demo`.
 > - **Sin `highlights`** en el modelo: el case study ya lo cubre con arquitectura y resultados.
 > - **Sin diagramas SVG** (orden de corte).
-> - **CI:** se agregaron los E2E. El gate de lint **no**: quedan 5 errores previos en el tema y en
->   `ExperienceSection`, que van en un PR de limpieza aparte.
+> - **CI:** se agregaron los E2E y `pnpm lint` como gate. El lint quedó en 0: el tema pasó a
+>   `useSyncExternalStore` (sin `setState` en efectos ni flags `mounted`) y el CTA de `ExperienceSection`,
+>   que apuntaba a `#contact`, ahora está traducido y lleva al email.
+> - **Imágenes para compartir:** `/og-image.jpg` nunca existió. Ahora `opengraph-image.tsx` genera una por
+>   idioma para la home, otra para `/projects` y una por proyecto con sus métricas.
 > - **Proxy:** el rate limiting corre solo en producción. En `next dev` todo llega sin `x-forwarded-for`,
 >   comparte un contador y la suite E2E lo agotaba (429).
 

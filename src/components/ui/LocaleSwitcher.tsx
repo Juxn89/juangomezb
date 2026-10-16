@@ -1,45 +1,21 @@
 'use client';
 
-import {Link} from '@/routing';
-import {routing} from '@/routing';
+import {Link, routing, usePathname} from '@/routing';
 import {useTranslations, useLocale} from 'next-intl';
-import {useEffect, useState} from 'react';
-import {usePathname} from 'next/navigation';
 import {ToggleGroup} from './ToggleGroup';
 import {cn} from '@/lib/utils/cn';
 
 export function LocaleSwitcher() {
+	// next-intl's usePathname has no locale prefix; Link adds the target one.
 	const pathname = usePathname();
 	const locale = useLocale();
 	const t = useTranslations('language');
-	const [mounted, setMounted] = useState(false);
-
-	// Prevent hydration mismatch
-	useEffect(() => {
-		setMounted(true);
-	}, []);
 
 	const locales = routing.locales.map((loc) => ({
 		value: loc,
 		label: loc === 'en' ? t('english') : t('spanish'),
 		flag: loc === 'en' ? '🇺🇸' : '🇪🇸',
 	}));
-
-	// Get path without locale prefix for Link
-	const getPathForLocale = (newLocale: string) => {
-		const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}(\/|$)/, '/');
-		return pathnameWithoutLocale === '/' ? '/' : pathnameWithoutLocale;
-	};
-
-	if (!mounted) {
-		return (
-			<ToggleGroup>
-				<div className="px-3 py-1.5">
-					<span>🌐</span>
-				</div>
-			</ToggleGroup>
-		);
-	}
 
 	return (
 		<ToggleGroup>
@@ -71,7 +47,7 @@ export function LocaleSwitcher() {
 				return (
 					<Link
 						key={value}
-						href={getPathForLocale(value)}
+						href={pathname}
 						locale={value}
 						className={cn(
 							baseClasses,

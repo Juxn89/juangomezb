@@ -12,7 +12,17 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party agent skills, vendored as-is
+    ".agents/**",
+    // Playwright output
+    "playwright-report/**",
+    "test-results/**",
   ]),
+  {
+    // Plain Node scripts run with `node scripts/...`, so CommonJS is expected
+    files: ["scripts/**/*.js"],
+    rules: {"@typescript-eslint/no-require-imports": "off"},
+  },
 ]);
 
 export default eslintConfig;

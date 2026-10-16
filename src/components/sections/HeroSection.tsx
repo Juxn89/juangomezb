@@ -6,7 +6,7 @@ import {Mail} from 'lucide-react';
 import {TypeAnimation} from 'react-type-animation';
 import Image from 'next/image';
 import {cn} from '@/lib/utils/cn';
-import {GITHUB_PROFILE_URL} from '@/lib/constants/site';
+import {CONTACT_EMAIL, GITHUB_PROFILE_URL} from '@/lib/constants/site';
 
 export function HeroSection() {
 	const t = useTranslations('hero');
@@ -87,7 +87,7 @@ export function HeroSection() {
 		},
 		{
 			name: 'Email',
-			url: 'mailto:gb.jc@outlook.com',
+			url: `mailto:${CONTACT_EMAIL}`,
 			icon: Mail,
 			label: 'Send Email',
 		},

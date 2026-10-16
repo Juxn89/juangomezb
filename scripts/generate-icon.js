@@ -15,7 +15,7 @@ async function generateAppleTouchIcon() {
 		let sharp;
 		try {
 			sharp = require('sharp');
-		} catch (error) {
+		} catch {
 			console.error('❌ Error: sharp no está instalado');
 			console.log('\n📦 Instala sharp ejecutando:');
 			console.log('   npm install --save-dev sharp');
