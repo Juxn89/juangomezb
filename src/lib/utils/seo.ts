@@ -1,12 +1,11 @@
 import {Metadata} from 'next';
-import {GITHUB_PROFILE_URL, getSiteUrl} from '@/lib/constants/site';
+import {CONTACT_EMAIL, GITHUB_PROFILE_URL, getSiteUrl} from '@/lib/constants/site';
 
 interface SEOProps {
 	title: string;
 	description: string;
 	locale: 'en' | 'es';
 	path?: string;
-	image?: string;
 	type?: 'website' | 'article';
 	publishedTime?: string;
 	authors?: string[];
@@ -17,7 +16,6 @@ export function generateSEOMetadata({
 	description,
 	locale,
 	path = '',
-	image = '/og-image.jpg',
 	type = 'website',
 	publishedTime,
 	authors,
@@ -27,7 +25,9 @@ export function generateSEOMetadata({
 	// Avoid duplicating if title already includes full name and "Portfolio"
 	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
 
+	// The share images come from the opengraph-image / twitter-image routes; metadataBase makes their URLs absolute.
 	return {
+		metadataBase: new URL(baseUrl),
 		title: fullTitle,
 		description,
 		keywords: [
@@ -62,14 +62,6 @@ export function generateSEOMetadata({
 			description,
 			url,
 			siteName: 'Juan Carlos Gómez - Portfolio',
-			images: [
-				{
-					url: `${baseUrl}${image}`,
-					width: 1200,
-					height: 630,
-					alt: title,
-				},
-			],
 			locale: locale === 'en' ? 'en_US' : 'es_ES',
 			type,
 			...(publishedTime && {publishedTime}),
@@ -78,7 +70,6 @@ export function generateSEOMetadata({
 			card: 'summary_large_image',
 			title: fullTitle,
 			description,
-			images: [`${baseUrl}${image}`],
 			creator: '@juxn89',
 		},
 		alternates: {
@@ -119,7 +110,7 @@ export function generatePersonSchema() {
 			'@type': 'Organization',
 			name: 'Freelance',
 		},
-		email: 'gb.jc@outlook.com',
+		email: CONTACT_EMAIL,
 		address: {
 			'@type': 'PostalAddress',
 			addressLocality: 'Managua',

@@ -1,7 +1,5 @@
 import {describe, it, expect, vi, beforeEach} from 'vitest';
-import {parseProjects, selectFeatured} from './get-projects';
-
-vi.mock('next-intl/server', () => ({getTranslations: vi.fn()}));
+import {getProjectBySlug, getProjects, parseProjects, selectFeatured} from './get-projects';
 
 function project(overrides: Record<string, unknown> = {}) {
 	return {
@@ -75,5 +73,23 @@ describe('selectFeatured', () => {
 		]);
 		expect(selectFeatured(projects, 2).map((p) => p.slug)).toEqual(['a', 'c']);
 		expect(selectFeatured(projects).map((p) => p.slug)).toEqual(['a', 'c', 'd']);
+	});
+});
+
+describe('getProjects', () => {
+	it('reads the projects of the requested locale', async () => {
+		const [en, es] = await Promise.all([getProjects('en'), getProjects('es')]);
+		expect(en.length).toBeGreaterThan(0);
+		expect(es.map((p) => p.slug)).toEqual(en.map((p) => p.slug));
+		expect(es[0]?.tagline).not.toBe(en[0]?.tagline);
+	});
+
+	it('returns nothing for an unknown locale instead of falling back silently', async () => {
+		expect(await getProjects('fr')).toEqual([]);
+	});
+
+	it('finds a project by slug, and nothing for an unknown one', async () => {
+		expect((await getProjectBySlug('es', 'docs-assistant'))?.slug).toBe('docs-assistant');
+		expect(await getProjectBySlug('es', 'does-not-exist')).toBeUndefined();
 	});
 });

@@ -288,6 +288,12 @@
 			}
 		]
 	},
+	"share": {
+		"role": "Senior Software Engineer",
+		"tagline": ".NET, cloud and AI systems, with the results measured in public",
+		"caseStudy": "Case study",
+		"alt": "Juan Carlos Gómez, Senior Software Engineer"
+	},
 	"contact": {
 		"title": "Get In Touch",
 		"subtitle": "Have a project in mind? Let's work together",
@@ -359,6 +365,10 @@
 		}
 	},
 	"experience": {
+		"cta": {
+			"question": "Want to know more about my work?",
+			"action": "Let’s talk"
+		},
 		"title": "Experience",
 		"subtitle": "My professional journey",
 		"present": "Present",

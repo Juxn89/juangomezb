@@ -1,5 +1,5 @@
-import {getTranslations} from 'next-intl/server';
 import {FEATURED_PROJECTS_LIMIT} from '@/lib/constants/site';
+import {getCatalog} from '@/lib/i18n/catalog';
 import {projectSchema} from './schema';
 import type {Project} from './types';
 
@@ -37,9 +37,9 @@ export function selectFeatured(projects: Project[], limit: number = FEATURED_PRO
 	return projects.filter((project) => project.featured).slice(0, limit);
 }
 
+/** Reads the catalog rather than getTranslations, so it also works in generateStaticParams and image routes. */
 export async function getProjects(locale: string): Promise<Project[]> {
-	const t = await getTranslations({locale, namespace: 'projects'});
-	return parseProjects(t.raw('items'));
+	return parseProjects(getCatalog(locale)?.projects.items ?? []);
 }
 
 export async function getFeaturedProjects(locale: string, limit?: number): Promise<Project[]> {

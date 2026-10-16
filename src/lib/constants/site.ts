@@ -1,5 +1,6 @@
 export const GITHUB_USERNAME = 'juxn89';
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
+export const CONTACT_EMAIL = 'gb.jc@outlook.com';
 
 const DEFAULT_SITE_URL = 'https://www.juangomezb.com';
 

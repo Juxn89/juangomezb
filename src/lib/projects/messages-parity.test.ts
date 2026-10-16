@@ -1,9 +1,7 @@
-import {describe, it, expect, vi} from 'vitest';
+import {describe, it, expect} from 'vitest';
 import en from '../../../messages/en.json';
 import es from '../../../messages/es.json';
 import {parseProjects} from './get-projects';
-
-vi.mock('next-intl/server', () => ({getTranslations: vi.fn()}));
 
 /** Every key path in a messages tree, with arrays reduced to their length so a missing item shows up. */
 function shape(value: unknown, path = ''): string[] {

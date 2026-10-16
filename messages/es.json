@@ -288,6 +288,12 @@
 			}
 		]
 	},
+	"share": {
+		"role": "Ingeniero de Software Senior",
+		"tagline": "Sistemas .NET, en la nube y con IA, con resultados medidos en público",
+		"caseStudy": "Caso de estudio",
+		"alt": "Juan Carlos Gómez, Ingeniero de Software Senior"
+	},
 	"contact": {
 		"title": "Contáctame",
 		"subtitle": "¿Tienes un proyecto en mente? Trabajemos juntos",
@@ -359,6 +365,10 @@
 		}
 	},
 	"experience": {
+		"cta": {
+			"question": "¿Quieres saber más de mi trabajo?",
+			"action": "Hablemos"
+		},
 		"title": "Experiencia",
 		"subtitle": "Mi trayectoria profesional",
 		"present": "Presente",

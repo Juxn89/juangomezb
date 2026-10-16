@@ -28,7 +28,6 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
 		locale: locale as 'en' | 'es',
 		path: `/projects/${project.slug}`,
 		type: 'article',
-		...(project.video && {image: project.video.poster}),
 	});
 }
 
