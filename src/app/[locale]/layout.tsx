@@ -8,6 +8,7 @@ import {Analytics} from '@vercel/analytics/react';
 import {Providers} from '@/components/providers/Providers';
 import {Header} from '@/components/layouts/Header';
 import {Footer} from '@/components/layouts/Footer';
+import '../globals.css';
 import {generateSEOMetadata, generatePersonSchema, generateWebSiteSchema} from '@/lib/utils/seo';
 
 const geistSans = Geist({
@@ -80,14 +81,17 @@ export default async function RootLayout({
 			suppressHydrationWarning
 		>
 			<head>
+				{/* Browsers hide a nonce's value from the DOM (it reads as ""), so React would report a mismatch on every load */}
 				<script
 					type="application/ld+json"
 					nonce={nonce}
+					suppressHydrationWarning
 					dangerouslySetInnerHTML={{__html: JSON.stringify(personSchema)}}
 				/>
 				<script
 					type="application/ld+json"
 					nonce={nonce}
+					suppressHydrationWarning
 					dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
 				/>
 			</head>
