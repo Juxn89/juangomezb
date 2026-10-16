@@ -96,8 +96,10 @@ export function HeroSection() {
 	return (
 		<section
 			id="home"
-			className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20 md:py-32"
+			className="relative min-h-[calc(100svh-4rem)] flex items-center justify-center overflow-hidden px-4 py-20 md:py-32"
 		>
+			{/* The sticky header (h-16, see scroll-padding-top in globals.css) sits above the hero, so the hero
+			    fills the rest of the first screen and its scroll indicator stays visible */}
 			{/* Animated Background Elements */}
 			<div className="absolute inset-0 -z-10">
 				{/* Gradient Orbs */}
@@ -221,24 +223,24 @@ export function HeroSection() {
 						</motion.div>
 					</div>
 				</div>
+			</motion.div>
 
-				{/* Scroll Indicator */}
-				<motion.div
-					initial={{opacity: 0, y: -20}}
-					animate={{opacity: 1, y: 0}}
-					transition={{delay: 1.5, duration: 0.6}}
-					className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
-				>
-					<a href="#about" onClick={(e) => handleScroll(e, 'about')} aria-label="Scroll to About section">
-						<motion.div
-							animate={{y: [0, 10, 0]}}
-							transition={{duration: 1.5, repeat: Infinity, ease: 'easeInOut'}}
-							className="w-6 h-10 border-2 border-text-secondary/30 rounded-full flex items-start justify-center p-2 cursor-pointer hover:border-accent-primary transition-colors"
-						>
-							<motion.div className="w-1.5 h-1.5 bg-text-secondary/50 rounded-full" />
-						</motion.div>
-					</a>
-				</motion.div>
+			{/* Scroll Indicator: anchored to the section, not the content, so it sits in the bottom padding instead of over the social links */}
+			<motion.div
+				initial={{opacity: 0, y: -20}}
+				animate={{opacity: 1, y: 0}}
+				transition={{delay: 1.5, duration: 0.6}}
+				className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block"
+			>
+				<a href="#about" onClick={(e) => handleScroll(e, 'about')} aria-label="Scroll to About section">
+					<motion.div
+						animate={{y: [0, 10, 0]}}
+						transition={{duration: 1.5, repeat: Infinity, ease: 'easeInOut'}}
+						className="w-6 h-10 border-2 border-text-secondary/30 rounded-full flex items-start justify-center p-2 cursor-pointer hover:border-accent-primary transition-colors"
+					>
+						<motion.div className="w-1.5 h-1.5 bg-text-secondary/50 rounded-full" />
+					</motion.div>
+				</a>
 			</motion.div>
 		</section>
 	);
