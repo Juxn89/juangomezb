@@ -26,15 +26,17 @@ describe('messages parity', () => {
 
 	it('projects share slug, order and every non-translated field across locales', () => {
 		const pick = (items: typeof en.projects.items) =>
-			items.map(({slug, kind, status, featured, year, repoUrl, stack, video}) => ({
-				slug,
-				kind,
-				status,
-				featured,
-				year,
-				repoUrl,
-				stack,
-				video: video && {src: video.src, poster: video.poster},
+			items.map((item) => ({
+				slug: item.slug,
+				kind: item.kind,
+				status: item.status,
+				featured: item.featured,
+				year: item.year,
+				repoUrl: item.repoUrl,
+				demoUrl: 'demoUrl' in item ? item.demoUrl : undefined,
+				stack: item.stack,
+				video: 'video' in item && item.video ? {src: item.video.src, poster: item.video.poster} : undefined,
+				gallery: 'gallery' in item && item.gallery ? item.gallery.map((image) => image.src) : undefined,
 			}));
 		expect(pick(es.projects.items)).toEqual(pick(en.projects.items));
 	});

@@ -49,5 +49,16 @@ export const projectSchema = z.object({
 			caption: nonEmpty,
 		})
 		.optional(),
+	// Screenshots of the real product, shown on the case study when there is no video to tell the story.
+	gallery: z
+		.array(
+			z.object({
+				src: linkSchema,
+				alt: nonEmpty,
+				caption: nonEmpty,
+			})
+		)
+		.min(1)
+		.optional(),
 	caseStudy: projectCaseStudySchema.optional(),
 });

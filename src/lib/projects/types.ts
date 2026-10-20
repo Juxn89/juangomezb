@@ -12,3 +12,4 @@ export type ProjectStatus = Project['status'];
 export type ProjectMetric = z.infer<typeof projectMetricSchema>;
 export type ProjectDecision = z.infer<typeof projectDecisionSchema>;
 export type ProjectCaseStudy = z.infer<typeof projectCaseStudySchema>;
+export type ProjectGalleryImage = NonNullable<Project['gallery']>[number];

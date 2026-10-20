@@ -47,7 +47,8 @@
 			"tradeoff": "Trade-off",
 			"results": "Results",
 			"video": "Demo",
-			"breadcrumb": "Breadcrumb"
+			"breadcrumb": "Breadcrumb",
+			"gallery": "Screenshots"
 		},
 		"items": [
 			{
@@ -232,12 +233,12 @@
 				"description": "C# on .NET 10. Structured output against a JSON Schema, a single read_file tool, findings filtered against the lines GitHub accepts, and one review per run. It never approves, requests changes or blocks a merge.",
 				"metrics": [
 					{
-						"value": "~$0.12",
-						"label": "estimated per 400-line pull request on Claude Opus 5"
+						"value": "3/3",
+						"label": "bugs flagged in a real demo pull request"
 					},
 					{
-						"value": "1",
-						"label": "tool: read_file, fetched by SHA from the API"
+						"value": "$0.0009",
+						"label": "measured cost of that review on Claude Haiku 5.5"
 					},
 					{
 						"value": "0",
@@ -245,7 +246,30 @@
 					},
 					{
 						"value": "1",
-						"label": "review per run, never half-posted"
+						"label": "tool: read_file, fetched by SHA from the API"
+					}
+				],
+				"demoUrl": "https://github.com/Juxn89/pr-review-bot-demo/pull/1",
+				"gallery": [
+					{
+						"src": "/projects/claude-pr-review-bot/cache.webp",
+						"alt": "The bot’s inline comment on a pull request: a Dictionary cache in a singleton service is not thread-safe",
+						"caption": "On the exact line: a cache shared by concurrent requests, and the stale orders it would serve."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/timeout.webp",
+						"alt": "The bot’s comment on a catch-all that turns every payment error into a declined charge",
+						"caption": "It applies the project’s own rule: a timeout from the processor is not a decline."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/secret.webp",
+						"alt": "The bot’s comment on a line that writes the payments API key to the console",
+						"caption": "A secret written to stdout, caught before it reaches a log in production."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/summary.webp",
+						"alt": "The pull request conversation with the bot’s review summary: three blockers, comments only",
+						"caption": "One review per run, with a summary that says it only comments."
 					}
 				],
 				"caseStudy": {
@@ -279,6 +303,7 @@
 						}
 					],
 					"results": [
+						"On a real demo pull request, Claude Haiku 5.5 flagged all three bugs it introduced (a non-thread-safe cache, a catch-all that turns timeouts into declines, an API key written to stdout) in one call, for USD 0.0009.",
 						"About USD 0.12 per 400-line pull request on Claude Opus 5 and about USD 0.05 on Sonnet 5, with input, output and cache-read tokens logged per turn.",
 						"A cached system prompt, plus a built-in ignore list for lockfiles and generated code that more than halved the average diff sent to the model.",
 						"A dry-run mode with fixture findings exercises the whole pipeline in CI on every push, with no API key.",
