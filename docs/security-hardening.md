@@ -25,7 +25,6 @@ Verificar el scoping correcto de todas las variables sensibles:
 | Variable | Scope | Valor | Notas |
 |---|---|---|---|
 | `REVALIDATE_SECRET` | Production only | `<gen secret fuerte de 32+ chars>` | Usada en `/api/revalidate` con header Authorization Bearer. Regenerar mensualmente. |
-| `GITHUB_TOKEN` | Production only | PAT (Personal Access Token) | Scope: solo lectura de repos públicos (`public_repo`). Rotar anualmente. |
 | `ORIGIN_SHIELD_SECRET` | Production only | `<gen secret fuerte>` | Nuevo (Oct 2024). Usado para validar que solo Cloudflare llegue al origin. Coordinar con Cloudflare Transform Rules (ver abajo). |
 | `NEXT_PUBLIC_SITE_URL` | All (pública por diseño) | `https://juangomezb.com` | Usado en sitemap, robots.txt, SEO metadata. |
 
@@ -234,6 +233,9 @@ pnpm dev
    done
    # Resultado: primeras 5 → 401 (secreto inválido), 6ª → 429 (rate limited)
    ```
+   El rate limiting del proxy solo corre con `NODE_ENV=production` (`next build && next start` o Vercel).
+   En `next dev` todas las peticiones llegan sin `x-forwarded-for`, comparten un solo contador y la suite E2E
+   lo agotaría; por eso esta prueba se hace contra producción.
 
 3. **Verificar Cloudflare protecciones**:
    - Ir a Analytics → Security
@@ -260,7 +262,6 @@ pnpm dev
 | Tarea | Frecuencia | Responsable | Notas |
 |---|---|---|---|
 | Rotar `REVALIDATE_SECRET` | Mensualmente | Admin | Generar nuevo valor, updatar Vercel y tomar nota |
-| Rotar `GITHUB_TOKEN` | Anualmente | Admin | Generar nuevo PAT, scope mínimo |
 | Revisar WAF Logs | Semanalmente | Ops | Buscar falsos positivos que bloqueen usuarios legítimos |
 | Revisar Bot Fight Mode events | Semanalmente | Ops | Ajustar sensitivity si hay muchos falsos positivos |
 | Actualizar CSP nonce | Automático en deploy | CI/CD | El middleware genera nuevo nonce por request (no requiere acción manual) |

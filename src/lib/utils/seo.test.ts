@@ -60,23 +60,23 @@ describe('generateSEOMetadata', () => {
 
 describe('generatePersonSchema', () => {
 	it('returns a valid Person schema', () => {
-		const schema = generatePersonSchema('en');
+		const schema = generatePersonSchema();
 		expect(schema['@type']).toBe('Person');
 		expect(schema['@context']).toBe('https://schema.org');
 	});
 
 	it('contains the correct name', () => {
-		const schema = generatePersonSchema('en');
+		const schema = generatePersonSchema();
 		expect(schema.name).toBe('Juan Carlos Gómez Bermúdez');
 	});
 
 	it('contains the site URL', () => {
-		const schema = generatePersonSchema('en');
+		const schema = generatePersonSchema();
 		expect(schema.url).toBe(BASE_URL);
 	});
 
 	it('contains at least one social link in sameAs', () => {
-		const schema = generatePersonSchema('en');
+		const schema = generatePersonSchema();
 		expect(schema.sameAs.length).toBeGreaterThan(0);
 		expect(schema.sameAs.some((url) => url.includes('github'))).toBe(true);
 	});

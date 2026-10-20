@@ -65,8 +65,8 @@ production service — because a portfolio is also a sample of how I build.
     </td>
     <td valign="top">
       <img src="docs/readme/icon-projects.svg" width="44" alt=""><br>
-      <b>Projects from GitHub</b><br>
-      <sub>Pinned repositories read through the GitHub GraphQL API, so the site follows the profile.</sub>
+      <b>Projects with case studies</b><br>
+      <sub>Curated projects in both languages, validated with Zod, each with its own page: problem, decisions and measured results.</sub>
     </td>
   </tr>
   <tr>
@@ -193,7 +193,6 @@ Put them in `.env.local`:
 | Variable | Used for | Without it |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, robots | Falls back to `https://juangomezb.com` |
-| `GITHUB_TOKEN` | GitHub GraphQL API (pinned repositories) | Unauthenticated calls, lower rate limit |
 | `REVALIDATE_SECRET` | Protects `POST /api/revalidate` | The endpoint refuses every request |
 | `ORIGIN_SHIELD_SECRET` | Only requests through the CDN (header `x-origin-shield`) reach the app | The origin is reachable directly |
 
@@ -251,11 +250,11 @@ Everything lives in [`middleware.ts`](middleware.ts). Background and decisions:
 <summary>Show the tree</summary>
 
 ```
-├── middleware.ts            # Edge: blocking, rate limiting, CSP, i18n routing
 ├── messages/                # en.json · es.json — every UI string
 ├── src/
 │   ├── app/
 │   │   ├── [locale]/        # Localized pages, layout, error and 404
+│   │   │   └── projects/    # Project index and /projects/[slug] case studies
 │   │   ├── api/             # revalidate · download-cv
 │   │   ├── sitemap.ts       # Multilingual sitemap
 │   │   └── robots.ts
@@ -265,9 +264,12 @@ Everything lives in [`middleware.ts`](middleware.ts). Background and decisions:
 │   │   └── ui/              # Button, Card, Badge, ThemeToggle, LocaleSwitcher…
 │   ├── lib/
 │   │   ├── api/devto.ts     # DEV.to client (ISR)
-│   │   ├── github/api.ts    # GitHub GraphQL client
+│   │   ├── projects/        # Project model, Zod schema and accessors
+│   │   ├── constants/       # Site URL, GitHub profile, home sections
+│   │   ├── hooks/           # Section navigation shared by the header and mobile menu
 │   │   ├── context/         # Theme context
 │   │   └── utils/           # cn, SEO helpers
+│   ├── proxy.ts             # Blocking, rate limiting, CSP nonce, i18n routing
 │   └── i18n.ts · routing.ts # next-intl configuration
 ├── tests/e2e/               # Playwright
 ├── scripts/readme/          # Generates the artwork of this README

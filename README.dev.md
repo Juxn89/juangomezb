@@ -34,7 +34,6 @@ Crear `.env.local` en la raíz con:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://www.juangomezb.com
-GITHUB_TOKEN=                  # Token GitHub para GraphQL API (repos pinneados)
 REVALIDATE_SECRET=             # Secreto para el endpoint de revalidación manual
 ```
 
@@ -49,10 +48,10 @@ En Vercel, configurar las mismas variables en **Settings → Environment Variabl
 - Implementación: `src/lib/api/devto.ts`
 - Caché ISR: revalida cada **30 minutos** automáticamente
 
-### GitHub GraphQL API
-- Obtiene los repositorios pinneados del perfil
-- Implementación: `src/lib/github/api.ts`
-- Requiere `GITHUB_TOKEN` para evitar rate limiting
+### Proyectos
+- El contenido vive en `messages/{en,es}.json`, en `projects.items`, y no depende de ninguna API
+- Validación con Zod: `src/lib/projects/schema.ts`; acceso: `src/lib/projects/get-projects.ts`
+- Agregar un proyecto es agregar una entrada en los dos idiomas; `messages-parity.test.ts` falla si no coinciden
 
 ---
 

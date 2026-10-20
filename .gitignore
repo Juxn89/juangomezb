@@ -44,3 +44,7 @@ next-env.d.ts
 
 # Local reference material (third-party PDF and images), not published
 /ideas/
+
+# Playwright output
+/test-results/
+/playwright-report/

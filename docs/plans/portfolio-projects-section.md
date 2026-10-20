@@ -1,5 +1,23 @@
 # Portfolio · Sección de proyectos: contenido curado y case studies
 
+> **Estado 16 oct 2026: implementado en `feat/projects-section`.** Diferencias con lo que sigue:
+> - **Qué se publica:** los 3 proyectos OSS (`docs-assistant`, `talent-mcp`, `claude-pr-review-bot`), no
+>   B1/B2. Decisión del usuario: ahora sí hay proyectos con repo y métricas trazables a sus README. B1/B2
+>   quedan para después; agregarlos es editar `messages/{en,es}.json`.
+> - **Sin GitHub en runtime:** se eliminaron `src/lib/github/` y `GITHUB_TOKEN`. Las estrellas de repos
+>   nuevos no aportan, y el bloque "más repos" se reemplazó por un enlace al perfil (orden de corte).
+> - **Video:** `video` (`src`, `poster`, `caption`) en vez de `videoUrl`. El mp4 se sirve desde
+>   `public/projects/docs-assistant/` con `<video preload="none">` y el CTA de la tarjeta lleva a `#demo`.
+> - **Sin `highlights`** en el modelo: el case study ya lo cubre con arquitectura y resultados.
+> - **Sin diagramas SVG** (orden de corte).
+> - **CI:** se agregaron los E2E y `pnpm lint` como gate. El lint quedó en 0: el tema pasó a
+>   `useSyncExternalStore` (sin `setState` en efectos ni flags `mounted`) y el CTA de `ExperienceSection`,
+>   que apuntaba a `#contact`, ahora está traducido y lleva al email.
+> - **Imágenes para compartir:** `/og-image.jpg` nunca existió. Ahora `opengraph-image.tsx` genera una por
+>   idioma para la home, otra para `/projects` y una por proyecto con sus métricas.
+> - **Proxy:** el rate limiting corre solo en producción. En `next dev` todo llega sin `x-forwarded-for`,
+>   comparte un contador y la suite E2E lo agotaba (429).
+
 > **Actualización 13 oct 2026: traído desde `feat/projects` para la línea Workana.**
 > Este plan es la dependencia que tienen los proyectos de [`docs/workana/`](../workana/README.md) para
 > aparecer en el portfolio. Respecto a la versión original se cambian dos cosas, y nada más:
