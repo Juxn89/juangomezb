@@ -47,7 +47,8 @@
 			"tradeoff": "Costo de la decisión",
 			"results": "Resultados",
 			"video": "Demo",
-			"breadcrumb": "Ruta de navegación"
+			"breadcrumb": "Ruta de navegación",
+			"gallery": "Capturas"
 		},
 		"items": [
 			{
@@ -232,12 +233,12 @@
 				"description": "C# sobre .NET 10. Salida estructurada contra un JSON Schema, una sola herramienta read_file, hallazgos filtrados contra las líneas que GitHub acepta y una única revisión por corrida. Nunca aprueba, pide cambios ni bloquea un merge.",
 				"metrics": [
 					{
-						"value": "~USD 0,12",
-						"label": "estimado por pull request de 400 líneas con Claude Opus 5"
+						"value": "3/3",
+						"label": "bugs detectados en un pull request real de demo"
 					},
 					{
-						"value": "1",
-						"label": "herramienta: read_file, que lee por SHA desde la API"
+						"value": "USD 0,0009",
+						"label": "de costo medido de esa revisión con Claude Haiku 5.5"
 					},
 					{
 						"value": "0",
@@ -245,7 +246,30 @@
 					},
 					{
 						"value": "1",
-						"label": "revisión por corrida, nunca publicada a medias"
+						"label": "herramienta: read_file, que lee por SHA desde la API"
+					}
+				],
+				"demoUrl": "https://github.com/Juxn89/pr-review-bot-demo/pull/1",
+				"gallery": [
+					{
+						"src": "/projects/claude-pr-review-bot/cache.webp",
+						"alt": "Comentario del bot en la línea de un pull request: una caché con Dictionary en un servicio singleton no es segura con varios hilos",
+						"caption": "En la línea exacta: una caché compartida por peticiones concurrentes, y los pedidos viejos que serviría."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/timeout.webp",
+						"alt": "Comentario del bot sobre un catch que convierte cualquier error de pago en un cargo rechazado",
+						"caption": "Aplica la regla del propio proyecto: un timeout del procesador no es un rechazo."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/secret.webp",
+						"alt": "Comentario del bot sobre una línea que escribe la API key de pagos en la consola",
+						"caption": "Un secreto escrito en la consola, detectado antes de llegar a un log en producción."
+					},
+					{
+						"src": "/projects/claude-pr-review-bot/summary.webp",
+						"alt": "La conversación del pull request con el resumen de la revisión del bot: tres bloqueantes, solo comentarios",
+						"caption": "Una revisión por corrida, con un resumen que aclara que solo comenta."
 					}
 				],
 				"caseStudy": {
@@ -279,6 +303,7 @@
 						}
 					],
 					"results": [
+						"En un pull request real de demo, Claude Haiku 5.5 detectó los tres bugs que introducía (una caché no segura con varios hilos, un catch que convierte timeouts en rechazos y una API key escrita en la consola) en una sola llamada, por USD 0,0009.",
 						"Alrededor de USD 0,12 por pull request de 400 líneas con Claude Opus 5 y de USD 0,05 con Sonnet 5, con los tokens de entrada, salida y caché registrados en cada turno.",
 						"El prompt de sistema va en caché, y una lista de exclusión para lockfiles y código generado redujo a menos de la mitad el diff promedio que llega al modelo.",
 						"Un modo de prueba con hallazgos de ejemplo ejecuta todo el flujo en CI en cada push, sin API key.",
