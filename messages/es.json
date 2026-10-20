@@ -372,6 +372,10 @@
 		},
 		"title": "Experiencia",
 		"subtitle": "Mi trayectoria profesional",
+		"showMore": "Ver {count, plural, one {# logro más} other {# logros más}}",
+		"showAchievements": "Ver logros ({count})",
+		"showLess": "Ver menos",
+		"technologiesLabel": "Tecnologías",
 		"present": "Presente",
 		"jobs": [
 			{
@@ -380,16 +384,13 @@
 				"position": "Ingeniero de Software",
 				"period": "Ene 2022 - Presente",
 				"location": "Nicaragua (Remoto)",
-				"description": "Líder técnico y desarrollador para plataformas digitales de reclutamiento en 6 marcas internacionales (Europa, América Central y el Caribe), impactando a millones de usuarios y miles de empresas.",
+				"description": "Líder técnico y desarrollador para plataformas digitales de reclutamiento en 6 marcas internacionales (Reino Unido, Alemania, Irlanda, América Central y el Caribe), impactando a millones de usuarios y miles de empresas.",
 				"achievements": [
-					"Implementé arquitecturas modernas con microfrontends, microservicios y colas de mensajería, mejorando la escalabilidad y mantenibilidad del sistema",
-					"Reduje los tiempos de despliegue en aproximadamente 25% mediante automatización y migración a microservicios",
-					"Mejoré la experiencia de usuario y actualicé el look & feel de varias marcas, recibiendo retroalimentación positiva de usuarios y stakeholders",
-					"Resolví bugs críticos, entregué nuevas funcionalidades orientadas al negocio, y actualicé modelos de precios alineados con la estrategia de la empresa",
-					"Aseguré alta disponibilidad y rendimiento de servicios en AWS",
-					"Construyo interfaces de usuario usando ReactJS como desarrollador front-end",
-					"Desarrollo microservicios usando .NET como desarrollador back-end para las diferentes marcas de la empresa",
-					"Creo aplicaciones para ayudar a los buscadores de empleo a encontrar mejores trabajos en varias regiones, como Reino Unido, Alemania, Irlanda, América Central y otras"
+					"Reduje ~25 % los tiempos de despliegue automatizando el pipeline y migrando a microservicios",
+					"Implementé arquitecturas con microfrontends en ReactJS, microservicios en .NET y colas de mensajería, mejorando la escalabilidad y la mantenibilidad",
+					"Aseguré alta disponibilidad y rendimiento de los servicios en AWS",
+					"Renové la experiencia de usuario y el look & feel de varias marcas, con retroalimentación positiva de usuarios y stakeholders",
+					"Entregué funcionalidades de negocio, resolví bugs críticos y actualicé los modelos de precios según la estrategia de la empresa"
 				],
 				"technologies": ["ReactJS", ".NET", "Microservicios", "Microfrontends", "AWS", "Colas de Mensajería"]
 			},
@@ -401,11 +402,10 @@
 				"location": "Nicaragua (Remoto)",
 				"description": "Desarrollé plataformas centrales de seguros para clientes en América Latina y Europa, soportando operaciones de negocio en múltiples países.",
 				"achievements": [
-					"Mejoré la eficiencia operacional en aproximadamente 15% y reduje significativamente procesos manuales mediante automatización y mejoras del sistema",
-					"Mejoré la usabilidad de la plataforma y reduje los tiempos de carga en alrededor de 20% usando ExtJS y técnicas de optimización de rendimiento",
-					"Responsable de la corrección de bugs y el desarrollo de nuevas funcionalidades críticas para el negocio, asegurando la confiabilidad del sistema y mejora continua",
-					"Diseñé e implementé cálculos para pólizas de seguros, manejando grandes conjuntos de datos y reglas de negocio complejas",
-					"Colaboré con equipos multifuncionales para entregar soluciones escalables y amigables alineadas con las necesidades del cliente"
+					"Mejoré ~15 % la eficiencia operativa automatizando procesos que antes eran manuales",
+					"Reduje ~20 % los tiempos de carga y mejoré la usabilidad de la plataforma con ExtJS y optimización de rendimiento",
+					"Diseñé e implementé los cálculos de pólizas de seguros, con grandes volúmenes de datos y reglas de negocio complejas",
+					"Desarrollé funcionalidades críticas para el negocio y corregí bugs junto a equipos multifuncionales, cuidando la confiabilidad del sistema"
 				],
 				"technologies": ["ExtJS", "JavaScript", ".NET", "Optimización de Rendimiento", "Automatización"]
 			},
@@ -417,10 +417,10 @@
 				"location": "Nicaragua",
 				"description": "Desarrollé y mantuve soluciones de software para las 153 municipalidades de Nicaragua, soportando operaciones críticas del sector público con tecnologías .NET.",
 				"achievements": [
-					"Lideré la implementación de Team Foundation Server (TFS) como sistema de control de versiones, mejorando la colaboración y gestión del código",
-					"Gestioné servidores e infraestructura, incluyendo IIS, SQL Server, Reporting Services, y administración de TFS",
-					"Migré aplicaciones legacy de ASP.NET a .NET Core, mejorando rendimiento, seguridad y mantenibilidad",
-					"Brindé soporte continuo y actualizaciones para sistemas legacy construidos en VB 6.0, asegurando continuidad del negocio y modernización gradual"
+					"Migré aplicaciones legacy de ASP.NET a .NET Core, con mejor rendimiento, seguridad y mantenibilidad",
+					"Lideré la adopción de Team Foundation Server (TFS) para el control de versiones del equipo",
+					"Administré servidores e infraestructura: IIS, SQL Server, Reporting Services y TFS",
+					"Mantuve los sistemas legacy en VB 6.0 mientras avanzaba su modernización gradual"
 				],
 				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
 			},
@@ -432,8 +432,8 @@
 				"location": "Nicaragua / Panamá",
 				"description": "Lideré el desarrollo e implementación del sistema catastral para los 153 gobiernos municipales a nivel nacional, permitiendo la gestión eficiente de información territorial y de propiedades a escala nacional.",
 				"achievements": [
-					"Integré exitosamente el sistema catastral municipal (SISCAT, INIFOM) con el sistema de catastro físico (SISCAF, INETER), permitiendo la administración centralizada y actualizada de propiedades municipales",
-					"Coordiné la migración de datos de contribuyentes desde SISCAT al sistema administrativo financiero (SIAFI) en todas las municipalidades, mejorando la recaudación municipal y la trazabilidad financiera"
+					"Integré el catastro municipal (SISCAT, INIFOM) con el catastro físico (SISCAF, INETER) para administrar las propiedades municipales de forma centralizada",
+					"Coordiné la migración de los datos de contribuyentes de SISCAT al sistema financiero (SIAFI) en todas las municipalidades, mejorando la recaudación y la trazabilidad"
 				],
 				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "Integración de Sistemas"]
 			},
@@ -445,9 +445,8 @@
 				"location": "Nicaragua",
 				"description": "Desarrollé sistemas administrativos y de planificación basados en web para operaciones del gobierno municipal.",
 				"achievements": [
-					"Desarrollé el Sistema de Planificación Estratégica como aplicación web usando ASP MVC, permitiendo la gestión centralizada y accesible de planes institucionales",
-					"Lideré el desarrollo e implementación del Sistema de Formulación de Proyectos en plataforma web (ASP MVC), agilizando la creación, evaluación y monitoreo de proyectos institucionales",
-					"Gestioné la migración exitosa del Sistema de Formulación de Proyectos desde un entorno de escritorio a una solución basada en web, mejorando la accesibilidad, colaboración y escalabilidad para los usuarios"
+					"Desarrollé en ASP MVC los sistemas web de Planificación Estratégica y de Formulación de Proyectos, para gestionar planes y proyectos institucionales",
+					"Migré el Sistema de Formulación de Proyectos de escritorio a web, haciéndolo más accesible y colaborativo"
 				],
 				"technologies": ["ASP MVC", ".NET", "Desarrollo Web"]
 			}
