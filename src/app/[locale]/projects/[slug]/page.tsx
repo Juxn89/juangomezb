@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import {headers} from 'next/headers';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
@@ -146,6 +147,35 @@ export default async function CaseStudyPage({params}: Props) {
 							</video>
 							<figcaption className="mt-3 text-sm text-text-secondary">{project.video.caption}</figcaption>
 						</figure>
+					</section>
+				)}
+
+				{project.gallery && (
+					<section id="gallery" className="mb-16 scroll-mt-24" aria-labelledby="gallery-heading">
+						<h2 id="gallery-heading" className="sr-only">{t('caseStudy.gallery')}</h2>
+						<div className="grid gap-6 sm:grid-cols-2">
+							{project.gallery.map((image) => (
+								<figure key={image.src}>
+									{/* Each screenshot opens full size: the code in it is small on purpose. */}
+									<a
+										href={image.src}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="block overflow-hidden rounded-2xl border border-border transition-colors hover:border-accent-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+									>
+										<Image
+											src={image.src}
+											alt={image.alt}
+											width={1600}
+											height={1000}
+											sizes="(min-width: 896px) 416px, (min-width: 640px) 50vw, 100vw"
+											className="h-auto w-full"
+										/>
+									</a>
+									<figcaption className="mt-3 text-sm leading-relaxed text-text-secondary">{image.caption}</figcaption>
+								</figure>
+							))}
+						</div>
 					</section>
 				)}
 

@@ -72,6 +72,22 @@ test.describe('Projects', () => {
 		await expect(page.locator('#demo')).toBeInViewport();
 	});
 
+	test('the claude-pr-review-bot case study shows real screenshots and links the live demo', async ({page, request}) => {
+		await page.goto('/es/projects/claude-pr-review-bot');
+		await expect(page.getByRole('link', {name: 'Ver Demo'})).toHaveAttribute(
+			'href',
+			'https://github.com/Juxn89/pr-review-bot-demo/pull/1'
+		);
+
+		const images = page.locator('#gallery img');
+		await expect(images).toHaveCount(4);
+		for (const link of await page.locator('#gallery a').all()) {
+			const response = await request.get((await link.getAttribute('href'))!);
+			expect(response.status()).toBe(200);
+			expect(response.headers()['content-type']).toBe('image/webp');
+		}
+	});
+
 	test('an unknown slug is a 404', async ({page}) => {
 		const response = await page.goto('/en/projects/does-not-exist');
 		expect(response?.status()).toBe(404);
