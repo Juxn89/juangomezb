@@ -347,18 +347,19 @@
 	"about": {
 		"title": "About Me",
 		"subtitle": "Get to know me better",
-		"bio": "Senior Software Engineer with 15+ years of experience modernizing legacy systems and building scalable fullstack solutions in multinational settings. Proven leader delivering high-availability (>99.9%) and performance gains (+35%) in critical projects. Skilled in agile, CI/CD, and team leadership.",
+		"bio": "Senior Software Engineer with 15+ years building and modernizing .NET systems for multinational companies and the public sector. Today I pair that foundation with applied AI: RAG assistants that cite their sources, MCP servers for agents and Claude-powered code review, each measured with quality and cost evals. I work end to end, from architecture and backend to frontend, CI/CD and the cloud, and I lead teams with agile practices.",
 		"bioTitle": "Professional Summary",
 		"downloadCV": "Download CV",
 		"skillsTitle": "Technical Skills",
 		"expertiseTitle": "Areas of Expertise",
-		"stats": {
-			"experience": "Years Experience",
-			"users": "Users Impacted",
-			"role": "Professional Role",
-			"principle": "Core Principle"
+		"expertiseTitles": {
+			"ai": "Applied AI",
+			"backend": "Backend",
+			"frontend": "Frontend",
+			"cloud": "Cloud & DevOps"
 		},
 		"expertise": {
+			"ai": "RAG assistants on PostgreSQL and pgvector, MCP servers and agents with Claude behind Microsoft.Extensions.AI. Evals in CI, spending guards and prompt-injection defenses.",
 			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",
 			"backend": "Scalable server-side solutions with .NET, Node.js, and SQL databases. Experience with RESTful APIs, microservices, and data processing.",
 			"cloud": "Cloud infrastructure on AWS and Azure. Proficient in Docker, CI/CD pipelines, and DevOps practices for high-availability systems."

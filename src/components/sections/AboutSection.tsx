@@ -2,7 +2,7 @@
 
 import {useTranslations, useLocale} from 'next-intl';
 import {motion} from 'framer-motion';
-import {Download, Code, Database, Cloud, Layers, GitBranch, Zap, Package, Network} from 'lucide-react';
+import {Download, Code, Database, Cloud, Layers, GitBranch, Zap, Package, Network, Sparkles} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
 
 export function AboutSection() {
@@ -15,6 +15,13 @@ export function AboutSection() {
 		{name: 'SQL Server', category: 'backend', icon: Database},
 		{name: 'REST APIs', category: 'backend', icon: Database},
 		{name: 'Microservices', category: 'architecture', icon: Layers},
+		// Applied AI (the open-source projects in the Projects section)
+		{name: 'Claude API', category: 'ai', icon: Sparkles},
+		{name: 'RAG', category: 'ai', icon: Sparkles},
+		{name: 'pgvector', category: 'ai', icon: Sparkles},
+		{name: 'MCP', category: 'ai', icon: Sparkles},
+		{name: 'Microsoft.Extensions.AI', category: 'ai', icon: Sparkles},
+		{name: 'LLM evals', category: 'ai', icon: Sparkles},
 		// Frontend (Expertise moderno)
 		{name: 'TypeScript', category: 'frontend', icon: Code},
 		{name: 'React', category: 'frontend', icon: Code},
@@ -41,12 +48,12 @@ export function AboutSection() {
 		{name: 'Cypress', category: 'testing', icon: Zap},
 	];
 
-	const stats = [
-		{label: t('stats.experience'), value: '15+'},
-		{label: t('stats.users'), value: '500K+'},
-		{label: t('stats.role'), value: 'Architect'},
-		{label: t('stats.principle'), value: 'Scalable'},
-	];
+	const expertiseAreas = [
+		{key: 'ai', icon: Sparkles, color: 'text-accent-primary', hover: 'hover:border-accent-primary/50'},
+		{key: 'backend', icon: Database, color: 'text-accent-secondary', hover: 'hover:border-accent-secondary/50'},
+		{key: 'frontend', icon: Code, color: 'text-accent-primary', hover: 'hover:border-accent-primary/50'},
+		{key: 'cloud', icon: Cloud, color: 'text-accent-tertiary', hover: 'hover:border-accent-tertiary/50'},
+	] as const;
 
 	const containerVariants = {
 		hidden: {opacity: 0},
@@ -89,33 +96,6 @@ export function AboutSection() {
 						<p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
 							{t('subtitle')}
 						</p>
-					</motion.div>
-
-					{/* Stats Grid */}
-					<motion.div
-						variants={itemVariants}
-						className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
-					>
-						{stats.map((stat) => (
-							<motion.div
-								key={stat.label}
-								whileHover={{scale: 1.05}}
-								className={cn(
-									'p-6 rounded-lg',
-									'bg-bg-secondary border border-border',
-									'text-center',
-									'hover:border-accent-primary/50',
-									'transition-colors duration-300'
-								)}
-							>
-								<div className="text-3xl md:text-4xl font-bold gradient-text mb-2 pb-1 leading-tight">
-									{stat.value}
-								</div>
-								<div className="text-sm text-text-secondary">
-									{stat.label}
-								</div>
-							</motion.div>
-						))}
 					</motion.div>
 
 					{/* Bio Section */}
@@ -200,63 +180,27 @@ export function AboutSection() {
 							{t('expertiseTitle')}
 						</h3>
 						
-						<div className="grid md:grid-cols-3 gap-6">
-							{/* Frontend */}
-							<motion.div
-								whileHover={{y: -5}}
-								className={cn(
-									'p-6 rounded-xl',
-									'bg-bg-secondary border border-border',
-									'hover:border-accent-primary/50',
-									'transition-all duration-300'
-								)}
-							>
-								<Code className="w-10 h-10 text-accent-primary mb-4" />
-								<h4 className="text-xl font-bold text-text-primary mb-3">
-									Frontend
-								</h4>
-								<p className="text-text-secondary text-sm">
-									{t('expertise.frontend')}
-								</p>
-							</motion.div>
-
-							{/* Backend */}
-							<motion.div
-								whileHover={{y: -5}}
-								className={cn(
-									'p-6 rounded-xl',
-									'bg-bg-secondary border border-border',
-									'hover:border-accent-secondary/50',
-									'transition-all duration-300'
-								)}
-							>
-								<Database className="w-10 h-10 text-accent-secondary mb-4" />
-								<h4 className="text-xl font-bold text-text-primary mb-3">
-									Backend
-								</h4>
-								<p className="text-text-secondary text-sm">
-									{t('expertise.backend')}
-								</p>
-							</motion.div>
-
-							{/* Cloud & DevOps */}
-							<motion.div
-								whileHover={{y: -5}}
-								className={cn(
-									'p-6 rounded-xl',
-									'bg-bg-secondary border border-border',
-									'hover:border-accent-tertiary/50',
-									'transition-all duration-300'
-								)}
-							>
-								<Cloud className="w-10 h-10 text-accent-tertiary mb-4" />
-								<h4 className="text-xl font-bold text-text-primary mb-3">
-									Cloud & DevOps
-								</h4>
-								<p className="text-text-secondary text-sm">
-									{t('expertise.cloud')}
-								</p>
-							</motion.div>
+						<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+							{expertiseAreas.map(({key, icon: Icon, color, hover}) => (
+								<motion.div
+									key={key}
+									whileHover={{y: -5}}
+									className={cn(
+										'p-6 rounded-xl',
+										'bg-bg-secondary border border-border',
+										hover,
+										'transition-all duration-300'
+									)}
+								>
+									<Icon className={cn('w-10 h-10 mb-4', color)} aria-hidden="true" />
+									<h4 className="text-xl font-bold text-text-primary mb-3">
+										{t(`expertiseTitles.${key}`)}
+									</h4>
+									<p className="text-text-secondary text-sm">
+										{t(`expertise.${key}`)}
+									</p>
+								</motion.div>
+							))}
 						</div>
 					</motion.div>
 				</motion.div>
