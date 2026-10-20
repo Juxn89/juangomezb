@@ -9,63 +9,290 @@
 	},
 	"projects": {
 		"title": "Featured Projects",
-		"subtitle": "Showcasing innovation and technical excellence",
+		"subtitle": "Open-source .NET and AI systems, with the numbers measured in public",
 		"viewDemo": "View Demo",
 		"viewCode": "View Code",
+		"viewCaseStudy": "Read the case study",
+		"watchVideo": "Watch the demo",
+		"viewAll": "All projects",
+		"stackLabel": "Technologies",
+		"metricsLabel": "Key results",
+		"empty": "The projects are being updated. In the meantime, everything is on GitHub.",
+		"moreOnGitHub": "More on GitHub",
+		"kind": {
+			"oss": "Open source",
+			"case-study": "Case study"
+		},
+		"status": {
+			"live": "Released",
+			"in-progress": "In progress",
+			"archived": "Archived"
+		},
+		"index": {
+			"metaTitle": "Projects",
+			"metaDescription": "Open-source .NET and AI projects by Juan Carlos Gómez: a RAG support assistant, an MCP server and a Claude pull request reviewer, each with measured results.",
+			"title": "Projects",
+			"subtitle": "Each one solves a real problem end to end, and every number on these pages comes from a test or an eval in its repository."
+		},
+		"caseStudy": {
+			"home": "Home",
+			"back": "All projects",
+			"role": "Role",
+			"year": "Year",
+			"stack": "Stack",
+			"context": "The problem",
+			"constraints": "Constraints",
+			"architecture": "How it works",
+			"decisions": "Key decisions",
+			"tradeoff": "Trade-off",
+			"results": "Results",
+			"video": "Demo",
+			"breadcrumb": "Breadcrumb"
+		},
 		"items": [
 			{
-				"id": 1,
-				"title": "Cloud Banking Platform",
-				"description": "Microservices-based banking platform handling 10M+ daily transactions with 99.9% uptime. Migrated from monolithic .NET to cloud-native architecture.",
-				"technologies": ["React", "Next.js", ".NET Core", "AWS", "Docker", "PostgreSQL"],
-				"highlights": [
-					"Real-time transaction processing",
-					"OAuth2 & JWT authentication",
-					"Automated CI/CD pipeline"
+				"slug": "docs-assistant",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/docs-assistant",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"pgvector",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"TypeScript",
+					"Playwright"
 				],
-				"demoUrl": "#",
-				"featured": true
+				"role": "Design and development",
+				"title": "docs-assistant",
+				"tagline": "An AI support assistant that answers from your documents, cites every answer, and hands the conversation to a person when it doesn't know.",
+				"description": "An embeddable RAG chatbot in .NET 10: hybrid search in PostgreSQL with pgvector, Claude Haiku behind a swappable port, and a 9 KB widget that installs with one line.",
+				"metrics": [
+					{
+						"value": "98%",
+						"label": "retrieval hit@5 on a 54-question bilingual eval"
+					},
+					{
+						"value": "12/12",
+						"label": "prompt-injection attacks resisted"
+					},
+					{
+						"value": "$0.33",
+						"label": "model cost per 1,000 questions"
+					},
+					{
+						"value": "9 KB",
+						"label": "embeddable widget"
+					}
+				],
+				"video": {
+					"src": "/projects/docs-assistant/demo.mp4",
+					"poster": "/projects/docs-assistant/poster.jpg",
+					"caption": "75 seconds on a demo store. On-screen text in Spanish, answers by Claude Haiku 5.5."
+				},
+				"caseStudy": {
+					"context": "Small businesses answer the same questions all day, and generic chatbots make up answers that the business then has to correct. The goal was an assistant a customer can trust: it answers only from the business’s own documents, shows where each answer came from, and when it cannot answer, it says so and passes the conversation to a person.",
+					"constraints": [
+						"No invented answers: abstaining beats guessing",
+						"Questions and documents in different languages, Spanish and English",
+						"A small, visible cost per answer, with hard spending caps",
+						"It has to embed in any website without breaking its styles",
+						"Several businesses on one deployment, each seeing only its own data"
+					],
+					"architecture": [
+						"Documents (PDF, DOCX, Markdown and web pages) are split along their structure and indexed twice in PostgreSQL: as vectors, for meaning across languages, and as full text, for exact words, numbers and names.",
+						"A question searches both indexes and the two rankings are fused with Reciprocal Rank Fusion. Passages shaped like injected instructions are quarantined before they reach the model.",
+						"Below a measured similarity floor the assistant abstains without calling the model. Otherwise Claude answers from those passages only and cites them as [1], [2]; the citations are validated before the answer streams to the widget over SSE.",
+						"The widget is framework-free TypeScript inside a Shadow DOM: 9 KB, one script tag, and styles that never leak into the host page."
+					],
+					"decisions": [
+						{
+							"title": "Abstain before calling the model",
+							"rationale": "When retrieval finds nothing similar enough, the answer is “I can’t find that” plus a person, decided in code at zero cost.",
+							"tradeoff": "A few answerable questions are refused when retrieval misses. The eval tracks that rate, so the floor is tuned on data rather than taste."
+						},
+						{
+							"title": "Hybrid search, not vectors alone",
+							"rationale": "Vectors handle meaning and cross-language questions; full text catches the prices, codes and names that embeddings blur. Guaranteeing one vector hit in the fused list raised cross-lingual hit@5 from 86% to 95%.",
+							"tradeoff": "Two indexes to maintain and a fusion step to tune, though both live in the PostgreSQL the app already needs."
+						},
+						{
+							"title": "The model behind a port, with spending guards",
+							"rationale": "Claude sits behind Microsoft.Extensions.AI, so the model is a configuration choice, and an extractive mode works with no model at all. The evals refuse to spend without an explicit flag, a call cap and a cost cap.",
+							"tradeoff": "A thin abstraction layer to keep current, in exchange for never being locked to one provider or surprised by a bill."
+						}
+					],
+					"results": [
+						"Retrieval finds the right passage for 98% of the 54 eval questions, and for 95% when the question and the document are in different languages.",
+						"With Claude Haiku 5.5: 0 invalid citations, abstention on 100% of the unanswerable questions, and USD 0.33 per 1,000 questions.",
+						"12 of 12 prompt-injection attacks resisted (8 direct, 4 hidden inside documents), while 0 of the 54 real questions were wrongly refused.",
+						"Every number comes from an eval in the repository that anyone can rerun, and CI fails if retrieval drops below its thresholds."
+					]
+				}
 			},
 			{
-				"id": 2,
-				"title": "E-Commerce Analytics Dashboard",
-				"description": "Real-time analytics platform for e-commerce operations. Processes $2M+ annual revenue with advanced data visualization and reporting.",
-				"technologies": ["TypeScript", "React", "Node.js", "MongoDB", "Redis", "D3.js"],
-				"highlights": [
-					"Real-time data streaming",
-					"Custom visualization charts",
-					"Performance optimization"
+				"slug": "talent-mcp",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/talent-mcp",
+				"stack": [
+					".NET 10",
+					"C#",
+					"Model Context Protocol",
+					"OAuth 2.1",
+					"Keycloak",
+					"PostgreSQL",
+					"OpenTelemetry",
+					"Docker"
 				],
-				"demoUrl": "#",
-				"featured": true
+				"role": "Design and development",
+				"title": "talent-mcp",
+				"tagline": "An MCP server in C# that gives AI agents typed, secured tools for recruiting, built on the session-less 2026-07-28 protocol revision.",
+				"description": "Six typed tools for job search, candidate-fit scoring and skill extraction, over stateless Streamable HTTP with OAuth 2.1 + PKCE, and the same six over stdio as a dotnet tool. Published on NuGet.",
+				"metrics": [
+					{
+						"value": "6",
+						"label": "typed tools, each behind its own OAuth scope"
+					},
+					{
+						"value": "0",
+						"label": "LLM calls: deterministic, zero-cost scoring"
+					},
+					{
+						"value": "323 ms",
+						"label": "cold start of the dotnet tool, measured in CI"
+					},
+					{
+						"value": "5",
+						"label": "test levels that gate every merge"
+					}
+				],
+				"caseStudy": {
+					"context": "AI agents are only as useful as the tools they can call safely. The 2026-07-28 revision of the Model Context Protocol removed sessions and server-initiated requests, which breaks the usual ways of paging results and of asking the user for confirmation. talent-mcp is a reference server for that revision, in a domain where mistakes are costly: recruiting.",
+					"constraints": [
+						"No server sessions: any replica must be able to serve any request",
+						"Destructive actions need explicit confirmation, without server-initiated requests",
+						"Authorization per tool: read, write and destructive scopes are not interchangeable",
+						"Reproducible results, so the scoring can serve as a test oracle"
+					],
+					"architecture": [
+						"Clean Architecture with the dependency rule enforced by architecture tests in CI. Domain references nothing; Application holds the use cases and ports; Infrastructure holds the EF Core, Keycloak and OpenTelemetry adapters.",
+						"The six tools live in one project that two hosts share verbatim: an ASP.NET Core Streamable HTTP server shipped as a container image, and a stdio host shipped as a dotnet tool.",
+						"State between calls travels as a signed, time-limited handle passed back as an ordinary tool argument. The client’s trace context arrives in _meta, so a single trace spans client, server and PostgreSQL."
+					],
+					"decisions": [
+						{
+							"title": "No LLM inside the server",
+							"rationale": "Scoring and skill normalization are pure functions, so the server needs no API keys, costs nothing to run and returns the same answer every time.",
+							"tradeoff": "Less flexible than asking a model; the agent on the other side brings the language understanding."
+						},
+						{
+							"title": "Signed handles instead of sessions",
+							"rationale": "Pagination state is encoded, signed and time-limited inside the handle itself, so the HTTP host scales horizontally with no sticky sessions and no shared cache.",
+							"tradeoff": "Handles are opaque and they expire; a client that holds one too long has to search again."
+						},
+						{
+							"title": "Tools registered explicitly, not by assembly scan",
+							"rationale": "A trimmed build that silently drops its tools answers -32601 with no crash and no error log. Explicit registration, plus a conformance test that asserts all six tools by name, makes that failure loud.",
+							"tradeoff": "Adding a tool means touching the registration as well as writing the tool."
+						}
+					],
+					"results": [
+						"Published on NuGet as a reusable toolkit library and as the talent-mcp dotnet tool, with a container image on GHCR.",
+						"Five test levels gate every merge, from architecture rules to end-to-end runs through OAuth and PostgreSQL.",
+						"The Tasks store is verified to survive a database restart, recovering its connections in about a second.",
+						"Cold start of the installed dotnet tool measured in CI at 323 ms."
+					]
+				}
 			},
 			{
-				"id": 3,
-				"title": "Healthcare Management System",
-				"description": "HIPAA-compliant patient management system for healthcare providers. Streamlined workflows and improved patient care coordination.",
-				"technologies": [".NET", "Angular", "SQL Server", "Azure", "SignalR"],
-				"highlights": [
-					"HIPAA compliance & security",
-					"Real-time notifications",
-					"Electronic health records"
+				"slug": "claude-pr-review-bot",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/claude-pr-review-bot",
+				"stack": [
+					".NET 10",
+					"C# 14",
+					"Claude API",
+					"Structured outputs",
+					"GitHub Actions",
+					"xUnit"
 				],
-				"demoUrl": "#",
-				"featured": false
-			},
-			{
-				"id": 4,
-				"title": "DevOps Automation Suite",
-				"description": "Comprehensive CI/CD automation suite reducing deployment time by 60%. Integrated with AWS, Docker, and Kubernetes.",
-				"technologies": ["Python", "Bash", "Docker", "Kubernetes", "AWS", "Terraform"],
-				"highlights": [
-					"Infrastructure as Code",
-					"Automated testing & deployment",
-					"Monitoring & alerting"
+				"role": "Design and development",
+				"title": "claude-pr-review-bot",
+				"tagline": "A pull request reviewer for GitHub Actions that asks Claude for one document of findings, and can only ever comment.",
+				"description": "C# on .NET 10. Structured output against a JSON Schema, a single read_file tool, findings filtered against the lines GitHub accepts, and one review per run. It never approves, requests changes or blocks a merge.",
+				"metrics": [
+					{
+						"value": "~$0.12",
+						"label": "estimated per 400-line pull request on Claude Opus 5"
+					},
+					{
+						"value": "1",
+						"label": "tool: read_file, fetched by SHA from the API"
+					},
+					{
+						"value": "0",
+						"label": "permissions to approve, block or merge"
+					},
+					{
+						"value": "1",
+						"label": "review per run, never half-posted"
+					}
 				],
-				"demoUrl": "#",
-				"featured": false
+				"caseStudy": {
+					"context": "The obvious AI reviewer gives the model a post-comment tool and executes each call as it arrives. That costs a round trip per finding, can leave half a review behind when a call times out, and never gives the code a moment to see the whole set and decide it is noise. An early version left 47 comments on one pull request, most of them on generated files.",
+					"constraints": [
+						"It must review pull requests from forks, which needs secrets under pull_request_target",
+						"Contributor code must never run next to the API key",
+						"A prompt injection inside a diff must not be able to approve or block anything",
+						"A predictable, visible cost per pull request"
+					],
+					"architecture": [
+						"The bot fetches the changed files and their patches from the GitHub API and parses the hunks into the set of lines GitHub will accept a comment on.",
+						"Claude receives the diff as untrusted content and returns its findings as one document that conforms to a JSON Schema. When a hunk is a keyhole, it can call read_file, which fetches the file at the head SHA through a path check.",
+						"A filter drops findings outside the diff, keeps the most severe one per line and caps the total. Then a single COMMENT review is posted, and every dropped finding is logged."
+					],
+					"decisions": [
+						{
+							"title": "Findings as data, not actions",
+							"rationale": "Structured output returns the whole set at once, so the code can filter, deduplicate and cap it before anything reaches GitHub, and a failure posts nothing instead of half a review.",
+							"tradeoff": "The review appears all at once at the end of the run instead of comment by comment."
+						},
+						{
+							"title": "Comment-only by construction",
+							"rationale": "The GitHub client has five methods, and none of them can approve, request changes or merge. The worst a prompt injection can do is make the bot go quiet.",
+							"tradeoff": "It cannot enforce anything; a team that wants a blocking gate keeps it in its own CI."
+						},
+						{
+							"title": "Built from source on every run",
+							"rationale": "The composite action compiles the bot at the pinned ref, so the code reviewing your pull request is exactly the code in the repository.",
+							"tradeoff": "About a minute per run; a Docker action would be faster but less transparent."
+						}
+					],
+					"results": [
+						"About USD 0.12 per 400-line pull request on Claude Opus 5 and about USD 0.05 on Sonnet 5, with input, output and cache-read tokens logged per turn.",
+						"A cached system prompt, plus a built-in ignore list for lockfiles and generated code that more than halved the average diff sent to the model.",
+						"A dry-run mode with fixture findings exercises the whole pipeline in CI on every push, with no API key.",
+						"The design is explained in a DEV.to article, in English and in Spanish."
+					]
+				}
 			}
 		]
+	},
+	"share": {
+		"role": "Senior Software Engineer",
+		"tagline": ".NET, cloud and AI systems, with the results measured in public",
+		"caseStudy": "Case study",
+		"alt": "Juan Carlos Gómez, Senior Software Engineer"
 	},
 	"contact": {
 		"title": "Get In Touch",
@@ -120,26 +347,35 @@
 	"about": {
 		"title": "About Me",
 		"subtitle": "Get to know me better",
-		"bio": "Senior Software Engineer with 15+ years of experience modernizing legacy systems and building scalable fullstack solutions in multinational settings. Proven leader delivering high-availability (>99.9%) and performance gains (+35%) in critical projects. Skilled in agile, CI/CD, and team leadership.",
+		"bio": "Senior Software Engineer with 15+ years building and modernizing .NET systems for multinational companies and the public sector. Today I pair that foundation with applied AI: RAG assistants that cite their sources, MCP servers for agents and Claude-powered code review, each measured with quality and cost evals. I work end to end, from architecture and backend to frontend, CI/CD and the cloud, and I lead teams with agile practices.",
 		"bioTitle": "Professional Summary",
 		"downloadCV": "Download CV",
 		"skillsTitle": "Technical Skills",
 		"expertiseTitle": "Areas of Expertise",
-		"stats": {
-			"experience": "Years Experience",
-			"users": "Users Impacted",
-			"role": "Professional Role",
-			"principle": "Core Principle"
+		"expertiseTitles": {
+			"ai": "Applied AI",
+			"backend": "Backend",
+			"frontend": "Frontend",
+			"cloud": "Cloud & DevOps"
 		},
 		"expertise": {
+			"ai": "RAG assistants on PostgreSQL and pgvector, MCP servers and agents with Claude behind Microsoft.Extensions.AI. Evals in CI, spending guards and prompt-injection defenses.",
 			"frontend": "Modern web applications with React, Next.js, TypeScript, and Angular. Expertise in building responsive, accessible, and performant user interfaces.",
 			"backend": "Scalable server-side solutions with .NET, Node.js, and SQL databases. Experience with RESTful APIs, microservices, and data processing.",
 			"cloud": "Cloud infrastructure on AWS and Azure. Proficient in Docker, CI/CD pipelines, and DevOps practices for high-availability systems."
 		}
 	},
 	"experience": {
+		"cta": {
+			"question": "Want to know more about my work?",
+			"action": "Let’s talk"
+		},
 		"title": "Experience",
 		"subtitle": "My professional journey",
+		"showMore": "Show {count, plural, one {# more achievement} other {# more achievements}}",
+		"showAchievements": "Show achievements ({count})",
+		"showLess": "Show less",
+		"technologiesLabel": "Technologies",
 		"present": "Present",
 		"jobs": [
 			{
@@ -148,16 +384,13 @@
 				"position": "Software Engineer",
 				"period": "Jan 2022 - Present",
 				"location": "Nicaragua (Remote)",
-				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands (Europe, Central America, and the Caribbean), impacting millions of users and thousands of companies.",
+				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands (UK, Germany, Ireland, Central America, and the Caribbean), impacting millions of users and thousands of companies.",
 				"achievements": [
-					"Implemented modern architectures with microfrontends, microservices, and messaging queues, improving system scalability and maintainability",
-					"Reduced deployment times by approximately 25% through automation and migration to microservices",
-					"Enhanced user experience and updated the look & feel for several brands, receiving positive feedback from users and stakeholders",
-					"Resolved critical bugs, delivered new business-driven features, and updated pricing models to align with company strategy",
+					"Cut deployment times by ~25% by automating the pipeline and migrating to microservices",
+					"Implemented architectures with ReactJS microfrontends, .NET microservices and messaging queues, improving scalability and maintainability",
 					"Ensured high availability and performance of services on AWS",
-					"Build user interfaces using ReactJS as a front-end developer",
-					"Develop microservices using .NET as a back-end developer for the company's different brands",
-					"Create applications to help jobseekers find better jobs in various regions, such as the UK, Germany, Ireland, Central America, and others"
+					"Refreshed the user experience and look & feel of several brands, with positive feedback from users and stakeholders",
+					"Delivered business features, fixed critical bugs and updated pricing models in line with company strategy"
 				],
 				"technologies": ["ReactJS", ".NET", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
 			},
@@ -169,11 +402,10 @@
 				"location": "Nicaragua (Remote)",
 				"description": "Developed core insurance platforms for clients in Latin America and Europe, supporting business operations across multiple countries.",
 				"achievements": [
-					"Improved operational efficiency by approximately 15% and significantly reduced manual processes through automation and system enhancements",
-					"Enhanced platform usability and reduced load times by around 20% using ExtJS and performance optimization techniques",
-					"Responsible for bug fixing and the development of new business-critical features, ensuring system reliability and continuous improvement",
-					"Designed and implemented calculations for insurance policies, handling large datasets and complex business rules",
-					"Collaborated with cross-functional teams to deliver scalable, user-friendly solutions aligned with client needs"
+					"Improved operational efficiency by ~15% by automating processes that used to be manual",
+					"Cut load times by ~20% and improved platform usability with ExtJS and performance optimization",
+					"Designed and implemented insurance policy calculations over large datasets and complex business rules",
+					"Built business-critical features and fixed bugs alongside cross-functional teams, keeping the system reliable"
 				],
 				"technologies": ["ExtJS", "JavaScript", ".NET", "Performance Optimization", "Automation"]
 			},
@@ -185,10 +417,10 @@
 				"location": "Nicaragua",
 				"description": "Developed and maintained software solutions for all 153 municipalities across Nicaragua, supporting critical public sector operations with .NET technologies.",
 				"achievements": [
-					"Led the implementation of Team Foundation Server (TFS) as the version control system, improving collaboration and code management",
-					"Managed servers and infrastructure, including IIS, SQL Server, Reporting Services, and TFS administration",
-					"Migrated legacy ASP.NET applications to .NET Core, enhancing performance, security, and maintainability",
-					"Provided ongoing support and updates for legacy systems built in VB 6.0, ensuring business continuity and gradual modernization"
+					"Migrated legacy ASP.NET applications to .NET Core, improving performance, security and maintainability",
+					"Led the team's adoption of Team Foundation Server (TFS) for version control",
+					"Managed servers and infrastructure: IIS, SQL Server, Reporting Services and TFS",
+					"Maintained legacy VB 6.0 systems while their gradual modernization moved forward"
 				],
 				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
 			},
@@ -200,8 +432,8 @@
 				"location": "Nicaragua / Panama",
 				"description": "Led the development and implementation of the cadastre system for all 153 municipal governments nationwide, enabling efficient management of territorial and property information at a national scale.",
 				"achievements": [
-					"Successfully integrated the municipal cadastral system (SISCAT, INIFOM) with the physical cadastre system (SISCAF, INETER), allowing centralized and up-to-date administration of municipal properties",
-					"Coordinated the migration of taxpayer data from SISCAT to the financial administrative system (SIAFI) across all municipalities, improving municipal revenue collection and financial traceability"
+					"Integrated the municipal cadastre (SISCAT, INIFOM) with the physical cadastre (SISCAF, INETER) to manage municipal properties centrally",
+					"Coordinated the migration of taxpayer data from SISCAT to the financial system (SIAFI) across all municipalities, improving revenue collection and traceability"
 				],
 				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "System Integration"]
 			},
@@ -213,9 +445,8 @@
 				"location": "Nicaragua",
 				"description": "Developed web-based administrative and planning systems for municipal government operations.",
 				"achievements": [
-					"Developed the Strategic Planning System as a web application using ASP MVC, enabling centralized and accessible management and monitoring of institutional plans",
-					"Led the development and implementation of the Project Formulation System on a web platform (ASP MVC), streamlining the creation, evaluation, and monitoring of institutional projects",
-					"Managed the successful migration of the Project Formulation System from a desktop environment to a web-based solution, enhancing accessibility, collaboration, and scalability for users"
+					"Built the Strategic Planning and Project Formulation web systems in ASP MVC to manage institutional plans and projects",
+					"Moved the Project Formulation System from desktop to the web, making it more accessible and collaborative"
 				],
 				"technologies": ["ASP MVC", ".NET", "Web Development"]
 			}

@@ -125,7 +125,6 @@ function timingSafeEqual(a: string, b: string): boolean {
 	if (aBytes.length !== bBytes.length) return false;
 	let result = 0;
 	for (let i = 0; i < aBytes.length; i++) {
-		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		result |= aBytes[i]! ^ bBytes[i]!;
 	}
 	return result === 0;
@@ -165,9 +164,12 @@ export async function proxy(request: NextRequest) {
 		);
 	}
 
-	// Rate limiting (differentiated for API routes)
+	const isProduction = process.env.NODE_ENV === 'production';
+
+	// Rate limiting (differentiated for API routes). Production only: in development every request comes
+	// from one machine without x-forwarded-for, so the E2E suite alone would exhaust the shared bucket.
 	const isApiRoute = pathname.startsWith('/api');
-	if (!checkRateLimit(ip, isApiRoute)) {
+	if (isProduction && !checkRateLimit(ip, isApiRoute)) {
 		return NextResponse.json(
 			{error: 'Too many requests'},
 			{status: 429, headers: {'Retry-After': '900'}}
@@ -176,7 +178,6 @@ export async function proxy(request: NextRequest) {
 
 	// Generate nonce for CSP
 	const nonce = generateNonce();
-	const isProduction = process.env.NODE_ENV === 'production';
 
 	// For API routes, return immediately without i18n middleware
 	if (isApiRoute) {

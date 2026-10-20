@@ -1,11 +1,11 @@
 import {Metadata} from 'next';
+import {CONTACT_EMAIL, GITHUB_PROFILE_URL, getSiteUrl} from '@/lib/constants/site';
 
 interface SEOProps {
 	title: string;
 	description: string;
 	locale: 'en' | 'es';
 	path?: string;
-	image?: string;
 	type?: 'website' | 'article';
 	publishedTime?: string;
 	authors?: string[];
@@ -16,17 +16,18 @@ export function generateSEOMetadata({
 	description,
 	locale,
 	path = '',
-	image = '/og-image.jpg',
 	type = 'website',
 	publishedTime,
 	authors,
 }: SEOProps): Metadata {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+	const baseUrl = getSiteUrl();
 	const url = `${baseUrl}/${locale}${path}`;
 	// Avoid duplicating if title already includes full name and "Portfolio"
 	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
 
+	// The share images come from the opengraph-image / twitter-image routes; metadataBase makes their URLs absolute.
 	return {
+		metadataBase: new URL(baseUrl),
 		title: fullTitle,
 		description,
 		keywords: [
@@ -61,14 +62,6 @@ export function generateSEOMetadata({
 			description,
 			url,
 			siteName: 'Juan Carlos Gómez - Portfolio',
-			images: [
-				{
-					url: `${baseUrl}${image}`,
-					width: 1200,
-					height: 630,
-					alt: title,
-				},
-			],
 			locale: locale === 'en' ? 'en_US' : 'es_ES',
 			type,
 			...(publishedTime && {publishedTime}),
@@ -77,7 +70,6 @@ export function generateSEOMetadata({
 			card: 'summary_large_image',
 			title: fullTitle,
 			description,
-			images: [`${baseUrl}${image}`],
 			creator: '@juxn89',
 		},
 		alternates: {
@@ -103,8 +95,8 @@ export function generateSEOMetadata({
 /**
  * Generate JSON-LD structured data for Person schema
  */
-export function generatePersonSchema(_locale: 'en' | 'es') {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+export function generatePersonSchema() {
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -118,14 +110,14 @@ export function generatePersonSchema(_locale: 'en' | 'es') {
 			'@type': 'Organization',
 			name: 'Freelance',
 		},
-		email: 'gb.jc@outlook.com',
+		email: CONTACT_EMAIL,
 		address: {
 			'@type': 'PostalAddress',
 			addressLocality: 'Managua',
 			addressCountry: 'NI',
 		},
 		sameAs: [
-			'https://github.com/juxn89',
+			GITHUB_PROFILE_URL,
 			'https://www.linkedin.com/in/jcgomez89/',
 			'https://twitter.com/juxn89',
 		],
@@ -148,7 +140,7 @@ export function generatePersonSchema(_locale: 'en' | 'es') {
  * Generate JSON-LD structured data for WebSite schema
  */
 export function generateWebSiteSchema(locale: 'en' | 'es') {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -179,11 +171,8 @@ export function generateWebSiteSchema(locale: 'en' | 'es') {
 /**
  * Generate JSON-LD structured data for BreadcrumbList
  */
-export function generateBreadcrumbSchema(
-	items: Array<{name: string; url: string}>,
-	_locale: 'en' | 'es'
-) {
-	const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://juangomezb.com';
+export function generateBreadcrumbSchema(items: Array<{name: string; url: string}>) {
+	const baseUrl = getSiteUrl();
 
 	return {
 		'@context': 'https://schema.org',
@@ -194,5 +183,35 @@ export function generateBreadcrumbSchema(
 			name: item.name,
 			item: `${baseUrl}${item.url}`,
 		})),
+	};
+}
+
+/**
+ * Generate JSON-LD structured data for an open-source project page
+ */
+export function generateProjectSchema(project: {
+	title: string;
+	description: string;
+	path: string;
+	repoUrl?: string;
+	stack: string[];
+	locale: 'en' | 'es';
+}) {
+	const baseUrl = getSiteUrl();
+
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareSourceCode',
+		name: project.title,
+		description: project.description,
+		url: `${baseUrl}/${project.locale}${project.path}`,
+		...(project.repoUrl && {codeRepository: project.repoUrl}),
+		keywords: project.stack.join(', '),
+		inLanguage: project.locale === 'en' ? 'en-US' : 'es-ES',
+		author: {
+			'@type': 'Person',
+			name: 'Juan Carlos Gómez Bermúdez',
+			url: baseUrl,
+		},
 	};
 }

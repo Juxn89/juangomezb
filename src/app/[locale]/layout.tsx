@@ -69,7 +69,7 @@ export default async function RootLayout({
 	const messages = await getMessages({locale});
 
 	// Generate structured data schemas
-	const personSchema = generatePersonSchema(locale as 'en' | 'es');
+	const personSchema = generatePersonSchema();
 	const websiteSchema = generateWebSiteSchema(locale as 'en' | 'es');
 
 	// Get nonce from middleware for CSP

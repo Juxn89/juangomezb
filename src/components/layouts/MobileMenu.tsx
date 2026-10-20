@@ -1,10 +1,12 @@
 'use client';
 
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useTranslations} from 'next-intl';
 import {motion, AnimatePresence} from 'framer-motion';
 import {X} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+import {SECTION_IDS} from '@/lib/constants/navigation';
+import {useSectionNavigation} from '@/lib/hooks/useSectionNavigation';
 import {ThemeToggle} from '../ui/ThemeToggle';
 import {LocaleSwitcher} from '../ui/LocaleSwitcher';
 
@@ -13,14 +15,10 @@ interface MobileMenuProps {
 	onClose: () => void;
 }
 
+// Loaded with next/dynamic and ssr: false from the Header, so it only ever renders in the browser.
 export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 	const t = useTranslations('nav');
-	const [mounted, setMounted] = useState(false);
-	const [activeSection, setActiveSection] = useState('home');
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+	const {current, hrefFor, handleClick} = useSectionNavigation(onClose);
 
 	// Prevent scroll when menu is open
 	useEffect(() => {
@@ -34,66 +32,6 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 			document.body.style.overflow = 'unset';
 		};
 	}, [isOpen]);
-
-	// Intersection Observer para detectar sección activa al hacer scroll
-	useEffect(() => {
-		const navigation = [
-			{key: 'home', href: '#home'},
-			{key: 'about', href: '#about'},
-			{key: 'experience', href: '#experience'},
-			{key: 'projects', href: '#projects'},
-			{key: 'contact', href: '#contact'}
-		];
-
-		const observerOptions = {
-			root: null,
-			rootMargin: '-20% 0px -60% 0px',
-			threshold: 0.1
-		};
-
-		const observerCallback = (entries: IntersectionObserverEntry[]) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					setActiveSection(entry.target.id);
-				}
-			});
-		};
-
-		const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-		// Observar todas las secciones
-		const sections = navigation.map(({href}) => 
-			document.getElementById(href.replace('#', ''))
-		).filter(Boolean);
-
-		sections.forEach((section) => {
-			if (section) observer.observe(section);
-		});
-
-		return () => {
-			sections.forEach((section) => {
-				if (section) observer.unobserve(section);
-			});
-		};
-	}, []);
-
-	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-		e.preventDefault();
-		const section = document.getElementById(sectionId);
-		if (section) {
-			section.scrollIntoView({behavior: 'smooth'});
-			setActiveSection(sectionId);
-			onClose();
-		}
-	};
-
-	const navigation = [
-		{key: 'home', name: t('home'), href: '#home'},
-		{key: 'about', name: t('about'), href: '#about'},
-		{key: 'experience', name: t('experience'), href: '#experience'},
-		{key: 'projects', name: t('projects'), href: '#projects'},
-		{key: 'contact', name: t('contact'), href: '#contact'},
-	];
 
 	const menuVariants = {
 		closed: {
@@ -145,8 +83,6 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 			},
 		}),
 	};
-
-	if (!mounted) return null;
 
 	return (
 		<AnimatePresence>
@@ -202,12 +138,11 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 							{/* Navigation Links */}
 							<nav className="flex-1 p-6">
 								<ul className="space-y-2">
-									{navigation.map((item, index) => {
-										const sectionId = item.href.replace('#', '');
-										const isActive = activeSection === sectionId;
+									{SECTION_IDS.map((id, index) => {
+										const isActive = current === id;
 										return (
 											<motion.li
-												key={item.key}
+												key={id}
 												custom={index}
 												initial="closed"
 												animate="open"
@@ -215,8 +150,9 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 												variants={listItemVariants}
 											>
 												<a
-													href={item.href}
-													onClick={(e) => handleNavClick(e, sectionId)}
+													href={hrefFor(id)}
+													onClick={(e) => handleClick(e, id)}
+													aria-current={isActive ? 'location' : undefined}
 													className={cn(
 														'flex items-center gap-3 px-4 py-3 rounded-lg',
 														'text-base font-medium',
@@ -235,7 +171,7 @@ export function MobileMenu({isOpen, onClose}: MobileMenuProps) {
 																: 'bg-accent-primary scale-0 group-hover:scale-100'
 														)}
 													/>
-													{item.name}
+													{t(id)}
 												</a>
 											</motion.li>
 										);

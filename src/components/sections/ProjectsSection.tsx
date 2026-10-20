@@ -1,40 +1,24 @@
 import {getTranslations, getLocale} from 'next-intl/server';
-import {Sparkles} from 'lucide-react';
-import {getPinnedProjects} from '@/lib/github/api';
-import {ProjectCard} from './ProjectCard';
+import {ArrowRight, Sparkles} from 'lucide-react';
+import {Link} from '@/routing';
+import {getFeaturedProjects} from '@/lib/projects/get-projects';
+import {ProjectGrid} from './ProjectGrid';
 
 export async function ProjectsSection() {
-	const t = await getTranslations('projects');
 	const locale = await getLocale();
-
-	// Fetch pinned repos from GitHub
-	let projects = await getPinnedProjects('juxn89', locale, 4);
-
-	// Fallback to translations if no GitHub data
-	if (projects.length === 0) {
-		console.warn('No GitHub projects found, using fallback data');
-		projects = (t.raw('items') || []) as Array<{
-			id: string;
-			title: string;
-			description: string;
-			technologies: string[];
-			highlights: string[];
-			demoUrl: string;
-			codeUrl?: string;
-			featured: boolean;
-		}>;
-	}
+	const [t, projects] = await Promise.all([
+		getTranslations({locale, namespace: 'projects'}),
+		getFeaturedProjects(locale),
+	]);
 
 	return (
 		<section id="projects" className="relative py-20 overflow-hidden">
-			{/* Background decoration */}
 			<div className="absolute inset-0 -z-10">
 				<div className="absolute top-1/3 left-1/4 w-96 h-96 bg-accent-primary/5 rounded-full blur-3xl" />
 				<div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-accent-secondary/5 rounded-full blur-3xl" />
 			</div>
 
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				{/* Section Header */}
 				<div className="mb-16 text-center">
 					<div className="inline-flex items-center gap-2 rounded-full bg-accent-primary/10 px-4 py-2 mb-6">
 						<Sparkles className="w-4 h-4 text-accent-primary" />
@@ -45,17 +29,19 @@ export async function ProjectsSection() {
 					<p className="text-lg text-text-secondary max-w-2xl mx-auto">{t('subtitle')}</p>
 				</div>
 
-				{/* Projects Grid */}
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-					{projects.map((project, index) => (
-						<ProjectCard
-							key={project.id}
-							project={project}
-							index={index}
-							viewCodeText={t('viewCode')}
-						/>
-					))}
-				</div>
+				<ProjectGrid projects={projects} />
+
+				{projects.length > 0 && (
+					<div className="text-center mt-12">
+						<Link
+							href="/projects"
+							className="inline-flex items-center gap-2 font-medium text-accent-primary hover:underline"
+						>
+							{t('viewAll')}
+							<ArrowRight className="w-4 h-4" aria-hidden="true" />
+						</Link>
+					</div>
+				)}
 			</div>
 		</section>
 	);

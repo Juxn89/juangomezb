@@ -1,75 +1,24 @@
 'use client';
 
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useTranslations} from 'next-intl';
-import {Link} from '@/routing';
 import {LocaleSwitcher} from '@/components/ui/LocaleSwitcher';
 import {ThemeToggle} from '@/components/ui/ThemeToggle';
 import dynamic from 'next/dynamic';
 import {Menu} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+import {SECTION_IDS} from '@/lib/constants/navigation';
+import {useSectionNavigation} from '@/lib/hooks/useSectionNavigation';
 
 // Lazy load MobileMenu - only loads when needed (mobile devices)
 const MobileMenu = dynamic(() => import('./MobileMenu').then(mod => ({default: mod.MobileMenu})), {
 	ssr: false,
 });
 
-const navigation = [
-	{key: 'home', href: '#home'},
-	{key: 'about', href: '#about'},
-	{key: 'experience', href: '#experience'},
-	{key: 'projects', href: '#projects'},
-	{key: 'blog', href: '#blog'},
-	{key: 'contact', href: '#contact'}
-];
-
 export function Header() {
 	const t = useTranslations('nav');
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-	const [activeSection, setActiveSection] = useState('home');
-
-	// Intersection Observer para detectar sección activa al hacer scroll
-	useEffect(() => {
-		const observerOptions = {
-			root: null,
-			rootMargin: '-20% 0px -60% 0px',
-			threshold: 0.1
-		};
-
-		const observerCallback = (entries: IntersectionObserverEntry[]) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					setActiveSection(entry.target.id);
-				}
-			});
-		};
-
-		const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-		// Observar todas las secciones
-		const sections = navigation.map(({href}) => 
-			document.getElementById(href.replace('#', ''))
-		).filter(Boolean);
-
-		sections.forEach((section) => {
-			if (section) observer.observe(section);
-		});
-
-		return () => {
-			sections.forEach((section) => {
-				if (section) observer.unobserve(section);
-			});
-		};
-	}, []);
-
-	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-		e.preventDefault();
-		const section = document.getElementById(sectionId);
-		if (section) {
-			section.scrollIntoView({behavior: 'smooth'});
-			setActiveSection(sectionId);
-		}
-	};
+	const {current, hrefFor, handleClick} = useSectionNavigation();
 
 	return (
 		<>
@@ -77,9 +26,9 @@ export function Header() {
 				<nav className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex h-16 items-center justify-between">
 						{/* Logo */}
-						<a 
-							href="#home" 
-							onClick={(e) => handleNavClick(e, 'home')}
+						<a
+							href={hrefFor('home')}
+							onClick={(e) => handleClick(e, 'home')}
 							className="flex items-center gap-2 cursor-pointer"
 						>
 							<span className="text-xl font-bold gradient-text">JG</span>
@@ -87,20 +36,20 @@ export function Header() {
 
 						{/* Desktop Navigation */}
 						<div className="hidden md:flex items-center gap-6">
-							{navigation.map(({key, href}) => {
-								const sectionId = href.replace('#', '');
-								const isActive = activeSection === sectionId;
+							{SECTION_IDS.map((id) => {
+								const isActive = current === id;
 								return (
 									<a
-										key={key}
-										href={href}
-										onClick={(e) => handleNavClick(e, sectionId)}
+										key={id}
+										href={hrefFor(id)}
+										onClick={(e) => handleClick(e, id)}
+										aria-current={isActive ? 'location' : undefined}
 										className={cn(
 											'text-sm font-medium transition-colors hover:text-accent-primary cursor-pointer',
 											isActive ? 'text-accent-primary' : 'text-text-secondary'
 										)}
 									>
-										{t(key)}
+										{t(id)}
 									</a>
 								);
 							})}

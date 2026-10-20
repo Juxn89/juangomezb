@@ -3,6 +3,7 @@
 import {useTranslations, useLocale} from 'next-intl';
 import {Mail} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
+import {CONTACT_EMAIL, GITHUB_PROFILE_URL} from '@/lib/constants/site';
 
 // Custom SVG Icons
 const GithubIcon = ({className}: {className?: string}) => (
@@ -39,7 +40,7 @@ export function Footer() {
 	const socialLinks = [
 		{
 			name: 'GitHub',
-			href: 'https://github.com/juxn89',
+			href: GITHUB_PROFILE_URL,
 			icon: GithubIcon,
 			ariaLabel: 'Visit GitHub profile',
 		},
@@ -51,7 +52,7 @@ export function Footer() {
 		},
 		{
 			name: 'Email',
-			href: 'mailto:gb.jc@outlook.com',
+			href: `mailto:${CONTACT_EMAIL}`,
 			icon: Mail,
 			ariaLabel: 'Send email',
 		},
