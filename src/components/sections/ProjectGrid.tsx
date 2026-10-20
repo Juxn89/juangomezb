@@ -22,6 +22,7 @@ export async function ProjectGrid({projects}: {projects: Project[]}) {
 	}
 
 	return (
+		// Each ProjectCard spans five of these rows through subgrid, so its bands line up with its neighbours.
 		<div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
 			{projects.map((project, index) => (
 				<ProjectCard key={project.slug} project={project} index={index} />
