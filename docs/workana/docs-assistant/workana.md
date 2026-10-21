@@ -98,8 +98,10 @@ que es solo texto.
 
 ## Enlaces
 
+- Caso de estudio: https://www.juangomezb.com/es/projects/docs-assistant
+- Video, en el sitio: https://www.juangomezb.com/es/projects/docs-assistant#demo
 - Código: https://github.com/Juxn89/docs-assistant
-- Video (también en el repo): https://github.com/Juxn89/docs-assistant/blob/main/docs/demo/docs-assistant-demo.mp4
+- Video, en el repo: https://github.com/Juxn89/docs-assistant/blob/main/docs/demo/docs-assistant-demo.mp4
 
 ## Texto base para propuestas
 
@@ -107,7 +109,8 @@ Para pegar y adaptar cuando un proyecto pida un chatbot o asistente con IA:
 
 > Hola, [nombre]. Construí exactamente esto: un asistente que responde a los clientes con los documentos
 > del negocio, muestra de dónde sale cada respuesta y, cuando no sabe, pasa el cliente a una persona por
-> email. Puedes verlo funcionando en el video de mi portafolio. Lo medí con 54 preguntas de prueba: 95 % de
+> email. Puedes verlo funcionando en mi portafolio: https://www.juangomezb.com/es/projects/docs-assistant
+> Lo medí con 54 preguntas de prueba: 95 % de
 > respuestas con la fuente correcta y ninguna respuesta inventada, con un costo de IA de USD 0,33 por cada
 > 1.000 preguntas.
 >
@@ -123,3 +126,5 @@ Para pegar y adaptar cuando un proyecto pida un chatbot o asistente con IA:
 - Se quitaron Next.js y Azure del stack: el panel y el despliegue no están hechos.
 - El costo por respuesta pasa de la estimación (≈ USD 0,0004) al valor medido (USD 0,33 por 1.000
   preguntas).
+- 21 oct 2026: se agregan el caso de estudio en juangomezb.com, con el video, y su enlace en el texto
+  base para propuestas.

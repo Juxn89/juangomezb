@@ -40,8 +40,9 @@ reclutamiento: buscar vacantes, puntuar candidatos, extraer habilidades de un CV
   créditos de IA.
 - **Trabajo largo que sobrevive a reinicios.** Puntuar una lista grande de candidatos corre en segundo
   plano, guardado en PostgreSQL. Si el servidor se reinicia, el trabajo sigue ahí.
-- **Todo queda registrado.** Cada llamada del agente genera una traza y métricas por herramienta
-  (latencia, errores, tareas en curso) con OpenTelemetry, Jaeger y Grafana.
+- **Todo queda registrado.** Cada llamada del agente genera una traza que llega hasta cada consulta a
+  la base de datos, y métricas por herramienta (latencia, errores, tareas en curso), con OpenTelemetry,
+  Jaeger y Grafana.
 - **Funciona con Claude Code y Claude Desktop**, instalado como herramienta de .NET, o como contenedor
   para servirlo por HTTP.
 
@@ -95,9 +96,10 @@ La primera imagen es la que más se ve en el listado: por eso va la confirmació
 tranquiliza a un cliente que piensa en dejar que un agente toque sus datos.
 
 **Lo que no se usó, y por qué:** el dashboard de Grafana y las trazas de Jaeger. Con el tráfico de una
-demo, el dashboard muestra una nota técnica, una curva corta y un panel sin datos. Además, cada traza
-tiene solo dos spans (la petición y la herramienta): el servidor no instrumenta Npgsql ni EF Core, así que
-la base de datos no aparece en ellas.
+demo, el dashboard muestra una nota técnica, una curva corta y un panel sin datos. Las trazas, al momento
+de capturar, tenían solo dos spans, porque la base de datos no estaba instrumentada. Eso se corrigió el
+21 oct 2026 ([talent-mcp#13](https://github.com/Juxn89/talent-mcp/issues/13)): hoy una búsqueda es una
+traza de 5 spans que llega a las consultas, así que una captura de Jaeger podría sumarse más adelante.
 
 ## Enlaces
 
@@ -113,7 +115,7 @@ propios o desarrollar un servidor MCP:
 > Hola, [nombre]. Construí un servidor MCP en C# que conecta un sistema real a asistentes de IA como
 > Claude, con permisos distintos para leer, escribir y borrar, confirmación obligatoria antes de cualquier
 > acción destructiva y trazas de todo lo que hace el agente. Está publicado en NuGet y el código es
-> público: [link al caso de estudio].
+> público: https://www.juangomezb.com/es/projects/talent-mcp
 >
 > Para tu caso, [lo que pide el proyecto], expondría [2 o 3 acciones concretas] como herramientas, con
 > [qué permisos] y [qué confirmaciones]. Antes de conectarlo a producción lo probaríamos con tu equipo en

@@ -202,7 +202,7 @@
 					"architecture": [
 						"Clean Architecture with the dependency rule enforced by architecture tests in CI. Domain references nothing; Application holds the use cases and ports; Infrastructure holds the EF Core, Keycloak and OpenTelemetry adapters.",
 						"The six tools live in one project that two hosts share verbatim: an ASP.NET Core Streamable HTTP server shipped as a container image, and a stdio host shipped as a dotnet tool.",
-						"State between calls travels as a signed, time-limited handle passed back as an ordinary tool argument. The client’s trace context arrives in _meta, so the agent’s call and the tool it ran share one trace, with per-tool latency and error metrics alongside."
+						"State between calls travels as a signed, time-limited handle passed back as an ordinary tool argument. The client’s trace context arrives in _meta, so one trace follows the agent’s call through the tool down to every PostgreSQL command, with per-tool latency and error metrics alongside."
 					],
 					"decisions": [
 						{

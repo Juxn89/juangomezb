@@ -109,7 +109,7 @@ el flujo de desarrollo:
 > Hola, [nombre]. Construí un revisor de código con IA para GitHub: comenta cada pull request en la línea
 > exacta, clasifica lo que encuentra por gravedad, ignora archivos generados y nunca bloquea el merge, así
 > que el equipo lo mantiene activo. Cuesta alrededor de USD 0,05 a 0,12 por pull request y el código es
-> público: [link al caso de estudio].
+> público: https://www.juangomezb.com/es/projects/claude-pr-review-bot
 >
 > Para tu caso, [lo que pide el proyecto], lo adaptaría así: [2 o 3 líneas]. Antes de activarlo lo
 > correríamos en modo de prueba sobre tus pull requests reales, para ajustar qué revisa y qué ignora.
