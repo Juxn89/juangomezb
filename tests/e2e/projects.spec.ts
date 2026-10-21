@@ -88,6 +88,13 @@ test.describe('Projects', () => {
 		}
 	});
 
+	test('the talent-mcp case study shows its three screenshots', async ({page, request}) => {
+		await page.goto('/en/projects/talent-mcp');
+		await expect(page.locator('#gallery img')).toHaveCount(3);
+		const first = await page.locator('#gallery a').first().getAttribute('href');
+		expect((await request.get(first!)).status()).toBe(200);
+	});
+
 	test('an unknown slug is a 404', async ({page}) => {
 		const response = await page.goto('/en/projects/does-not-exist');
 		expect(response?.status()).toBe(404);

@@ -174,6 +174,23 @@
 						"label": "niveles de tests que bloquean cada merge"
 					}
 				],
+				"gallery": [
+					{
+						"src": "/projects/talent-mcp/confirmation.webp",
+						"alt": "MCP Inspector mostrando la confirmación que pide el servidor antes de rechazar a un candidato, con el motivo registrado",
+						"caption": "Antes de una acción que no se puede deshacer, el servidor pide confirmación, con el motivo registrado."
+					},
+					{
+						"src": "/projects/talent-mcp/score.webp",
+						"alt": "MCP Inspector mostrando un puntaje de 85 con los componentes de habilidades, seniority y ubicación",
+						"caption": "Un puntaje explicable: 85 sobre 100, con el motivo de cada componente."
+					},
+					{
+						"src": "/projects/talent-mcp/tools.webp",
+						"alt": "MCP Inspector con la lista de herramientas del servidor y el resultado de una búsqueda de vacantes",
+						"caption": "El sistema como herramientas que un agente puede usar, cada una con su permiso y sus reglas."
+					}
+				],
 				"caseStudy": {
 					"context": "Un agente de IA vale lo que valen las herramientas que puede usar con seguridad. La revisión 2026-07-28 del Model Context Protocol eliminó las sesiones y las peticiones iniciadas por el servidor, y con eso rompió las formas habituales de paginar resultados y de pedir confirmación al usuario. talent-mcp es un servidor de referencia para esa revisión, en un dominio donde los errores cuestan caro: el reclutamiento.",
 					"constraints": [
@@ -185,7 +202,7 @@
 					"architecture": [
 						"Clean Architecture con la regla de dependencias verificada por tests de arquitectura en CI. Domain no referencia nada; Application tiene los casos de uso y los puertos; Infrastructure tiene los adaptadores de EF Core, Keycloak y OpenTelemetry.",
 						"Las seis herramientas viven en un proyecto que dos hosts comparten tal cual: un servidor Streamable HTTP en ASP.NET Core publicado como imagen de contenedor, y un host stdio publicado como dotnet tool.",
-						"El estado entre llamadas viaja como un handle firmado y con vencimiento, que vuelve como un argumento más de la herramienta. El contexto de trazas del cliente llega en _meta, así que una sola traza cubre el cliente, el servidor y PostgreSQL."
+						"El estado entre llamadas viaja como un handle firmado y con vencimiento, que vuelve como un argumento más de la herramienta. El contexto de trazas del cliente llega en _meta, así que la llamada del agente y la herramienta que ejecutó comparten una traza, con métricas de latencia y errores por herramienta."
 					],
 					"decisions": [
 						{

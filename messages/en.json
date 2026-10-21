@@ -174,6 +174,23 @@
 						"label": "test levels that gate every merge"
 					}
 				],
+				"gallery": [
+					{
+						"src": "/projects/talent-mcp/confirmation.webp",
+						"alt": "MCP Inspector showing the server’s confirmation request before rejecting a candidate, with the reason on record",
+						"caption": "Before an action that cannot be undone, the server asks for confirmation, with the reason on record."
+					},
+					{
+						"src": "/projects/talent-mcp/score.webp",
+						"alt": "MCP Inspector showing a candidate-fit score of 85 with the skill, seniority and location components",
+						"caption": "An explainable score: 85 out of 100, with the reason behind each component."
+					},
+					{
+						"src": "/projects/talent-mcp/tools.webp",
+						"alt": "MCP Inspector listing the server’s tools and the result of a job search",
+						"caption": "The system as tools an agent can call, each with its permission and its rules."
+					}
+				],
 				"caseStudy": {
 					"context": "AI agents are only as useful as the tools they can call safely. The 2026-07-28 revision of the Model Context Protocol removed sessions and server-initiated requests, which breaks the usual ways of paging results and of asking the user for confirmation. talent-mcp is a reference server for that revision, in a domain where mistakes are costly: recruiting.",
 					"constraints": [
@@ -185,7 +202,7 @@
 					"architecture": [
 						"Clean Architecture with the dependency rule enforced by architecture tests in CI. Domain references nothing; Application holds the use cases and ports; Infrastructure holds the EF Core, Keycloak and OpenTelemetry adapters.",
 						"The six tools live in one project that two hosts share verbatim: an ASP.NET Core Streamable HTTP server shipped as a container image, and a stdio host shipped as a dotnet tool.",
-						"State between calls travels as a signed, time-limited handle passed back as an ordinary tool argument. The client’s trace context arrives in _meta, so a single trace spans client, server and PostgreSQL."
+						"State between calls travels as a signed, time-limited handle passed back as an ordinary tool argument. The client’s trace context arrives in _meta, so the agent’s call and the tool it ran share one trace, with per-tool latency and error metrics alongside."
 					],
 					"decisions": [
 						{
