@@ -202,7 +202,7 @@
 					"architecture": [
 						"Clean Architecture con la regla de dependencias verificada por tests de arquitectura en CI. Domain no referencia nada; Application tiene los casos de uso y los puertos; Infrastructure tiene los adaptadores de EF Core, Keycloak y OpenTelemetry.",
 						"Las seis herramientas viven en un proyecto que dos hosts comparten tal cual: un servidor Streamable HTTP en ASP.NET Core publicado como imagen de contenedor, y un host stdio publicado como dotnet tool.",
-						"El estado entre llamadas viaja como un handle firmado y con vencimiento, que vuelve como un argumento más de la herramienta. El contexto de trazas del cliente llega en _meta, así que la llamada del agente y la herramienta que ejecutó comparten una traza, con métricas de latencia y errores por herramienta."
+						"El estado entre llamadas viaja como un handle firmado y con vencimiento, que vuelve como un argumento más de la herramienta. El contexto de trazas del cliente llega en _meta, así que una sola traza sigue la llamada del agente a través de la herramienta hasta cada consulta a PostgreSQL, con métricas de latencia y errores por herramienta."
 					],
 					"decisions": [
 						{
