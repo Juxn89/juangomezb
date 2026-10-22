@@ -246,3 +246,28 @@ Fuente: API de registro de NuGet. Regla: la versión más nueva con **al menos 2
 | ~~`SixLabors.ImageSharp`~~ | 4.1.3 | — | Six Labors Split License: **descartado** |
 
 Se vuelven a verificar el día 1, porque las elegibles cambian con el tiempo.
+
+## Mejoras después del MVP (22 oct 2026)
+
+Lo que el MVP dejó fuera y la ficha de Workana declaraba como pendiente:
+
+1. **Detalles de las reglas en el idioma de la pantalla.** Cada problema de validación lleva, además del texto en
+   inglés que recibe el modelo en el reintento, sus números sueltos (`values`, en formato invariante). La web
+   arma la frase en español o en inglés con el formato de números del idioma. Las lecturas guardadas antes
+   muestran el texto en inglés.
+2. **Duplicados por clave de negocio** ([ADR 0004](https://github.com/Juxn89/invoice-extractor/blob/main/docs/adr/0004-duplicate-invoices.md)).
+   ID fiscal del emisor + número + total, normalizados y guardados como SHA-256 en `documents.invoice_key`,
+   solo en los documentos ya liquidados, con un índice único parcial. Una lectura que coincide con una factura
+   ya liquidada termina como `Duplicate`, apuntando al original, y no se exporta. Si dos workers la liquidan a la
+   vez, el índice frena al segundo, que la registra como duplicada sin volver a llamar al modelo. Aprobar en
+   revisión algo que ya existe devuelve 409 `review.duplicate_invoice` con el id del original. El panel muestra
+   las duplicadas en un segmento neutro.
+3. **"Probar con un ejemplo".** `GET /v1/samples` lista las 12 muestras del manifiesto y `GET /v1/samples/{file}`
+   las sirve (solo las que el manifiesto nombra). La pantalla de subida las ofrece agrupadas por país; la web
+   las descarga y las sube por el mismo camino que un archivo propio. El E2E arma el lote así.
+4. **La web como recurso del AppHost**, con `Aspire.Hosting.JavaScript` 13.6.1 (`AddJavaScriptApp`; `AddNextJsApp`
+   sigue marcado como experimental). Un solo `dotnet run` levanta Postgres, la API y la web en
+   `http://localhost:3010`.
+
+Verificado: 184 tests (dominio 71, Application 27, Evals 19, Arquitectura 11, Integración 56), el E2E con
+respuestas grabadas y el AppHost levantado en local. Ninguna mejora llamó al modelo.

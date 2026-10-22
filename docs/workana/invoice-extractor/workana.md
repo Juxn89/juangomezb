@@ -38,7 +38,11 @@ que **la IA nunca tiene la última palabra**:
   y otra de líneas.
 - **Costo visible.** Leer una factura cuesta una fracción de centavo de dólar. El panel muestra el costo por
   documento, y un tope diario impide sorpresas en la factura.
-- **No cobra dos veces.** Si subes el mismo archivo otra vez, lo reconoce y no lo vuelve a procesar.
+- **No cuenta dos veces la misma factura.** Si subes el mismo archivo otra vez, lo reconoce y no lo vuelve a
+  procesar. Y si la misma factura llega como PDF y como foto, se registra una sola vez: la segunda queda marcada
+  como duplicada, con un enlace a la original.
+- **Se prueba sin tener facturas a mano.** La pantalla de subida ofrece ejemplos de facturas y recibos ficticios
+  de Nicaragua, México y otros países.
 
 **Qué incluye un proyecto así para tu negocio:**
 - La lectura de tus facturas, recibos u órdenes de compra, con los campos que tu contabilidad necesita.
@@ -58,7 +62,9 @@ que **la IA nunca tiene la última palabra**:
 - **Precisión medida:** 42 documentos sintéticos de evaluación, 12 de ellos degradados a propósito (escaneos
   de 100 dpi, fotos torcidas, recibos desteñidos, un sello de PAGADO sobre las líneas). Los resultados están
   versionados en el repo, incluida la configuración que no pasa el umbral.
-- **Calidad:** 166 tests (dominio, casos de uso, reglas de arquitectura e integración con PostgreSQL real) y
+- **Duplicados por clave de negocio:** ID fiscal del emisor + número + total, con un índice único en PostgreSQL,
+  así que ni dos workers a la vez pueden registrar la misma factura dos veces.
+- **Calidad:** 184 tests (dominio, casos de uso, reglas de arquitectura e integración con PostgreSQL real) y
   un test de punta a punta con Playwright que recorre la app en cada push, con respuestas grabadas del modelo
   para no gastar.
 - **Seguridad del Excel:** el texto que viene del documento se neutraliza para que una celda como
@@ -126,16 +132,15 @@ no hace falta IA: se leen directo, y conviene decírselo al cliente.
 | 7 de 7 errores sembrados enviados a revisión | `plantedSentToReview` en los archivos con reintento (5 + 2) |
 | USD 0,00065 por documento (estándar) y USD 0,00097 (difícil) | `costPerDocumentUsd`, con reintentos incluidos |
 | USD 0,0024 la demo de tres documentos | Tabla `extractions` de la corrida, registrada en el ledger de presupuesto |
-| 166 tests | `dotnet test` en el CI del commit del 22 oct 2026 |
+| 184 tests | `dotnet test` en el CI, 22 oct 2026, con las mejoras posteriores al MVP |
 
 Todas las cifras de precisión salen de documentos sintéticos generados por el repo, no de facturas reales
 de clientes. Lo correcto es decirlo así en la propuesta y ofrecer medir con documentos del cliente.
 
-## Lo que el MVP no incluye todavía
+## Lo que todavía no incluye
 
-Respecto al [`plan.md`](plan.md), para no prometer de más:
-- La detección de duplicados por clave de negocio (emisor + número + total). Hoy solo se detecta el mismo
-  archivo, por su hash.
-- El botón "probar con un ejemplo" en la web. Las 12 muestras están en `evals/samples/` y se suben a mano.
-- Los mensajes de detalle de las reglas salen en inglés también en la interfaz en español.
+Respecto al [`plan.md`](plan.md), para no prometer de más (los faltantes del MVP se completaron el 22 oct 2026;
+ver la sección de mejoras del plan):
 - No hay demo pública desplegada: se muestra con el video y el código.
+- Un documento marcado como duplicado por error no tiene todavía una acción de "no es duplicado".
+- El video y las capturas son anteriores a esas mejoras: no muestran los ejemplos ni el aviso de duplicado.
