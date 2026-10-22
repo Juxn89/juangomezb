@@ -136,6 +136,109 @@
 				}
 			},
 			{
+				"slug": "invoice-extractor",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/invoice-extractor",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Playwright"
+				],
+				"role": "Design and development",
+				"title": "invoice-extractor",
+				"tagline": "Turns photos and PDFs of invoices into rows ready for the books: Claude reads them, accounting rules check every number, and what does not add up goes to a person.",
+				"description": "Invoice and receipt reading in .NET 10 with Claude Haiku 5.5: deterministic validation after the model, a queue in PostgreSQL, human review beside the original, and export to Excel and CSV.",
+				"metrics": [
+					{
+						"value": "0/42",
+						"label": "false auto-approvals in the evals"
+					},
+					{
+						"value": "7/7",
+						"label": "planted errors sent to review, none approved"
+					},
+					{
+						"value": "100%",
+						"label": "accuracy on total, date, tax id and number, with the retry"
+					},
+					{
+						"value": "$0.00065",
+						"label": "model cost per document"
+					}
+				],
+				"video": {
+					"src": "/projects/invoice-extractor/demo.mp4",
+					"poster": "/projects/invoice-extractor/poster.jpg",
+					"caption": "70 seconds with Claude Haiku 5.5: three documents, two approved by the rules, one corrected by a person. On-screen text in Spanish."
+				},
+				"gallery": [
+					{
+						"src": "/projects/invoice-extractor/review.webp",
+						"alt": "The review screen: a photographed receipt on the left and, on the right, the fields read, with the total flagged in red because subtotal plus tax does not give it",
+						"caption": "What does not add up goes to review: the original alongside, the failing field flagged."
+					},
+					{
+						"src": "/projects/invoice-extractor/batch.webp",
+						"alt": "A batch of three documents: a PDF and a scan approved automatically, and a photo that needs review",
+						"caption": "A batch of three: two pass every rule and are approved on their own."
+					},
+					{
+						"src": "/projects/invoice-extractor/dashboard.webp",
+						"alt": "Dashboard with 3 documents, 67% approved automatically, the total model cost and the average cost per document",
+						"caption": "The dashboard: how many are approved on their own, and what reading each one costs."
+					}
+				],
+				"caseStudy": {
+					"context": "Many small businesses still type their invoices into the books by hand. A language model can read them, but it is sometimes confidently wrong, and a misread invoice in the books is worse than one left out. The goal was a reader you can trust: one that approves only what it can check, and sends the rest to a person with what they need to decide quickly.",
+					"constraints": [
+						"Nothing is approved on the model's word alone: every reading is checked by rules",
+						"Tilted photos, poor scans, thermal receipts and PDFs, in Spanish and English",
+						"Tax rules per country: Nicaragua's RUC and VAT, Mexico's RFC and VAT, and a generic profile",
+						"Exact amounts end to end: decimals, never floating point",
+						"A visible cost per document and a daily spending cap"
+					],
+					"architecture": [
+						"Each file is checked on its own (real format, size, pages) and recognised by its hash: uploading the same one twice does not cost twice.",
+						"A PostgreSQL queue with FOR UPDATE SKIP LOCKED and a lease hands documents to the workers: each one is read exactly once, even if a worker crashes.",
+						"Claude Haiku 5.5 reads a digital PDF's text or the image of a scan or photo, with structured output against a JSON Schema. Amounts travel as text and become decimals without ever being a double.",
+						"Deterministic rules decide: the lines add up to the subtotal, subtotal plus tax gives the total, the rate exists in that country and the tax id has its format. A failing reading is read once more with the errors as a hint; if it still fails, it goes to human review.",
+						"A Next.js web app, in Spanish and English, shows each document's status live, the review beside the original and a cost dashboard, and exports to Excel and CSV."
+					],
+					"decisions": [
+						{
+							"title": "The model proposes, the rules decide",
+							"rationale": "Arithmetic and formats can be checked without AI. A reading that does not add up is never approved on its own, however confident it looks, and the model can also say it is unsure of a field.",
+							"tradeoff": "Rules catch inconsistencies, not every error: a misread value that still adds up would pass. The evals count those cases, and so far there are none."
+						},
+						{
+							"title": "One retry, with the errors as a hint",
+							"rationale": "Most misreadings are a digit or a letter. Told which rule failed, the model fixes it: on the hard set, tax-id accuracy goes from 91.7% to 100%.",
+							"tradeoff": "About 50% more cost on hard documents, and the ones that are really wrong are paid for twice before they reach a person."
+						},
+						{
+							"title": "A queue in PostgreSQL, not a broker",
+							"rationale": "SKIP LOCKED and a lease give exactly-once processing with the database the app already has. A test with four workers and a hundred documents proves it.",
+							"tradeoff": "It polls the database every few seconds and has a throughput ceiling, far above what an accounting office uploads."
+						}
+					],
+					"results": [
+						"On 42 synthetic eval documents, with Claude Haiku 5.5 and the retry: 100% accuracy on total, date, tax id and number, and no false auto-approval.",
+						"The 7 documents with deliberately planted errors end in human review in every run.",
+						"Without the retry, the hard set misses the tax-id pass mark (91.7% against 95%). That failure is published alongside the successes.",
+						"USD 0.00065 per document on the standard set and USD 0.00097 on the hard one, retries included.",
+						"A Playwright end-to-end test drives the real app (upload, review, approval and Excel) on every push, with recorded model answers: no API key and no cost."
+					]
+				}
+			},
+			{
 				"slug": "talent-mcp",
 				"kind": "oss",
 				"status": "live",
