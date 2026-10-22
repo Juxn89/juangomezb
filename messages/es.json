@@ -136,6 +136,109 @@
 				}
 			},
 			{
+				"slug": "invoice-extractor",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/invoice-extractor",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Playwright"
+				],
+				"role": "Diseño y desarrollo",
+				"title": "invoice-extractor",
+				"tagline": "Convierte fotos y PDFs de facturas en filas listas para contabilidad: Claude las lee, reglas contables revisan cada número y lo que no cuadra pasa por una persona.",
+				"description": "Lectura de facturas y recibos en .NET 10 con Claude Haiku 5.5: validación determinística después del modelo, una cola en PostgreSQL, revisión humana con el original al lado y exportación a Excel y CSV.",
+				"metrics": [
+					{
+						"value": "0/42",
+						"label": "aprobaciones automáticas falsas en las evaluaciones"
+					},
+					{
+						"value": "7/7",
+						"label": "errores sembrados enviados a revisión, ninguno aprobado"
+					},
+					{
+						"value": "100 %",
+						"label": "de acierto en total, fecha, ID fiscal y número, con el reintento"
+					},
+					{
+						"value": "USD 0,00065",
+						"label": "de costo del modelo por documento"
+					}
+				],
+				"video": {
+					"src": "/projects/invoice-extractor/demo.mp4",
+					"poster": "/projects/invoice-extractor/poster.jpg",
+					"caption": "70 segundos con Claude Haiku 5.5: tres documentos, dos aprobados por las reglas y uno corregido por una persona."
+				},
+				"gallery": [
+					{
+						"src": "/projects/invoice-extractor/review.webp",
+						"alt": "Pantalla de revisión: la foto de un recibo a la izquierda y, a la derecha, los campos leídos con el total marcado en rojo porque subtotal más impuesto no da ese total",
+						"caption": "Lo que no cuadra va a revisión: el original al lado y el campo que falla, marcado."
+					},
+					{
+						"src": "/projects/invoice-extractor/batch.webp",
+						"alt": "Un lote de tres documentos: un PDF y un escaneo aprobados automáticamente y una foto que requiere revisión",
+						"caption": "Un lote de tres: dos pasan todas las reglas y se aprueban solos."
+					},
+					{
+						"src": "/projects/invoice-extractor/dashboard.webp",
+						"alt": "Panel con 3 documentos, 67 % aprobados automáticamente, el costo total del modelo y el costo medio por documento",
+						"caption": "El panel: cuántas se aprueban solas y cuánto cuesta leer cada una."
+					}
+				],
+				"caseStudy": {
+					"context": "Muchas pequeñas empresas todavía pasan sus facturas a la contabilidad a mano. Un modelo de lenguaje puede leerlas, pero a veces se equivoca con total seguridad, y una factura mal leída que entra a los libros es peor que una que no entra. El objetivo era un lector en el que se pueda confiar: que apruebe solo lo que puede comprobar y que mande el resto a una persona con lo necesario para decidir rápido.",
+					"constraints": [
+						"Nada se aprueba solo por lo que diga el modelo: cada lectura se comprueba con reglas",
+						"Fotos torcidas, escaneos de baja calidad, recibos térmicos y PDFs, en español y en inglés",
+						"Reglas fiscales por país: RUC e IVA de Nicaragua, RFC e IVA de México y un perfil genérico",
+						"Montos exactos de punta a punta: decimales, nunca números de punto flotante",
+						"Un costo por documento visible y un tope de gasto diario"
+					],
+					"architecture": [
+						"Cada archivo se valida por separado (formato real, tamaño, páginas) y se reconoce por su hash: subir dos veces el mismo no cuesta dos veces.",
+						"Una cola en PostgreSQL con FOR UPDATE SKIP LOCKED y un lease reparte los documentos entre los workers: cada uno se lee exactamente una vez, aunque un worker se caiga.",
+						"Claude Haiku 5.5 lee el texto de un PDF digital o la imagen de un escaneo o una foto, con salida estructurada contra un JSON Schema. Los montos viajan como texto y se convierten a decimal sin pasar por un double.",
+						"Reglas determinísticas deciden: las líneas suman el subtotal, subtotal más impuesto da el total, la tasa existe en ese país y el ID fiscal tiene su formato. Lo que falla se lee una vez más con los errores como pista; si sigue fallando, va a revisión humana.",
+						"Una web en Next.js, en español e inglés, muestra el estado de cada documento en vivo, la revisión con el original al lado y un panel de costos, y exporta a Excel y CSV."
+					],
+					"decisions": [
+						{
+							"title": "El modelo propone, las reglas deciden",
+							"rationale": "La aritmética y los formatos se pueden comprobar sin IA. Una lectura que no cuadra nunca se aprueba sola, por segura que parezca, y el modelo también puede decir que no está seguro de un campo.",
+							"tradeoff": "Las reglas detectan inconsistencias, no cualquier error: un valor mal leído que igual cuadra pasaría. Las evaluaciones cuentan esos casos, y hasta ahora son cero."
+						},
+						{
+							"title": "Un reintento con los errores como pista",
+							"rationale": "La mayoría de las malas lecturas son un dígito o una letra. Si el modelo sabe qué regla falló, la corrige: en el set difícil, el acierto en el ID fiscal sube de 91,7 % a 100 %.",
+							"tradeoff": "Cerca de un 50 % más de costo en los documentos difíciles, y los que están mal de verdad se pagan dos veces antes de llegar a una persona."
+						},
+						{
+							"title": "Una cola en PostgreSQL, no un broker",
+							"rationale": "SKIP LOCKED y un lease dan procesamiento exactamente una vez con la base de datos que la aplicación ya tiene. Un test con cuatro workers y cien documentos lo comprueba.",
+							"tradeoff": "Trabaja consultando la base cada pocos segundos y tiene un techo de volumen, muy por encima de lo que sube una oficina contable."
+						}
+					],
+					"results": [
+						"En 42 documentos sintéticos de evaluación, con Claude Haiku 5.5 y el reintento: 100 % de acierto en total, fecha, ID fiscal y número, y ninguna aprobación automática falsa.",
+						"Los 7 documentos con errores sembrados a propósito terminan en revisión humana en todas las corridas.",
+						"Sin el reintento, el set difícil no pasa el umbral del ID fiscal (91,7 % frente a 95 %). Esa falla está publicada junto a los aciertos.",
+						"USD 0,00065 por documento en el set estándar y USD 0,00097 en el difícil, reintentos incluidos.",
+						"Un test de punta a punta con Playwright recorre la app real (subida, revisión, aprobación y Excel) en cada push, con respuestas grabadas del modelo: sin API key y sin costo."
+					]
+				}
+			},
+			{
 				"slug": "talent-mcp",
 				"kind": "oss",
 				"status": "live",

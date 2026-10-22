@@ -27,7 +27,7 @@ entrevistadores técnicos: HR-tech, sin demo y solo Ollama. **Esa línea queda e
 | Ya publicables | `talent-mcp` v1.1.0 (NuGet + GHCR) y `claude-pr-review-bot`: se suben a Workana tal como están, en la semana 1 |
 | LLM | Puerto **Microsoft.Extensions.AI** (`IChatClient`). En la demo, **Claude** con el SDK oficial `Anthropic` (MIT, implementa `IChatClient`), con tope de gasto. **Ollama** como adaptador offline para `docker compose` |
 | Embeddings | Claude no tiene API de embeddings, así que se usa un **modelo ONNX en proceso** (`multilingual-e5-small`, MIT) detrás de `IEmbeddingGenerator`. Costo cero, sin sidecar y bilingüe ES/EN |
-| Demos | **Mixto según el tipo de proyecto**: pública en P1-P3 y video + capturas en P4 (motivo en su plan) |
+| Demos | **Video + capturas** por defecto (P1 y P2 desde el 16 y el 21 oct 2026: cero hosting y cero gasto de API por terceros). Una demo pública se evalúa por proyecto |
 | Alcance | 4 proyectos de ~2 semanas cada uno, más ~3 días de template compartido |
 | Front | Next.js 16 + Tailwind 4 (el stack fuerte del portfolio) |
 
@@ -47,8 +47,8 @@ en el código.
 | # | Carpeta = repo = slug | Pitch | Demo | Semanas |
 |---|---|---|---|---|
 | 0 | [`dotnet-ai-template`](./dotnet-ai-template/plan.md) | Base compartida: arquitectura, IA, tests, CI y `.claude/`. **Se extrae de P1** cuando esté estable (decisión del 13 oct 2026) | — | al cerrar P1 |
-| P1 | [`docs-assistant`](./docs-assistant/plan.md) | Chatbot de soporte con RAG sobre tus documentos, embebible en cualquier web | Pública, **dentro de juangomezb.com** | 1-2 |
-| P2 | [`invoice-extractor`](./invoice-extractor/plan.md) | Fotos o PDFs de facturas → Excel contable validado | Pública | 3-4 |
+| P1 | [`docs-assistant`](./docs-assistant/plan.md) | Chatbot de soporte con RAG sobre tus documentos, embebible en cualquier web | Video + capturas (16 oct 2026) | 1-2 |
+| P2 | [`invoice-extractor`](./invoice-extractor/plan.md) · [ficha](./invoice-extractor/workana.md) | Fotos o PDFs de facturas → Excel contable validado | Video + capturas (22 oct 2026) | 3-4 |
 | P3 | [`booking-agent`](./booking-agent/plan.md) | Agenda de citas con asistente conversacional y recordatorios | Pública | 5-6 |
 | P4 | [`data-chat`](./data-chat/plan.md) | "Pregúntale a tus ventas" en lenguaje natural, con gráficos | Video + capturas | 7-8 |
 
