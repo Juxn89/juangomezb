@@ -177,7 +177,7 @@
 				"video": {
 					"src": "/projects/invoice-extractor/demo.mp4",
 					"poster": "/projects/invoice-extractor/poster.jpg",
-					"caption": "70 seconds with Claude Haiku 5.5: three documents, two approved by the rules, one corrected by a person. On-screen text in Spanish."
+					"caption": "75 seconds with Claude Haiku 5.5: three of the built-in examples, two approved by the rules, one corrected by a person. On-screen text in Spanish."
 				},
 				"gallery": [
 					{
