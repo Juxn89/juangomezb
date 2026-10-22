@@ -177,7 +177,7 @@
 				"video": {
 					"src": "/projects/invoice-extractor/demo.mp4",
 					"poster": "/projects/invoice-extractor/poster.jpg",
-					"caption": "70 segundos con Claude Haiku 5.5: tres documentos, dos aprobados por las reglas y uno corregido por una persona."
+					"caption": "75 segundos con Claude Haiku 5.5: tres de los ejemplos que trae la app, dos aprobados por las reglas y uno corregido por una persona."
 				},
 				"gallery": [
 					{

@@ -89,7 +89,7 @@ que hizo Claude Haiku 5.5.
 | 3 | `04-aprobada.png` | Corregida y aprobada por una persona, con todas las reglas cumplidas |
 | 4 | `05-panel.png` | El panel: cuántas se aprueban solas y cuánto cuesta leer cada una |
 | 5 | `01-subida.png` | Subir un lote: PDF, escaneos o fotos, con el país de las reglas fiscales |
-| Video | `demo.mp4` | 70 segundos del flujo completo, con subtítulos en español |
+| Video | `demo.mp4` | 75 segundos del flujo completo, con subtítulos en español |
 
 La primera imagen es la que más se ve en el listado: por eso va la revisión, que muestra a la vez la IA, el
 control y a la persona que decide.
@@ -131,7 +131,7 @@ no hace falta IA: se leen directo, y conviene decírselo al cliente.
 | 91,7 % en ID fiscal sin reintento, en el set difícil (no pasa el umbral de 95 %) | `evals/results/claude-haiku-5-5-hard.json` |
 | 7 de 7 errores sembrados enviados a revisión | `plantedSentToReview` en los archivos con reintento (5 + 2) |
 | USD 0,00065 por documento (estándar) y USD 0,00097 (difícil) | `costPerDocumentUsd`, con reintentos incluidos |
-| USD 0,0024 la demo de tres documentos | Tabla `extractions` de la corrida, registrada en el ledger de presupuesto |
+| USD 0,0022 la demo de tres documentos | Tabla `extractions` de la corrida, registrada en el ledger de presupuesto |
 | 184 tests | `dotnet test` en el CI, 22 oct 2026, con las mejoras posteriores al MVP |
 
 Todas las cifras de precisión salen de documentos sintéticos generados por el repo, no de facturas reales
@@ -143,4 +143,5 @@ Respecto al [`plan.md`](plan.md), para no prometer de más (los faltantes del MV
 ver la sección de mejoras del plan):
 - No hay demo pública desplegada: se muestra con el video y el código.
 - Un documento marcado como duplicado por error no tiene todavía una acción de "no es duplicado".
-- El video y las capturas son anteriores a esas mejoras: no muestran los ejemplos ni el aviso de duplicado.
+- El video y las capturas (regrabados el 22 oct 2026) muestran los ejemplos y los detalles de las reglas en
+  español, pero no el aviso de duplicado: ninguno de los ejemplos es otra copia de una misma factura.
