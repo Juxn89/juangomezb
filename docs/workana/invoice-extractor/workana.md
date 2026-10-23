@@ -10,6 +10,47 @@
 
 ---
 
+## Formulario de Workana (23 oct 2026)
+
+Lo que se pega en "Agregar / Editar proyecto". El formulario pide un título (mínimo 15 caracteres), una
+descripción en texto plano (mínimo 45), hasta 5 habilidades (del catálogo de Workana), una portada y una galería en
+1:1, 16:9 o 4:3 (JPG, GIF o PNG, hasta 4 MB) y la fecha de finalización. No acepta video, así que el video va
+como enlace en la descripción y, donde hay video, la portada es un GIF de su momento clave.
+
+Las imágenes están en `formulario/`, ignorado por git; se regeneran con el script de la sesión del 23 oct
+2026 a partir de `docs/demo` del repo del proyecto.
+
+| Campo | Valor |
+|---|---|
+| Título | Lectura automática de facturas con IA: de foto o PDF a Excel, con validación contable y revisión humana (103 caracteres) |
+| Habilidades (5) | .Net Core · Inteligencia Artificial · C# · React.js · Excel |
+| Fecha de finalización | 10-2026 |
+| Imagen de portada | `portada.gif`: tres documentos subidos; dos se aprueban solos y uno va a revisión (18 s) |
+| Imágenes de galería, en este orden | `galeria-1.jpg`: el lote con el estado de cada documento<br>`galeria-2.jpg`: la revisión, con el original al lado y el campo que falla marcado<br>`galeria-3.jpg`: la factura corregida y aprobada<br>`galeria-4.jpg`: el panel con costos y exportación a Excel<br>`galeria-5.jpg`: la pantalla de subida con ejemplos de varios países |
+| Archivos (PDF) | Ninguno |
+
+**Descripción** (1112 caracteres), para pegar tal cual:
+
+```text
+Subes fotos o PDFs de facturas y recibos y recibes un Excel listo para contabilidad. La IA lee cada documento, pero nunca tiene la última palabra.
+
+- Lee PDF digital, escaneo, foto del celular o recibo térmico, en español o en inglés.
+- Reglas contables comprueban cada número: que las líneas sumen el subtotal, que subtotal más impuesto dé el total, que la tasa exista en el país y que el RUC o RFC tenga el formato correcto.
+- Lo que cumple todas las reglas se aprueba solo. Lo dudoso va a revisión, con el original al lado y el campo que falla marcado en rojo.
+- Exporta a Excel o CSV, con los montos como números y las fechas como fechas.
+- No cuenta dos veces la misma factura, aunque llegue como PDF y como foto.
+- Costo visible por documento (una fracción de centavo de dólar) y tope diario de gasto.
+
+Se adapta a tus documentos, a las reglas de tu país y al formato de tu sistema contable, con la precisión medida sobre tus propias facturas antes de ponerlo en uso.
+
+Stack: C# y .NET 10, PostgreSQL, Claude Haiku, Next.js.
+Video y caso de estudio: https://www.juangomezb.com/es/projects/invoice-extractor
+```
+
+`.Net Core` va en todos los proyectos con ese nombre exacto, el mismo de las habilidades principales del
+perfil, para que cuente en su columna "Proyectos trabajados"; lo mismo `React.js` donde hay web en React.
+Si alguna otra no aparece en el catálogo, se cambia por la más cercana.
+
 ## Título
 
 **Lectura automática de facturas con IA: de foto o PDF a Excel, con validación contable y revisión

@@ -9,6 +9,46 @@
 
 ---
 
+## Formulario de Workana (23 oct 2026)
+
+Lo que se pega en "Agregar / Editar proyecto". El formulario pide un título (mínimo 15 caracteres), una
+descripción en texto plano (mínimo 45), hasta 5 habilidades (del catálogo de Workana), una portada y una galería en
+1:1, 16:9 o 4:3 (JPG, GIF o PNG, hasta 4 MB) y la fecha de finalización. No acepta video, así que el video va
+como enlace en la descripción y, donde hay video, la portada es un GIF de su momento clave.
+
+Las imágenes están en `formulario/`, ignorado por git; se regeneran con el script de la sesión del 23 oct
+2026 a partir de `docs/demo` del repo del proyecto.
+
+| Campo | Valor |
+|---|---|
+| Título | Asistente de IA para tu web: responde a tus clientes con tus documentos y te pasa los que necesitan a una persona (113 caracteres) |
+| Habilidades (5) | .Net Core · Inteligencia Artificial · Chatbot · C# · PostgreSQL |
+| Fecha de finalización | 10-2026 |
+| Imagen de portada | `portada.gif`: el cliente pregunta y el asistente responde citando sus fuentes, también en inglés (18 s) |
+| Imágenes de galería, en este orden | `galeria-1.jpg`: respuesta con las fuentes de donde salió<br>`galeria-2.jpg`: un intento de manipulación que no funciona<br>`galeria-3.jpg`: no inventa y ofrece pasar con una persona<br>`galeria-4.jpg`: el correo que le llega al negocio con la conversación<br>`galeria-5.jpg`: el asistente en el celular<br>`galeria-6.jpg`: los resultados medidos |
+| Archivos (PDF) | Ninguno |
+
+**Descripción** (1021 caracteres), para pegar tal cual:
+
+```text
+Un asistente de IA que se agrega a tu sitio web con una sola línea de código y responde a tus clientes las 24 horas con la información de tus propios documentos: políticas, catálogo y preguntas frecuentes, en PDF, Word o páginas web.
+
+- En cada respuesta muestra de qué documento sacó la información.
+- No inventa: si la respuesta no está en tus documentos, lo dice y ofrece pasar al cliente con una persona.
+- El cliente deja su contacto en el mismo chat y a ti te llega un correo con toda la conversación.
+- Responde en español o en inglés, aunque tus documentos estén en un solo idioma.
+- No se deja manipular, y funciona en el celular sin romper el diseño de tu web.
+
+Medido con 54 preguntas de prueba: 95 % de las respuestas citan el fragmento correcto, 0 respuestas inventadas, 12 de 12 intentos de manipulación bloqueados y USD 0,33 por cada 1.000 preguntas.
+
+Stack: C# y .NET 10, PostgreSQL con búsqueda vectorial, Claude, TypeScript.
+Video y caso de estudio: https://www.juangomezb.com/es/projects/docs-assistant
+```
+
+`.Net Core` va en todos los proyectos con ese nombre exacto, el mismo de las habilidades principales del
+perfil, para que cuente en su columna "Proyectos trabajados"; lo mismo `React.js` donde hay web en React.
+Si alguna otra no aparece en el catálogo, se cambia por la más cercana.
+
 ## Título
 
 **Asistente de IA para tu web: responde a tus clientes con tus documentos y te pasa los que necesitan a una persona**

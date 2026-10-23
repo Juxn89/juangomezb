@@ -11,6 +11,49 @@
 
 ---
 
+## Formulario de Workana (23 oct 2026)
+
+Lo que se pega en "Agregar / Editar proyecto". El formulario pide un título (mínimo 15 caracteres), una
+descripción en texto plano (mínimo 45), hasta 5 habilidades (del catálogo de Workana), una portada y una galería en
+1:1, 16:9 o 4:3 (JPG, GIF o PNG, hasta 4 MB) y la fecha de finalización. No acepta video, así que el video va
+como enlace en la descripción y, donde hay video, la portada es un GIF de su momento clave.
+
+Las imágenes están en `formulario/`, ignorado por git; se regeneran con el script de la sesión del 23 oct
+2026 a partir de `docs/demo` del repo del proyecto.
+
+| Campo | Valor |
+|---|---|
+| Título | Conecta tu sistema a asistentes de IA como Claude, con permisos por acción y confirmación antes de borrar (105 caracteres) |
+| Habilidades (5) | .Net Core · Inteligencia Artificial · C# · PostgreSQL · Docker |
+| Fecha de finalización | 10-2026 |
+| Imagen de portada | `portada.jpg`: la confirmación que pide el servidor antes de rechazar a un candidato |
+| Imágenes de galería, en este orden | `galeria-1.jpg`: las herramientas que el servidor ofrece al agente<br>`galeria-2.jpg`: un puntaje explicable, con su desglose |
+| Archivos (PDF) | Ninguno |
+
+**Descripción** (1118 caracteres), para pegar tal cual:
+
+```text
+Un servidor MCP (Model Context Protocol, el estándar para conectar asistentes de IA a sistemas reales) que deja a agentes como Claude usar tu sistema con reglas claras: qué pueden leer, qué pueden modificar y quién confirma antes de borrar.
+
+Lo construí para un dominio donde los errores cuestan caro, el reclutamiento: buscar vacantes, puntuar candidatos, extraer habilidades de un CV y rechazar candidatos.
+
+- Permisos por herramienta con OAuth 2.1: un agente con permiso de lectura no puede rechazar a nadie.
+- Confirmación explícita antes de cualquier acción destructiva.
+- Puntajes explicables y deterministas, con su desglose y sin costo de IA.
+- Trabajos largos en segundo plano que sobreviven a un reinicio del servidor.
+- Cada llamada del agente queda trazada hasta la base de datos (OpenTelemetry).
+- Funciona con Claude Code y Claude Desktop; se publica en NuGet y como contenedor.
+
+Se adapta a tu CRM, ERP, base de datos o API interna, con tu proveedor de identidad.
+
+Stack: C# y .NET 10, ASP.NET Core, PostgreSQL, Keycloak, OpenTelemetry.
+Caso de estudio: https://www.juangomezb.com/es/projects/talent-mcp
+```
+
+`.Net Core` va en todos los proyectos con ese nombre exacto, el mismo de las habilidades principales del
+perfil, para que cuente en su columna "Proyectos trabajados"; lo mismo `React.js` donde hay web en React.
+Si alguna otra no aparece en el catálogo, se cambia por la más cercana.
+
 ## Título
 
 **Conecta tu sistema a asistentes de IA como Claude, con permisos por acción y confirmación antes de

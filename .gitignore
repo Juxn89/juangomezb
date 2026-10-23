@@ -48,3 +48,6 @@ next-env.d.ts
 # Playwright output
 /test-results/
 /playwright-report/
+
+# Workana form images, generated (see each workana.md)
+docs/workana/*/formulario/
