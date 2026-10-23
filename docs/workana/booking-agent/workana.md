@@ -10,6 +10,48 @@
 
 ---
 
+## Formulario de Workana (23 oct 2026)
+
+Lo que se pega en "Agregar / Editar proyecto". El formulario pide un título (mínimo 15 caracteres), una
+descripción en texto plano (mínimo 45), hasta 5 habilidades (del catálogo de Workana), una portada y una galería en
+1:1, 16:9 o 4:3 (JPG, GIF o PNG, hasta 4 MB) y la fecha de finalización. No acepta video, así que el video va
+como enlace en la descripción y, donde hay video, la portada es un GIF de su momento clave.
+
+Las imágenes están en `formulario/`, ignorado por git; se regeneran con el script de la sesión del 23 oct
+2026 a partir de `docs/demo` del repo del proyecto.
+
+| Campo | Valor |
+|---|---|
+| Título | Agenda de citas con asistente por chat: tus clientes reservan escribiendo y nunca hay doble reserva (99 caracteres) |
+| Habilidades (5) | .Net Core · Inteligencia Artificial · Chatbot · C# · React.js |
+| Fecha de finalización | 10-2026 |
+| Imagen de portada | `portada.gif`: el cliente pide la cita en el chat y el horario aparece al instante en el panel (18 s) |
+| Imágenes de galería, en este orden | `galeria-1.jpg`: el horario apartado como tarjeta en el chat y en el panel del negocio<br>`galeria-2.jpg`: el chat con los horarios ofrecidos y, al lado, los pasos del asistente con su costo<br>`galeria-3.jpg`: "Mis citas" del cliente y la agenda semanal del negocio |
+| Archivos (PDF) | Ninguno |
+
+**Descripción** (1151 caracteres), para pegar tal cual:
+
+```text
+Tus clientes reservan escribiendo como le hablarían a una recepcionista ("una limpieza el lunes en la mañana") y un asistente con IA encuentra el servicio, el profesional y un horario libre en tu agenda real.
+
+La IA propone y la persona decide: el asistente aparta el horario cinco minutos y el cliente lo confirma con un botón. El asistente no puede confirmar ni cancelar nada por su cuenta.
+
+- Nunca hay doble reserva: lo garantiza la base de datos. Con 50 pedidos simultáneos por la misma hora, solo uno la obtiene.
+- "Mañana" o "el martes que viene" se calculan en el servidor, en la zona horaria de tu negocio.
+- Confirmación y recordatorios automáticos por correo, un día y dos horas antes.
+- El cliente cambia o cancela sus citas con un código que le llega al correo, sin contraseñas.
+- Panel del negocio en vivo, con la conversación y el costo detrás de cada reserva.
+
+Medido: 28 de 28 conversaciones de prueba resueltas como se esperaba, 0 citas confirmadas por la IA y USD 0,0024 por conversación.
+
+Stack: C# y .NET 10, PostgreSQL, Claude Haiku, SignalR, Next.js.
+Video y caso de estudio: https://www.juangomezb.com/es/projects/booking-agent
+```
+
+`.Net Core` va en todos los proyectos con ese nombre exacto, el mismo de las habilidades principales del
+perfil, para que cuente en su columna "Proyectos trabajados"; lo mismo `React.js` donde hay web en React.
+Si alguna otra no aparece en el catálogo, se cambia por la más cercana.
+
 ## Título
 
 **Agenda de citas con asistente por chat: tus clientes reservan escribiendo y nunca hay doble reserva**
