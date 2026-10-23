@@ -16,13 +16,25 @@
 | `docker compose up` con el dataset precargado | **AppHost de Aspire** desde el día 1: Postgres, la API y la web (`AddJavaScriptApp`), con el dataset de ejemplo sembrado | Lección de P2 y P3: un solo `dotnet run`. El README lo explica igual que en P3 |
 | Evals en CI en cada PR y cada noche, con el modelo real | **En CI corre el oráculo** (el SQL de referencia contra los resultados esperados) y la traducción guionada; **la corrida con Haiku es manual**, con tope de gasto y registrada en el ledger | Lección de P3: CI sin key y sin costo; las cifras del README salen de corridas versionadas en `evals/results/` |
 | E2E contra el stack real con el modelo | **E2E con un traductor guionado** (respuestas grabadas por pregunta, solo en Development) | Lección de P3: el E2E prueba la app, no al modelo |
-| Sin tope de gasto definido | **USD 0,50** en el ledger compartido, sesión `workana-data-chat` | Una corrida completa de evals (≈ 110 preguntas) ≈ USD 0,12; deja margen para tres corridas y el video |
+| Sin tope de gasto definido | **USD 0,50** en el ledger compartido, sesión `workana-data-chat` | Una corrida completa de evals (≈ 125 preguntas con las 15 en inglés) ≈ USD 0,13; deja margen para tres corridas y el video |
 | Video sin método definido | **Screencast de Chromium + ffmpeg en contenedor** (imagen fijada), capturas a escala 2 | Lo que funcionó en P2 y P3: texto nítido y MP4 sin instalar nada en el host |
 | Salida estructurada sin detalle de implementación | **Puerto `IQuestionTranslator`** con un adaptador sobre el SDK de Anthropic y `OutputConfig` (JSON Schema), como en P2 | El esquema cambia por dataset (enums); el adaptador de P2 ya lo resolvió y se prueba igual |
 | README sin lineamientos | README según el gist de lineamientos, con arte generado por `readme-assets.mjs` y paleta propia | Como P1-P3 |
 
 Lo que no cambia: el modelo nunca escribe SQL, la capa semántica, el compilador con allow-list y parámetros, el
 rol de solo lectura, la narrativa verificada, las 60 preguntas con resultado esperado y el eval adversarial.
+
+### Decisiones antes del día 1 (23 oct 2026, aprobadas por el usuario)
+
+| Tema | Decisión |
+|---|---|
+| Tope de gasto | USD 0,50, sesión `workana-data-chat`, registrado en `~/.anthropic-budget/README.md` |
+| Next.js | 16.4.2 con la excepción de seguridad en `minimumReleaseAgeExclude`, como P2 y P3; se quita el 29 oct 2026 |
+| Dataset de ejemplo | "Distribuidora Demo": 4 sucursales en Managua, 60 productos en 6 categorías, 18 meses de ventas en USD, semilla fija y fecha "hoy" configurable. Patrones plantados: pico en diciembre, una categoría que crece mes a mes y una sucursal que cae en el último trimestre |
+| Idiomas | El dataset sale en **español y en inglés** (mismas cifras, cabeceras y nombres traducidos: `ventas-demo.xlsx` y `sales-demo.xlsx`), porque el portfolio está en los dos idiomas. La interfaz tiene selector ES/EN como en P2, y la narrativa responde en el idioma de la pregunta. Evals: las 60 preguntas en español sobre el dataset en español, más 15 en inglés sobre el dataset en inglés con los mismos resultados esperados. El video se graba en español |
+| Acceso | Sin login: corre solo en local. El README dice que un despliegue real necesita autenticación y un dataset por cliente |
+| Límites del import | 10 MB, 200.000 filas y 50 columnas, con error claro si se pasan |
+| Ritmo | Si el día 1 no alcanza, cierra con el repo, el AppHost, el generador y el oráculo con al menos 20 preguntas; las otras 40 (y las 15 en inglés) entran el día 2, y todas están antes del día 5 |
 
 ## 1. Contexto y pitch
 
