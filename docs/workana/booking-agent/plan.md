@@ -247,3 +247,26 @@ del 8 oct 2026). Se vuelven a verificar el día 1.
 | `Aspire.Hosting.*` (PostgreSQL, JavaScript) | 13.6.3 (21 oct) | **13.6.1** (7 oct) | MIT |
 | Imagen `postgres` | | **18.6-alpine**, con `btree_gist` | PostgreSQL |
 | Imagen `axllent/mailpit` | | **v1.31.2** (la de P1) | MIT |
+
+## Cierre (23 oct 2026)
+
+Los 10 días se completaron entre el 22 y el 23 oct 2026 (commits `ef0e39d` a `0d7c681`), con el CI en verde y un
+gasto de USD 0,33 de los 0,50 asignados. La ficha publicable está en [`workana.md`](workana.md).
+
+**Lo que cambió respecto al plan:**
+- **Evals:** 28 escenarios en lugar de 25. Se sumaron tres de citas propias (mover, cancelar y pedir
+  identificación), con identificación por código del día 7. Haiku 5.5 sacó 28/28 en la tercera corrida; las dos
+  primeras (0,76 y 0,88) destaparon que `resolve_date` no aceptaba la hora junto al día y que el parser dependía
+  de datos de cultura que un contenedor sin ICU no tiene.
+- **Herramientas:** `propose_reschedule` sí depende del caso de uso de reprogramar, porque solo aparta la nueva
+  hora; la prueba de arquitectura prohíbe confirmar y cancelar.
+- **Identificación:** el OTP se entrega al momento por SMTP, no por el outbox, y la sesión es una cookie
+  HttpOnly y SameSite=Strict. La bandeja in-app pasó detrás de la sesión.
+- **Panel:** se abre con una clave compartida (`PANEL_ACCESS_KEY`), no con cuentas por persona.
+- **Columna `idempotency_key`:** no se agregó. La restricción de exclusión y el token de un solo uso cubren los
+  reintentos.
+- **WhatsApp:** queda como canal futuro detrás de `INotificationChannel`.
+- **Video:** dos pantallas lado a lado (cliente y clínica), 75 s.
+- **Seguridad:** dos excepciones a la regla de las dos semanas. `System.Security.Cryptography.Pkcs` 10.0.13
+  (GHSA-2fmv-rv2c-59x7, GHSA-846f-f764-76mx). Para SignalR no se usó el paquete cliente 10.0.12
+  (GHSA-334f-vvp4-7g6p): el test habla el protocolo por long polling.
