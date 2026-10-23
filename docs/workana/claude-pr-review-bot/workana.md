@@ -10,6 +10,48 @@
 
 ---
 
+## Formulario de Workana (23 oct 2026)
+
+Lo que se pega en "Agregar / Editar proyecto". El formulario pide un título (mínimo 15 caracteres), una
+descripción en texto plano (mínimo 45), hasta 5 habilidades (del catálogo de Workana), una portada y una galería en
+1:1, 16:9 o 4:3 (JPG, GIF o PNG, hasta 4 MB) y la fecha de finalización. No acepta video, así que el video va
+como enlace en la descripción y, donde hay video, la portada es un GIF de su momento clave.
+
+Las imágenes están en `formulario/`, ignorado por git; se regeneran con el script de la sesión del 23 oct
+2026 a partir de `docs/demo` del repo del proyecto.
+
+| Campo | Valor |
+|---|---|
+| Título | Revisión de código con IA en cada pull request de GitHub, sin ruido y sin bloquear a tu equipo (94 caracteres) |
+| Habilidades (5) | .Net Core · Inteligencia Artificial · C# · GitHub · DevOps |
+| Fecha de finalización | 10-2026 |
+| Imagen de portada | `portada.jpg`: un comentario bloqueante del bot en la línea exacta del cambio |
+| Imágenes de galería, en este orden | `galeria-1.jpg`: un timeout que el bot distingue de un rechazo<br>`galeria-2.jpg`: una API key impresa en consola<br>`galeria-3.jpg`: el resumen de la revisión |
+| Archivos (PDF) | Ninguno |
+
+**Descripción** (1080 caracteres), para pegar tal cual:
+
+```text
+Un revisor con IA (Claude) que se instala en tu repositorio de GitHub en dos pasos y comenta cada pull request como lo haría un compañero.
+
+- Comentarios en la línea exacta del cambio, clasificados por gravedad, más un resumen de la revisión.
+- Sin ruido: ignora lockfiles, código generado y migraciones, descarta comentarios repetidos y tiene un tope configurable.
+- Nunca bloquea: solo comenta. No aprueba, no pide cambios ni hace merge; la decisión sigue siendo de tu equipo.
+- Seguro con contribuciones externas: nunca ejecuta el código del pull request.
+- Costo predecible: en la demo, revisar un pull request costó USD 0,0009 con Claude Haiku y encontró los 3 problemas graves que tenía.
+- Modo de prueba sin clave de IA, que muestra lo que publicaría.
+
+Se instala con las convenciones de tu equipo y el modelo que encaje en tu presupuesto, con una ronda de prueba antes de activarlo.
+
+Stack: C# y .NET 10, GitHub Actions, Claude.
+Caso de estudio: https://www.juangomezb.com/es/projects/claude-pr-review-bot
+Revisión real: https://github.com/Juxn89/pr-review-bot-demo/pull/1
+```
+
+`.Net Core` va en todos los proyectos con ese nombre exacto, el mismo de las habilidades principales del
+perfil, para que cuente en su columna "Proyectos trabajados"; lo mismo `React.js` donde hay web en React.
+Si alguna otra no aparece en el catálogo, se cambia por la más cercana.
+
 ## Título
 
 **Revisión de código con IA en cada pull request de GitHub, sin ruido y sin bloquear a tu equipo**

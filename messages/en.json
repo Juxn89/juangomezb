@@ -52,6 +52,111 @@
 		},
 		"items": [
 			{
+				"slug": "booking-agent",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/booking-agent",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"NodaTime",
+					"SignalR",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Playwright"
+				],
+				"role": "Design and development",
+				"title": "booking-agent",
+				"tagline": "Appointments booked by chatting: the assistant finds and holds the time, the customer confirms it with a button, and PostgreSQL makes double booking impossible.",
+				"description": "Conversational booking in .NET 10 with Claude Haiku 5.5: narrow tools the assistant cannot use to confirm, holds that run out, reminders through an outbox, sign-in with an emailed code, and a live panel showing why each booking was made.",
+				"metrics": [
+					{
+						"value": "28/28",
+						"label": "eval conversations ending as expected"
+					},
+					{
+						"value": "0",
+						"label": "bookings confirmed or cancelled by the assistant"
+					},
+					{
+						"value": "1 of 50",
+						"label": "simultaneous requests for one slot: only one gets it"
+					},
+					{
+						"value": "USD 0.0024",
+						"label": "model cost per conversation"
+					}
+				],
+				"video": {
+					"src": "/projects/booking-agent/demo.mp4",
+					"poster": "/projects/booking-agent/poster.jpg",
+					"caption": "75 seconds with Claude Haiku 5.5 (Spanish captions): the customer books in the chat on the left, and the booking appears at once in the clinic's panel on the right."
+				},
+				"gallery": [
+					{
+						"src": "/projects/booking-agent/tarjeta.webp",
+						"alt": "The chat: the customer asks for a cleaning on Monday morning, the assistant offers 8:00, 9:00 and 10:00 and holds 10:00 as a card with a countdown and the Confirmar button",
+						"caption": "The assistant holds the time; only the customer confirms it, with the card's button."
+					},
+					{
+						"src": "/projects/booking-agent/panel.webp",
+						"alt": "The clinic's panel with Dra. Ana López's week and the 10:00 booking held, in amber and marked IA",
+						"caption": "It appears at once in the clinic's panel, not yet confirmed."
+					},
+					{
+						"src": "/projects/booking-agent/traza.webp",
+						"alt": "The booking's details in the panel: the whole conversation and every model and tool call, with tokens, latency and a total cost of USD 0.0024",
+						"caption": "The why of each booking: the conversation and every step of the assistant, with its cost."
+					}
+				],
+				"caseStudy": {
+					"context": "Clinics and salons lose hours on the phone booking appointments. A chatbot that books by itself trades that problem for others: double bookings, appointments nobody asked for, and made-up answers. The goal was a useful assistant that cannot do harm: one that understands \"el lunes en la mañana\", searches the real calendar, and leaves the final decision to the customer.",
+					"constraints": [
+						"The assistant never confirms or cancels: it proposes, and the person acts with a button",
+						"No double booking, even when fifty people ask for the same slot at once",
+						"Spanish relative dates resolved on the server, on the business's time zone",
+						"Notices and reminders that are never lost, and never announce what was not saved",
+						"A visible cost per conversation, capped per conversation and per day"
+					],
+					"architecture": [
+						"Eight tools, each a thin adapter over a use case the booking form also uses: the assistant can do nothing the form cannot, and an architecture test enforces it.",
+						"Holding a slot takes it for five minutes in PostgreSQL, under an exclusion constraint on time ranges. The confirmation token goes to the chat's card, never to the model.",
+						"Notices are written to an outbox in the same transaction as the booking, and a dispatcher sends them by email and to an in-app inbox, with retries.",
+						"Customers sign in with a six-digit code sent by email to see, move or cancel their appointments; the session lives in an HttpOnly cookie.",
+						"Every booking change is announced over SignalR, and the clinic's panel reloads the week at once. Each booking the assistant made shows its conversation and steps, with tokens and cost."
+					],
+					"decisions": [
+						{
+							"title": "The person confirms, not the assistant",
+							"rationale": "Having a model decide whether \"sí, pero…\" means yes is a risk and a cost. A button with a one-time token is deterministic.",
+							"tradeoff": "Someone who types \"sí\" still has to press the button; the assistant reminds them."
+						},
+						{
+							"title": "Double booking is prevented by PostgreSQL",
+							"rationale": "Check-then-insert loses the race; an exclusion constraint does not, whether the booking comes from the chat, the form or a bug.",
+							"tradeoff": "Saves for the same professional are queued, under a transaction lock."
+						},
+						{
+							"title": "Evaluated like software, on the database",
+							"rationale": "28 scripted conversations are scored on what ends up stored, not on what the assistant says: whether it held the right time, and whether it changed anything it should not.",
+							"tradeoff": "A run against the real model costs about USD 0.07, so it is started by hand; CI runs a free oracle."
+						}
+					],
+					"results": [
+						"With Claude Haiku 5.5, all 28 eval conversations end as expected: bookings, conflicts, moves, cancellations and manipulation attempts.",
+						"No booking confirmed or cancelled by the assistant, and no slot held that the calendar had not offered first.",
+						"Fifty simultaneous requests for one slot: one gets it and the other 49 receive the nearest free times, in about a second.",
+						"The first run scored 0.76: the transcripts showed \"mañana\" was not resolved in a container without culture data. It was fixed and is now covered by the tests.",
+						"An end-to-end Playwright test walks the chat, the live panel, the emailed code and a cancellation on every push, with no API key and no cost."
+					]
+				}
+			},
+			{
 				"slug": "docs-assistant",
 				"kind": "oss",
 				"status": "live",
@@ -235,111 +340,6 @@
 						"Without the retry, the hard set misses the tax-id pass mark (91.7% against 95%). That failure is published alongside the successes.",
 						"USD 0.00065 per document on the standard set and USD 0.00097 on the hard one, retries included.",
 						"A Playwright end-to-end test drives the real app (upload, review, approval and Excel) on every push, with recorded model answers: no API key and no cost."
-					]
-				}
-			},
-			{
-				"slug": "booking-agent",
-				"kind": "oss",
-				"status": "live",
-				"featured": true,
-				"year": "2026",
-				"repoUrl": "https://github.com/Juxn89/booking-agent",
-				"stack": [
-					".NET 10",
-					"C#",
-					"PostgreSQL",
-					"NodaTime",
-					"SignalR",
-					"Aspire",
-					"Claude Haiku 5.5",
-					"Next.js",
-					"TypeScript",
-					"Playwright"
-				],
-				"role": "Design and development",
-				"title": "booking-agent",
-				"tagline": "Appointments booked by chatting: the assistant finds and holds the time, the customer confirms it with a button, and PostgreSQL makes double booking impossible.",
-				"description": "Conversational booking in .NET 10 with Claude Haiku 5.5: narrow tools the assistant cannot use to confirm, holds that run out, reminders through an outbox, sign-in with an emailed code, and a live panel showing why each booking was made.",
-				"metrics": [
-					{
-						"value": "28/28",
-						"label": "eval conversations ending as expected"
-					},
-					{
-						"value": "0",
-						"label": "bookings confirmed or cancelled by the assistant"
-					},
-					{
-						"value": "1 of 50",
-						"label": "simultaneous requests for one slot: only one gets it"
-					},
-					{
-						"value": "USD 0.0024",
-						"label": "model cost per conversation"
-					}
-				],
-				"video": {
-					"src": "/projects/booking-agent/demo.mp4",
-					"poster": "/projects/booking-agent/poster.jpg",
-					"caption": "75 seconds with Claude Haiku 5.5 (Spanish captions): the customer books in the chat on the left, and the booking appears at once in the clinic's panel on the right."
-				},
-				"gallery": [
-					{
-						"src": "/projects/booking-agent/tarjeta.webp",
-						"alt": "The chat: the customer asks for a cleaning on Monday morning, the assistant offers 8:00, 9:00 and 10:00 and holds 10:00 as a card with a countdown and the Confirmar button",
-						"caption": "The assistant holds the time; only the customer confirms it, with the card's button."
-					},
-					{
-						"src": "/projects/booking-agent/panel.webp",
-						"alt": "The clinic's panel with Dra. Ana López's week and the 10:00 booking held, in amber and marked IA",
-						"caption": "It appears at once in the clinic's panel, not yet confirmed."
-					},
-					{
-						"src": "/projects/booking-agent/traza.webp",
-						"alt": "The booking's details in the panel: the whole conversation and every model and tool call, with tokens, latency and a total cost of USD 0.0024",
-						"caption": "The why of each booking: the conversation and every step of the assistant, with its cost."
-					}
-				],
-				"caseStudy": {
-					"context": "Clinics and salons lose hours on the phone booking appointments. A chatbot that books by itself trades that problem for others: double bookings, appointments nobody asked for, and made-up answers. The goal was a useful assistant that cannot do harm: one that understands \"el lunes en la mañana\", searches the real calendar, and leaves the final decision to the customer.",
-					"constraints": [
-						"The assistant never confirms or cancels: it proposes, and the person acts with a button",
-						"No double booking, even when fifty people ask for the same slot at once",
-						"Spanish relative dates resolved on the server, on the business's time zone",
-						"Notices and reminders that are never lost, and never announce what was not saved",
-						"A visible cost per conversation, capped per conversation and per day"
-					],
-					"architecture": [
-						"Eight tools, each a thin adapter over a use case the booking form also uses: the assistant can do nothing the form cannot, and an architecture test enforces it.",
-						"Holding a slot takes it for five minutes in PostgreSQL, under an exclusion constraint on time ranges. The confirmation token goes to the chat's card, never to the model.",
-						"Notices are written to an outbox in the same transaction as the booking, and a dispatcher sends them by email and to an in-app inbox, with retries.",
-						"Customers sign in with a six-digit code sent by email to see, move or cancel their appointments; the session lives in an HttpOnly cookie.",
-						"Every booking change is announced over SignalR, and the clinic's panel reloads the week at once. Each booking the assistant made shows its conversation and steps, with tokens and cost."
-					],
-					"decisions": [
-						{
-							"title": "The person confirms, not the assistant",
-							"rationale": "Having a model decide whether \"sí, pero…\" means yes is a risk and a cost. A button with a one-time token is deterministic.",
-							"tradeoff": "Someone who types \"sí\" still has to press the button; the assistant reminds them."
-						},
-						{
-							"title": "Double booking is prevented by PostgreSQL",
-							"rationale": "Check-then-insert loses the race; an exclusion constraint does not, whether the booking comes from the chat, the form or a bug.",
-							"tradeoff": "Saves for the same professional are queued, under a transaction lock."
-						},
-						{
-							"title": "Evaluated like software, on the database",
-							"rationale": "28 scripted conversations are scored on what ends up stored, not on what the assistant says: whether it held the right time, and whether it changed anything it should not.",
-							"tradeoff": "A run against the real model costs about USD 0.07, so it is started by hand; CI runs a free oracle."
-						}
-					],
-					"results": [
-						"With Claude Haiku 5.5, all 28 eval conversations end as expected: bookings, conflicts, moves, cancellations and manipulation attempts.",
-						"No booking confirmed or cancelled by the assistant, and no slot held that the calendar had not offered first.",
-						"Fifty simultaneous requests for one slot: one gets it and the other 49 receive the nearest free times, in about a second.",
-						"The first run scored 0.76: the transcripts showed \"mañana\" was not resolved in a container without culture data. It was fixed and is now covered by the tests.",
-						"An end-to-end Playwright test walks the chat, the live panel, the emailed code and a cancellation on every push, with no API key and no cost."
 					]
 				}
 			},
