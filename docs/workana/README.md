@@ -49,7 +49,7 @@ en el código.
 | 0 | [`dotnet-ai-template`](./dotnet-ai-template/plan.md) | Base compartida: arquitectura, IA, tests, CI y `.claude/`. **Se extrae de P1** cuando esté estable (decisión del 13 oct 2026) | — | al cerrar P1 |
 | P1 | [`docs-assistant`](./docs-assistant/plan.md) | Chatbot de soporte con RAG sobre tus documentos, embebible en cualquier web | Video + capturas (16 oct 2026) | 1-2 |
 | P2 | [`invoice-extractor`](./invoice-extractor/plan.md) · [ficha](./invoice-extractor/workana.md) | Fotos o PDFs de facturas → Excel contable validado | Video + capturas (22 oct 2026) | 3-4 |
-| P3 | [`booking-agent`](./booking-agent/plan.md) | Agenda de citas con asistente conversacional y recordatorios | Pública | 5-6 |
+| P3 | [`booking-agent`](./booking-agent/plan.md) · [ficha](./booking-agent/workana.md) | Agenda de citas con asistente conversacional y recordatorios | Video + capturas (23 oct 2026) | 5-6 |
 | P4 | [`data-chat`](./data-chat/plan.md) | "Pregúntale a tus ventas" en lenguaje natural, con gráficos | Video + capturas | 7-8 |
 
 **Por qué este orden:** P1 es el pedido de IA más común en Workana y su demo vive en el portfolio, que de

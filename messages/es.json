@@ -239,6 +239,111 @@
 				}
 			},
 			{
+				"slug": "booking-agent",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/booking-agent",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"NodaTime",
+					"SignalR",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Playwright"
+				],
+				"role": "Diseño y desarrollo",
+				"title": "booking-agent",
+				"tagline": "Agenda de citas por chat: el asistente busca y aparta el horario, la persona lo confirma con un botón y PostgreSQL hace imposible la doble reserva.",
+				"description": "Reservas conversacionales en .NET 10 con Claude Haiku 5.5: herramientas acotadas que el asistente no puede usar para confirmar, holds con vencimiento, recordatorios por un outbox, identificación con código por correo y un panel en vivo con el porqué de cada reserva.",
+				"metrics": [
+					{
+						"value": "28/28",
+						"label": "conversaciones de evaluación que terminan como se esperaba"
+					},
+					{
+						"value": "0",
+						"label": "reservas confirmadas o canceladas por el asistente"
+					},
+					{
+						"value": "1 de 50",
+						"label": "pedidos simultáneos por el mismo horario: solo uno lo obtiene"
+					},
+					{
+						"value": "USD 0,0024",
+						"label": "de costo del modelo por conversación"
+					}
+				],
+				"video": {
+					"src": "/projects/booking-agent/demo.mp4",
+					"poster": "/projects/booking-agent/poster.jpg",
+					"caption": "75 segundos con Claude Haiku 5.5: el cliente reserva en el chat a la izquierda y la cita aparece al instante en el panel de la clínica a la derecha."
+				},
+				"gallery": [
+					{
+						"src": "/projects/booking-agent/tarjeta.webp",
+						"alt": "El chat: el cliente pide una limpieza el lunes en la mañana, el asistente ofrece 8:00, 9:00 y 10:00 y aparta las 10:00 en una tarjeta con cuenta regresiva y el botón Confirmar cita",
+						"caption": "El asistente aparta el horario; solo el cliente lo confirma, con el botón de la tarjeta."
+					},
+					{
+						"src": "/projects/booking-agent/panel.webp",
+						"alt": "El panel de la clínica con la semana de la Dra. Ana López y la cita de las 10:00 apartada, en ámbar y marcada IA",
+						"caption": "En el panel de la clínica aparece al instante, todavía sin confirmar."
+					},
+					{
+						"src": "/projects/booking-agent/traza.webp",
+						"alt": "El detalle de la cita en el panel: la conversación completa y cada llamada al modelo y a las herramientas, con tokens, latencia y un costo total de USD 0,0024",
+						"caption": "El porqué de cada reserva: la conversación y cada paso del asistente, con su costo."
+					}
+				],
+				"caseStudy": {
+					"context": "Clínicas y salones pierden horas al teléfono agendando citas. Un chatbot que reserva solo cambia ese problema por otros: dobles reservas, citas que nadie pidió y respuestas inventadas. El objetivo era un asistente útil que no pudiera hacer daño: que entienda \"el lunes en la mañana\", busque en la agenda real y deje la decisión final en manos del cliente.",
+					"constraints": [
+						"El asistente nunca confirma ni cancela: propone, y la persona actúa con un botón",
+						"Cero dobles reservas, aunque cincuenta personas pidan el mismo horario a la vez",
+						"Fechas relativas en español resueltas en el servidor, en la zona horaria del negocio",
+						"Avisos y recordatorios que nunca se pierden ni anuncian algo que no se guardó",
+						"Costo por conversación visible, con topes por conversación y por día"
+					],
+					"architecture": [
+						"Ocho herramientas, cada una un adaptador delgado sobre un caso de uso que también usa el formulario: el asistente no puede hacer nada que el formulario no permita, y una prueba de arquitectura lo hace cumplir.",
+						"Apartar un horario lo bloquea cinco minutos en PostgreSQL con una restricción de exclusión sobre rangos de tiempo. El token de confirmación va a la tarjeta del chat, nunca al modelo.",
+						"Los avisos se escriben en un outbox en la misma transacción que la reserva, y un despachador los envía por correo y a una bandeja en la app, con reintentos.",
+						"El cliente se identifica con un código de 6 dígitos por correo para ver, mover o cancelar sus citas; la sesión vive en una cookie HttpOnly.",
+						"Cada cambio de reserva se anuncia por SignalR, y el panel de la clínica recarga la semana al instante. Cada reserva hecha por el asistente muestra su conversación y sus pasos, con tokens y costo."
+					],
+					"decisions": [
+						{
+							"title": "La persona confirma, no el asistente",
+							"rationale": "Que un modelo decida si \"sí, pero…\" significa sí es un riesgo y un costo. Un botón con un token de un solo uso es determinístico.",
+							"tradeoff": "Quien escribe \"sí\" igual tiene que tocar el botón: el asistente se lo recuerda."
+						},
+						{
+							"title": "La doble reserva la impide PostgreSQL",
+							"rationale": "Comprobar y después insertar pierde la carrera; una restricción de exclusión no, venga la reserva del chat, del formulario o de un error.",
+							"tradeoff": "Los guardados de un mismo profesional van en fila, con un candado de transacción."
+						},
+						{
+							"title": "Evaluado como software, sobre la base de datos",
+							"rationale": "28 conversaciones guionadas se puntúan con lo que queda guardado, no con lo que dice el asistente: así se ve si apartó la hora correcta y si cambió algo que no debía.",
+							"tradeoff": "Una corrida con el modelo real cuesta unos USD 0,07, así que se lanza a mano; en CI corre un oráculo gratuito."
+						}
+					],
+					"results": [
+						"Con Claude Haiku 5.5, las 28 conversaciones de evaluación terminan como se esperaba: reservas, conflictos, cambios, cancelaciones e intentos de manipulación.",
+						"Ninguna reserva confirmada ni cancelada por el asistente, y ningún horario apartado que antes no ofreciera la agenda.",
+						"Cincuenta pedidos simultáneos del mismo horario: uno lo obtiene y los otros 49 reciben los horarios libres más cercanos, en alrededor de un segundo.",
+						"La primera corrida sacó 0,76: las transcripciones mostraron que \"mañana\" no se resolvía en un contenedor sin datos de cultura. Se corrigió y quedó cubierto por las pruebas.",
+						"Un test de punta a punta con Playwright recorre chat, panel en vivo, código por correo y cancelación en cada push, sin API key y sin costo."
+					]
+				}
+			},
+			{
 				"slug": "talent-mcp",
 				"kind": "oss",
 				"status": "live",
