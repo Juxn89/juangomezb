@@ -24,7 +24,7 @@ entrevistadores técnicos: HR-tech, sin demo y solo Ollama. **Esa línea queda e
 | Decisión | Elección |
 |---|---|
 | Línea | Workana primero. `talent-match` y `talent-flow` pasan a backlog |
-| Ya publicables | `talent-mcp` v1.1.0 (NuGet + GHCR) y `claude-pr-review-bot`: se suben a Workana tal como están, en la semana 1 |
+| Ya publicables | `talent-mcp` y `claude-pr-review-bot` quedan **solo en el portfolio** (decisión del 23 oct 2026): le hablan a equipos de desarrollo, no a la PyME que contrata en Workana. Tienen ficha escrita por si un proyecto técnico la pide |
 | LLM | Puerto **Microsoft.Extensions.AI** (`IChatClient`). En la demo, **Claude** con el SDK oficial `Anthropic` (MIT, implementa `IChatClient`), con tope de gasto. **Ollama** como adaptador offline para `docker compose` |
 | Embeddings | Claude no tiene API de embeddings, así que se usa un **modelo ONNX en proceso** (`multilingual-e5-small`, MIT) detrás de `IEmbeddingGenerator`. Costo cero, sin sidecar y bilingüe ES/EN |
 | Demos | **Video + capturas** por defecto (P1 y P2 desde el 16 y el 21 oct 2026: cero hosting y cero gasto de API por terceros). Una demo pública se evalúa por proyecto |
@@ -88,7 +88,7 @@ Resumen de los que venían del catálogo anterior y siguen vigentes:
 | Semana | Trabajo | Publicación en Workana |
 |---|---|---|
 | 1 (día 1) | P1 arranca con la base completa dentro del repo ([juxn89/docs-assistant](https://github.com/Juxn89/docs-assistant)) | — |
-| 1 | P1 (parte 1) · fichas de `talent-mcp` y `claude-pr-review-bot` (1 día) | `talent-mcp`, `claude-pr-review-bot` |
+| 1 | P1 (parte 1) · fichas de `talent-mcp` y `claude-pr-review-bot` (1 día) | — (solo portfolio, decisión del 23 oct 2026) |
 | 2 | P1 (parte 2) · implementar `portfolio-projects-section.md` | **P1** |
 | 3-4 | P2 | **P2** |
 | 5-6 | P3 | **P3** |
