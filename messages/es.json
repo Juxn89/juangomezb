@@ -157,6 +157,110 @@
 				}
 			},
 			{
+				"slug": "data-chat",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/data-chat",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Recharts",
+					"Playwright"
+				],
+				"role": "Diseño y desarrollo",
+				"title": "data-chat",
+				"tagline": "Pregúntale a tu Excel de ventas en español o inglés: la cifra, el gráfico y cómo se calculó. La IA nunca escribe SQL; el servidor sí, en modo lectura.",
+				"description": "Preguntas en lenguaje natural sobre datos de ventas, en .NET 10 con Claude Haiku 5.5: el modelo devuelve una consulta semántica validada contra un esquema generado por archivo, el servidor la compila a SQL parametrizado de solo lectura, el gráfico sale de la forma del resultado y cada cifra del resumen se verifica.",
+				"metrics": [
+					{
+						"value": "75/75",
+						"label": "preguntas de evaluación respondidas con la cifra correcta"
+					},
+					{
+						"value": "20/20",
+						"label": "intentos de manipulación sin efecto sobre los datos"
+					},
+					{
+						"value": "0",
+						"label": "cifras inventadas mostradas en los resúmenes"
+					},
+					{
+						"value": "USD 0,00058",
+						"label": "de costo del modelo por pregunta, resumen incluido"
+					}
+				],
+				"video": {
+					"src": "/projects/data-chat/demo.mp4",
+					"poster": "/projects/data-chat/poster.jpg",
+					"caption": "85 segundos con Claude Haiku 5.5: se sube el Excel, se confirman las métricas y se pregunta en español, con gráfico, SQL e historial con costos."
+				},
+				"gallery": [
+					{
+						"src": "/projects/data-chat/respuesta.webp",
+						"alt": "La respuesta a «¿Cuánto vendió cada sucursal el último trimestre?»: lo que entendió, un resumen con Centro a la cabeza con 12,078.19 y un gráfico de barras de las cuatro sucursales",
+						"caption": "Preguntas en español y recibes la cifra, el gráfico y un resumen verificado."
+					},
+					{
+						"src": "/projects/data-chat/sql.webp",
+						"alt": "La misma respuesta con «Ver el SQL» abierto: la consulta que escribió el servidor, con las fechas como parámetros y LIMIT 1000",
+						"caption": "La consulta la escribe el servidor, no la IA: solo lectura y con parámetros."
+					},
+					{
+						"src": "/projects/data-chat/comparacion.webp",
+						"alt": "Ventas por categoría del último trimestre frente al mismo trimestre del año pasado, en barras lado a lado",
+						"caption": "Compara periodos: el último trimestre frente al mismo del año pasado."
+					}
+				],
+				"caseStudy": {
+					"context": "Las ventas de una PyME viven en Excel, y sacarles una respuesta exige tablas dinámicas o esperar a alguien que sepa. Un \"text-to-SQL\" ingenuo deja que el modelo escriba SQL contra la base: un riesgo de seguridad y de exactitud, porque un JOIN mal hecho devuelve un número falso con total seguridad. El objetivo era responder en lenguaje natural sin que la IA pudiera tocar ni inventar los datos.",
+					"constraints": [
+						"La IA nunca escribe SQL: traduce la pregunta y el servidor arma la consulta",
+						"Solo lectura: ningún intento de manipulación, en la pregunta o escondido en el archivo, puede cambiar los datos",
+						"Ninguna cifra inventada: el resumen solo se muestra si cada número está en el resultado",
+						"Si la pregunta es ambigua, preguntar antes de adivinar",
+						"Costo por pregunta visible, con tope diario"
+					],
+					"architecture": [
+						"El archivo CSV o Excel se importa con tipos y orden de fechas inferidos, con COPY binario a una tabla propia cuyas columnas se nombran por posición: ningún encabezado llega al SQL.",
+						"Una capa semántica propone métricas y dimensiones a partir de las columnas; el dueño las renombra con sus palabras y confirma. Solo entonces se puede preguntar.",
+						"Claude Haiku responde con un JSON Schema generado para ese archivo, cuyas opciones son solo las métricas y dimensiones confirmadas. Los periodos (\"el último trimestre\") los resuelve el servidor.",
+						"Un compilador arma SQL con nombres de una lista permitida y valores como parámetros; corre en una transacción de solo lectura, con un rol que solo puede hacer SELECT, 3 segundos de límite y LIMIT forzado.",
+						"El gráfico se elige según la forma del resultado, y una segunda llamada escribe un resumen cuyas cifras se comparan una por una con el resultado antes de mostrarlo."
+					],
+					"decisions": [
+						{
+							"title": "Una consulta semántica, no text-to-SQL",
+							"rationale": "Si el modelo no escribe SQL, no puede unir mal tablas ni ser llevado a leer lo que no debe: solo puede nombrar métricas y dimensiones que existen.",
+							"tradeoff": "Solo se puede preguntar lo que la capa expresa: sumas, promedios, conteos y cocientes por dimensiones y periodos."
+						},
+						{
+							"title": "Resúmenes verificados cifra por cifra",
+							"rationale": "Un modelo que redacta puede sumar o redondear por su cuenta. Comparar cada número con el resultado es determinístico y barato.",
+							"tradeoff": "Un resumen correcto que cita una cifra derivada no prevista se descarta: se pierde el resumen, nunca la respuesta."
+						},
+						{
+							"title": "Evaluado como software, con ataques incluidos",
+							"rationale": "75 preguntas con SQL de referencia, 8 ambiguas, 10 de seguimiento y 20 intentos de manipulación, con los resultados versionados en el repo.",
+							"tradeoff": "Una corrida con el modelo real cuesta unos USD 0,07, así que se lanza a mano; en CI corre un oráculo gratuito."
+						}
+					],
+					"results": [
+						"Con Claude Haiku 5.5, las 75 preguntas de evaluación (60 en español y 15 en inglés) dan la cifra correcta, y las 8 ambiguas reciben una pregunta de vuelta.",
+						"Los 20 intentos de manipulación, en la pregunta o escondidos en encabezados y celdas de un archivo, no cambiaron nada; el modelo rechazó 18 y respondió las otras 2 como preguntas normales.",
+						"Ningún resumen mostrado tiene una cifra inventada: el control descartó 1 de 75.",
+						"Leer los resultados mostró lo que la puntuación no medía: 5 de 15 preguntas en inglés recibían frases en español. Se corrigió haciendo que el modelo nombre el idioma primero, y se publicó junto con el seguimiento que falló en la corrida final (9 de 10).",
+						"Un test de punta a punta con Playwright sube un archivo, pregunta, sigue la conversación, abre el SQL, descarga el CSV y revisa el historial en cada push, sin API key y sin costo."
+					]
+				}
+			},
+			{
 				"slug": "docs-assistant",
 				"kind": "oss",
 				"status": "live",

@@ -24,7 +24,7 @@ entrevistadores técnicos: HR-tech, sin demo y solo Ollama. **Esa línea queda e
 | Decisión | Elección |
 |---|---|
 | Línea | Workana primero. `talent-match` y `talent-flow` pasan a backlog |
-| Ya publicables | `talent-mcp` v1.1.0 (NuGet + GHCR) y `claude-pr-review-bot`: se suben a Workana tal como están, en la semana 1 |
+| Ya publicables | `talent-mcp` y `claude-pr-review-bot` quedan **solo en el portfolio** (decisión del 23 oct 2026): le hablan a equipos de desarrollo, no a la PyME que contrata en Workana. Tienen ficha escrita por si un proyecto técnico la pide |
 | LLM | Puerto **Microsoft.Extensions.AI** (`IChatClient`). En la demo, **Claude** con el SDK oficial `Anthropic` (MIT, implementa `IChatClient`), con tope de gasto. **Ollama** como adaptador offline para `docker compose` |
 | Embeddings | Claude no tiene API de embeddings, así que se usa un **modelo ONNX en proceso** (`multilingual-e5-small`, MIT) detrás de `IEmbeddingGenerator`. Costo cero, sin sidecar y bilingüe ES/EN |
 | Demos | **Video + capturas** por defecto (P1 y P2 desde el 16 y el 21 oct 2026: cero hosting y cero gasto de API por terceros). Una demo pública se evalúa por proyecto |
@@ -50,7 +50,7 @@ en el código.
 | P1 | [`docs-assistant`](./docs-assistant/plan.md) | Chatbot de soporte con RAG sobre tus documentos, embebible en cualquier web | Video + capturas (16 oct 2026) | 1-2 |
 | P2 | [`invoice-extractor`](./invoice-extractor/plan.md) · [ficha](./invoice-extractor/workana.md) | Fotos o PDFs de facturas → Excel contable validado | Video + capturas (22 oct 2026) | 3-4 |
 | P3 | [`booking-agent`](./booking-agent/plan.md) · [ficha](./booking-agent/workana.md) | Agenda de citas con asistente conversacional y recordatorios | Video + capturas (23 oct 2026) | 5-6 |
-| P4 | [`data-chat`](./data-chat/plan.md) | "Pregúntale a tus ventas" en lenguaje natural, con gráficos | Video + capturas | 7-8 |
+| P4 | [`data-chat`](./data-chat/plan.md) · [ficha](./data-chat/workana.md) | "Pregúntale a tus ventas" en lenguaje natural, con gráficos | Video + capturas (26 oct 2026) | 7-8 |
 
 **Por qué este orden:** P1 es el pedido de IA más común en Workana y su demo vive en el portfolio, que de
 paso gana una feature. P2 y P3 son dominios de PyME clásicos. P4 va al final por ser el de mayor riesgo
@@ -88,7 +88,7 @@ Resumen de los que venían del catálogo anterior y siguen vigentes:
 | Semana | Trabajo | Publicación en Workana |
 |---|---|---|
 | 1 (día 1) | P1 arranca con la base completa dentro del repo ([juxn89/docs-assistant](https://github.com/Juxn89/docs-assistant)) | — |
-| 1 | P1 (parte 1) · fichas de `talent-mcp` y `claude-pr-review-bot` (1 día) | `talent-mcp`, `claude-pr-review-bot` |
+| 1 | P1 (parte 1) · fichas de `talent-mcp` y `claude-pr-review-bot` (1 día) | — (solo portfolio, decisión del 23 oct 2026) |
 | 2 | P1 (parte 2) · implementar `portfolio-projects-section.md` | **P1** |
 | 3-4 | P2 | **P2** |
 | 5-6 | P3 | **P3** |
