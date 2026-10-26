@@ -157,6 +157,110 @@
 				}
 			},
 			{
+				"slug": "data-chat",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/data-chat",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"Aspire",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Recharts",
+					"Playwright"
+				],
+				"role": "Design and development",
+				"title": "data-chat",
+				"tagline": "Ask your sales spreadsheet in Spanish or English: the figure, a chart and how it was computed. The AI never writes SQL; the server does, read-only.",
+				"description": "Plain-language questions over sales data, in .NET 10 with Claude Haiku 5.5: the model returns a semantic query validated against a schema generated per file, the server compiles it to read-only parameterized SQL, the chart follows the answer's shape, and every figure in the summary is checked.",
+				"metrics": [
+					{
+						"value": "75/75",
+						"label": "eval questions answered with the right figures"
+					},
+					{
+						"value": "20/20",
+						"label": "injection attempts with no effect on the data"
+					},
+					{
+						"value": "0",
+						"label": "invented figures shown in summaries"
+					},
+					{
+						"value": "USD 0.00058",
+						"label": "model cost per question, summary included"
+					}
+				],
+				"video": {
+					"src": "/projects/data-chat/demo.mp4",
+					"poster": "/projects/data-chat/poster.jpg",
+					"caption": "85 seconds with Claude Haiku 5.5: the spreadsheet is uploaded, its metrics confirmed, and questions asked in Spanish, with charts, SQL and a history with costs."
+				},
+				"gallery": [
+					{
+						"src": "/projects/data-chat/respuesta.webp",
+						"alt": "The answer to \"How much did each branch sell last quarter?\": how it was read, a summary with Centro first at 12,078.19, and a bar chart of the four branches",
+						"caption": "Ask in plain words and get the figure, the chart and a checked summary."
+					},
+					{
+						"src": "/projects/data-chat/sql.webp",
+						"alt": "The same answer with \"Ver el SQL\" open: the query the server wrote, with the dates as parameters and LIMIT 1000",
+						"caption": "The server writes the query, not the AI: read-only, with parameters."
+					},
+					{
+						"src": "/projects/data-chat/comparacion.webp",
+						"alt": "Sales by category last quarter against the same quarter last year, as side-by-side bars",
+						"caption": "Periods compared: last quarter against the same one last year."
+					}
+				],
+				"caseStudy": {
+					"context": "A small business's sales live in a spreadsheet, and getting an answer out of it takes pivot tables or waiting for someone who knows how. Naive text-to-SQL lets the model write SQL against the database: a security risk and an accuracy one, since a wrong JOIN returns a false number with full confidence. The goal was answers in plain language without the AI being able to touch or invent the data.",
+					"constraints": [
+						"The AI never writes SQL: it reads the question, and the server builds the query",
+						"Read-only: no injection attempt, in the question or hidden in the file, can change the data",
+						"No invented figures: a summary is shown only if every number is in the answer",
+						"When a question is ambiguous, ask back instead of guessing",
+						"Cost per question visible, with a daily cap"
+					],
+					"architecture": [
+						"A CSV or Excel file is imported with its types and date order inferred, by binary COPY into its own table whose columns are named by position: no header ever reaches SQL.",
+						"A semantic layer proposes metrics and dimensions from the columns; the owner renames them in their own words and confirms. Only then can questions be asked.",
+						"Claude Haiku answers with a JSON Schema generated for that file, whose options are only the confirmed metrics and dimensions. Periods (\"last quarter\") are resolved by the server.",
+						"A compiler builds SQL from allow-listed names with values as parameters; it runs in a read-only transaction, under a SELECT-only role, with a 3-second timeout and a forced LIMIT.",
+						"The chart is chosen from the answer's shape, and a second call writes a summary whose figures are checked one by one against the answer before it is shown."
+					],
+					"decisions": [
+						{
+							"title": "A semantic query, not text-to-SQL",
+							"rationale": "If the model does not write SQL, it cannot join tables wrongly or be steered into reading what it should not: it can only name metrics and dimensions that exist.",
+							"tradeoff": "Only what the layer expresses can be asked: sums, averages, counts and ratios by dimensions and periods."
+						},
+						{
+							"title": "Summaries checked figure by figure",
+							"rationale": "A model that writes prose may add or round on its own. Comparing every number with the answer is deterministic and cheap.",
+							"tradeoff": "A right summary quoting an unforeseen derived figure is discarded: the summary is lost, never the answer."
+						},
+						{
+							"title": "Evaluated like software, attacks included",
+							"rationale": "75 questions with reference SQL, 8 ambiguous ones, 10 follow-ups and 20 injection attempts, with the results versioned in the repo.",
+							"tradeoff": "A run against the real model costs about USD 0.07, so it is started by hand; a free oracle runs in CI."
+						}
+					],
+					"results": [
+						"With Claude Haiku 5.5, all 75 eval questions (60 in Spanish, 15 in English) get the right figures, and all 8 ambiguous ones get a question back.",
+						"None of the 20 injection attempts, in the question or hidden in a file's headers and cells, changed anything; the model refused 18 and answered the other 2 as plain questions.",
+						"No summary shown has an invented figure: the check discarded 1 of 75.",
+						"Reading the results showed what the scoring did not measure: 5 of 15 English questions got Spanish sentences. It was fixed by having the model name the language first, and published along with the follow-up the final run missed (9 of 10).",
+						"A Playwright end-to-end test uploads a file, asks, follows up, opens the SQL, downloads the CSV and checks the history on every push, with no API key and no cost."
+					]
+				}
+			},
+			{
 				"slug": "docs-assistant",
 				"kind": "oss",
 				"status": "live",
