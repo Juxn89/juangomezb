@@ -1,7 +1,16 @@
 import {test, expect} from '@playwright/test';
 import {revealHeaderControls} from '../helpers/header';
+import {FEATURED_PROJECTS_LIMIT} from '../../src/lib/constants/site';
+import en from '../../messages/en.json';
 
-const PROJECTS = ['docs-assistant', 'talent-mcp', 'claude-pr-review-bot'];
+// From the catalog, so reordering or adding a project does not break these tests: the index lists every project,
+// the home only the first featured ones.
+const catalog: {slug: string; featured?: boolean}[] = en.projects.items;
+const PROJECTS = catalog.map((project) => project.slug);
+const HOME_PROJECTS = catalog
+	.filter((project) => project.featured)
+	.slice(0, FEATURED_PROJECTS_LIMIT)
+	.map((project) => project.slug);
 
 test.describe('Projects', () => {
 	for (const {locale, caseStudy, code} of [
@@ -13,7 +22,7 @@ test.describe('Projects', () => {
 			const section = page.locator('#projects');
 			await section.scrollIntoViewIfNeeded();
 
-			for (const slug of PROJECTS) {
+			for (const slug of HOME_PROJECTS) {
 				const card = section.getByRole('article', {name: slug});
 				await card.scrollIntoViewIfNeeded();
 				await expect(card).toBeVisible();
@@ -30,13 +39,14 @@ test.describe('Projects', () => {
 	}
 
 	test('a card opens its case study in the same tab', async ({page}) => {
+		const slug = HOME_PROJECTS[0]!;
 		await page.goto('/en');
-		const card = page.locator('#projects').getByRole('article', {name: 'talent-mcp'});
+		const card = page.locator('#projects').getByRole('article', {name: slug});
 		await card.scrollIntoViewIfNeeded();
 		await card.getByRole('link', {name: 'Read the case study'}).click();
 
-		await expect(page).toHaveURL(/\/en\/projects\/talent-mcp$/);
-		await expect(page.getByRole('heading', {level: 1, name: 'talent-mcp'})).toBeVisible();
+		await expect(page).toHaveURL(new RegExp(`/en/projects/${slug}$`));
+		await expect(page.getByRole('heading', {level: 1, name: slug})).toBeVisible();
 		await expect(page.getByRole('heading', {level: 2, name: 'Key decisions'})).toBeVisible();
 	});
 
