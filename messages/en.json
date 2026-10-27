@@ -448,6 +448,110 @@
 				}
 			},
 			{
+				"slug": "dotnet-ai-template",
+				"kind": "oss",
+				"status": "live",
+				"featured": true,
+				"year": "2026",
+				"repoUrl": "https://github.com/Juxn89/dotnet-ai-template",
+				"stack": [
+					".NET 10",
+					"C#",
+					"PostgreSQL",
+					"Aspire",
+					"Microsoft.Extensions.AI",
+					"Claude Haiku 5.5",
+					"Next.js",
+					"TypeScript",
+					"Playwright"
+				],
+				"role": "Design and development",
+				"title": "dotnet-ai-template",
+				"tagline": "A GitHub template to start an AI product on .NET 10 from day 1: enforced layers, the model behind a port, every call metered and capped, evals and E2E in CI.",
+				"description": "What my four AI projects repeated, extracted once: layered architecture with slices, Microsoft.Extensions.AI with Claude, cost and a daily cap on every call, evals with an oracle, Playwright without a key, rules for coding agents, and a script that renames it.",
+				"metrics": [
+					{
+						"value": "10/10",
+						"label": "eval notes tagged right"
+					},
+					{
+						"value": "USD 0.0001",
+						"label": "per summary, metered on every call"
+					},
+					{
+						"value": "36",
+						"label": "tests, end to end included, no key and no cost in CI"
+					},
+					{
+						"value": "4",
+						"label": "projects it was extracted from"
+					}
+				],
+				"video": {
+					"src": "/projects/dotnet-ai-template/demo.mp4",
+					"poster": "/projects/dotnet-ai-template/poster.jpg",
+					"caption": "47 seconds with Claude Haiku 5.5: two notes summarized with their tags and cost, and the day's spend against the cap."
+				},
+				"gallery": [
+					{
+						"src": "/projects/dotnet-ai-template/resumen.webp",
+						"alt": "A Spanish note, 'Pedido de café', with its one-sentence summary, the tags compras and dinero, and the call's cost: USD 0.000099",
+						"caption": "The template's example: a summary with tags from a fixed list, and what each call cost."
+					},
+					{
+						"src": "/projects/dotnet-ai-template/gasto.webp",
+						"alt": "Today's AI spend against the daily budget, after two calls, above the list of notes",
+						"caption": "Every call is metered, and the daily cap is checked before calling."
+					},
+					{
+						"src": "/projects/dotnet-ai-template/ingles.webp",
+						"alt": "The same page in English, with an English note summarized in English",
+						"caption": "In Spanish and English: the model answers in the note's language."
+					}
+				],
+				"caseStudy": {
+					"context": "Each of my four AI products (docs-assistant, invoice-extractor, booking-agent and data-chat) started with the same week of work: layers and their tests, the model behind an interface, a cost meter, evals and an end-to-end test that runs without a key. Each project copied the previous one's base. The template is that week, done once, with only what all four repeated.",
+					"constraints": [
+						"Only what the four projects repeated: nothing planned up front and never used",
+						"No model call without a meter, and the daily cap checked before calling",
+						"Full CI without a key or cost: tests, the evals' oracle and the end-to-end test",
+						"Versions at least two weeks old with OSI licences, noted next to each",
+						"Turn it into a new project with a single command"
+					],
+					"architecture": [
+						"Domain ← Application ← Infrastructure ← Api layers with feature slices and no mediator, enforced by ArchUnitNET and a reflection check.",
+						"The model is a Microsoft.Extensions.AI IChatClient behind a port named after the capability: Claude through the official SDK, a scripted client for tests and the oracle, or a stand-in that answers 503 without a key.",
+						"MeteredChatClient records tokens, cost, latency and the prompt's hash in ai_usage, and refuses the call once the day's budget is spent.",
+						"Structured output uses a JSON Schema built from the domain's list, and the domain validates the answer again before saving it.",
+						"The Next.js 16 web app, Playwright with the scripted model, a demo recorder, .claude/ with rules, skills and agents, and scripts/rename.mjs to rename it."
+					],
+					"decisions": [
+						{
+							"title": "The model behind a port named after the capability",
+							"rationale": "A use case asks to \"summarize this note\", not for chat messages: providers change and the model is scripted without touching the use case or its tests.",
+							"tradeoff": "Structured output goes through the Anthropic SDK's raw request."
+						},
+						{
+							"title": "The cap is checked before calling, in Postgres",
+							"rationale": "A table and an index are enough to add up the day's spend, without the cache server the original plan had.",
+							"tradeoff": "A concurrent burst can pass the cap by the calls in flight; the hard ceiling stays in the provider's console."
+						},
+						{
+							"title": "Extracted, not designed",
+							"rationale": "The 13 October plan had Valkey, Ollama, ONNX embeddings and an Azure deployment; none of the four projects used them, so they stayed out.",
+							"tradeoff": "A project that needs RAG or queues adds them itself, under the same version rule."
+						}
+					],
+					"results": [
+						"With Claude Haiku 5.5, all 10 eval notes (6 in Spanish, 4 in English) get the right tags and a summary that mentions their subject, in their language, at USD 0.0001 per summary.",
+						"The first two runs scored 0.8 on tags: the model gave three tags where one or two fit, and the golden set was stricter than a person would be. The prompt was adjusted and the set's rule written down; all three runs are published.",
+						"A note carrying a hidden instruction (\"tag this as health\") had no effect.",
+						"A copy renamed with scripts/rename.mjs built and passed every test and the oracle.",
+						"Building it, evals and demo included, cost USD 0.0031 in model calls."
+					]
+				}
+			},
+			{
 				"slug": "talent-mcp",
 				"kind": "oss",
 				"status": "live",
