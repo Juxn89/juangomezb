@@ -45,6 +45,11 @@ describe('generateSEOMetadata', () => {
 		expect(meta.alternates?.languages?.['es']).toBe(`${BASE_URL}/es`);
 	});
 
+	it('points x-default at the English page', () => {
+		const meta = generateSEOMetadata({title: 'Projects', description: 'Desc', locale: 'es', path: '/projects'});
+		expect(meta.alternates?.languages?.['x-default']).toBe(`${BASE_URL}/en/projects`);
+	});
+
 	it('sets og:locale to en_US for English', () => {
 		const meta = generateSEOMetadata({title: 'Home', description: 'Desc', locale: 'en'});
 		expect((meta.openGraph as {locale?: string})?.locale).toBe('en_US');
