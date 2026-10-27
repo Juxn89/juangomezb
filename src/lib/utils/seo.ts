@@ -70,7 +70,7 @@ export function generateSEOMetadata({
 			card: 'summary_large_image',
 			title: fullTitle,
 			description,
-			creator: '@juxn89',
+			creator: '@jc_gomez89',
 		},
 		alternates: {
 			canonical: url,
@@ -119,7 +119,7 @@ export function generatePersonSchema() {
 		sameAs: [
 			GITHUB_PROFILE_URL,
 			'https://www.linkedin.com/in/jcgomez89/',
-			'https://twitter.com/juxn89',
+			'https://x.com/jc_gomez89',
 		],
 		knowsAbout: [
 			'Software Development',
