@@ -1,195 +1,200 @@
 # Fase 0 · `dotnet-ai-template`: base compartida
 
-> Índice: [`../README.md`](../README.md) · Duración: ~3 días hábiles · Repo: `juxn89/dotnet-ai-template`
-> (GitHub template repository) · Versiones verificadas el 13 oct 2026.
+> Índice: [`../README.md`](../README.md) · Duración: ~3 días hábiles · Repo: `Juxn89/dotnet-ai-template`
+> (GitHub template repository, público) · Plan original del 13 oct 2026, **revisado el 27 oct 2026** (§0).
+
+## 0. Qué cambió en la revisión (27 oct 2026)
+
+El plan original se escribió antes de P1. El template se iba a extraer de P1 cuando estuviera estable, pero cada
+proyecto terminó copiando la base del anterior. Con P1-P4 terminados, el template se extrae de **lo que los cuatro
+repitieron de verdad**, no de lo que se pensó el 13 de octubre.
+
+### Decisiones del 27 oct 2026 (aprobadas por el usuario)
+
+| Decisión | Elección |
+|---|---|
+| Alcance | Lo que repitieron P1-P4. Sin Valkey, Ollama, ONNX ni script de Azure: ningún proyecto los usó (Ollama además solo se permite en contenedor) |
+| Publicación | Repo **público**, marcado como *template* en GitHub, con README según el gist y entrada en el portfolio. Sin ficha de Workana |
+| Presupuesto | Tope **USD 0,10** en Claude (sesión `workana-dotnet-ai-template` del ledger) para probar el slice de IA, el tope de gasto y una corrida de evals chica |
+
+### Qué se cae y qué entra respecto al plan original
+
+| Plan del 13 oct | Revisión |
+|---|---|
+| Valkey para el gasto del día | El gasto se suma desde la tabla `ai_usage` en Postgres, como hicieron P3 y P4. Una pieza menos |
+| Ollama como adaptador offline | Fuera. El puerto `IChatClient` lo permite, pero el template no lo trae |
+| Embeddings ONNX | Fuera: solo P1 hace RAG |
+| `deploy/azure` y `compose.yaml` | Fuera: las demos son video. Queda el AppHost de Aspire |
+| `M.E.AI.Evaluation` | Fuera. Entra el harness que usaron los cuatro: oráculo gratis en CI, corrida pagada con guarda del ledger y resultados versionados |
+| `.claude/` (solo lo tenía P1) | Se mantiene y se completa: es lo que más se nota en un template |
+| — | Entran las piezas que se repitieron y no estaban en el plan: grabador de demo (screencast de Chromium + ffmpeg en contenedor), `readme-assets.mjs`, `docs/errors.md`, `dependabot.yml` agrupado, `minimumReleaseAge` en pnpm |
 
 ## 1. Contexto
 
-Los 4 proyectos comparten el 60-70% de su infraestructura: arquitectura, puerto de IA, medición de costos,
-tests, CI, Docker y las reglas para agentes de IA. Escribirla una vez:
+Los cuatro proyectos comparten el 60-70 % de su infraestructura: capas, AppHost, puerto de IA con medición de
+costo, evals, tests, CI, la web y las reglas para agentes. Tenerlo en un template:
 
-- Garantiza el **mismo nivel de calidad** en los 4. No vale que el cuarto sea más flojo por cansancio.
-- Reduce cada proyecto a su **dominio**, que es lo que de verdad se vende.
-- Es en sí misma una pieza de portfolio: un template .NET + IA que un cliente técnico puede reconocer como
-  "así trabaja este developer".
+- Deja cada proyecto nuevo en su **dominio** desde el día 1.
+- Fija el **mismo nivel de calidad**: el quinto proyecto arranca con E2E, evals y tope de gasto, no los agrega al final.
+- Es una pieza de portfolio en sí: un cliente técnico ve "así trabaja este developer" en un solo repo.
 
-No es un framework: es un **template** (botón *Use this template* de GitHub). Cada proyecto lo copia y diverge;
-no hay un paquete compartido que versionar ni dependencias cruzadas entre repos.
+No es un framework: es un **template** (botón *Use this template*). Cada proyecto lo copia y diverge; no hay
+paquete compartido ni dependencias entre repos. Un script lo renombra al crear el proyecto.
 
-## 2. Alcance
+## 2. Alcance del MVP
 
 **Entra**
-- Solución .NET 10 con la estructura de capas, un slice de ejemplo (`Health` + un CRUD trivial `Notes`) que se
-  borra en cada proyecto, y el AppHost de Aspire.
-- Puerto de IA con adaptadores Claude y Ollama, embeddings ONNX en proceso, y middleware de costo y tope de gasto.
-- Tests de las 5 capas, configuración de evals, CI/CD y Docker.
-- `.claude/` completo y `AGENTS.md`.
-- Esqueleto Next.js 16 para el panel.
+- Solución .NET 10 en capas (`App.Domain`, `App.Application`, `App.Infrastructure`, `App.Api`), AppHost de Aspire
+  con Postgres y la web, y ServiceDefaults.
+- Un **slice de ejemplo** que se borra en cada proyecto: `Notes` (CRUD mínimo) y `Summarize`, que pide a Claude un
+  resumen y etiquetas con salida estructurada.
+- **Puerto de IA:** `IChatClient` de Microsoft.Extensions.AI con el adaptador oficial `Anthropic`, un
+  `MeteredChatClient` que registra tokens, costo y latencia en `ai_usage`, y un tope de gasto diario y por
+  operación. Un cliente guionado para tests, E2E y ensayos de demo.
+- **Evals:** proyecto `App.Evals` con `oracle` (gratis, en CI) y `run --allow-paid` (guarda del ledger, resultados
+  en `evals/results`).
+- **Tests:** dominio, aplicación, arquitectura (ArchUnitNET) e integración (Testcontainers + WebApplicationFactory).
+- **Web:** Next.js 16 + Tailwind 4 con la página de notas, ES/EN, Playwright E2E con el cliente guionado y el
+  grabador de demo.
+- **CI:** build/format/tests/oráculo, web (lint, tipos, build) y E2E; `review.yml` con claude-pr-review-bot;
+  `dependabot.yml` agrupado.
+- **Para agentes:** `AGENTS.md`, `CLAUDE.md` y `.claude/` (rules, skills, agents, hooks).
+- **Docs:** README según el gist con su arte generado, ADRs, `docs/errors.md`, y la guía "crear un proyecto".
+- `scripts/rename.mjs`: renombra `App` y el slug en carpetas, proyectos, namespaces y textos.
 
 **No entra**
-- Autenticación de usuarios finales: cada proyecto decide (P1 y P3 usan una clave de admin simple en la demo, y
-  se documenta como "en producción: OIDC").
-- Multi-tenancy: es específica de P1.
-- Terraform o IaC: los despliegues se describen con `az containerapp` en un script documentado, sin módulos
-  que nunca se aplican.
+- Autenticación de usuarios, multi-tenancy, despliegue, RAG, colas. Cada proyecto decide.
 
 ## 3. Arquitectura
 
 ```
 src/
-  App.Domain/            entidades, value objects, reglas. Cero dependencias de framework
-  App.Application/       casos de uso por slice (Features/<Slice>/<UseCase>.cs) y puertos (interfaces)
-  App.Infrastructure/    EF Core + Npgsql + pgvector, adaptadores de IA, Valkey, email
-  App.Api/               Minimal APIs, ProblemDetails, rate limiting, OTel y DI
-  App.AppHost/           Aspire: Postgres(pgvector), Valkey, Mailpit, Ollama (opcional) y la API
-  App.ServiceDefaults/   OTel, health checks y resiliencia (estándar de Aspire)
-web/                     Next.js 16 + Tailwind 4 (panel)
+  App.Domain/            entidades y reglas; solo NodaTime
+  App.Application/       casos de uso por slice (Features/<Slice>/) y puertos; Result/Error
+  App.Infrastructure/    EF Core + Npgsql, Ai/ (Anthropic, Metered, Scripted, Prompts/*.md), migraciones
+  App.Api/               Minimal APIs por slice, ProblemDetails con código estable, rate limiting
+  App.AppHost/           Aspire: Postgres 18 persistente, la API y la web; la key desde el .env git-ignored
+  App.ServiceDefaults/   OTel, health checks y resiliencia
+web/                     Next.js 16 + Tailwind 4: notas, ES/EN, e2e/, e2e/demo/, scripts/readme-assets.mjs
+evals/
+  App.Evals/             oracle | run --allow-paid; PaidRun con la guarda del ledger
+  notes.json             golden set del ejemplo
+  results/               corridas versionadas, también las que fallan
 tests/
-  App.Architecture.Tests   ArchUnitNET
-  App.Domain.Tests         puros
-  App.Application.Tests    con puertos falsos
-  App.Integration.Tests    Testcontainers (Postgres real) + WebApplicationFactory
-  App.Evals                evals de IA, ejecutable con umbral
-  e2e/                     Playwright contra docker compose
-deploy/
-  compose.yaml             equivalente sin Aspire, para quien no tiene .NET
-  azure/                   script de despliegue a Container Apps + README
+  App.Domain.Tests  App.Application.Tests  App.Architecture.Tests  App.Integration.Tests
+scripts/rename.mjs
+docs/adr/  docs/errors.md  docs/demo/  docs/readme/
 ```
 
-**Vertical slices sobre Clean Architecture:** las capas se mantienen (y ArchUnitNET las vigila), pero dentro
-de `Application` el código se organiza por feature y no por tipo técnico. Así un cliente que abre el repo
-encuentra "Reservar cita" en una carpeta, no repartido entre `Services/`, `Dtos/` y `Validators/`.
-**Sin MediatR:** cada caso de uso es una clase con un método `HandleAsync`, registrada en DI. El ADR explica
-por qué no hace falta un mediador.
+**Vertical slices sobre capas, sin mediador:** cada caso de uso es una clase con `ExecuteAsync`, registrada en DI.
 
-### Puerto de IA
+### Puerto de IA (lo que hicieron P3 y P4, unificado)
 
 ```
-Application/Abstractions/Ai/
-  IChatClient, IEmbeddingGenerator   (de Microsoft.Extensions.AI.Abstractions: los puertos son el estándar)
-  IAiUsageRecorder                   registra tokens, costo y latencia por operación
-Infrastructure/Ai/
-  Claude:   paquete `Anthropic` 12.55.0 (oficial, MIT), expuesto como IChatClient
-  Ollama:   OllamaSharp 5.5.0 (IChatClient), perfil offline
-  Embeddings: ONNX Runtime 1.31.0 + Microsoft.ML.Tokenizers 2.0.0 con `multilingual-e5-small`
-  Pipeline:  ChatClientBuilder → .UseOpenTelemetry() → .Use(CostTrackingChatClient) → .Use(SpendCapChatClient)
+Application/Abstractions/Ai: IChatClient (M.E.AI), IAiUsageLog (gasto del día), AiOptions (modelo y topes)
+Infrastructure/Ai:
+  AnthropicChatClient   adaptador oficial `Anthropic` → IChatClient, Haiku 5.5 por defecto, effort low
+  MeteredChatClient     DelegatingChatClient: tokens × precio (AiOptions.Pricing), fila en ai_usage, tope diario
+                        y por operación (se rechaza antes de llamar si el día ya se gastó)
+  ScriptedChatClient    respuestas desde un JSON; solo en Development/Testing (la API se niega a arrancar si no)
+  Prompts/*.md          prompts como archivos, con su hash guardado en ai_usage
 ```
 
-- **`CostTrackingChatClient`:** un `DelegatingChatClient` que lee `ChatResponse.Usage` y multiplica por la
-  tabla de precios, configurada en `AiOptions.Pricing` y nunca en el código. Emite métricas OTel
-  (`ai.tokens.input`, `ai.tokens.output`, `ai.cost.usd`, etiquetadas por `operation` y `model`) y persiste una
-  fila en `ai_usage` para el dashboard de costos.
-- **`SpendCapChatClient`:** antes de cada llamada consulta en Valkey el gasto acumulado del día. Si supera
-  `AiOptions.DailyBudgetUsd`, lanza `AiBudgetExceededException`, que la API traduce a un 429 con un
-  ProblemDetails legible ("La demo alcanzó su cuota diaria, vuelve mañana"). Es la defensa contra una factura
-  sorpresa.
-- La selección del modelo por operación (`AiOptions.Models["chat"] = "claude-haiku-5-5"`) también es
-  configuración.
+- Salida estructurada con JSON Schema generado desde los records de C#, y validación otra vez en el dominio.
+- Sin key: los endpoints de IA responden 503 con `ai.not_configured`; el resto de la app funciona.
+- Tope alcanzado: 503 con `ai.daily_budget` y un mensaje legible.
 
-## 4. Modelo de datos (base)
+## 4. Modelo de datos
 
-- `ai_usage(id, occurred_at, operation, model, input_tokens, output_tokens, cost_usd, latency_ms, correlation_id)`.
-- `idempotency_keys(key, request_hash, response, created_at)` para los endpoints que escriben.
-- Migraciones con EF Core 10 (`Npgsql.EntityFrameworkCore.PostgreSQL` 10.0.3, `Pgvector.EntityFrameworkCore` 0.3.0),
-  aplicadas al arranque solo en Development y con un job en el despliegue.
+- `notes(id, title, body, created_at)` · `note_summaries(note_id, summary, tags, created_at)`: del ejemplo, se borran.
+- `ai_usage(id, occurred_at, operation, model, input_tokens, output_tokens, cost_usd, latency_ms, prompt_hash)`: se queda.
+- Migraciones con EF Core, aplicadas al arranque solo en Development.
 
-## 5. Diseño de IA (transversal)
+## 5. Diseño de IA
 
-- **Salida estructurada:** cuando se espera JSON, `output_config.format` con JSON Schema, generado desde los
-  records de C# para tener una sola fuente de verdad. Después siempre se valida otra vez en el dominio.
-- **Prompts versionados** como archivos en `Infrastructure/Ai/Prompts/*.md`, con un hash del prompt en cada
-  fila de `ai_usage`, para poder correlacionar un cambio de prompt con un cambio de costo o calidad.
-- **Evals:** `Microsoft.Extensions.AI.Evaluation` 10.10.0 (Quality + Reporting) más evaluadores
-  determinísticos propios. El ejecutable `App.Evals` lee un golden set de `tests/App.Evals/data/*.jsonl`,
-  escribe `evals/results/<fecha>.json` y sale con código ≠ 0 si una métrica cae bajo su umbral
-  (`evals/thresholds.json`).
-- **Guardrails base:** límite de tamaño de input, redacción de PII en logs (emails, teléfonos y documentos de
-  identidad por regex) y timeout por llamada.
+- **Modelo:** `claude-haiku-5-5` para todo, como P1-P4; por configuración, nunca en el código.
+- **Prompt del ejemplo:** "resume la nota en una frase y propone hasta 3 etiquetas de una lista"; esquema con
+  `summary` y `tags` (enum de la lista), validado después en el dominio.
+- **Guardrails base:** límite de tamaño de entrada, el texto del usuario va entre etiquetas como dato, timeout por llamada.
+- **Evals:** 10 notas en `evals/notes.json` (6 ES, 4 EN) con las etiquetas esperadas y palabras que el resumen
+  debe mencionar. Métricas: etiquetas correctas, resumen en el idioma de la nota, costo medio. Umbral en el
+  propio harness: ≥ 0,9 de etiquetas correctas.
+- **Costo esperado:** ~USD 0,0003 por resumen; la corrida de evals completa, unos USD 0,005.
 
 ## 6. Señales senior
 
 | Señal | Dónde se ve |
 |---|---|
-| Regla de dependencia verificada | `App.Architecture.Tests` |
-| Costo de IA medido y con tope | `CostTrackingChatClient`, `SpendCapChatClient`, dashboard de Aspire |
-| Evals que bloquean el merge | job `evals` en CI con `thresholds.json` |
-| Observabilidad de punta a punta | OTel en API, EF y LLM; trazas en el dashboard de Aspire |
-| Sin dependencias comerciales | ADR-001 de licencias |
-| Desarrollo asistido por IA con reglas | `.claude/`, `AGENTS.md` y el bot de review en los PRs |
+| Regla de dependencias verificada | `App.Architecture.Tests` |
+| Costo de IA medido y con tope | `MeteredChatClient`, tabla `ai_usage`, test de integración del tope |
+| Evals con oráculo en CI y corridas versionadas | `evals/`, job del CI |
+| E2E sin key ni costo | `ScriptedChatClient` + Playwright en el CI |
+| Supply chain | regla de dos semanas en NuGet y pnpm, `dependabot.yml` agrupado, solo licencias OSI |
+| Desarrollo asistido por IA con reglas | `AGENTS.md`, `.claude/`, el bot de review en cada PR |
 
 ## 7. ADRs
 
-1. Licencias: Postgres, Valkey; sin MassTransit, MediatR ni AutoMapper.
-2. Vertical slices sobre Clean Architecture, sin mediador.
-3. Microsoft.Extensions.AI como puerto: por qué no Semantic Kernel (más superficie de la necesaria aquí).
-4. Embeddings en proceso con ONNX: por qué no una API de embeddings de pago ni un sidecar.
-5. Aspire para desarrollo y Docker Compose para quien no tiene .NET.
+1. Licencias: solo OSI; Postgres; sin MediatR, AutoMapper ni MassTransit.
+2. Vertical slices sobre capas, sin mediador.
+3. Microsoft.Extensions.AI como puerto, con el adaptador oficial de Anthropic.
+4. El costo se mide en cada llamada y el tope se aplica antes de llamar (por qué en Postgres y no en Valkey).
+5. Evals: oráculo gratis en CI y corridas pagadas a mano con guarda del ledger.
 
 ## 8. Tests
 
-- **Arquitectura:** `TngTech.ArchUnitNET.xUnit` 0.13.4. Comprueba que Domain no depende de nada, que
-  Application no depende de Infrastructure ni de Api, y que no hay referencias a `Microsoft.EntityFrameworkCore`
-  fuera de Infrastructure.
-- **Integración:** `Testcontainers.PostgreSql` 4.16.0 con la imagen `pgvector/pgvector`, fijada por tag y nunca
-  `latest`.
-- **Puerto de IA:** un `FakeChatClient` determinístico para los tests de Application. En los de integración,
-  los adaptadores reales no se llaman: Claude solo corre en el job de evals, con un secret.
-- **E2E:** `Microsoft.Playwright` 1.63.0 o `@playwright/test` desde `web/`.
-- **Middleware de costo:** test unitario del cálculo y test de integración del tope (Valkey real con
-  Testcontainers).
+- **Dominio y aplicación:** puros, con puertos falsos.
+- **Arquitectura:** ArchUnitNET (Domain solo NodaTime; Application sin Infrastructure ni Api; EF solo en Infrastructure).
+- **Integración:** Testcontainers con Postgres 18 fijado por tag + WebApplicationFactory; el tope de gasto con
+  un `ai_usage` precargado.
+- **Evals:** el oráculo corre el harness completo con respuestas de referencia.
+- **E2E:** Playwright con el cliente guionado: crear nota, resumir, ver etiquetas y costo.
 
-## 9. Hosting
+## 9. Demo
 
-Script `deploy/azure/deploy.sh`: crea el Container App con `min-replicas 0`, define los secrets
-(`ANTHROPIC_API_KEY` y la connection string de Neon) y el health probe. El README de `deploy/` documenta el
-free tier y el cold start. **Límite de gasto** en la consola de Anthropic, configurado a mano y anotado en el
-README.
+Video corto y capturas del ejemplo, grabados con el mismo grabador de P3 y P4, para el README y el portfolio.
+Sin demo pública: es un template.
 
 ## 10. Plan día a día
 
 | Día | Trabajo |
 |---|---|
-| 1 | Solución, capas, AppHost, ServiceDefaults, `compose.yaml`, slice `Notes`, ArchUnitNET, `.editorconfig` con analizadores, `AGENTS.md` y `CLAUDE.md` |
-| 2 | Puerto de IA: adaptadores Claude, Ollama y ONNX; `CostTracking` y `SpendCap`; tabla `ai_usage`; proyecto `App.Evals` con un eval de ejemplo |
-| 3 | CI/CD (build, test, evals, GHCR, CodeQL, Dependabot), `.claude/` completo, esqueleto `web/`, script de Azure, marcar el repo como template |
+| 1 | Repo y regla de versiones verificada ese día; solución en capas, AppHost, ServiceDefaults; slice `Notes`; ArchUnitNET; integración con Testcontainers; `AGENTS.md`, `CLAUDE.md`; CI build/format/tests |
+| 2 | Puerto de IA: adaptador Anthropic, `MeteredChatClient`, `ai_usage`, tope; `ScriptedChatClient`; slice `Summarize`; `App.Evals` con oráculo y corrida pagada; ADRs |
+| 3 | Web (notas, ES/EN), E2E en el CI, grabador de demo; `.claude/` completo; `scripts/rename.mjs` probado creando un repo desde el template; README con su arte; marcar como template; portfolio |
 
 ## 11. GitHub metadata
 
-- **Descripción:** "Production-ready .NET 10 + AI template: Clean Architecture, Microsoft.Extensions.AI with Claude/Ollama, cost tracking & spend caps, evals in CI, Aspire, Testcontainers."
-- **Topics:** `dotnet`, `csharp`, `aspnetcore`, `clean-architecture`, `vertical-slice-architecture`, `microsoft-extensions-ai`, `claude`, `anthropic`, `ollama`, `llm`, `evals`, `aspire`, `postgresql`, `pgvector`, `testcontainers`, `opentelemetry`, `template`
+- **Descripción:** "Production-ready .NET 10 + AI template: layered vertical slices, Microsoft.Extensions.AI with Claude, cost tracking & spend caps, evals in CI, Aspire, Testcontainers, Next.js + Playwright."
+- **Topics:** `dotnet`, `csharp`, `aspnetcore`, `clean-architecture`, `vertical-slice-architecture`, `microsoft-extensions-ai`, `claude`, `anthropic`, `llm`, `evals`, `aspire`, `postgresql`, `testcontainers`, `opentelemetry`, `nextjs`, `playwright`, `template`
+- **Paleta del README (propuesta):** pizarra `#334155` · lima `#84cc16` · ámbar `#f59e0b`, que no repite las de P1-P4.
 
-Este repo **no** lleva ficha de Workana propia: se menciona en las de los 4 proyectos.
+Este repo **no** lleva ficha de Workana: se menciona en las de los cuatro proyectos.
 
-### `.claude/` del template (lo que heredan los 4)
+### `.claude/` del template
 
 ```
-AGENTS.md                         stack fijado, regla de dependencias, constantes, pirámide de tests, gate
+AGENTS.md                         stack fijado, regla de versiones, dependencias, sin magic strings, ledger
 CLAUDE.md                         @AGENTS.md
 .claude/
-  settings.json                   permisos (dotnet build/test/format, docker compose) y hooks
-  rules/
-    code-style.md                 C# 14, tabs, nullable, sin magic strings
-    testing.md                    qué test va en qué proyecto; nada se cierra sin correrlo
-    api-conventions.md            Minimal APIs, ProblemDetails, idempotency keys, versionado
-    ai.md                         modelos por config, prompts como archivos, todo cambio de prompt pasa por evals
-  skills/
-    add-endpoint/SKILL.md         /add-endpoint <Entity> <Action>: slice + validación + test de integración + build/test
-    add-eval-case/SKILL.md        /add-eval-case: añade un caso al golden set y corre los evals
-  agents/
-    code-reviewer.md              revisa contra rules/
-    security-auditor.md           OWASP API Top 10 + prompt injection
-  hooks/
-    format.sh                     PostToolUse Edit|Write en *.cs → dotnet format --include <archivo>
+  settings.json                   permisos (dotnet build/test/format, pnpm lint/typecheck) y el hook
+  rules/      code-style.md · testing.md · api-conventions.md · ai.md
+  skills/     add-endpoint/SKILL.md · add-eval-case/SKILL.md
+  agents/     code-reviewer.md · security-auditor.md
+  hooks/      format.sh (PostToolUse sobre *.cs → dotnet format whitespace --include <archivo>)
 ```
 
-Además, el workflow `.github/workflows/review.yml` usa `juxn89/claude-pr-review-bot` en cada PR.
+## 12. Verificación / terminado
 
-## 12. Verificación
+- `dotnet build` (warnings como errores) y `dotnet test` en verde; el oráculo de evals en verde.
+- El AppHost arranca y el dashboard muestra la traza de un resumen con la llamada a Claude.
+- Con `DailyBudgetUsd` mínimo, la segunda llamada devuelve 503 `ai.daily_budget`; está cubierto por un test.
+- La corrida pagada de evals pasa el umbral y queda en el ledger.
+- Un repo creado desde el template y renombrado con `scripts/rename.mjs` pasa su CI sin tocar nada.
+- Editar un `.cs` con Claude Code dispara el hook de formato, y un PR recibe la review del bot.
+- README revisado en GitHub en los dos temas; entrada en el portfolio publicada; recursos Docker del template
+  borrados al cerrar.
 
-- `dotnet build -warnaserror` y `dotnet test` en verde. El AppHost arranca y el dashboard muestra trazas de
-  una llamada a `/notes`.
-- `docker compose -f deploy/compose.yaml up --wait` → `curl /health` responde 200.
-- Con `DailyBudgetUsd = 0.0001`, la segunda llamada de IA devuelve el 429 con ProblemDetails.
-- `dotnet run --project tests/App.Evals` escribe resultados y falla si se baja el umbral a propósito.
-- Crear un repo desde el template y comprobar que el CI del repo nuevo pasa sin tocar nada.
-- Editar un `.cs` con Claude Code dispara el hook de formato, y un PR de prueba recibe la review del bot.
+## Versiones
+
+Se verifican el día 1 contra api.nuget.org y npm (al menos dos semanas desde su publicación, licencia OSI) y se
+anotan con fecha en `Directory.Packages.props` y `web/package.json`.
