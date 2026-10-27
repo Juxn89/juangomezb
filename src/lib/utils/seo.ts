@@ -77,6 +77,8 @@ export function generateSEOMetadata({
 			languages: {
 				en: `${baseUrl}/en${path}`,
 				es: `${baseUrl}/es${path}`,
+				// For searchers in any other language, English is the fallback.
+				'x-default': `${baseUrl}/en${path}`,
 			},
 		},
 		verification: {
