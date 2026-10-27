@@ -9,4 +9,5 @@ export function getSiteUrl(): string {
 	return process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL;
 }
 
-export const FEATURED_PROJECTS_LIMIT = 4;
+/** A multiple of the grid's 2 and 3 columns, so the home section never ends on a half-empty row. */
+export const FEATURED_PROJECTS_LIMIT = 6;
