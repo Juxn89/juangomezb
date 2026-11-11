@@ -6,10 +6,12 @@ on:
   pull_request:
     branches: [main, develop]
 
+# Pinned to ubuntu-24.04: ubuntu-latest moved to 26.04, and Playwright has no Chromium build for it yet
+# (checked up to 1.65.0 on 11 Nov 2026). Go back to ubuntu-latest once it has one.
 jobs:
   test-and-build:
     name: Test & Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
