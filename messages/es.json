@@ -805,7 +805,7 @@
 	"about": {
 		"title": "Acerca de Mí",
 		"subtitle": "Conóceme mejor",
-		"bio": "Ingeniero de Software Senior con más de 15 años construyendo y modernizando sistemas .NET para empresas multinacionales y el sector público. Hoy combino esa base con IA generativa: en The Stepstone Group desarrollé, en un equipo de dos personas, un asistente de IA para crear ofertas de empleo, en producción desde mediados de 2026, y en mis proyectos construyo asistentes con RAG que citan sus fuentes, servidores MCP para agentes y revisión de código con Claude, todo medido con evaluaciones de calidad y de costo. Trabajo de punta a punta, desde la arquitectura y el backend hasta el frontend, el CI/CD y la nube, y lidero equipos con prácticas ágiles.",
+		"bio": "Ingeniero de Software Senior con más de 15 años construyendo y modernizando sistemas .NET para empresas multinacionales y el sector público. Hoy combino esa base con IA generativa: en The Stepstone Group co-desarrollé, en un equipo de dos personas, un asistente de IA para crear ofertas de empleo, en producción desde mediados de 2026, y en mis proyectos construyo asistentes con RAG que citan sus fuentes, servidores MCP para agentes y revisión de código con Claude, todo medido con evaluaciones de calidad y de costo. Trabajo de punta a punta, desde la arquitectura y el backend hasta el frontend, el CI/CD y la nube, y lidero equipos con prácticas ágiles.",
 		"bioTitle": "Resumen Profesional",
 		"downloadCV": "Descargar CV",
 		"skillsTitle": "Habilidades Técnicas",
@@ -844,13 +844,11 @@
 				"location": "Nicaragua (Remoto)",
 				"description": "Líder técnico y desarrollador de plataformas de reclutamiento digital para 6 marcas internacionales en Europa, Centroamérica y el Caribe, con impacto en millones de usuarios y miles de empresas.",
 				"achievements": [
-					"Desarrollé, en un equipo de dos personas, un asistente de IA para la creación de ofertas de empleo, de punta a punta: frontend, backend, integración con LLM y evaluaciones; en producción desde mediados de 2026 en Tecoloco, EstasContratado y CaribbeanJobs",
+					"Co-desarrollé, en un equipo de dos personas, un asistente de IA para la creación de ofertas de empleo, de punta a punta: frontend, backend, integración con LLM y evaluaciones (evals); en producción desde mediados de 2026 en Tecoloco, EstasContratado y CaribbeanJobs",
 					"Reduje ~25 % los tiempos de despliegue automatizando el pipeline y migrando a microservicios",
 					"Implementé arquitecturas con microfrontends en ReactJS, microservicios en .NET y colas de mensajería, mejorando la escalabilidad y la mantenibilidad",
 					"Aseguré alta disponibilidad y rendimiento de los servicios en AWS",
-					"Trabajo con GitHub Copilot y Claude Code a diario para acelerar el desarrollo",
-					"Renové la experiencia de usuario y el look & feel de varias marcas",
-					"Entregué funcionalidades de negocio, resolví bugs críticos y actualicé los modelos de precios según la estrategia de la empresa"
+					"Trabajo con GitHub Copilot y Claude Code a diario para acelerar el desarrollo"
 				],
 				"technologies": [".NET", "ReactJS", "LLM", "Evaluaciones", "Microservicios", "Microfrontends", "AWS", "Colas de Mensajería"]
 			},
@@ -877,8 +875,7 @@
 				"achievements": [
 					"Mejoré ~15 % la eficiencia operativa automatizando procesos que antes eran manuales",
 					"Reduje ~20 % los tiempos de carga y mejoré la usabilidad de la plataforma con ExtJS y optimización de rendimiento",
-					"Diseñé e implementé los cálculos de pólizas de seguros, con grandes volúmenes de datos y reglas de negocio complejas",
-					"Desarrollé funcionalidades críticas para el negocio y corregí bugs junto a equipos multifuncionales, cuidando la confiabilidad del sistema"
+					"Diseñé e implementé los cálculos de pólizas de seguros, con grandes volúmenes de datos y reglas de negocio complejas"
 				],
 				"technologies": ["ExtJS", "JavaScript", ".NET", "Optimización de Rendimiento", "Automatización"]
 			},
@@ -902,23 +899,22 @@
 				"position": "Desarrollador de Software",
 				"period": "Abr 2017 - Abr 2019",
 				"location": "Nicaragua",
-				"description": "Desarrollé y mantuve soluciones de software para las 153 municipalidades de Nicaragua, soportando operaciones críticas del sector público con tecnologías .NET.",
+				"description": "Desarrollé y mantuve software en .NET para los sistemas que el INIFOM ofrece a las municipalidades de Nicaragua, apoyando operaciones críticas del sector público.",
 				"achievements": [
-					"Lideré la adopción de Team Foundation Server (TFS) para el control de versiones del equipo",
-					"Administré servidores e infraestructura: IIS, SQL Server, Reporting Services y TFS"
+					"Administré servidores e infraestructura: IIS, SQL Server y Reporting Services"
 				],
-				"technologies": [".NET", ".NET Framework", "TFS", "IIS", "SQL Server"]
+				"technologies": [".NET", ".NET Framework", "IIS", "SQL Server"]
 			},
 			{
 				"id": 6,
 				"company": "Procuraduría General de la República",
 				"position": "Desarrollador de Software",
 				"period": "Mar 2014 - Abr 2017",
-				"location": "Nicaragua / Panamá",
-				"description": "Lideré el desarrollo e implementación del sistema catastral para los 153 gobiernos municipales a nivel nacional, permitiendo la gestión eficiente de información territorial y de propiedades a escala nacional.",
+				"location": "Nicaragua",
+				"description": "Desarrollé la aplicación con la que las municipalidades de Nicaragua calculan el Impuesto sobre Bienes Inmuebles (IBI): el monto que cada contribuyente debe pagar.",
 				"achievements": [
-					"Integré el catastro municipal (SISCAT, INIFOM) con el catastro físico (SISCAF, INETER) para administrar las propiedades municipales de forma centralizada",
-					"Coordiné la migración de los datos de contribuyentes de SISCAT al sistema financiero (SIAFI) en todas las municipalidades, mejorando la recaudación y la trazabilidad"
+					"Integré el SISCAF (Sistema de Catastro Físico, del INETER) dentro del SISCAT (Sistema de Catastro municipal, del INIFOM), para administrar los predios municipales en un solo lugar",
+					"Coordiné la migración de los datos de contribuyentes del SISCAT al SIAFI (Sistema Administrativo Financiero municipal) en todas las municipalidades, mejorando la recaudación y la trazabilidad"
 				],
 				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "Integración de Sistemas"]
 			},
@@ -930,10 +926,22 @@
 				"location": "Nicaragua",
 				"description": "Desarrollé sistemas administrativos y de planificación basados en web para operaciones del gobierno municipal.",
 				"achievements": [
-					"Desarrollé en ASP MVC los sistemas web de Planificación Estratégica y de Formulación de Proyectos, para gestionar planes y proyectos institucionales",
+					"Desarrollé en ASP.NET MVC los sistemas web de Planificación Estratégica y de Formulación de Proyectos, para gestionar planes y proyectos institucionales",
 					"Migré el Sistema de Formulación de Proyectos de escritorio a web, haciéndolo más accesible y colaborativo"
 				],
-				"technologies": ["ASP MVC", ".NET", "Desarrollo Web"]
+				"technologies": ["ASP.NET MVC", ".NET", "Desarrollo Web"]
+			},
+			{
+				"id": 8,
+				"company": "ESConsultores S.A.",
+				"position": "Pasante de Desarrollo de Software",
+				"period": "Ene 2011 - Ago 2011",
+				"location": "Nicaragua",
+				"description": "Mantuve y optimicé el Sistema HIDROMET del Banco de Datos del INETER (datos hidrometeorológicos), con Oracle Forms 6i.",
+				"achievements": [
+					"Desarrollé reportes a medida para HIDROMET con Oracle Reports 6i, para el análisis de datos hidrometeorológicos"
+				],
+				"technologies": ["Oracle Forms", "Oracle Reports", "Oracle Database"]
 			}
 		]
 	},
