@@ -51,3 +51,6 @@ next-env.d.ts
 
 # Workana form images, generated (see each workana.md)
 docs/workana/*/formulario/
+
+# Claude Code local settings
+.claude/settings.local.json
