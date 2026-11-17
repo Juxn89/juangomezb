@@ -2,7 +2,7 @@
 
 import {useTranslations, useLocale} from 'next-intl';
 import {motion} from 'framer-motion';
-import {Download, Code, Database, Cloud, Layers, GitBranch, Zap, Package, Network, Sparkles} from 'lucide-react';
+import {Download, Code, Database, Cloud, Layers, GitBranch, Zap, Package, Sparkles} from 'lucide-react';
 import {cn} from '@/lib/utils/cn';
 
 export function AboutSection() {
@@ -38,7 +38,6 @@ export function AboutSection() {
 		// Cloud (Uso frecuente)
 		{name: 'Azure', category: 'cloud', icon: Cloud},
 		{name: 'AWS', category: 'cloud', icon: Cloud},
-		{name: 'Kubernetes', category: 'cloud', icon: Network},
 		// Frontend & Architecture
 		{name: 'Tailwind CSS', category: 'frontend', icon: Code},
 		{name: 'Microfrontends', category: 'architecture', icon: Layers},

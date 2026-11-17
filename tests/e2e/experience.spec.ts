@@ -21,7 +21,7 @@ test.describe('Experience', () => {
 		const hidden = role.getByText('Ensured high availability and performance of services on AWS');
 		await expect(hidden).toBeHidden();
 
-		const toggle = role.getByRole('button', {name: 'Show 5 more achievements'});
+		const toggle = role.getByRole('button', {name: 'Show 3 more achievements'});
 		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 		// A click before hydration does nothing; retry until the list opens.
 		await expect(async () => {
