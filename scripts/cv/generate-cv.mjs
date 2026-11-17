@@ -98,7 +98,7 @@ function renderHtml(locale, cv, jobs) {
 
 	<h2>${escape(cv.headings.projects)}</h2>
 	<p class="note">${escape(cv.projectsNote)}</p>
-	<ul class="projects">${cv.projects.map(([name, text]) => `<li><b>${escape(name)}</b>: ${escape(text)}</li>`).join('')}</ul>
+	<ul class="projects">${cv.projects.map(([name, text]) => `<li><b>${escape(name)}</b>: ${escape(text).replaceAll('USD ', 'USD&nbsp;')}</li>`).join('')}</ul>
 
 	<h2>${escape(cv.headings.education)}</h2>
 	<div class="row"><span><b>${escape(cv.education.degree)}</b>, ${escape(cv.education.school)}</span><span class="period">${escape(cv.education.period)}</span></div>
