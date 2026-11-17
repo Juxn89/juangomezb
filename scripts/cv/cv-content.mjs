@@ -1,0 +1,87 @@
+// What the CV says beyond the site's experience section (messages/<locale>.json → experience.jobs).
+// Keep it in step with the LinkedIn profile: same facts, same figures, no unsourced numbers.
+
+const contact = {
+	email: 'gb.jc@outlook.com',
+	links: [
+		{label: 'linkedin.com/in/jcgomez89', href: 'https://www.linkedin.com/in/jcgomez89/'},
+		{label: 'github.com/Juxn89', href: 'https://github.com/Juxn89'},
+		{label: 'juangomezb.com', href: 'https://www.juangomezb.com'},
+		{label: 'dev.to/jgomezdev', href: 'https://dev.to/jgomezdev'},
+	],
+};
+
+export const cvContent = {
+	en: {
+		name: 'Juan Gómez',
+		title: 'Senior Software Engineer · .NET + Generative AI',
+		location: 'Managua, Nicaragua · Remote',
+		contact,
+		headings: {
+			summary: 'Summary',
+			experience: 'Experience',
+			projects: 'Selected AI projects',
+			education: 'Education',
+			skills: 'Skills',
+			languages: 'Languages',
+		},
+		summary:
+			'Senior Software Engineer with 15+ years building .NET and React systems, now shipping generative AI that is measured: large language model (LLM) applications, Retrieval-Augmented Generation (RAG) and AI agents, each with evals, guardrails and a known cost per request. Technical lead at The Stepstone Group for recruitment platforms across 6 brands in Europe, Central America and the Caribbean, where I co-built an AI assistant for job ads that is in production. Open to remote Senior Software Engineer and AI Engineer roles.',
+		projectsNote: 'Personal projects, public code at github.com/Juxn89; case studies at juangomezb.com.',
+		projects: [
+			['booking-agent', 'Appointments booked by chat; 28/28 test conversations ended as expected, 0 bookings confirmed by the AI. .NET, Claude, PostgreSQL.'],
+			['docs-assistant', 'RAG support assistant; 98% retrieval hit@5 on a 54-question bilingual eval, 12/12 prompt-injection attacks resisted. .NET, pgvector, Claude.'],
+			['invoice-extractor', 'Invoices read by AI and checked by accounting rules; 0 of 42 false auto-approvals. .NET, Claude, .NET Aspire.'],
+			['data-chat', 'Plain-language questions over sales data; 75/75 questions answered with the right figures; the AI never writes SQL. .NET, Claude, PostgreSQL.'],
+		],
+		education: {
+			degree: 'Bachelor of Engineering, Systems Engineering',
+			school: 'Universidad Centroamericana (UCA), Managua',
+			period: '2007 – 2011',
+		},
+		skills: [
+			['AI', 'LLM applications, RAG, AI agents, evals, guardrails, Claude (Anthropic), MCP, pgvector, Microsoft.Extensions.AI, prompt engineering, GitHub Copilot, Claude Code'],
+			['Backend', 'C#, .NET, ASP.NET Core, Entity Framework Core, .NET Aspire, Node.js, NestJS, GraphQL, REST APIs, microservices, backend for frontend (BFF)'],
+			['Frontend', 'React, Next.js, TypeScript, JavaScript, Angular, microfrontends, ExtJS'],
+			['Cloud & data', 'AWS (Lambda, SQS), Azure, Docker, Kubernetes, CI/CD, PostgreSQL, SQL Server, MongoDB'],
+			['Practices', 'Software architecture, technical leadership, agile, unit and integration testing, SOLID, Clean Code'],
+		],
+		languages: 'Spanish (native), English (B2, professional working proficiency)',
+	},
+	es: {
+		name: 'Juan Gómez',
+		title: 'Ingeniero de Software Senior · .NET + IA Generativa',
+		location: 'Managua, Nicaragua · Remoto',
+		contact,
+		headings: {
+			summary: 'Resumen',
+			experience: 'Experiencia',
+			projects: 'Proyectos de IA destacados',
+			education: 'Formación',
+			skills: 'Habilidades',
+			languages: 'Idiomas',
+		},
+		summary:
+			'Ingeniero de Software Senior con más de 15 años construyendo sistemas en .NET y React, y ahora llevando a producción IA generativa que se mide: aplicaciones con modelos de lenguaje de gran tamaño (LLM), generación aumentada por recuperación (RAG) y agentes de IA, cada una con evaluaciones, salvaguardas y un costo por consulta conocido. Líder técnico en The Stepstone Group de plataformas de reclutamiento para 6 marcas en Europa, Centroamérica y el Caribe, donde desarrollé, en un equipo de dos personas, un asistente de IA para ofertas de empleo que está en producción. Abierto a roles remotos de Ingeniero de Software Senior e Ingeniero de IA.',
+		projectsNote: 'Proyectos personales, con el código público en github.com/Juxn89; casos de estudio en juangomezb.com.',
+		projects: [
+			['booking-agent', 'Citas reservadas por chat; 28 de 28 conversaciones de prueba terminaron como se esperaba y la IA no confirmó ninguna reserva. .NET, Claude, PostgreSQL.'],
+			['docs-assistant', 'Asistente de soporte con RAG; 98 % de hit@5 en una evaluación bilingüe de 54 preguntas y 12 de 12 ataques de prompt injection resistidos. .NET, pgvector, Claude.'],
+			['invoice-extractor', 'Facturas leídas por IA y revisadas con reglas contables; 0 de 42 aprobaciones automáticas falsas. .NET, Claude, .NET Aspire.'],
+			['data-chat', 'Preguntas en lenguaje natural sobre datos de ventas; 75 de 75 respondidas con la cifra correcta, sin que la IA escriba SQL. .NET, Claude, PostgreSQL.'],
+		],
+		education: {
+			degree: 'Ingeniería en Sistemas (título de ingeniero)',
+			school: 'Universidad Centroamericana (UCA), Managua',
+			period: '2007 – 2011',
+		},
+		skills: [
+			['IA', 'Aplicaciones con LLM, RAG, agentes de IA, evaluaciones, salvaguardas, Claude (Anthropic), MCP, pgvector, Microsoft.Extensions.AI, prompt engineering, GitHub Copilot, Claude Code'],
+			['Backend', 'C#, .NET, ASP.NET Core, Entity Framework Core, .NET Aspire, Node.js, NestJS, GraphQL, APIs REST, microservicios, backend for frontend (BFF)'],
+			['Frontend', 'React, Next.js, TypeScript, JavaScript, Angular, microfrontends, ExtJS'],
+			['Nube y datos', 'AWS (Lambda, SQS), Azure, Docker, Kubernetes, CI/CD, PostgreSQL, SQL Server, MongoDB'],
+			['Prácticas', 'Arquitectura de software, liderazgo técnico, metodologías ágiles, pruebas unitarias y de integración, SOLID, Clean Code'],
+		],
+		languages: 'Español (nativo), inglés (B2, competencia profesional)',
+	},
+};
