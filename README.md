@@ -104,27 +104,25 @@ flowchart LR
     subgraph APP["Next.js App Router"]
         PAGE["Pages<br/>Server Components"]
         REVAL["/api/revalidate"]
-        CV["/api/download-cv"]
+        CV["/api/download-cv<br/>PDFs from public/resume"]
     end
 
     subgraph EXT["External services"]
         DEVTO[("DEV.to API")]
         GH[("GitHub GraphQL")]
-        BLOB[("Vercel Blob")]
     end
 
     EDGE --> PAGE & REVAL & CV
     PAGE -->|"ISR · 30 min"| DEVTO
     PAGE --> GH
     REVAL -.->|purges cache| PAGE
-    CV --> BLOB
 
     classDef edge fill:#047857,stroke:#10b981,color:#ffffff
     classDef app fill:#6d28d9,stroke:#a78bfa,color:#ffffff
     classDef ext fill:#f59e0b,stroke:#b45309,color:#1f2937
     class EDGE edge
     class PAGE,REVAL,CV app
-    class DEVTO,GH,BLOB ext
+    class DEVTO,GH ext
 ```
 
 > [!TIP]
