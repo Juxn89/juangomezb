@@ -17,7 +17,7 @@ describe('generateSEOMetadata', () => {
 	it('builds a full title with name suffix', () => {
 		const meta = generateSEOMetadata({title: 'Home', description: 'Desc', locale: 'en'});
 		expect(String(meta.title)).toContain('Home');
-		expect(String(meta.title)).toContain('Juan Carlos Gómez');
+		expect(String(meta.title)).toContain('Juan Gómez');
 	});
 
 	it('does not duplicate name when title already contains it', () => {
@@ -72,7 +72,7 @@ describe('generatePersonSchema', () => {
 
 	it('contains the correct name', () => {
 		const schema = generatePersonSchema();
-		expect(schema.name).toBe('Juan Carlos Gómez Bermúdez');
+		expect(schema.name).toBe('Juan Gómez');
 	});
 
 	it('contains the site URL', () => {

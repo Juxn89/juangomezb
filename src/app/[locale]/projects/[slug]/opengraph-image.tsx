@@ -32,6 +32,6 @@ export default async function Image({params}: Params) {
 		title: project.title,
 		subtitle: project.tagline,
 		metrics: project.metrics,
-		footer: 'Juan Carlos Gómez',
+		footer: 'Juan Gómez',
 	});
 }
