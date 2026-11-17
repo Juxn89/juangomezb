@@ -22,6 +22,6 @@ export default async function Image({params}: Params) {
 		eyebrow: share('role'),
 		title: t('index.title'),
 		subtitle: t('subtitle'),
-		footer: 'Juan Carlos Gómez',
+		footer: 'Juan Gómez',
 	});
 }

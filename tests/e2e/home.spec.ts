@@ -7,7 +7,8 @@ test.describe('Home Page', () => {
 
 	test('hero section is visible with name and greeting', async ({page}) => {
 		await expect(page.getByText("Hi, I'm")).toBeVisible();
-		await expect(page.getByRole('heading', {name: 'Juan Gómez'})).toBeVisible();
+		// Level 1: the footer repeats the name in its own heading.
+		await expect(page.getByRole('heading', {level: 1, name: 'Juan Gómez'})).toBeVisible();
 	});
 
 	test('profile photo is visible', async ({page}) => {

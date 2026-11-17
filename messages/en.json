@@ -9,7 +9,7 @@
 	},
 	"projects": {
 		"title": "Featured Projects",
-		"subtitle": "Open-source .NET and AI systems, with the numbers measured in public",
+		"subtitle": ".NET and AI systems, with the code and the numbers in public",
 		"viewDemo": "View Demo",
 		"viewCode": "View Code",
 		"viewCaseStudy": "Read the case study",
@@ -20,7 +20,7 @@
 		"empty": "The projects are being updated. In the meantime, everything is on GitHub.",
 		"moreOnGitHub": "More on GitHub",
 		"kind": {
-			"oss": "Open source",
+			"oss": "Public code",
 			"case-study": "Case study"
 		},
 		"status": {
@@ -30,7 +30,7 @@
 		},
 		"index": {
 			"metaTitle": "Projects",
-			"metaDescription": "Open-source .NET and AI projects by Juan Carlos Gómez: a RAG support assistant, an MCP server and a Claude pull request reviewer, each with measured results.",
+			"metaDescription": ".NET and AI projects by Juan Gómez, with public code: a RAG support assistant, an MCP server and a Claude pull request reviewer, each with measured results.",
 			"title": "Projects",
 			"subtitle": "Each one solves a real problem end to end, and every number on these pages comes from a test or an eval in its repository."
 		},
@@ -750,7 +750,7 @@
 		"role": "Senior Software Engineer",
 		"tagline": ".NET, cloud and AI systems, with the results measured in public",
 		"caseStudy": "Case study",
-		"alt": "Juan Carlos Gómez, Senior Software Engineer"
+		"alt": "Juan Gómez, Senior Software Engineer"
 	},
 	"contact": {
 		"title": "Get In Touch",
@@ -766,7 +766,7 @@
 		"form": {
 			"title": "Send a Message",
 			"name": "Your Name",
-			"namePlaceholder": "Juan Carlos Gómez",
+			"namePlaceholder": "Juan Gómez",
 			"email": "Your Email",
 			"emailPlaceholder": "juan@example.com",
 			"message": "Your Message",
@@ -805,7 +805,7 @@
 	"about": {
 		"title": "About Me",
 		"subtitle": "Get to know me better",
-		"bio": "Senior Software Engineer with 15+ years building and modernizing .NET systems for multinational companies and the public sector. Today I pair that foundation with applied AI: RAG assistants that cite their sources, MCP servers for agents and Claude-powered code review, each measured with quality and cost evals. I work end to end, from architecture and backend to frontend, CI/CD and the cloud, and I lead teams with agile practices.",
+		"bio": "Senior Software Engineer with 15+ years building and modernizing .NET systems for multinational companies and the public sector. Today I pair that foundation with generative AI: at The Stepstone Group I co-built, in a team of two, an AI assistant for creating job ads, in production since mid-2026, and in my own projects I build RAG assistants that cite their sources, MCP servers for agents and Claude-powered code review, each measured with quality and cost evals. I work end to end, from architecture and backend to frontend, CI/CD and the cloud, and I lead teams with agile practices.",
 		"bioTitle": "Professional Summary",
 		"downloadCV": "Download CV",
 		"skillsTitle": "Technical Skills",
@@ -839,22 +839,37 @@
 			{
 				"id": 1,
 				"company": "The Stepstone Group",
-				"position": "Software Engineer",
-				"period": "Jan 2022 - Present",
+				"position": "Senior Software Engineer",
+				"period": "Jan 2025 - Present",
 				"location": "Nicaragua (Remote)",
-				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands (UK, Germany, Ireland, Central America, and the Caribbean), impacting millions of users and thousands of companies.",
+				"description": "Technical lead and developer for digital recruitment platforms across 6 international brands in Europe, Central America and the Caribbean, impacting millions of users and thousands of companies.",
 				"achievements": [
+					"Co-built, in a team of two, an AI assistant for creating job ads, end to end: frontend, backend, LLM integration and evals; in production since mid-2026 on Tecoloco, EstasContratado and CaribbeanJobs",
 					"Cut deployment times by ~25% by automating the pipeline and migrating to microservices",
 					"Implemented architectures with ReactJS microfrontends, .NET microservices and messaging queues, improving scalability and maintainability",
 					"Ensured high availability and performance of services on AWS",
-					"Refreshed the user experience and look & feel of several brands, with positive feedback from users and stakeholders",
+					"Work with GitHub Copilot and Claude Code every day to speed up development",
+					"Refreshed the user experience and look & feel of several brands",
 					"Delivered business features, fixed critical bugs and updated pricing models in line with company strategy"
 				],
-				"technologies": ["ReactJS", ".NET", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
+				"technologies": [".NET", "ReactJS", "LLM", "Evals", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
 			},
 			{
 				"id": 2,
-				"company": "Axxis-Systems",
+				"company": "The Stepstone Group",
+				"position": "Senior .NET Developer",
+				"period": "Jan 2022 - Dec 2024",
+				"location": "Nicaragua (Remote)",
+				"description": "Built and improved the job-seeker platforms of Totaljobs (UK), Stepstone.de (Germany), CaribbeanJobs (Caribbean) and Tecoloco (Central America), with React front ends and .NET microservices.",
+				"achievements": [
+					"Built a React microfrontend for completing the job-seeker profile, with its .NET backend for frontend (BFF)",
+					"Built a CV parser that fills in the profile from the uploaded CV, processed asynchronously with AWS Lambda and Amazon SQS"
+				],
+				"technologies": ["ReactJS", ".NET", "Microfrontends", "BFF", "AWS Lambda", "Amazon SQS"]
+			},
+			{
+				"id": 3,
+				"company": "Axxis Systems",
 				"position": ".NET Developer",
 				"period": "Jun 2020 - Dec 2021",
 				"location": "Nicaragua (Remote)",
@@ -868,22 +883,34 @@
 				"technologies": ["ExtJS", "JavaScript", ".NET", "Performance Optimization", "Automation"]
 			},
 			{
-				"id": 3,
+				"id": 4,
 				"company": "INIFOM",
 				"position": "Team Leader",
-				"period": "Apr 2017 - Jun 2020",
+				"period": "Apr 2019 - Jun 2020",
+				"location": "Nicaragua",
+				"description": "Led a team of 5 developers building new features on INIFOM's systems, which serve Nicaragua's 153 municipalities.",
+				"achievements": [
+					"Led the development of the nationwide Single Window system (Ventanilla Única) that simplifies public procedures",
+					"Migrated legacy ASP.NET applications to .NET Core, improving performance, security and maintainability, while keeping the legacy VB 6.0 systems running",
+					"Implemented Team Foundation Server (TFS) for version control and managed the servers: IIS, SQL Server, Reporting Services and TFS"
+				],
+				"technologies": [".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
+			},
+			{
+				"id": 5,
+				"company": "INIFOM",
+				"position": "Software Developer",
+				"period": "Apr 2017 - Apr 2019",
 				"location": "Nicaragua",
 				"description": "Developed and maintained software solutions for all 153 municipalities across Nicaragua, supporting critical public sector operations with .NET technologies.",
 				"achievements": [
-					"Migrated legacy ASP.NET applications to .NET Core, improving performance, security and maintainability",
 					"Led the team's adoption of Team Foundation Server (TFS) for version control",
-					"Managed servers and infrastructure: IIS, SQL Server, Reporting Services and TFS",
-					"Maintained legacy VB 6.0 systems while their gradual modernization moved forward"
+					"Managed servers and infrastructure: IIS, SQL Server, Reporting Services and TFS"
 				],
-				"technologies": [".NET", ".NET Core", "ASP.NET", "VB 6.0", "TFS", "IIS", "SQL Server"]
+				"technologies": [".NET", ".NET Framework", "TFS", "IIS", "SQL Server"]
 			},
 			{
-				"id": 4,
+				"id": 6,
 				"company": "Attorney General's Office",
 				"position": "Software Developer",
 				"period": "Mar 2014 - Apr 2017",
@@ -896,10 +923,10 @@
 				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "System Integration"]
 			},
 			{
-				"id": 5,
+				"id": 7,
 				"company": "Managua's Town Hall",
 				"position": "Web and .NET Developer",
-				"period": "Jan 2010 - Mar 2014",
+				"period": "Jan 2012 - Mar 2014",
 				"location": "Nicaragua",
 				"description": "Developed web-based administrative and planning systems for municipal government operations.",
 				"achievements": [
@@ -922,7 +949,7 @@
 		"viewAll": "View All Articles on Dev.to"
 	},
 	"footer": {
-		"name": "Juan Carlos Gómez",
+		"name": "Juan Gómez",
 		"tagline": "Senior Software Engineer • Managua, Nicaragua",
 		"rights": "All rights reserved",
 		"madeWith": "Made with ❤️, 🤖 & ☕"

@@ -23,7 +23,7 @@ export function generateSEOMetadata({
 	const baseUrl = getSiteUrl();
 	const url = `${baseUrl}/${locale}${path}`;
 	// Avoid duplicating if title already includes full name and "Portfolio"
-	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Carlos Gómez - Senior Software Engineer`;
+	const fullTitle = title.includes('Portfolio') || title.includes('Juan Gómez') ? title : `${title} | Juan Gómez - Senior Software Engineer`;
 
 	// The share images come from the opengraph-image / twitter-image routes; metadataBase makes their URLs absolute.
 	return {
@@ -31,7 +31,7 @@ export function generateSEOMetadata({
 		title: fullTitle,
 		description,
 		keywords: [
-			'Juan Carlos Gómez',
+			'Juan Gómez',
 			'Senior Software Engineer',
 			'Full Stack Developer',
 			'React',
@@ -43,9 +43,9 @@ export function generateSEOMetadata({
 			'Cloud Architecture',
 			'DevOps',
 		],
-		authors: authors ? authors.map((name) => ({name})) : [{name: 'Juan Carlos Gómez Bermúdez'}],
-		creator: 'Juan Carlos Gómez Bermúdez',
-		publisher: 'Juan Carlos Gómez Bermúdez',
+		authors: authors ? authors.map((name) => ({name})) : [{name: 'Juan Gómez'}],
+		creator: 'Juan Gómez',
+		publisher: 'Juan Gómez',
 		robots: {
 			index: true,
 			follow: true,
@@ -61,7 +61,7 @@ export function generateSEOMetadata({
 			title: fullTitle,
 			description,
 			url,
-			siteName: 'Juan Carlos Gómez - Portfolio',
+			siteName: 'Juan Gómez - Portfolio',
 			locale: locale === 'en' ? 'en_US' : 'es_ES',
 			type,
 			...(publishedTime && {publishedTime}),
@@ -103,7 +103,7 @@ export function generatePersonSchema() {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Person',
-		name: 'Juan Carlos Gómez Bermúdez',
+		name: 'Juan Gómez',
 		alternateName: 'Juan Gomez',
 		url: baseUrl,
 		image: `${baseUrl}/images/profile_photo.png`,
@@ -147,7 +147,7 @@ export function generateWebSiteSchema(locale: 'en' | 'es') {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'WebSite',
-		name: 'Juan Carlos Gómez - Portfolio',
+		name: 'Juan Gómez - Portfolio',
 		alternateName: 'Juan Gomez Portfolio',
 		url: baseUrl,
 		description:
@@ -157,7 +157,7 @@ export function generateWebSiteSchema(locale: 'en' | 'es') {
 		inLanguage: locale === 'en' ? 'en-US' : 'es-ES',
 		author: {
 			'@type': 'Person',
-			name: 'Juan Carlos Gómez Bermúdez',
+			name: 'Juan Gómez',
 		},
 		potentialAction: {
 			'@type': 'SearchAction',
@@ -212,7 +212,7 @@ export function generateProjectSchema(project: {
 		inLanguage: project.locale === 'en' ? 'en-US' : 'es-ES',
 		author: {
 			'@type': 'Person',
-			name: 'Juan Carlos Gómez Bermúdez',
+			name: 'Juan Gómez',
 			url: baseUrl,
 		},
 	};

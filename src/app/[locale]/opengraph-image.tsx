@@ -18,7 +18,7 @@ export default async function Image({params}: Params) {
 
 	return renderShareImage({
 		eyebrow: t('role'),
-		title: 'Juan Carlos Gómez',
+		title: 'Juan Gómez',
 		subtitle: t('tagline'),
 		footer: 'Managua, Nicaragua',
 	});
