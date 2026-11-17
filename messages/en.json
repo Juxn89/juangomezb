@@ -848,9 +848,7 @@
 					"Cut deployment times by ~25% by automating the pipeline and migrating to microservices",
 					"Implemented architectures with ReactJS microfrontends, .NET microservices and messaging queues, improving scalability and maintainability",
 					"Ensured high availability and performance of services on AWS",
-					"Work with GitHub Copilot and Claude Code every day to speed up development",
-					"Refreshed the user experience and look & feel of several brands",
-					"Delivered business features, fixed critical bugs and updated pricing models in line with company strategy"
+					"Work with GitHub Copilot and Claude Code every day to speed up development"
 				],
 				"technologies": [".NET", "ReactJS", "LLM", "Evals", "Microservices", "Microfrontends", "AWS", "Messaging Queues"]
 			},
@@ -877,8 +875,7 @@
 				"achievements": [
 					"Improved operational efficiency by ~15% by automating processes that used to be manual",
 					"Cut load times by ~20% and improved platform usability with ExtJS and performance optimization",
-					"Designed and implemented insurance policy calculations over large datasets and complex business rules",
-					"Built business-critical features and fixed bugs alongside cross-functional teams, keeping the system reliable"
+					"Designed and implemented insurance policy calculations over large datasets and complex business rules"
 				],
 				"technologies": ["ExtJS", "JavaScript", ".NET", "Performance Optimization", "Automation"]
 			},
@@ -902,23 +899,22 @@
 				"position": "Software Developer",
 				"period": "Apr 2017 - Apr 2019",
 				"location": "Nicaragua",
-				"description": "Developed and maintained software solutions for all 153 municipalities across Nicaragua, supporting critical public sector operations with .NET technologies.",
+				"description": "Developed and maintained .NET software for the systems INIFOM provides to Nicaragua's municipalities, supporting critical public-sector operations.",
 				"achievements": [
-					"Led the team's adoption of Team Foundation Server (TFS) for version control",
-					"Managed servers and infrastructure: IIS, SQL Server, Reporting Services and TFS"
+					"Managed servers and infrastructure: IIS, SQL Server and Reporting Services"
 				],
-				"technologies": [".NET", ".NET Framework", "TFS", "IIS", "SQL Server"]
+				"technologies": [".NET", ".NET Framework", "IIS", "SQL Server"]
 			},
 			{
 				"id": 6,
 				"company": "Attorney General's Office",
 				"position": "Software Developer",
 				"period": "Mar 2014 - Apr 2017",
-				"location": "Nicaragua / Panama",
-				"description": "Led the development and implementation of the cadastre system for all 153 municipal governments nationwide, enabling efficient management of territorial and property information at a national scale.",
+				"location": "Nicaragua",
+				"description": "Built the application Nicaragua's municipalities use to calculate the property tax (IBI, Impuesto sobre Bienes Inmuebles): the amount each taxpayer must pay.",
 				"achievements": [
-					"Integrated the municipal cadastre (SISCAT, INIFOM) with the physical cadastre (SISCAF, INETER) to manage municipal properties centrally",
-					"Coordinated the migration of taxpayer data from SISCAT to the financial system (SIAFI) across all municipalities, improving revenue collection and traceability"
+					"Integrated SISCAF (Sistema de Catastro Físico, INETER's physical cadastre system) into SISCAT (Sistema de Catastro, INIFOM's municipal cadastre system), so municipal properties are managed in one place",
+					"Coordinated the migration of taxpayer data from SISCAT to SIAFI (Sistema Administrativo Financiero, the municipal financial system) across all municipalities, improving revenue collection and traceability"
 				],
 				"technologies": [".NET", "SISCAT", "SISCAF", "SIAFI", "System Integration"]
 			},
@@ -930,10 +926,22 @@
 				"location": "Nicaragua",
 				"description": "Developed web-based administrative and planning systems for municipal government operations.",
 				"achievements": [
-					"Built the Strategic Planning and Project Formulation web systems in ASP MVC to manage institutional plans and projects",
+					"Built the Strategic Planning and Project Formulation web systems in ASP.NET MVC to manage institutional plans and projects",
 					"Moved the Project Formulation System from desktop to the web, making it more accessible and collaborative"
 				],
-				"technologies": ["ASP MVC", ".NET", "Web Development"]
+				"technologies": ["ASP.NET MVC", ".NET", "Web Development"]
+			},
+			{
+				"id": 8,
+				"company": "ESConsultores S.A.",
+				"position": "Software Developer Intern",
+				"period": "Jan 2011 - Aug 2011",
+				"location": "Nicaragua",
+				"description": "Maintained and optimized the HIDROMET system in INETER's data bank (hydrometeorological data), using Oracle Forms 6i.",
+				"achievements": [
+					"Built custom HIDROMET reports with Oracle Reports 6i for the analysis of hydrometeorological data"
+				],
+				"technologies": ["Oracle Forms", "Oracle Reports", "Oracle Database"]
 			}
 		]
 	},
